@@ -1,6 +1,6 @@
 # CS4273
 
-#Git Info
+# Git Info
 
 **If anything is unclear or you do not know how to use git ask your git master, we would rather you asked then blow up the git**
 
