@@ -23,7 +23,7 @@ It is important that you follow these rules because this will prevent merge conf
 3) Keep up with the Group-x branch, before you start making changes to code, merge your branch to this one and when you are done merge Group-x to your branch. Working in this context refers to actively, if you are not actively working then your stuff should be on Group-x (unless the code does not work).
 4) Do not make random changes around the code, only work where you have told people you are working, if you see something bad in the code just leave it and let people know in discord, at some point the chance will open up to fix it.
 
-5) **COMMENT YOUR FREAKING CODE** add as many as possible and try to make your code look neat, everyone will thank you for it. If you are having a hard time adding comments, ask someone for help.
+5) **COMMENT YOUR FREAKING CODE!** Add as many as possible and try to make your code look neat, everyone will thank you for it. If you are having a hard time adding comments, ask someone for help.
 
 6) When you are trying to merge any branches that are not your own you should make sure all relevant people are informed.
 
