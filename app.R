@@ -1,6 +1,9 @@
 library(shiny)
 
-# Define UI for application that draws a histogram
+# Define UI for the application
+
+# this is where we need to define different pages/tabs for us, and then 
+ contribute seperately. Potentui
 ui <- fluidPage(
 
     # Application title
