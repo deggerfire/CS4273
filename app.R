@@ -3,8 +3,16 @@ library(shiny)
 # Define UI for the application
 
 # this is where we need to define different pages/tabs for us, and then 
- contribute seperately. Potentui
+ # contribute separately. potentially use the navbarPage function to create
+
+# Note- the ENTIRE UI is contained in this page. to prevent merge issues, I have
+  # seperated out two sections of code for Group A and Group L.
+
 ui <- fluidPage(
+  
+  ######################################################################
+  ########################  Group A Boundary ###########################
+  ######################################################################
 
     # Application title
     titlePanel("Old Faithful Geyser Data"),
@@ -24,10 +32,24 @@ ui <- fluidPage(
            plotOutput("distPlot")
         )
     )
+  
+  ######################################################################
+  ########################  Group L Boundary ###########################
+  ######################################################################
 )
 
-# Define server logic required to draw a histogram
+# This is where we will define server logic. Ie, this is where we will parse the CSV,
+  # add graphs, create sliders/filters for user input, ect
+
+# The bulk of our work will be here. Again, I have sectioned off the code for 
+  # Group A and Group L to prevent merge issues.
+
 server <- function(input, output) {
+  
+  
+  ######################################################################
+  ########################  Group A Boundary ###########################
+  ######################################################################
 
     output$distPlot <- renderPlot({
         # generate bins based on input$bins from ui.R
@@ -39,7 +61,22 @@ server <- function(input, output) {
              xlab = 'Waiting time to next eruption (in mins)',
              main = 'Histogram of waiting times')
     })
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ######################################################################
+    ########################  Group L Boundary ###########################
+    ######################################################################
 }
 
-# Run the application 
+# This command runs our application- all you have to do to see the ouput is click
+  # the "Run App" button in the top right corner of RStudio.
+
+# A webpage will open and allow you to interact with it. 
 shinyApp(ui = ui, server = server)
