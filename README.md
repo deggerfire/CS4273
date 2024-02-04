@@ -1,6 +1,6 @@
 # Project FEAR
 
-Flaming Eeagle Acrobatic Raptor
+Flaming Eagle Acrobatic Raptor
 
 # Git Info
 
