@@ -6,7 +6,7 @@
 
 ## Branch Structure
 
-Main - The latest version of fully merged and “working” software. Assuming both groups are working in the same git only the git master should merge into this branch) **!You should NOT be working on this branch!**
+Main - The latest version of fully merged and “working” software between both teams. Only the git master should merge into this branch **!You should NOT be working on this branch!**
 
 Group-[x] - The latest version of fully merged software for either group. **!You should NOT be working on this branch!**
 
