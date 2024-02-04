@@ -1,4 +1,6 @@
-# CS4273
+# Project FEAR
+
+Flaming Eeagle Acrobatic Raptor
 
 # Git Info
 
