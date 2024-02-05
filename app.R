@@ -1,4 +1,5 @@
 library(shiny)
+library(ggplot2)
 
 # Define UI for the application
 
@@ -15,21 +16,20 @@ ui <- fluidPage(
   ######################################################################
 
     # Application title
-    titlePanel("Old Faithful Geyser Data"),
+    titlePanel(img(src="logo.png")),
 
     # Sidebar with a slider input for number of bins 
     sidebarLayout(
         sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
+          div(
+            selectInput("yAxis", "Y axis", list(`options` = c(sort(colnames(ddt))))),
+            " VS ",
+            selectInput("xAxis", "X axis",list(`options` = c(sort(colnames(ddt))))),
+          )
         ),
 
         # Show a plot of the generated distribution
-        mainPanel(
-           div(img(src="logo.png"), "logo"),
+    mainPanel(
            plotOutput("distPlot")
         )
     )
@@ -53,14 +53,10 @@ server <- function(input, output) {
   ######################################################################
 
     output$distPlot <- renderPlot({
-        # generate bins based on input$bins from ui.R
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-        # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white',
-             xlab = 'Waiting time to next eruption (in mins)',
-             main = 'Histogram of waiting times')
+      g = ggplot(ddt, aes(x = ddt[,input$xAxis], y = ddt[,input$yAxis], colour = ddt[,input$yAxis]))
+      g + ggtitle("demo graph")
+      g = g + geom_point()
+      print(g)
     })
     
     
