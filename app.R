@@ -1,5 +1,6 @@
 library(shiny)  # The sever thingy
 library(ggplot2)# Used for plotting
+library(dplyr)  # Used for data handling
 
 # Demo data just for testing TODO: Remove
 # ddt <- read.csv(file("CFS-2022.csv"))
