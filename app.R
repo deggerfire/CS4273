@@ -88,15 +88,31 @@ server <- function(input, output) {
   })
   
   output$Histogram <- renderPlot({
+    # This is a R code area-------------------------------------------------------------------------------------------
+    # To get this area to render in the graph type drop down select histogram
+    
+    # Data area ##############################################################################
+    # This is where you can mess to data before trying to render it
+    
+    # Make random data to put into a histogram
     set.seed(123)
     df <- data.frame(
       gender=factor(rep(c(
         "Average Female income ", "Average Male incmome"), each=20000)),
       Average_income=round(c(rnorm(20000, mean=15500, sd=500), 
                              rnorm(20000, mean=17500, sd=600)))   
-    )  
-    g <- ggplot(df, aes(x=Average_income)) + geom_histogram()
+    )
+    ##########################################################################################
+    
+    # Graph area #############################################################################
+    # This is where you graph things !use ggplot!
+    # Make g that uses the df variable from above for this graph
+    g <- ggplot(df, aes(x=Average_income))
+    # Set g to be a histogram
+    g = g + geom_histogram()
+    # Print g
     print(g)
+    ##########################################################################################
   })
   
   output$Boxplot <- renderPlot({
@@ -104,6 +120,7 @@ server <- function(input, output) {
     g <- ggplot(ToothGrowth, aes(x=dose, y=len)) + 
       geom_boxplot()
     print(g)
+    # This is a R code area-------------------------------------------------------------------------------------------
   })
   
   ######################################################################
