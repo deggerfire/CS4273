@@ -20,7 +20,12 @@ ui <- fluidPage(
   ######################################################################
   
   # Put in the top bar, just a demo image for now
-  titlePanel(img(src="logoV2.png")),
+  titlePanel(img(src="logo.png")),
+  
+  # The blue bar on the top and dataset selector
+  fluidRow(style = "background: #4c5cad; color: white", 
+    selectInput("Data_Set", "Data Set", list(`Graph Types` = c("Calls for Service", "Collisions", "Complaints, etc"))),
+  ),
   
   # Sidebar with demo selector parts
   sidebarLayout(
@@ -28,7 +33,6 @@ ui <- fluidPage(
       # Sets the background color
       style = "background: #4c5cad; color: white",
       # Get type of graph the user wants
-      selectInput("Data_Set", "Data Set", list(`Graph Types` = c("Calls for Service", "Collisions", "Complaints, etc"))),
       # A date range input
       dateRangeInput("dates", label = "Date range"),
       
