@@ -4,6 +4,7 @@ library(dplyr)  # Used for data handling
 
 # Demo data just for testing TODO: Remove
 data <- read.csv(file("CFS-2022.csv"))
+data2 <- read.csv(file("UOF.csv"))
 ddt <- read.csv(file("DDT.csv"))
 
 # Define UI for the application
@@ -24,7 +25,7 @@ ui <- fluidPage(
   
   # The blue bar on the top and dataset selector
   fluidRow(style = "background: #4c5cad; color: white", 
-    selectInput("Data_Set", "Data Set", list(`Graph Types` = c("Calls for Service", "Collisions", "Complaints, etc"))),
+    selectInput("Data_Set", "Data Set", list(`Graph Types` = c("Calls for Service", "Use of force"))),
   ),
   
   # Sidebar with demo selector parts
@@ -52,7 +53,12 @@ ui <- fluidPage(
     
     # Show a plot of the generated distribution TODO: Make variable
     mainPanel(
-      plotOutput("Barplot")
+      conditionalPanel(condition = "input.Data_Set == 'Calls for Service'", 
+        plotOutput("Barplot")
+      ),
+      conditionalPanel(condition = "input.Data_Set == 'Use of force'", 
+                       plotOutput("Piechart")
+      )
     )
   ),style='margins: -21px'
   
@@ -83,14 +89,22 @@ server <- function(input, output) {
     print(graph)
   })
   
+  output$Piechart <- renderPlot({
+    graph <- ggplot(data2, aes(x = "", y = factor(RACE), fill = RACE))
+    graph = graph + geom_bar(stat = "identity", width = 1)
+    graph = graph + theme_void() + theme(text = element_text(size = 18))
+    graph = graph + coord_polar("y", start = 0)
+    print(graph)
+  })
+  
   # Data Selector
   observeEvent(input$Data_Set,{
     switch(
       input$Data_Set,
       "Calls for Service" = 
         data <- read.csv(file("CFS-2022.csv")),
-      "Collisions" = print("test2"),
-      "Complaints, etc" = print("test3")
+      "Use of force" = 
+        data <- read.csv(file("UOF.csv")),
     )
     
   })
