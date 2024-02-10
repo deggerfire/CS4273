@@ -3,7 +3,7 @@ library(ggplot2)# Used for plotting
 library(dplyr)  # Used for data handling
 
 # Demo data just for testing TODO: Remove
-# ddt <- read.csv(file("CFS-2022.csv"))
+data <- read.csv(file("CFS-2022.csv"))
 ddt <- read.csv(file("DDT.csv"))
 
 # Define UI for the application
@@ -20,19 +20,17 @@ ui <- fluidPage(
   ######################################################################
   
   # Put in the top bar, just a demo image for now
-  titlePanel(img(src="logo.png")),
+  titlePanel(img(src="logoV2.png")),
   
   # Sidebar with demo selector parts
   sidebarLayout(
     sidebarPanel(
+      # Sets the background color
+      style = "background: #4c5cad; color: white",
+      # Get type of graph the user wants
+      selectInput("Data_Set", "Data Set", list(`Graph Types` = c("Calls for Service", "Collisions", "Complaints, etc"))),
       # A date range input
       dateRangeInput("dates", label = "Date range"),
-      # Get type of graph the user wants
-      selectInput("graph", "Graph Type", list(`Graph Types` = c("ScatterPlot", "Histogram", "Boxplot"))),
-      # Set what the user wants on the Y-axis
-      selectInput("yAxis", "Y axis", list(`options` = c(sort(colnames(ddt))))),
-      # Set what the user wants on the X-axis
-      selectInput("xAxis", "X axis",list(`options` = c(sort(colnames(ddt))))),
       
       # Demo for the possible graph tools for ScatterPlot
       conditionalPanel(condition = "input.graph == 'ScatterPlot'", 
@@ -44,22 +42,15 @@ ui <- fluidPage(
       
       # Demo for the possible graph tools for Boxplot
       conditionalPanel(condition = "input.graph == 'Boxplot'", 
-                       checkboxGroupInput("checkGroup", label = h3("Checkbox group"), choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3), selected = 1))
+                       checkboxGroupInput("checkGroup", label = h3("Checkbox group"), choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3), selected = 1)),
+      width = 2
       ),
     
     # Show a plot of the generated distribution TODO: Make variable
     mainPanel(
-      conditionalPanel(condition = "input.graph == 'ScatterPlot'", 
-                        plotOutput("ScatterPlot")
-      ),
-      conditionalPanel(condition = "input.graph == 'Histogram'", 
-                       plotOutput("Histogram")
-      ),
-      conditionalPanel(condition = "input.graph == 'Boxplot'", 
-                       plotOutput("Boxplot")
-      )
+      plotOutput("Barplot")
     )
-  )
+  ),style='margins: -21px'
   
   ######################################################################
   ########################  Group A Boundary ###########################
@@ -81,47 +72,23 @@ server <- function(input, output) {
   ########################  Universal Boundary #########################
   ######################################################################
   # Display a scatter plot with the data
-  output$ScatterPlot <- renderPlot({
-    g = ggplot(ddt, aes(x = ddt[,input$xAxis], y = ddt[,input$yAxis], colour = ddt[,input$yAxis]))
-    g + ggtitle("demo graph")
-    g = g + geom_point()
-    print(g)
+  output$Barplot <- renderPlot({
+    graph <- ggplot(data, aes(factor(CallSource), fill = CallSource))
+    graph = graph + geom_bar(stat = "Count", position = position_dodge())
+    graph = graph + theme(text = element_text(size = 18))
+    print(graph)
   })
   
-  output$Histogram <- renderPlot({
-    # This is a R code area-------------------------------------------------------------------------------------------
-    # To get this area to render in the graph type drop down select histogram
-    
-    # Data area ##############################################################################
-    # This is where you can mess to data before trying to render it
-    
-    # Make random data to put into a histogram
-    set.seed(123)
-    df <- data.frame(
-      gender=factor(rep(c(
-        "Average Female income ", "Average Male incmome"), each=20000)),
-      Average_income=round(c(rnorm(20000, mean=15500, sd=500), 
-                             rnorm(20000, mean=17500, sd=600)))   
+  # Data Selector
+  observeEvent(input$Data_Set,{
+    switch(
+      input$Data_Set,
+      "Calls for Service" = 
+        data <- read.csv(file("CFS-2022.csv")),
+      "Collisions" = print("test2"),
+      "Complaints, etc" = print("test3")
     )
-    ##########################################################################################
     
-    # Graph area #############################################################################
-    # This is where you graph things !use ggplot!
-    # Make g that uses the df variable from above for this graph
-    g <- ggplot(df, aes(x=Average_income))
-    # Set g to be a histogram
-    g = g + geom_histogram()
-    # Print g
-    print(g)
-    ##########################################################################################
-    # This is a R code area-------------------------------------------------------------------------------------------
-  })
-  
-  output$Boxplot <- renderPlot({
-    ToothGrowth$dose <- as.factor(ToothGrowth$dose)
-    g <- ggplot(ToothGrowth, aes(x=dose, y=len)) + 
-      geom_boxplot()
-    print(g)
   })
   
   ######################################################################
