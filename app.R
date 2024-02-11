@@ -5,7 +5,6 @@ library(dplyr)  # Used for data handling
 # Demo data just for testing TODO: Remove
 data <- read.csv(file("CFS-2022.csv"))
 data2 <- read.csv(file("UOF.csv"))
-ddt <- read.csv(file("DDT.csv"))
 
 # Define UI for the application
 
@@ -33,28 +32,19 @@ ui <- fluidPage(
     sidebarPanel(
       # Sets the background color
       style = "background: #4c5cad; color: white",
-      # Get type of graph the user wants
       # A date range input
       dateRangeInput("dates", label = "Date range"),
       
-      # Demo for the possible graph tools for ScatterPlot
+      # Demo for the possible graph tools for ScatterPlot TODO: remove, here for ref
       conditionalPanel(condition = "input.graph == 'ScatterPlot'", 
                        radioButtons("radio", label = "Separator", choices = list("Flaming", "Eagle", "Acrobatic", "Raptor"))),
-      
-      # Demo for the possible graph tools for histogram
-      conditionalPanel(condition = "input.graph == 'Histogram'", 
-                       sliderInput("bins", "Number of bins:", min = 1, max = 50, value = 30)),
-      
-      # Demo for the possible graph tools for Boxplot
-      conditionalPanel(condition = "input.graph == 'Boxplot'", 
-                       checkboxGroupInput("checkGroup", label = h3("Checkbox group"), choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3), selected = 1)),
       width = 2
       ),
     
     # Show a plot of the generated distribution TODO: Make variable
     mainPanel(
       conditionalPanel(condition = "input.Data_Set == 'Calls for Service'", 
-        plotOutput("Barplot")
+                       plotOutput("Barplot")
       ),
       conditionalPanel(condition = "input.Data_Set == 'Use of force'", 
                        plotOutput("Piechart")
@@ -83,25 +73,25 @@ server <- function(input, output) {
   ######################################################################
   # Display a scatter plot with the data
   output$Barplot <- renderPlot({
-    graph <- ggplot(data, aes(factor(CallSource), fill = CallSource))
-    graph = graph + geom_bar(stat = "Count", position = position_dodge())
-    graph = graph + xlab("Source of Call") + ylab("Amount")
-    graph = graph + guides(fill=guide_legend(title="Source of Call"))
-    graph = graph + theme(text = element_text(size = 18))
-    print(graph)
+    graph <- ggplot(data, aes(factor(CallSource), fill = CallSource))     # Setup graph data
+    graph = graph + geom_bar(stat = "Count", position = position_dodge()) # Set up the data as a bar chart
+    graph = graph + xlab("Source of Call") + ylab("Amount")               # Set the x/y labels
+    graph = graph + guides(fill=guide_legend(title="Source of Call"))     # Set the title of the legend
+    graph = graph + theme(text = element_text(size = 18))                 # Set the font size
+    print(graph)                                                          # Print the graph
   })
   
   # Displays a pie chart using data2
   output$Piechart <- renderPlot({
-    graph <- ggplot(data.frame(table(data2$RACE)), aes(x = "", y = Freq, fill = Var1))
-    graph = graph + geom_bar(stat = "identity", width = 1)
-    graph = graph + guides(fill=guide_legend(title="Race"))
-    graph = graph + theme_void() + theme(text = element_text(size = 18))
-    graph = graph + coord_polar("y", start = 0)
-    print(graph)
+    graph <- ggplot(data.frame(table(data2$RACE)), aes(x = "", y = Freq, fill = Var1)) # Set up graph data
+    graph = graph + geom_bar(stat = "identity", width = 1)                             # Set up the data as a bar chart
+    graph = graph + guides(fill=guide_legend(title="Race"))                            # Set the title of the legend
+    graph = graph + theme_void() + theme(text = element_text(size = 18))               # Remove the background and set the font size
+    graph = graph + coord_polar("y", start = 0)                                        # Convert the graph to polar
+    print(graph)                                                                       # Print the graph
   })
   
-  # Data Selector
+  # Data Selector TODO: make work
   observeEvent(input$Data_Set,{
     switch(
       input$Data_Set,
