@@ -85,13 +85,17 @@ server <- function(input, output) {
   output$Barplot <- renderPlot({
     graph <- ggplot(data, aes(factor(CallSource), fill = CallSource))
     graph = graph + geom_bar(stat = "Count", position = position_dodge())
+    graph = graph + xlab("Source of Call") + ylab("Amount")
+    graph = graph + guides(fill=guide_legend(title="Source of Call"))
     graph = graph + theme(text = element_text(size = 18))
     print(graph)
   })
   
+  # Displays a pie chart using data2
   output$Piechart <- renderPlot({
-    graph <- ggplot(data2, aes(x = "", y = factor(RACE), fill = RACE))
+    graph <- ggplot(data.frame(table(data2$RACE)), aes(x = "", y = Freq, fill = Var1))
     graph = graph + geom_bar(stat = "identity", width = 1)
+    graph = graph + guides(fill=guide_legend(title="Race"))
     graph = graph + theme_void() + theme(text = element_text(size = 18))
     graph = graph + coord_polar("y", start = 0)
     print(graph)
