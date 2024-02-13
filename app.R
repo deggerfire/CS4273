@@ -1,52 +1,65 @@
 library(shiny)  # The sever thingy
 library(ggplot2)# Used for plotting
 library(dplyr)  # Used for data handling
+library(shinydashboard) # guess what it's used for
 
 # Define UI for the application
 
 # this is where we need to define different pages/tabs for us, and then 
- # contribute separately. potentially use the navbarPage function to create
+# contribute separately. potentially use the navbarPage function to create
 
 # Note- the ENTIRE UI is contained in this page. to prevent merge issues, I have
-  # seperated out two sections of code for Group A and Group L.
+# seperated out two sections of code for Group A and Group L.
 
-ui <- fluidPage(
+ui <- dashboardPage(
   ######################################################################
   ########################  Universal Boundary #########################
   ######################################################################
   
-  # Put in the top bar, just a demo image for now
-  titlePanel(img(src = "logo.png")),
+  # Sets the title on top left
+  dashboardHeader(title='Norman PD'),
   
-  # The blue bar on the top and dataset selector
-  fluidRow(style = "background: #4c5cad; color: white",
-    selectInput("Data_Set", "Data Set", list(`Graph Types` = c("Calls for Service", "Use of force"))),
-  ),
-  
-  # Sidebar with demo selector parts
-  sidebarLayout(
-    sidebarPanel(
-      # Sets the background color
-      style = "background: #4c5cad; color: white",
-      # A date range input
-      dateRangeInput("dates", label = "Date range"),
+  # This sets the tabs on the left, and allows them to open/close.
+  dashboardSidebar(
+    sidebarMenu(
       
-      # Demo for the possible graph tools for ScatterPlot TODO: remove, here for ref
-      conditionalPanel(condition = "input.graph == 'ScatterPlot'", 
-                       radioButtons("radio", label = "Separator", choices = list("Flaming", "Eagle", "Acrobatic", "Raptor"))),
-      width = 2
+      # Each of these menu items are tabs, and can be clicked. tabName is used later in dashboardBody
+      menuItem("Use of Force", tabName = "UOF", icon = icon("dashboard")),
+      menuItem("Calls for Service", tabName = "CFS", icon = icon("th"))
+    )
+  ),
+  dashboardBody(
+    tabItems(
+      # This is the first tab, and is the default tab that opens
+      tabItem(tabName = "UOF",
+              fluidRow(
+                box(width = 6, height=300, plotOutput("Piechart")),
+                box( width = 6, height=300, plotOutput("Barplot")),
+                box( width = 6, height=300, plotOutput("Piechart")),
+                box( width = 6, height=300, plotOutput("Barplot")),
+            )
       ),
-    
-    # Show a plot of the generated distribution TODO: Make variable
-    mainPanel(
-      conditionalPanel(condition = "input.Data_Set == 'Calls for Service'", 
-                       plotOutput("Barplot")
-      ),
-      conditionalPanel(condition = "input.Data_Set == 'Use of force'", 
-                       plotOutput("Piechart")
+      # This is the second tab, and is the default tab that opens
+      tabItem(tabName = "CFS",
+              fluidRow(
+                tabBox(
+                  title = "First tabBox",
+                  id = "Barplot", height = "250px",
+                  tabPanel("Tab1", "First tab content"),
+                  tabPanel("Tab2", "Tab content 2")
+                ),
+                tabBox(
+                  title = "Second tabBox",
+                  id = "Piechart", height = "250px",
+                  tabPanel("Tab1", "First tab content"),
+                  tabPanel("Tab2", "Tab content 2")
+                ),
+              )
       )
     )
-  ),style='margins: -21px'
+  ),
+  
+  
   
   ######################################################################
   ########################  Group A Boundary ###########################
@@ -58,10 +71,10 @@ ui <- fluidPage(
 )
 
 # This is where we will define server logic. Ie, this is where we will parse the CSV,
-  # add graphs, create sliders/filters for user input, ect
+# add graphs, create sliders/filters for user input, ect
 
 # The bulk of our work will be here. Again, I have sectioned off the code for 
-  # Group A and Group L to prevent merge issues.
+# Group A and Group L to prevent merge issues.
 
 server <- function(input, output) {
   ######################################################################
@@ -126,7 +139,7 @@ server <- function(input, output) {
 }
 
 # This command runs our application- all you have to do to see the ouput is click
-  # the "Run App" button in the top right corner of RStudio.
+# the "Run App" button in the top right corner of RStudio.
 
 # A webpage will open and allow you to interact with it. 
 shinyApp(ui = ui, server = server)
