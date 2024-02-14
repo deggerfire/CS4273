@@ -46,8 +46,8 @@ ui <- fluidPage(
                        plotOutput("Piechart")
       ),
       conditionalPanel(condition = "input.Data_Set == 'Mixed'",
-                       column(width=7, plotOutput("Barplot2")),
-                       column(width=5, plotOutput("Piechart2"))
+                       column(width=9, plotOutput("Barplot2")),
+                       column(width=3, plotOutput("Piechart2"))
       ),
     )
   ),style='margins: -21px'
@@ -71,21 +71,31 @@ server <- function(input, output) {
   ######################################################################
   ########################  Universal Boundary #########################
   ######################################################################
-  # Display a scatter plot with the data
-  outputBarPlot <- function(data){
-    output$Barplot <- renderPlot({
-      graph <- ggplot(data, aes(factor(CallSource), fill = CallSource))     # Setup graph data
-      graph = graph + geom_bar(stat = "Count", position = position_dodge()) # Set up the data as a bar chart
-      graph = graph + xlab("Source of Call") + ylab("Amount")               # Set the x/y labels
-      graph = graph + guides(fill=guide_legend(title="Source of Call"))     # Set the title of the legend
-      graph = graph + theme(text = element_text(size = 18))                 # Set the font size
-      print(graph)                                                          # Print the graph
+  
+  # Prints to the screen a barplot
+    # data - the data that is to be rendered, must be tabled
+    # legend - the title of the lengend
+    # x/ylab - the titles for the x and y axis
+  # exp: outputBarPlot(table(data$CallSource), legend = "Source of Call", xlab = "Source of Call", ylab = "Amount")
+    # Makes a barplot based on CallSource (in the calls for service csv)
+  outputBarPlot <- function(data, legend = "", xlab = "x", ylab = "y"){
+    output$Barplot <- renderPlot({# Put the plot at plotOutput("Barplot") in the shiny code
+      graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) # Setup graph data
+      graph = graph + geom_bar(stat = "identity", width = .8)                 # Set up the data as a bar chart
+      graph = graph + xlab(xlab) + ylab(ylab)                                 # Set the x/y labels
+      graph = graph + guides(fill=guide_legend(title = legend))               # Set the title of the legend
+      graph = graph + theme(text = element_text(size = 18))                   # Set the font size
+      print(graph)                                                            # Print the graph
     })
   }
   
-  # Function to print out a pie chart using ggplot
-  outputPieChart <- function(data, legend){
-    output$Piechart <- renderPlot({
+  # Prints to the screen a barplot
+    # data - the data that is to be rendered, must be tabled
+    # legend - the title of the lengend
+  # exp: outputPieChart(data = table(data$RACE), legend = "Race")
+    # Makes a piecahrt using Race (in the use of force csv)
+  outputPieChart <- function(data, legend = ""){
+    output$Piechart <- renderPlot({# Put the plot at plotOutput("Piechart") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = "", y = Freq, fill = Var1))  # Set up graph data
       graph = graph + geom_bar(stat = "identity", width = 1)                 # Set up the data as a bar chart
       graph = graph + guides(fill=guide_legend(title = legend))              # Set the title of the legend
@@ -122,7 +132,7 @@ server <- function(input, output) {
     if(input$Data_Set == "Calls for Service")
     {
       data <- read.csv(file("CFS-2022.csv"))
-      outputBarPlot(data)
+      outputBarPlot(table(data$CallSource), legend = "Source of Call", xlab = "Source of Call", ylab = "Amount")
     }
     else if(input$Data_Set == "Use of force")
     {
