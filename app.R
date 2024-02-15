@@ -20,7 +20,13 @@ ui <- fluidPage(
   
   # The blue bar on the top and dataset selector
   fluidRow(style = "background: #091682; color: white; padding: 14px;",
-           selectInput("Data_Set", "Data Set", list(`Graph Types` = c("Calls for Service", "Use of force", "Mixed"))),
+           # This is the drop down at the top.input$Data_Set will give you what the user has select from the list
+           selectInput("Data_Set", "Data Set", list(`Graph Types` = c("Calls for Service", 
+                                                                      "Collisions", 
+                                                                      "Complaints, Inquiries and Use of force", 
+                                                                      "Contacts", 
+                                                                      "Offenses", 
+                                                                      "Mixed"))),
   ),
   
   # Sidebar with demo selector parts
@@ -45,6 +51,7 @@ ui <- fluidPage(
       conditionalPanel(condition = "input.Data_Set == 'Use of force'", 
                        plotOutput("Piechart")
       ),
+      # demo code, TODO: remove/expand
       conditionalPanel(condition = "input.Data_Set == 'Mixed'",
                        column(width=9, plotOutput("Barplot2")),
                        column(width=3, plotOutput("Piechart2"))
@@ -105,9 +112,10 @@ server <- function(input, output) {
     })
   }
   
+  # demo code, TODO: remove/expand
   outputMixed <- function(data1, data2, legend){
       output$Barplot2 <- renderPlot({
-        graph <- ggplot(data1, aes(factor(CallSource), fill = CallSource))     # Setup graph data
+        graph <- ggplot(data1, aes(factor(CallSource), fill = CallSource))    # Setup graph data
         graph = graph + geom_bar(stat = "Count", position = position_dodge()) # Set up the data as a bar chart
         graph = graph + xlab("Source of Call") + ylab("Amount")               # Set the x/y labels
         graph = graph + guides(fill=guide_legend(title="Source of Call"))     # Set the title of the legend
@@ -117,7 +125,7 @@ server <- function(input, output) {
       
       # Function to print out a pie chart using ggplot
         output$Piechart2 <- renderPlot({
-          graph <- ggplot(data.frame(data2), aes(x = "", y = Freq, fill = Var1))  # Set up graph data
+          graph <- ggplot(data.frame(data2), aes(x = "", y = Freq, fill = Var1)) # Set up graph data
           graph = graph + geom_bar(stat = "identity", width = 1)                 # Set up the data as a bar chart
           graph = graph + guides(fill=guide_legend(title = legend))              # Set the title of the legend
           graph = graph + theme_void() + theme(text = element_text(size = 18))   # Remove the background and set the font size
@@ -126,15 +134,21 @@ server <- function(input, output) {
         })
   }
   
-  # Data Selector TODO: make work
+  # Method that gets triggered when the graph is suppose to change
   observeEvent(input$Data_Set,{
-    # Remove if chain at some point
-    if(input$Data_Set == "Calls for Service")
-    {
-      data <- read.csv(file("CFS-2022.csv"))
-      outputBarPlot(table(data$CallSource), legend = "Source of Call", xlab = "Source of Call", ylab = "Amount")
-    }
-    else if(input$Data_Set == "Use of force")
+    # Call both group A's and group L's trigger function
+    groupAtrigger()
+    groupLtrigger()
+  })
+  
+  ######################################################################
+  ########################  Group A Boundary ###########################
+  ######################################################################
+  # Groups A's method that gets triggered when the graph is suppose to change
+  groupAtrigger <- function(){
+    # If chain that checks for what type of graph is selected
+      #(R's switch would not work here)
+    if(input$Data_Set == "Use of force")
     {
       data <- read.csv(file("UOF.csv"))
       outputPieChart(data = table(data$RACE), legend = "Race")
@@ -147,24 +161,19 @@ server <- function(input, output) {
       
       outputMixed(data1, data2, legend = "Race")
     }
-    else{print("Error, invalid selection")}
-    
-    
-    groupAeffect()
-    groupLeffect()
-  })
-  
-  ######################################################################
-  ########################  Group A Boundary ###########################
-  ######################################################################
-  groupAeffect <- function(){
-    # At some point group A's if chain will be here
   }
   ######################################################################
   ########################  Group L Boundary ###########################
   ######################################################################
-  groupLeffect <- function(){
-    # At some point group L's if chain will be here
+  # Groups L's method that gets triggered when the graph is suppose to change
+  groupLtrigger <- function(){
+    # If chain that checks for what type of graph is selected
+      #(R's switch would not work here)
+    if(input$Data_Set == "Calls for Service")
+    {
+      data <- read.csv(file("CFS-2022.csv"))
+      outputBarPlot(table(data$CallSource), legend = "Source of Call", xlab = "Source of Call", ylab = "Amount")
+    }
   }
 }
 
