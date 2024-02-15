@@ -48,7 +48,7 @@ ui <- fluidPage(
       conditionalPanel(condition = "input.Data_Set == 'Calls for Service'", 
                        plotOutput("Barplot")
       ),
-      conditionalPanel(condition = "input.Data_Set == 'Use of force'", 
+      conditionalPanel(condition = "input.Data_Set == 'Complaints, Inquiries and Use of force'", 
                        plotOutput("Piechart")
       ),
       # demo code, TODO: remove/expand
@@ -148,7 +148,7 @@ server <- function(input, output) {
   groupAtrigger <- function(){
     # If chain that checks for what type of graph is selected
       #(R's switch would not work here)
-    if(input$Data_Set == "Use of force")
+    if(input$Data_Set == "Complaints, Inquiries and Use of force")
     {
       data <- read.csv(file("UOF.csv"))
       outputPieChart(data = table(data$RACE), legend = "Race")
