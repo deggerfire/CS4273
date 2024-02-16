@@ -9,7 +9,7 @@ library(dplyr)  # Used for data handling
 
 # Note- the ENTIRE UI is contained in this page. to prevent merge issues, I have
 # seperated out two sections of code for Group A and Group L.
-
+source("sub/test.R")
 ui <- fluidPage(
   ######################################################################
   ########################  Universal Boundary #########################
@@ -136,6 +136,7 @@ server <- function(input, output) {
   
   # Method that gets triggered when the graph is suppose to change
   observeEvent(input$Data_Set,{
+    print(test)
     # Call both group A's and group L's trigger function
     groupAtrigger()
     groupLtrigger()
