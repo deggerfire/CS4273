@@ -10,36 +10,44 @@ library(shinydashboard) # Used for fancy UI stuff
 
 # Note- the ENTIRE UI is contained in this page. to prevent merge issues, I have
 # seperated out two sections of code for Group A and Group L.
-source("tabs/UOFtab.R")
 source("tabs/CFStab.R")
 source("tabs/COLtab.R")
+source("tabs/UOFtab.R")
+source("tabs/CONtab.R")
+source("tabs/OFFtab.R")
 ui <- dashboardPage(
   ######################################################################
   ########################  Universal Boundary #########################
   ######################################################################
   
   # Sets the title
-  dashboardHeader(title='Norman PD'),
+  dashboardHeader(title='Norman PD', titleWidth = 280),
   
   # Left sidebar, used to to get to major catogories
   dashboardSidebar(
+    width = 280,
     sidebarMenu(
       # Variable name of this sidebar
       id = "sidebar",
       #             name on the sidebar for user        var name in code      icon on screen
-      menuItem("Calls for Service"                     , tabName = "CFS", icon = icon("th")),
-      menuItem("Collisions"                            , tabName = "COL", icon = icon("dashboard")),
-      menuItem("Complaints, Inquiries and Use of force", tabName = "UOF", icon = icon("dashboard")),
-      menuItem("Contacts"                              , tabName = "CON", icon = icon("dashboard")),
-      menuItem("Offenses"                              , tabName = "OFF", icon = icon("dashboard"))
+      menuItem("Calls for Service"                     , tabName = "CFS", icon = icon("phone")),
+      menuItem("Collisions"                            , tabName = "COL", icon = icon("car-burst"),
+               menuSubItem('By Severity', tabName = 'l', icon = icon('triangle-exclamation')),
+               menuSubItem('By injury'  , tabName = '2', icon = icon('user-injured'))),
+      menuItem("Complaints, Inquiries and Use of force", tabName = "UOF", icon = icon("gun")),
+      menuItem("Contacts"                              , tabName = "CON", icon = icon("hand")),
+      menuItem("Offenses"                              , tabName = "OFF", icon = icon("handcuffs"))
     )
   ),
   
   # Main body where graphs are rendered (they are all in their own files)
   dashboardBody(id = "tabs",
     tabItems(
+      CFS_tab(), # Calls for service tab
+      COL_tab(), # Collision Tab
       UOF_tab(), # Use of force Tab
-      CFS_tab()  # Calls for service tab
+      CON_tab(), # Contacts Tab
+      OFF_tab()  # Offense Tab
       )
   )
   
@@ -125,19 +133,26 @@ server <- function(input, output) {
   groupLtrigger <- function(){
     # If chain that checks for what type of graph is selected
       #(R's switch would not work here)
-    
-    # If block for call for service tab
     if(input$sidebar == "CFS")
     {
       # Read in call for service data (this is temp)
       data <- read.csv(file("CFS-2022.csv"))
+      demo <- outputBarPlot (table(data$CallSource        ), label = "Source of Call")
       # Render the data then send it to be put on screen, for now you have to send all graphs
       CFS_render(output,
-              outputBarPlot (table(data$CallSource        ), label = "Source of Call"),
-              outputPieChart(table(data$CallSource        ), label = "Source of Call"),
-              outputBarPlot (table(data$PoliceCallPriority), label = "PoliceCallPriority"),
-              outputPieChart(table(data$PoliceCallPriority), label = "PoliceCallPriority"))
+                 demo,
+                 outputPieChart(table(data$PoliceCallStatus  ), label = "PoliceCallStatus"),
+                 outputBarPlot (table(data$PoliceCallPriority), label = "PoliceCallPriority"),
+                 outputPieChart(table(data$City              ), label = "City"))
+      output$COL_table_1 <- demo
+      output$UOF_table_1 <- demo
+      output$UOF_table_2 <- demo
+      output$CON_table_1 <- demo
+      output$OFF_table_1 <- demo
+      
     }
+    # If block for call for service tab
+    
   }
 }
 

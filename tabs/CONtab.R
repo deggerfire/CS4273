@@ -1,25 +1,25 @@
 ##################################################################
 ##################################################################
-##             File for the Collisions UI                       ##
+##               File for the Contacts UI                       ##
 ##################################################################
 ##################################################################
-# This file is for UI stuff related to Collisions Tab
+# This file is for UI stuff related to Contacts Tab
 
 ## TODO: make this file do something
 
 # Function that handles the large scale formatting of the main area (dashboardBody) and the tabs on top
-COL_tab <- function(){
-  tab <- tabItem(tabName = "COL",
+CON_tab <- function(){
+  tab <- tabItem(tabName = "CON",
     tabBox(
       height = "500px",
-      COL_Call_Source_BP("COL_table_1")
+      CON_Call_Source_BP("CON_table_1")
     )
   )
   return(tab)
 }
 
 # Makes the tab for call source barplot
-COL_Call_Source_BP <- function(plotName){
+CON_Call_Source_BP <- function(plotName){
   tab <- tabPanel('Call Source Bargraph', # Tab title
     plotOutput(plotName),                 # plotOutput name
     # Graph controls
