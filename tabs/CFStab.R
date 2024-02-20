@@ -22,7 +22,7 @@ CFS_tab <- function(){
     tabBox(
       height = "500px",
       # Uses functions to make what is in each tab (string is the name of the plotOutput)
-      CFS_Call_Source_BP("CFS_table_5"),
+      CFS_Zip_BP("CFS_table_5"),
       CFS_Call_Source_PC("CFS_table_6"),
       CFS_Call_Priority_BP("CFS_table_7"),
       CFS_Call_Priority_PC("CFS_table_8")
@@ -77,14 +77,26 @@ CFS_Call_Priority_PC <- function(plotName){
   return(tab)
 }
 
+# Makes the tab for Call Priority piechart
+CFS_Zip_BP <- function(plotName){
+  tab <- tabPanel('Zip Piechart', # Tab title
+                  plotOutput(plotName),          # plotOutput name
+                  # Graph controls
+                  selectInput("select", label = h3("Select box"), 
+                              choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3), 
+                              selected = 1)
+  )
+  return(tab)
+}
+
 # Temporary render function TODO: Work out how data team wants to pass in
-CFS_render <- function(output, plot1, plot2, plot3, plot4){
+CFS_render <- function(output, plot1, plot2, plot3, plot4, plot5){
   output$CFS_table_1 <- plot1
   output$CFS_table_2 <- plot2
   output$CFS_table_3 <- plot3
   output$CFS_table_4 <- plot4
   
-  output$CFS_table_5 <- plot1
+  output$CFS_table_5 <- plot5
   output$CFS_table_6 <- plot2
   output$CFS_table_7 <- plot3
   output$CFS_table_8 <- plot4
