@@ -21,22 +21,32 @@ ui <- dashboardPage(
   ######################################################################
   
   # Sets the title
-  dashboardHeader(title='Norman PD', titleWidth = 280),
+  dashboardHeader(title='Norman PD', titleWidth = 295),
   
   # Left sidebar, used to to get to major catogories
   dashboardSidebar(
-    width = 280,
+    width = 295,
     sidebarMenu(
       # Variable name of this sidebar
       id = "sidebar",
-      #             name on the sidebar for user        var name in code      icon on screen
-      menuItem("Calls for Service"                     , tabName = "CFS", icon = icon("phone")),
-      menuItem("Collisions"                            , tabName = "COL", icon = icon("car-burst"),
-               menuSubItem('By Severity', tabName = 'COL', icon = icon('triangle-exclamation')),
-               menuSubItem('By injury'  , tabName = 'COL', icon = icon('user-injured'))),
-      menuItem("Complaints, Inquiries and Use of force", tabName = "UOF", icon = icon("gun")),
-      menuItem("Contacts"                              , tabName = "CON", icon = icon("hand")),
-      menuItem("Offenses"                              , tabName = "OFF", icon = icon("handcuffs"))
+      #             name on the sidebar for user                  var name in code      icon on screen
+      menuItem("Calls for Service"                               , tabName = "CFS", icon = icon("phone")),
+      menuItem("Collisions"                                      , tabName = "COL", icon = icon("car-burst"),
+        menuSubItem('By Severity'                                , tabName = 'COLl', icon = icon('triangle-exclamation')),
+        menuSubItem('By injury'                                  , tabName = 'COL2', icon = icon('user-injured'))),
+      menuItem("Complaints, Inquiries and Use of force"          , tabName = "UOF", icon = icon("gun")),
+        #menuSubItem('Incidents by Type and Disposition'          , tabName = 'UOF1'),
+        #menuSubItem('Subjects by Incidents and Demographics'     , tabName = 'UOF2'),
+        #menuSubItem('Subjects by Allegation and Finding'         , tabName = 'UOF3'),
+        #menuSubItem('Subjects by Resistance and Force'           , tabName = 'UOF4')),
+      menuItem("Contacts"                                        , tabName = "CON", icon = icon("hand")),
+        #menuSubItem('Traffic and Parking Contacts'               , tabName = 'CON1')),
+      menuItem("Offenses"                                        , tabName = "OFF", icon = icon("handcuffs"))
+        #menuSubItem('Case Offenses'                              , tabName = 'OFF1',),
+        #menuSubItem('Case Details'                               , tabName = 'OFF2',),
+        #menuSubItem('Subjects'                                   , tabName = 'OFF3',),
+        #menuSubItem('Arrests'                                    , tabName = 'OFF4',))
+        
     )
   ),
   
@@ -123,7 +133,18 @@ server <- function(input, output) {
     if(input$sidebar == "UOF")
     {
       data <- read.csv(file("UOF.csv"))
-      outputPieChart(data = table(data$RACE), label = "Race")
+      race <- outputPieChart(table(data$RACE), label = "Race")
+      sex <- outputPieChart(table(data$SEX), label = "Sex")
+      
+      involvement <- outputBarPlot(table(data$RACE), label = "Involvement")
+      subject_type <- outputBarPlot(table(data$SEX), label = "Subject_Type")
+      
+      UOF_render(output, race, sex, involvement, subject_type)
+      
+      output$UOF_table_1 <- race
+      output$UOF_table_2 <- sex
+      output$UOF_table_3 <- involvement
+      output$UOF_table_4 <- subject_type
     }
   }
   ######################################################################
@@ -143,10 +164,9 @@ server <- function(input, output) {
                  demo,
                  outputPieChart(table(data$PoliceCallStatus  ), label = "PoliceCallStatus"),
                  outputBarPlot (table(data$PoliceCallPriority), label = "PoliceCallPriority"),
-                 outputPieChart(table(data$City              ), label = "City"))
+                 outputPieChart(table(data$City              ), label = "City"),
+                 outputPieChart(table(data$Zip               ), label = "Zip"))
       output$COL_table_1 <- demo
-      output$UOF_table_1 <- demo
-      output$UOF_table_2 <- demo
       output$CON_table_1 <- demo
       output$OFF_table_1 <- demo
       
