@@ -32,8 +32,8 @@ ui <- dashboardPage(
       #             name on the sidebar for user        var name in code      icon on screen
       menuItem("Calls for Service"                     , tabName = "CFS", icon = icon("phone")),
       menuItem("Collisions"                            , tabName = "COL", icon = icon("car-burst"),
-               menuSubItem('By Severity', tabName = 'l', icon = icon('triangle-exclamation')),
-               menuSubItem('By injury'  , tabName = '2', icon = icon('user-injured'))),
+               menuSubItem('By Severity', tabName = 'COL', icon = icon('triangle-exclamation')),
+               menuSubItem('By injury'  , tabName = 'COL', icon = icon('user-injured'))),
       menuItem("Complaints, Inquiries and Use of force", tabName = "UOF", icon = icon("gun")),
       menuItem("Contacts"                              , tabName = "CON", icon = icon("hand")),
       menuItem("Offenses"                              , tabName = "OFF", icon = icon("handcuffs"))
