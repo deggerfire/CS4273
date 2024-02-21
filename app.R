@@ -7,7 +7,7 @@ library(shinydashboard)
 data <- read.csv('UOF.csv')
 
 ui <- dashboardPage(
-  dashboardHeader(title='Norman PD'),
+  dashboardHeader(title = 'Norman PD'),
   dashboardSidebar(
     sidebarMenu(
       menuItem("Use of Force", tabName = "UOF", icon = icon("dashboard")),
@@ -18,8 +18,8 @@ ui <- dashboardPage(
     tabItems(
       tabItem(tabName = "UOF",
               fluidRow(
-                box(width = 6, height=500, plotOutput("subPlot", height = "500px")),
-                box( width = 6, height=500, plotOutput("incidentPlot", height = "500px"))
+                box(width = 6, height = 500, plotOutput("subPlot", height = "500px")),
+                box(width = 6, height = 500, plotOutput("incidentPlot", height = "500px"))
               )
       ),
       tabItem(tabName = "CFS",
@@ -36,15 +36,38 @@ ui <- dashboardPage(
                 tabPanel("Incident Type", plotOutput("CFS_Incident"))
               )
       )
-    )
+    ),
+    uiOutput("subjTypeFilter"),  # Add the Subject Type filter UI
+    uiOutput("incidentTypeFilter")  # Add the Incident Type filter UI
   )
 )
 
 
 server <- function(input, output) {
+  
+  # Filter for Subject Type
+  subj_type_filter <- reactive({
+    req(input$subjTypeFilter)
+    if (input$subjTypeFilter == "All") {
+      return(data)
+    } else {
+      return(data %>% filter(SUBJ_TYPE == input$subjTypeFilter))
+    }
+  })
+  
+  # Filter for Incident Type
+  incident_type_filter <- reactive({
+    req(input$incidentTypeFilter)
+    if (input$incidentTypeFilter == "All") {
+      return(data)
+    } else {
+      return(data %>% filter(INCIDENT_TYPE == input$incidentTypeFilter))
+    }
+  })
+  
   output$subPlot <- renderPlot({
-    subject_type_counts <- data %>% 
-      filter(!is.na(SUBJ_TYPE)) %>% 
+    filtered_data <- subj_type_filter()
+    subject_type_counts <- filtered_data %>% 
       group_by(SUBJ_TYPE) %>% 
       summarise(count = n())
     
@@ -56,8 +79,8 @@ server <- function(input, output) {
   })
   
   output$incidentPlot <- renderPlot({
-    incident_type_counts <- data %>% 
-      filter(!is.na(INCIDENT_TYPE)) %>% 
+    filtered_data <- incident_type_filter()
+    incident_type_counts <- filtered_data %>% 
       group_by(INCIDENT_TYPE) %>% 
       summarise(count = n())
     
@@ -69,8 +92,8 @@ server <- function(input, output) {
   })
   
   output$CFS_Subject <- renderPlot({
-    subject_type_counts <- data %>% 
-      filter(!is.na(SUBJ_TYPE)) %>% 
+    filtered_data <- subj_type_filter()
+    subject_type_counts <- filtered_data %>% 
       group_by(SUBJ_TYPE) %>% 
       summarise(count = n())
     
@@ -82,8 +105,8 @@ server <- function(input, output) {
   })
   
   output$CFS_Incident <- renderPlot({
-    incident_type_counts <- data %>% 
-      filter(!is.na(INCIDENT_TYPE)) %>% 
+    filtered_data <- incident_type_filter()
+    incident_type_counts <- filtered_data %>% 
       group_by(INCIDENT_TYPE) %>% 
       summarise(count = n())
     
@@ -99,9 +122,7 @@ server <- function(input, output) {
       geom_histogram(binwidth = 5, fill = "skyblue", color = "black") +
       labs(title = "Age Distribution",
            x = "Age",
-           y = "Count") +
-      coord_polar("y", start = 0) +
-      theme_void()
+           y = "Count")
   })
   
   output$byInvolvement <- renderPlot({
@@ -116,7 +137,23 @@ server <- function(input, output) {
       coord_polar("y", start = 0) +
       theme_void()
   })
+  
+  # Subject Type Filter
+  output$subjTypeFilter <- renderUI({
+    selectInput("subjTypeFilter", "Filter by Subject Type:",
+                c("All", unique(data$SUBJ_TYPE)))
+  })
+  
+  # Incident Type Filter
+  output$incidentTypeFilter <- renderUI({
+    selectInput("incidentTypeFilter", "Filter by Incident Type:",
+                c("All", unique(data$INCIDENT_TYPE)))
+  })
+  
 }
+
+shinyApp(ui = ui, server = server)
+
 
 
 
