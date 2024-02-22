@@ -156,9 +156,19 @@ server <- function(input, output) {
       #(R's switch would not work here)
     if(input$sidebar == "CFS")
     {
+      
+      
       # Read in call for service data (this is temp)
-      data <- read.csv(file("CFS-2022.csv"))
+      data <- read.csv(file("CFS-2022.csv"))# read in data
+      
+      
+      #test45 <- data[data$IncidentType == "Traffic Stop",]
+      #head(test45)
+      ## dylpr data 2
       demo <- outputBarPlot (table(data$CallSource        ), label = "Source of Call")
+      
+      
+      
       # Render the data then send it to be put on screen, for now you have to send all graphs
       CFS_render(output,
                  demo,
@@ -166,7 +176,10 @@ server <- function(input, output) {
                  outputBarPlot (table(data$PoliceCallPriority), label = "PoliceCallPriority"),
                  outputPieChart(table(data$City              ), label = "City"),
                  outputPieChart(table(data$Zip               ), label = "Zip"))
-      output$COL_table_1 <- demo
+      ##output$CFS_table_1 <- demo
+      #output$CFS_table_2 <- demo
+      #output$CFS_table_3 <- demo
+      
       output$CON_table_1 <- demo
       output$OFF_table_1 <- demo
       
