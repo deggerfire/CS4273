@@ -92,7 +92,7 @@ server <- function(input, output) {
       graph = graph + geom_bar(stat = "identity", width = .8)                 # Set up the data as a bar chart
       graph = graph + xlab(label) + ylab("Amount")                                # Set the x/y labels
       graph = graph + guides(fill=guide_legend(title = label))                # Set the title of the legend
-      graph = graph + theme(text = element_text(size = 18))                   # Set the font size
+      graph = graph + theme(text = element_text(size = 18), axis.text.x = element_text(angle = 15, vjust = 0.5, hjust=1))                   # Set the font size
       print(graph)                                                            # Print the graph
       }
     )
@@ -161,7 +161,7 @@ server <- function(input, output) {
       ######################
       # Read in the call for servie 2022
       data <- read.csv(file("CFS-2022.csv"))
-      colnames(data)
+      
       ######################
       # Step 2: Format the data
       ######################
@@ -171,17 +171,20 @@ server <- function(input, output) {
       #"XStreetName""XStreetType""XStreetDirectional"  "City""Zip"                
       #"CanceledFlag""CommonName"
       
+      # The data where PoliceCallType is Traffic Stop
       data2 <- data %>% filter(PoliceCallType == "Traffic Stop")
+      
       ######################
       # Step 3: Send the formatted data to become a gragh
       ######################
       demo <- outputBarPlot (table(data$CallSource), label = "Source of Call")
       demo2 <- outputBarPlot (table(data2$CallSource), label = "Source of Call")
+      
       ######################
       # Step 4: Put the graphs on screen
       ######################
       CFS_render(output,
-                 demo2,
+                 demo,
                  outputPieChart(table(data$PoliceCallStatus  ), label = "PoliceCallStatus"),
                  outputBarPlot (table(data$PoliceCallPriority), label = "PoliceCallPriority"),
                  outputPieChart(table(data$City              ), label = "City"),

@@ -4,6 +4,8 @@
 ##################################################################
 ##################################################################
 # This file is for UI stuff related to Call for Service Tab
+tables <- c("CFS_table_1", "CFS_table_2", "CFS_table_3", "CFS_table_4", "CFS_table_5")
+widgets <- c("CFS_widget_1", "CFS_widget_2")
 
 # Function that handles the large scale formatting of the main area (dashboardBody) and the tabs on top
 CFS_tab <- function(){
