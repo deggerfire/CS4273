@@ -156,22 +156,32 @@ server <- function(input, output) {
       #(R's switch would not work here)
     if(input$sidebar == "CFS")
     {
+      ######################
+      # Step 1: read in the data
+      ######################
+      # Read in the call for servie 2022
+      data <- read.csv(file("CFS-2022.csv"))
+      colnames(data)
+      ######################
+      # Step 2: Format the data
+      ######################
+      # Col names: "CallID" "CreateDatetime.UTC." "IncidentNumber""ORI" "PoliceCallType"     
+      #"PoliceCallStatus"    "CallSource" "PoliceCallPriority"  "IncidentType" "HouseNumber"        
+      #"PrefixDirectional"   "StreetName" "StreetType" "StreetDirectional"   "XPrefixDirectional" 
+      #"XStreetName""XStreetType""XStreetDirectional"  "City""Zip"                
+      #"CanceledFlag""CommonName"
       
-      
-      # Read in call for service data (this is temp)
-      data <- read.csv(file("CFS-2022.csv"))# read in data
-      
-      
-      #test45 <- data[data$IncidentType == "Traffic Stop",]
-      #head(test45)
-      ## dylpr data 2
-      demo <- outputBarPlot (table(data$CallSource        ), label = "Source of Call")
-      
-      
-      
-      # Render the data then send it to be put on screen, for now you have to send all graphs
+      data2 <- data %>% filter(PoliceCallType == "Traffic Stop")
+      ######################
+      # Step 3: Send the formatted data to become a gragh
+      ######################
+      demo <- outputBarPlot (table(data$CallSource), label = "Source of Call")
+      demo2 <- outputBarPlot (table(data2$CallSource), label = "Source of Call")
+      ######################
+      # Step 4: Put the graphs on screen
+      ######################
       CFS_render(output,
-                 demo,
+                 demo2,
                  outputPieChart(table(data$PoliceCallStatus  ), label = "PoliceCallStatus"),
                  outputBarPlot (table(data$PoliceCallPriority), label = "PoliceCallPriority"),
                  outputPieChart(table(data$City              ), label = "City"),
