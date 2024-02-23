@@ -4,8 +4,11 @@
 ##################################################################
 ##################################################################
 # This file is for UI stuff related to Call for Service Tab
-tables <- c("CFS_table_1", "CFS_table_2", "CFS_table_3", "CFS_table_4", "CFS_table_5")
-widgets <- c("CFS_widget_1", "CFS_widget_2")
+CFS_selectors <- c("CFS_Source_of_Call_Selector"    , 
+                   "CFS_Police_Call_Status_Selector", 
+                   "CFS_Police_Call_Prioty_Selector", 
+                   "CFS_City_Selector"
+             )
 
 # Function that handles the large scale formatting of the main area (dashboardBody) and the tabs on top
 CFS_tab <- function(){
@@ -15,91 +18,61 @@ CFS_tab <- function(){
     tabBox(
       height = "500px",
       # Uses functions to make what is in each tab (string is the name of the plotOutput)
-      CFS_Call_Source_BP("CFS_table_1"),
-      CFS_Call_Source_PC("CFS_table_2"),
-      CFS_Call_Priority_BP("CFS_table_3"),
-      CFS_Call_Priority_PC("CFS_table_4")
+      CFS_Plot("Source of Call"    , "CFS_table_1", "CFS_Source_of_Call_Selector"),
+      CFS_Plot("Police Call Status", "CFS_table_2", "CFS_Police_Call_Status_Selector")
     ),
     # Makes the second graph area
     tabBox(
       height = "500px",
       # Uses functions to make what is in each tab (string is the name of the plotOutput)
-      CFS_Call_Source_BP("CFS_table_5"),
-      CFS_Call_Source_PC("CFS_table_6"),
-      CFS_Call_Priority_BP("CFS_table_7"),
-      CFS_Call_Priority_PC("CFS_table_8")
+      CFS_Plot("Police Call Prioty", "CFS_table_3", "CFS_Police_Call_Prioty_Selector"),
+      CFS_Plot("City"              , "CFS_table_4", "CFS_City_Selector")
     )
   )
   return(tab)
 }
 
 # Makes the tab for call source barplot
-CFS_Call_Source_BP <- function(plotName){
-  tab <- tabPanel('Call Source Bargraph', # Tab title
+CFS_Plot <- function(tabName, plotName, widgetName){
+  tab <- tabPanel(tabName, # Tab title
     plotOutput(plotName),                 # plotOutput name
     # Graph controls
-    checkboxGroupInput("checkGroup", 
-      label = h3("Checkbox group"), 
-      choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),selected = 1))
+    selectInput(widgetName, "Selector", "Unselected", selected = 1))
   return(tab)
 }
 
-# Makes the tab for call Status piechart
-CFS_Call_Source_PC <- function(plotName){
-  tab <- tabPanel('Call Status piechart', # Tab title
-    plotOutput(plotName),                 # plotOutput name
-    # Graph controls
-    dateRangeInput("dates", label = "Date range"),
-     sliderInput("slider2", label = h3("Slider Range"), min = 2014, 
-        max = 2025, value = c(2022, 2023))
-    )
-  return(tab)
-}
+# Sets up the widgets based on whats in the data
+CFS_populate_Widgets <-function(session, input, data){
+  if(input$CFS_Source_of_Call_Selector != "Unselected"){return()}
+  # Selector widget for the source of call
+  updateSelectInput(session, "CFS_Source_of_Call_Selector", 
+                    label = "Selector", 
+                    choices = c("Unselected", unique(data$CallSource)), 
+                    selected = "Unselected")
+  
+  # Selector widget for the police call status
+  updateSelectInput(session, "CFS_Police_Call_Status_Selector", 
+                    label = "Selector", 
+                    choices = c("Unselected", unique(data$PoliceCallStatus)), 
+                    selected = "Unselected")
 
-# Makes the tab for Call Priority barplot
-CFS_Call_Priority_BP <- function(plotName){
-  tab <- tabPanel('Call Priority Bargraph', # Tab title
-    plotOutput(plotName),                   # plotOutput name
-    # Graph controls
-    radioButtons("checkGroup", 
-      label = h3("Checkbox group"), 
-      choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),selected = 1))
-  return(tab)
-}
+  # Selector widget for the call priory
+  updateSelectInput(session, "CFS_Police_Call_Prioty_Selector", 
+                    label = "Selector", 
+                    choices = c("Unselected", unique(data$PoliceCallPriority)), 
+                    selected = "Unselected")
 
-# Makes the tab for Call Priority piechart
-CFS_Call_Priority_PC <- function(plotName){
-  tab <- tabPanel('City piechart', # Tab title
-    plotOutput(plotName),          # plotOutput name
-    # Graph controls
-    selectInput("select", label = h3("Select box"), 
-    choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3), 
-    selected = 1)
-    )
-  return(tab)
-}
-
-# Makes the tab for Call Priority piechart
-CFS_Zip_BP <- function(plotName){
-  tab <- tabPanel('Zip Piechart', # Tab title
-                  plotOutput(plotName),          # plotOutput name
-                  # Graph controls
-                  selectInput("select", label = h3("Select box"), 
-                              choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3), 
-                              selected = 1)
-  )
-  return(tab)
+  # Selector widget for the city
+  updateSelectInput(session, "CFS_City_Selector", 
+                    label = "Selector", 
+                    choices = c("Unselected", unique(data$City)), 
+                    selected = "Unselected")
 }
 
 # Temporary render function TODO: Work out how data team wants to pass in
-CFS_render <- function(output, plot1, plot2, plot3, plot4, plot5){
+CFS_render <- function(output, plot1, plot2, plot3, plot4){
   output$CFS_table_1 <- plot1
   output$CFS_table_2 <- plot2
   output$CFS_table_3 <- plot3
   output$CFS_table_4 <- plot4
-  
-  output$CFS_table_5 <- plot1
-  output$CFS_table_6 <- plot2
-  output$CFS_table_7 <- plot3
-  output$CFS_table_8 <- plot4
 }

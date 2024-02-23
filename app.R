@@ -76,7 +76,7 @@ ui <- dashboardPage(
 # The bulk of our work will be here. Again, I have sectioned off the code for 
 # Group A and Group L to prevent merge issues.
 
-server <- function(input, output) {
+server <- function(input, output, session) {
   ######################################################################
   ########################  Universal Boundary #########################
   ######################################################################
@@ -115,7 +115,14 @@ server <- function(input, output) {
     })
     return(plot)
   }
-
+  
+  # IF YOU WANT A TRIGGER ON A SELECTOR YOU NEED TO CHANGE CFS_Source_of_Call_Selector TO THE NAME OF THE SELECTOR YOU WANT ------------------------------
+  observeEvent(input$CFS_Source_of_Call_Selector, {
+    # Call both group A's and group L's trigger function
+    groupAtrigger()
+    groupLtrigger()
+  })
+  
   # Method that gets triggered when the graph is suppose to change
   observeEvent(input$sidebar, {
     # Call both group A's and group L's trigger function
@@ -159,43 +166,51 @@ server <- function(input, output) {
       ######################
       # Step 1: read in the data
       ######################
-      # Read in the call for servie 2022
+      # Read in the call for service 2022
       data <- read.csv(file("CFS-2022.csv"))
-      
+      # Make a copy of the og data for the widgets (you can ignore this line)
+      CFS_populate_Widgets(session, input, data)
       ######################
       # Step 2: Format the data
       ######################
-      # Col names: "CallID" "CreateDatetime.UTC." "IncidentNumber""ORI" "PoliceCallType"     
-      #"PoliceCallStatus"    "CallSource" "PoliceCallPriority"  "IncidentType" "HouseNumber"        
-      #"PrefixDirectional"   "StreetName" "StreetType" "StreetDirectional"   "XPrefixDirectional" 
-      #"XStreetName""XStreetType""XStreetDirectional"  "City""Zip"                
-      #"CanceledFlag""CommonName"
       
-      # The data where PoliceCallType is Traffic Stop
-      data2 <- data %>% filter(PoliceCallType == "Traffic Stop")
+      # If the user has selected an input for source of call then remove all that does not have the selected input
+      if(input$CFS_Source_of_Call_Selector != "Unselected"){
+        data <- data %>% filter(CallSource == input$CFS_Source_of_Call_Selector)
+      }
       
       ######################
-      # Step 3: Send the formatted data to become a gragh
+      # Step 3: Send the formatted data to become a graph
       ######################
-      demo <- outputBarPlot (table(data$CallSource), label = "Source of Call")
-      demo2 <- outputBarPlot (table(data2$CallSource), label = "Source of Call")
+      # Makes the graph for source of call
+      CS_BP   <- outputBarPlot (table(data$CallSource        ), label = "Source of Call")
+      # Makes the graph for police call status
+      PCS_PC  <- outputPieChart(table(data$PoliceCallStatus  ), label = "PoliceCallStatus")
+      # Makes the graph for police call priority
+      PCP_BP  <- outputBarPlot (table(data$PoliceCallPriority), label = "PoliceCallPriority")
+      # Makes the graph for city
+      City_PC <- outputPieChart(table(data$City              ), label = "City")
       
       ######################
       # Step 4: Put the graphs on screen
       ######################
-      CFS_render(output,
-                 demo,
-                 outputPieChart(table(data$PoliceCallStatus  ), label = "PoliceCallStatus"),
-                 outputBarPlot (table(data$PoliceCallPriority), label = "PoliceCallPriority"),
-                 outputPieChart(table(data$City              ), label = "City"),
-                 outputPieChart(table(data$Zip               ), label = "Zip"))
-      ##output$CFS_table_1 <- demo
-      #output$CFS_table_2 <- demo
-      #output$CFS_table_3 <- demo
+      # Send the graphs off to the call for service render function to be put on screen
+      CFS_render(output, CS_BP, PCS_PC, PCP_BP, City_PC)
       
-      output$CON_table_1 <- demo
-      output$OFF_table_1 <- demo
-      
+    }
+    else if(input$sidebar == "COLl"){
+      ######################
+      # Step 1: read in the data
+      ######################
+      ######################
+      # Step 2: Format the data
+      ######################
+      ######################
+      # Step 3: Send the formatted data to become a graph
+      ######################
+      ######################
+      # Step 4: Put the graphs on screen
+      ######################
     }
     # If block for call for service tab
     
