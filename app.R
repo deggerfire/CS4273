@@ -3,13 +3,7 @@ library(ggplot2)        # Used for plotting
 library(dplyr)          # Used for data handling
 library(shinydashboard) # Used for fancy UI stuff
 
-# Define UI for the application
-
-# this is where we need to define different pages/tabs for us, and then 
-# contribute separately. potentially use the navbarPage function to create
-
-# Note- the ENTIRE UI is contained in this page. to prevent merge issues, I have
-# seperated out two sections of code for Group A and Group L.
+# Import the tab files
 source("tabs/CFStab.R")
 source("tabs/COLtab.R")
 source("tabs/UOFtab.R")
@@ -17,7 +11,10 @@ source("tabs/CONtab.R")
 source("tabs/OFFtab.R")
 ui <- dashboardPage(
   ######################################################################
-  ########################  Universal Boundary #########################
+  ######################################################################
+  #######                      Main page UI                     ########
+  ####### UI people should be the only ones making changes here ########
+  ######################################################################
   ######################################################################
   
   # Sets the title
@@ -60,32 +57,24 @@ ui <- dashboardPage(
       OFF_tab()  # Offense Tab
       )
   )
-  
-  ######################################################################
-  ########################  Group A Boundary ###########################
-  ######################################################################
-  
-  ######################################################################
-  ########################  Group L Boundary ###########################
-  ######################################################################
 )
 
 # This is where we will define server logic. Ie, this is where we will parse the CSV,
 # add graphs, create sliders/filters for user input, ect
 
-# The bulk of our work will be here. Again, I have sectioned off the code for 
-# Group A and Group L to prevent merge issues.
+# The bulk of our work will be here. Most of the time you will be 
+# working in your teams trigger method
 
 server <- function(input, output, session) {
   ######################################################################
-  ########################  Universal Boundary #########################
   ######################################################################
-  # Prints to the screen a barplot
+  #######################  Graph making methods ########################
+  ######################################################################
+  ######################################################################
+  # Makes a barplot object using the inputted data
+  # This function is for step 3
     # data - the data that is to be rendered, must be tabled
-    # legend - the title of the lengend
-    # x/ylab - the titles for the x and y axis
-  # exp: outputBarPlot(table(data$CallSource), legend = "Source of Call", xlab = "Source of Call", ylab = "Amount")
-    # Makes a barplot based on CallSource (in the calls for service csv)
+    # label - string for graph labels
   outputBarPlot <- function(data, label = ""){
     plot <- renderPlot({# Put the plot at plotOutput("Barplot") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) # Setup graph data
@@ -99,11 +88,10 @@ server <- function(input, output, session) {
     return(plot)
   }
   
-  # Prints to the screen a barplot
+  # Makes a piechart object using the inputted data
+  # This function is for step 3
     # data - the data that is to be rendered, must be tabled
-    # legend - the title of the lengend
-  # exp: outputPieChart(data = table(data$RACE), legend = "Race")
-    # Makes a piecahrt using Race (in the use of force csv)
+    # label - string for graph labels
   outputPieChart <- function(data, label = ""){
     plot <- renderPlot({# Put the plot at plotOutput("Piechart") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = "", y = Freq, fill = Var1))  # Set up graph data
@@ -116,7 +104,13 @@ server <- function(input, output, session) {
     return(plot)
   }
   
-  # IF YOU WANT A TRIGGER ON A SELECTOR YOU NEED TO CHANGE CFS_Source_of_Call_Selector TO THE NAME OF THE SELECTOR YOU WANT ------------------------------
+  ######################################################################
+  ######################################################################
+  ######## observeEvent/trigger (react to user doing something) ########
+  ######################################################################
+  ######################################################################
+  
+  # IF YOU WANT A TRIGGER ON A SELECTOR YOU NEED TO CHANGE CFS_Source_of_Call_Selector TO THE NAME OF THE SELECTOR YOU WANT
   observeEvent(input$CFS_Source_of_Call_Selector, {
     # Call both group A's and group L's trigger function
     groupAtrigger()
@@ -131,7 +125,7 @@ server <- function(input, output, session) {
   })
   
   ######################################################################
-  ########################  Group A Boundary ###########################
+  ###################  Group A's trigger method ########################
   ######################################################################
   # Groups A's method that gets triggered when the graph is suppose to change
   groupAtrigger <- function(){
@@ -155,7 +149,7 @@ server <- function(input, output, session) {
     }
   }
   ######################################################################
-  ########################  Group L Boundary ###########################
+  ###################  Group L's trigger method ########################
   ######################################################################
   # Groups L's method that gets triggered when the graph is suppose to change
   groupLtrigger <- function(){
@@ -171,7 +165,7 @@ server <- function(input, output, session) {
       # Popultae the widgets in CFS
       CFS_populate_Widgets(session, input, data)
       ######################
-      # Step 2: Format the data
+      # Step 2: Filter the data
       ######################
       
       # If the user has selected an input for source of call then remove all that does not have the selected input
