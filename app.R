@@ -168,7 +168,7 @@ server <- function(input, output, session) {
       ######################
       # Read in the call for service 2022
       data <- read.csv(file("CFS-2022.csv"))
-      # Make a copy of the og data for the widgets (you can ignore this line)
+      # Popultae the widgets in CFS
       CFS_populate_Widgets(session, input, data)
       ######################
       # Step 2: Format the data
