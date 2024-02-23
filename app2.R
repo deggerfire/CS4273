@@ -112,6 +112,7 @@ server <- function(input, output) {
   # Subject age distribution plot
   output$ageDistributionPlot <- renderPlot({
     ggplot(data, aes(x = AGE, fill = AGE)) +
+      geom_text(stat='count', aes(label=..count..), vjust=-0.5) +
       geom_histogram(binwidth = 5) +
       labs(title = "Subject Age Distribution", x = "Age", y = "Count") +
       theme_minimal()
