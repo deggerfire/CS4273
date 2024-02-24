@@ -192,7 +192,21 @@ server <- function(input, output, session) {
       CFS_render(output, CS_BP, PCS_PC, PCP_BP, City_PC)
       
     }
-    else if(input$sidebar == "COLl"){
+    else if(input$sidebar == "CON"){
+      ######################
+      # Step 1: read in the data
+      ######################
+      ######################
+      # Step 2: Format the data
+      ######################
+      ######################
+      # Step 3: Send the formatted data to become a graph
+      ######################
+      ######################
+      # Step 4: Put the graphs on screen
+      ######################
+    }
+    else if(input$sidebar == "OFF"){
       ######################
       # Step 1: read in the data
       ######################
