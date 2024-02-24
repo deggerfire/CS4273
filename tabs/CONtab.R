@@ -63,12 +63,12 @@ CON_Plot <- function(tabName, plotName, widgetName){
 }
 
 # Boolean to tell if the widgets have been loaded
-widgetsLoaded <- FALSE
+CON_widgetsLoaded <- FALSE
 
 # Sets up the widgets based on whats in the data
 ## !!TODO: not working!! ##
 CON_populate_Widgets <-function(session, input, data){
-  if(widgetsLoaded){return()}
+  if(CON_widgetsLoaded){return()}
   # Selector widget for the source of call
   updateSelectInput(session, OFF_selectors[1], 
                     label = "Selector", 
@@ -92,5 +92,5 @@ CON_populate_Widgets <-function(session, input, data){
                     label = "Selector", 
                     choices = c("Unselected", unique(data$City)), 
                     selected = "Unselected")
-  widgetsLoaded = TRUE
+  CON_widgetsLoaded <<- TRUE
 }

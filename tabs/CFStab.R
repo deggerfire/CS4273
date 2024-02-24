@@ -63,11 +63,11 @@ CFS_Plot <- function(tabName, plotName, widgetName){
 }
 
 # Boolean to tell if the widgets have been loaded
-widgetsLoaded <- FALSE
+CFS_widgetsLoaded <- FALSE
 
 # Sets up the widgets based on whats in the data
 CFS_populate_Widgets <-function(session, input, data){
-  if(widgetsLoaded){return()}
+  if(CFS_widgetsLoaded){return()}
   # Selector widget for the source of call
   updateSelectInput(session, CFS_selectors[1], 
                     label = "Selector", 
@@ -91,5 +91,5 @@ CFS_populate_Widgets <-function(session, input, data){
                     label = "Selector", 
                     choices = c("Unselected", unique(data$City)), 
                     selected = "Unselected")
-  widgetsLoaded = TRUE
+  CFS_widgetsLoaded <<- TRUE
 }
