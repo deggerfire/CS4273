@@ -1,179 +1,227 @@
-library(shiny)  # The sever thingy
-library(ggplot2)# Used for plotting
-library(dplyr)  # Used for data handling
+library(shiny)          # The sever thingy
+library(ggplot2)        # Used for plotting
+library(dplyr)          # Used for data handling
+library(shinydashboard) # Used for fancy UI stuff
 
-# Define UI for the application
-
-# this is where we need to define different pages/tabs for us, and then 
-# contribute separately. potentially use the navbarPage function to create
-
-# Note- the ENTIRE UI is contained in this page. to prevent merge issues, I have
-# seperated out two sections of code for Group A and Group L.
-
-ui <- fluidPage(
+# Import the tab files
+source("tabs/CFStab.R")
+source("tabs/COLtab.R")
+source("tabs/UOFtab.R")
+source("tabs/CONtab.R")
+source("tabs/OFFtab.R")
+ui <- dashboardPage(
   ######################################################################
-  ########################  Universal Boundary #########################
+  ######################################################################
+  #######                      Main page UI                     ########
+  ####### UI people should be the only ones making changes here ########
+  ######################################################################
   ######################################################################
   
-  # Put in the top bar, just a demo image for now
-  titlePanel(img(src = "norman_pd_logo.jpeg", width = 150, height = 150)),
+  # Sets the title
+  dashboardHeader(title='Norman PD', titleWidth = 295),
   
-  # The blue bar on the top and dataset selector
-  fluidRow(style = "background: #091682; color: white; padding: 14px;",
-           # This is the drop down at the top.input$Data_Set will give you what the user has select from the list
-           selectInput("Data_Set", "Data Set", list(`Graph Types` = c("Calls for Service", 
-                                                                      "Collisions", 
-                                                                      "Complaints, Inquiries and Use of force", 
-                                                                      "Contacts", 
-                                                                      "Offenses", 
-                                                                      "Mixed"))),
+  # Left sidebar, used to to get to major catogories
+  dashboardSidebar(
+    width = 295,
+    sidebarMenu(
+      # Variable name of this sidebar
+      id = "sidebar",
+      #             name on the sidebar for user                  var name in code      icon on screen
+      menuItem("Calls for Service"                               , tabName = "CFS", icon = icon("phone")),
+      menuItem("Collisions"                                      , tabName = "COL", icon = icon("car-burst"),
+        menuSubItem('By Severity'                                , tabName = 'COLl', icon = icon('triangle-exclamation')),
+        menuSubItem('By injury'                                  , tabName = 'COL2', icon = icon('user-injured'))),
+      menuItem("Complaints, Inquiries and Use of force"          , tabName = "UOF", icon = icon("gun")),
+        #menuSubItem('Incidents by Type and Disposition'          , tabName = 'UOF1'),
+        #menuSubItem('Subjects by Incidents and Demographics'     , tabName = 'UOF2'),
+        #menuSubItem('Subjects by Allegation and Finding'         , tabName = 'UOF3'),
+        #menuSubItem('Subjects by Resistance and Force'           , tabName = 'UOF4')),
+      menuItem("Contacts"                                        , tabName = "CON", icon = icon("hand")),
+        #menuSubItem('Traffic and Parking Contacts'               , tabName = 'CON1')),
+      menuItem("Offenses"                                        , tabName = "OFF", icon = icon("handcuffs"))
+        #menuSubItem('Case Offenses'                              , tabName = 'OFF1',),
+        #menuSubItem('Case Details'                               , tabName = 'OFF2',),
+        #menuSubItem('Subjects'                                   , tabName = 'OFF3',),
+        #menuSubItem('Arrests'                                    , tabName = 'OFF4',))
+        
+    )
   ),
   
-  # Sidebar with demo selector parts
-  sidebarLayout(
-    sidebarPanel(
-      # Sets the background color
-      style = "background: #091682; color: white; padding: 20px",
-      # A date range input
-      dateRangeInput("dates", label = "Date range"),
-      
-      # Demo for the possible graph tools for ScatterPlot TODO: remove, here for ref
-      conditionalPanel(condition = "input.graph == 'ScatterPlot'", 
-                       radioButtons("radio", label = "Separator", choices = list("Flaming", "Eagle", "Acrobatic", "Raptor"))),
-      width = 2
-    ),
-    
-    # Show a plot of the generated distribution TODO: Make variable
-    mainPanel(
-      conditionalPanel(condition = "input.Data_Set == 'Calls for Service'", 
-                       plotOutput("Barplot")
-      ),
-      conditionalPanel(condition = "input.Data_Set == 'Complaints, Inquiries and Use of force'", 
-                       plotOutput("Piechart")
-      ),
-      # demo code, TODO: remove/expand
-      conditionalPanel(condition = "input.Data_Set == 'Mixed'",
-                       column(width=9, plotOutput("Barplot2")),
-                       column(width=3, plotOutput("Piechart2"))
-      ),
-    )
-  ),style='margins: -21px'
-  
-  ######################################################################
-  ########################  Group A Boundary ###########################
-  ######################################################################
-  
-  ######################################################################
-  ########################  Group L Boundary ###########################
-  ######################################################################
+  # Main body where graphs are rendered (they are all in their own files)
+  dashboardBody(id = "tabs",
+    tabItems(
+      CFS_tab(), # Calls for service tab
+      COL_tab(), # Collision Tab
+      UOF_tab(), # Use of force Tab
+      CON_tab(), # Contacts Tab
+      OFF_tab()  # Offense Tab
+      )
+  )
 )
 
 # This is where we will define server logic. Ie, this is where we will parse the CSV,
 # add graphs, create sliders/filters for user input, ect
 
-# The bulk of our work will be here. Again, I have sectioned off the code for 
-# Group A and Group L to prevent merge issues.
+# The bulk of our work will be here. Most of the time you will be 
+# working in your teams trigger method
 
-server <- function(input, output) {
+server <- function(input, output, session) {
   ######################################################################
-  ########################  Universal Boundary #########################
   ######################################################################
-  
-  # Prints to the screen a barplot
+  #######################  Graph making methods ########################
+  ######################################################################
+  ######################################################################
+  # Makes a barplot object using the inputted data
+  # This function is for step 3
     # data - the data that is to be rendered, must be tabled
-    # legend - the title of the lengend
-    # x/ylab - the titles for the x and y axis
-  # exp: outputBarPlot(table(data$CallSource), legend = "Source of Call", xlab = "Source of Call", ylab = "Amount")
-    # Makes a barplot based on CallSource (in the calls for service csv)
-  outputBarPlot <- function(data, legend = "", xlab = "x", ylab = "y"){
-    output$Barplot <- renderPlot({# Put the plot at plotOutput("Barplot") in the shiny code
+    # label - string for graph labels
+  outputBarPlot <- function(data, label = ""){
+    plot <- renderPlot({# Put the plot at plotOutput("Barplot") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) # Setup graph data
       graph = graph + geom_bar(stat = "identity", width = .8)                 # Set up the data as a bar chart
-      graph = graph + xlab(xlab) + ylab(ylab)                                 # Set the x/y labels
-      graph = graph + guides(fill=guide_legend(title = legend))               # Set the title of the legend
-      graph = graph + theme(text = element_text(size = 18))                   # Set the font size
+      graph = graph + xlab(label) + ylab("Amount")                                # Set the x/y labels
+      graph = graph + guides(fill=guide_legend(title = label))                # Set the title of the legend
+      graph = graph + theme(text = element_text(size = 18), axis.text.x = element_text(angle = 15, vjust = 0.5, hjust=1))                   # Set the font size
       print(graph)                                                            # Print the graph
-    })
+      }
+    )
+    return(plot)
   }
   
-  # Prints to the screen a barplot
+  # Makes a piechart object using the inputted data
+  # This function is for step 3
     # data - the data that is to be rendered, must be tabled
-    # legend - the title of the lengend
-  # exp: outputPieChart(data = table(data$RACE), legend = "Race")
-    # Makes a piecahrt using Race (in the use of force csv)
-  outputPieChart <- function(data, legend = ""){
-    output$Piechart <- renderPlot({# Put the plot at plotOutput("Piechart") in the shiny code
+    # label - string for graph labels
+  outputPieChart <- function(data, label = ""){
+    plot <- renderPlot({# Put the plot at plotOutput("Piechart") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = "", y = Freq, fill = Var1))  # Set up graph data
       graph = graph + geom_bar(stat = "identity", width = 1)                 # Set up the data as a bar chart
-      graph = graph + guides(fill=guide_legend(title = legend))              # Set the title of the legend
+      graph = graph + guides(fill=guide_legend(title = label))               # Set the title of the legend
       graph = graph + theme_void() + theme(text = element_text(size = 18))   # Remove the background and set the font size
       graph = graph + coord_polar("y", start = 0)                            # Convert the graph to polar
       print(graph)                                                           # Print the graph
     })
+    return(plot)
   }
   
-  # demo code, TODO: remove/expand
-  outputMixed <- function(data1, data2, legend){
-      output$Barplot2 <- renderPlot({
-        graph <- ggplot(data1, aes(factor(CallSource), fill = CallSource))    # Setup graph data
-        graph = graph + geom_bar(stat = "Count", position = position_dodge()) # Set up the data as a bar chart
-        graph = graph + xlab("Source of Call") + ylab("Amount")               # Set the x/y labels
-        graph = graph + guides(fill=guide_legend(title="Source of Call"))     # Set the title of the legend
-        graph = graph + theme(text = element_text(size = 18))                 # Set the font size
-        print(graph)                                                          # Print the graph
-      })
-      
-      # Function to print out a pie chart using ggplot
-        output$Piechart2 <- renderPlot({
-          graph <- ggplot(data.frame(data2), aes(x = "", y = Freq, fill = Var1)) # Set up graph data
-          graph = graph + geom_bar(stat = "identity", width = 1)                 # Set up the data as a bar chart
-          graph = graph + guides(fill=guide_legend(title = legend))              # Set the title of the legend
-          graph = graph + theme_void() + theme(text = element_text(size = 18))   # Remove the background and set the font size
-          graph = graph + coord_polar("y", start = 0)                            # Convert the graph to polar
-          print(graph)                                                           # Print the graph
-        })
-  }
+  ######################################################################
+  ######################################################################
+  ######## observeEvent/trigger (react to user doing something) ########
+  ######################################################################
+  ######################################################################
+  
+  # IF YOU WANT A TRIGGER ON A SELECTOR YOU NEED TO CHANGE CFS_Source_of_Call_Selector TO THE NAME OF THE SELECTOR YOU WANT
+  observeEvent(input$CFS_Source_of_Call_Selector, {
+    # Call both group A's and group L's trigger function
+    groupAtrigger()
+    groupLtrigger()
+  })
   
   # Method that gets triggered when the graph is suppose to change
-  observeEvent(input$Data_Set,{
+  observeEvent(input$sidebar, {
     # Call both group A's and group L's trigger function
     groupAtrigger()
     groupLtrigger()
   })
   
   ######################################################################
-  ########################  Group A Boundary ###########################
+  ###################  Group A's trigger method ########################
   ######################################################################
   # Groups A's method that gets triggered when the graph is suppose to change
   groupAtrigger <- function(){
     # If chain that checks for what type of graph is selected
       #(R's switch would not work here)
-    if(input$Data_Set == "Complaints, Inquiries and Use of force")
+    if(input$sidebar == "UOF")
     {
       data <- read.csv(file("UOF.csv"))
-      outputPieChart(data = table(data$RACE), legend = "Race")
-    }
-    else if(input$Data_Set == "Mixed")
-    {
-      data1 <- read.csv(file("CFS-2022.csv"))
-      data2 <- read.csv(file("UOF.csv"))
-      data2 <- table(data2$RACE)
+      race <- outputPieChart(table(data$RACE), label = "Race")
+      sex <- outputPieChart(table(data$SEX), label = "Sex")
       
-      outputMixed(data1, data2, legend = "Race")
+      involvement <- outputBarPlot(table(data$RACE), label = "Involvement")
+      subject_type <- outputBarPlot(table(data$SEX), label = "Subject_Type")
+      
+      UOF_render(output, race, sex, involvement, subject_type)
+      
+      output$UOF_table_1 <- race
+      output$UOF_table_2 <- sex
+      output$UOF_table_3 <- involvement
+      output$UOF_table_4 <- subject_type
     }
   }
   ######################################################################
-  ########################  Group L Boundary ###########################
+  ###################  Group L's trigger method ########################
   ######################################################################
   # Groups L's method that gets triggered when the graph is suppose to change
   groupLtrigger <- function(){
     # If chain that checks for what type of graph is selected
       #(R's switch would not work here)
-    if(input$Data_Set == "Calls for Service")
+    if(input$sidebar == "CFS")
     {
+      ######################
+      # Step 1: read in the data
+      ######################
+      # Read in the call for service 2022
       data <- read.csv(file("CFS-2022.csv"))
-      outputBarPlot(table(data$CallSource), legend = "Source of Call", xlab = "Source of Call", ylab = "Amount")
+      # Popultae the widgets in CFS
+      CFS_populate_Widgets(session, input, data)
+      ######################
+      # Step 2: Filter the data
+      ######################
+      
+      # If the user has selected an input for source of call then remove all that does not have the selected input
+      if(input$CFS_Source_of_Call_Selector != "Unselected"){
+        data <- data %>% filter(CallSource == input$CFS_Source_of_Call_Selector)
+      }
+      
+      ######################
+      # Step 3: Send the formatted data to become a graph
+      ######################
+      # Makes the graph for source of call
+      CS_BP   <- outputBarPlot (table(data$CallSource        ), label = "Source of Call")
+      # Makes the graph for police call status
+      PCS_PC  <- outputPieChart(table(data$PoliceCallStatus  ), label = "PoliceCallStatus")
+      # Makes the graph for police call priority
+      PCP_BP  <- outputBarPlot (table(data$PoliceCallPriority), label = "PoliceCallPriority")
+      # Makes the graph for city
+      City_PC <- outputPieChart(table(data$City              ), label = "City")
+      
+      ######################
+      # Step 4: Put the graphs on screen
+      ######################
+      # Send the graphs off to the call for service render function to be put on screen
+      CFS_render(output, CS_BP, PCS_PC, PCP_BP, City_PC)
+      
     }
+    else if(input$sidebar == "CON"){
+      ######################
+      # Step 1: read in the data
+      ######################
+      ######################
+      # Step 2: Format the data
+      ######################
+      ######################
+      # Step 3: Send the formatted data to become a graph
+      ######################
+      ######################
+      # Step 4: Put the graphs on screen
+      ######################
+    }
+    else if(input$sidebar == "OFF"){
+      ######################
+      # Step 1: read in the data
+      ######################
+      ######################
+      # Step 2: Format the data
+      ######################
+      ######################
+      # Step 3: Send the formatted data to become a graph
+      ######################
+      ######################
+      # Step 4: Put the graphs on screen
+      ######################
+    }
+    # If block for call for service tab
+    
   }
 }
 
