@@ -162,8 +162,8 @@ server <- function(input, output, session) {
       ######################
       # Read in the call for service 2022
       data <- read.csv(file("CFS-2022.csv"))
-      # Popultae the widgets in CFS
-      CFS_populate_Widgets(session, input, data)
+      # Populate the widgets in CFS
+      CFS_populate_Widgets(session, data$CallSource, data$PoliceCallStatus, data$PoliceCallPriority, data$City)
       ######################
       # Step 2: Filter the data
       ######################

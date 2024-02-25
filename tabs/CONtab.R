@@ -3,10 +3,10 @@
 ##              File for the call for Contacts                  ##
 ##################################################################
 ##################################################################
-
+source("tabs/UIHelperFunctions.R")
 # List of the widget id's on the screen. This list does have functionally
 # This should help with step 2
-CON_selectors <- c("CON_Selector_1"    , 
+CON_selectors <- c("CON_Selector_1", 
                    "CON_Selector_2", 
                    "CON_Selector_3", 
                    "CON_Selector_4"
@@ -26,6 +26,27 @@ CON_render <- function(output, plot1, plot2, plot3, plot4){
   output$CON_table_4 <- plot4
 }
 
+# Boolean to tell if the widgets have been loaded
+CON_widgetsLoaded <- FALSE
+
+# Sets of the selectors based on the inputted data
+# This function is the setup for the conditions in step 2
+#   session:  this is the session variable passes into the server function
+#     see this line in app.R (use ctrl+f) "server <- function(input, output, session) {"
+#   selector1Data, ..., selectorxData: The data that will be put in the selectors
+#     goes from upper left to lower right order
+CON_populate_Widgets <-function(session, selector1Data, selector2Data, selector3Data, selector4Data){
+  # Check in the widgets have already been loaded
+  if(CON_widgetsLoaded){return()}
+  # Populate the widgets with each of the unique values in the given data
+  Selector_Updater(session, CON_selectors[1], selector1Data)
+  Selector_Updater(session, CON_selectors[2], selector2Data)
+  Selector_Updater(session, CON_selectors[3], selector3Data)
+  Selector_Updater(session, CON_selectors[4], selector4Data)
+  # Mark that the widgets have been loaded
+  CON_widgetsLoaded <<- TRUE
+}
+
 ##################################################################
 ##          Everything below this point is UI stuff             ##
 ##    odds are what you are looking for is not down here        ##
@@ -39,58 +60,16 @@ CON_tab <- function(){
     tabBox(
       height = "500px",
       # Uses functions to make what is in each tab (string is the name of the plotOutput)
-      CON_Plot("TAB 1", "CON_table_1", CON_selectors[1]),
-      CON_Plot("TAB 2", "CON_table_2", CON_selectors[2])
+      Plot_Maker("TAB 1", "CON_table_1", CON_selectors[1]),
+      Plot_Maker("TAB 2", "CON_table_2", CON_selectors[2])
     ),
     # Makes the second graph area
     tabBox(
       height = "500px",
       # Uses functions to make what is in each tab (string is the name of the plotOutput)
-      CON_Plot("TAB 3", "CON_table_3", CON_selectors[3]),
-      CON_Plot("TAB 4", "CON_table_4", CON_selectors[4])
+      Plot_Maker("TAB 3", "CON_table_3", CON_selectors[3]),
+      Plot_Maker("TAB 4", "CON_table_4", CON_selectors[4])
     )
   )
   return(tab)
-}
-
-# Makes the tab for call source barplot
-CON_Plot <- function(tabName, plotName, widgetName){
-  tab <- tabPanel(tabName, # Tab title
-    plotOutput(plotName),                 # plotOutput name
-    # Graph controls
-    selectInput(widgetName, "Selector", "Unselected", selected = 1))
-  return(tab)
-}
-
-# Boolean to tell if the widgets have been loaded
-CON_widgetsLoaded <- FALSE
-
-# Sets up the widgets based on whats in the data
-## !!TODO: not working!! ##
-CON_populate_Widgets <-function(session, input, data){
-  if(CON_widgetsLoaded){return()}
-  # Selector widget for the source of call
-  updateSelectInput(session, OFF_selectors[1], 
-                    label = "Selector", 
-                    choices = c("Unselected", unique(data$CallSource)), 
-                    selected = "Unselected")
-  
-  # Selector widget for the police call status
-  updateSelectInput(session, OFF_selectors[2], 
-                    label = "Selector", 
-                    choices = c("Unselected", unique(data$PoliceCallStatus)), 
-                    selected = "Unselected")
-
-  # Selector widget for the call priory
-  updateSelectInput(session, OFF_selectors[3], 
-                    label = "Selector", 
-                    choices = c("Unselected", unique(data$PoliceCallPriority)), 
-                    selected = "Unselected")
-
-  # Selector widget for the city
-  updateSelectInput(session, OFF_selectors[4], 
-                    label = "Selector", 
-                    choices = c("Unselected", unique(data$City)), 
-                    selected = "Unselected")
-  CON_widgetsLoaded <<- TRUE
 }
