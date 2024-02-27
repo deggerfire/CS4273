@@ -6,7 +6,7 @@
 source("tabs/UIHelperFunctions.R")
 # List of the widget id's on the screen. This list does have functionally
 # This should help with step 2
-OFF_selectors <- c("OFF_Selector_1"    , 
+OFF_selectors <- c("OFF_Selector_1", 
                    "OFF_Selector_2", 
                    "OFF_Selector_3", 
                    "OFF_Selector_4"

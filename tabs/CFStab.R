@@ -9,7 +9,8 @@ source("tabs/UIHelperFunctions.R")
 CFS_selectors <- c("CFS_Source_of_Call_Selector"    , 
                    "CFS_Police_Call_Status_Selector", 
                    "CFS_Police_Call_Prioty_Selector", 
-                   "CFS_City_Selector"
+                   "CFS_City_Selector",
+                   "CFS_Top_Selector"
              )
 
 # Render function for call for service (puts graphs on screen)
@@ -35,7 +36,7 @@ CFS_widgetsLoaded <- FALSE
 #     see this line in app.R (use ctrl+f) "server <- function(input, output, session) {"
 #   selector1Data, ..., selectorxData: The data that will be put in the selectors
 #     goes from upper left to lower right order
-CFS_populate_Widgets <-function(session, selector1Data, selector2Data, selector3Data, selector4Data){
+CFS_populate_Widgets <-function(session, selector1Data, selector2Data, selector3Data, selector4Data, selector5Data){
   # Check in the widgets have already been loaded
   if(CFS_widgetsLoaded){return()}
   # Populate the widgets with each of the unique values in the given data
@@ -43,6 +44,7 @@ CFS_populate_Widgets <-function(session, selector1Data, selector2Data, selector3
   Selector_Updater(session, CFS_selectors[2], selector2Data)
   Selector_Updater(session, CFS_selectors[3], selector3Data)
   Selector_Updater(session, CFS_selectors[4], selector4Data)
+  Selector_Updater(session, CFS_selectors[5], selector5Data)
   # Mark that the widgets have been loaded
   CFS_widgetsLoaded <<- TRUE
 }
@@ -56,19 +58,26 @@ CFS_populate_Widgets <-function(session, selector1Data, selector2Data, selector3
 CFS_tab <- function(){
   # Makes the object of the entire main area
   tab <- tabItem(tabName = "CFS",
-    # Makes the first graph area
-    tabBox(
-      height = "500px",
-      # Uses functions to make what is in each tab (string is the name of the plotOutput)
-      Plot_Maker("Source of Call"    , "CFS_table_1", CFS_selectors[1]),
-      Plot_Maker("Police Call Status", "CFS_table_2", CFS_selectors[2])
+    fluidRow(box(width = 12, 
+      column(width = 3, dateRangeInput("CFS_date", label = "Date range")),
+      column(width = 2, selectInput(CFS_selectors[5], "Selector", "Unselected", selected = 1)),
+      )
     ),
-    # Makes the second graph area
-    tabBox(
-      height = "500px",
-      # Uses functions to make what is in each tab (string is the name of the plotOutput)
-      Plot_Maker("Police Call Prioty", "CFS_table_3", CFS_selectors[3]),
-      Plot_Maker("City"              , "CFS_table_4", CFS_selectors[4])
+    # Makes the first graph area
+    fluidRow(
+      tabBox(
+        width = 6,
+        # Uses functions to make what is in each tab (string is the name of the plotOutput)
+        Plot_Maker("Source of Call"    , "CFS_table_1", CFS_selectors[1]),
+        Plot_Maker("Police Call Status", "CFS_table_2", CFS_selectors[2])
+      ),
+      # Makes the second graph area
+      tabBox(
+        width = 6,
+        # Uses functions to make what is in each tab (string is the name of the plotOutput)
+        Plot_Maker("Police Call Prioty", "CFS_table_3", CFS_selectors[3]),
+        Plot_Maker("City"              , "CFS_table_4", CFS_selectors[4])
+      )
     )
   )
   return(tab)
