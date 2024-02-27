@@ -110,16 +110,17 @@ server <- function(input, output, session) {
   ######################################################################
   ######################################################################
   
-  toListen <- reactive({
-    #reactiveValuesToList(input)
-    list(input$sidebar, input$CFS_Source_of_Call_Selector)
+  # List that triggers observeEvent() whenever anything on the screen is changed
+  toObserve <- reactive({
+    reactiveValuesToList(input)
   })
   
   # Method that gets triggered when the graph is suppose to change or update
-  observeEvent(toListen(), {
+  observeEvent(toObserve(), {
     # Call both group A's and group L's trigger function
     groupAtrigger()
     groupLtrigger()
+    print("test")
   })
   
   ######################################################################
@@ -169,6 +170,9 @@ server <- function(input, output, session) {
       # If the user has selected an input for source of call then remove all that does not have the selected input
       if(input$CFS_Source_of_Call_Selector != "Unselected"){
         data <- data %>% filter(CallSource == input$CFS_Source_of_Call_Selector)
+      }
+      if(input$CFS_Police_Call_Status_Selector != "Unselected"){
+        data <- data %>% filter(PoliceCallStatus == input$CFS_Police_Call_Status_Selector)
       }
       
       ######################
