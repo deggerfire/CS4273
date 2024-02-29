@@ -110,15 +110,13 @@ server <- function(input, output, session) {
   ######################################################################
   ######################################################################
   
-  # IF YOU WANT A TRIGGER ON A SELECTOR YOU NEED TO CHANGE CFS_Source_of_Call_Selector TO THE NAME OF THE SELECTOR YOU WANT
-  observeEvent(input$CFS_Source_of_Call_Selector, {
-    # Call both group A's and group L's trigger function
-    groupAtrigger()
-    groupLtrigger()
+  # List that triggers observeEvent() whenever anything on the screen is changed
+  toObserve <- reactive({
+    reactiveValuesToList(input)
   })
   
-  # Method that gets triggered when the graph is suppose to change
-  observeEvent(input$sidebar, {
+  # Method that gets triggered when the graph is suppose to change or update
+  observeEvent(toObserve(), {
     # Call both group A's and group L's trigger function
     groupAtrigger()
     groupLtrigger()
@@ -163,7 +161,7 @@ server <- function(input, output, session) {
       # Read in the call for service 2022
       data <- read.csv(file("CFS-2022.csv"))
       # Populate the widgets in CFS
-      CFS_populate_Widgets(session, data$CallSource, data$PoliceCallStatus, data$PoliceCallPriority, data$City)
+      CFS_populate_Widgets(session, data$CallSource, data$PoliceCallStatus, data$PoliceCallPriority, data$City, data$PoliceCallType)
       ######################
       # Step 2: Filter the data
       ######################
