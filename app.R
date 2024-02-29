@@ -120,7 +120,6 @@ server <- function(input, output, session) {
     # Call both group A's and group L's trigger function
     groupAtrigger()
     groupLtrigger()
-    print("test")
   })
   
   ######################################################################
