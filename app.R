@@ -194,15 +194,23 @@ server <- function(input, output, session) {
       ######################
       # Step 1: read in the data
       ######################
+      data <- read.csv(file("Contacts.csv"))
+      CON_populate_Widgets(session, data$Sex, data$Race, data$Race, data$Race, data$Race)
       ######################
       # Step 2: Format the data
       ######################
+      if(input$CON_Selector_1 != "Unselected"){
+        data <- data %>% filter(Sex == input$CON_Selector_1)
+      }
       ######################
       # Step 3: Send the formatted data to become a graph
       ######################
+      Contacts_Sex   <- outputPieChart (table(data$Sex), label = "Sex")
+      Contacts_Race   <- outputBarPlot (table(data$Race), label = "Race")
       ######################
       # Step 4: Put the graphs on screen
       ######################
+      CON_render(output, Contacts_Sex, Contacts_Race, Contacts_Race, Contacts_Race)
     }
     else if(input$sidebar == "OFF"){
       ######################

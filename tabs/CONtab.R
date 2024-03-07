@@ -44,10 +44,10 @@ CON_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Graph
   # Check in the widgets have already been loaded
   if(CON_widgetsLoaded){return()}
   # Populate the widgets with each of the unique values in the given data
-  Selector_Updater(session, CON_selectors[1], Graph1_selector, CFS_selectors[1])
-  Selector_Updater(session, CON_selectors[2], Graph2_selector, CFS_selectors[2])
-  Selector_Updater(session, CON_selectors[3], Graph3_selector, CFS_selectors[3])
-  Selector_Updater(session, CON_selectors[4], Graph4_selector, CFS_selectors[4])
+  Selector_Updater(session, CON_selectors[1], Graph1_selector, CON_selectors[1])
+  Selector_Updater(session, CON_selectors[2], Graph2_selector, CON_selectors[2])
+  Selector_Updater(session, CON_selectors[3], Graph3_selector, CON_selectors[3])
+  Selector_Updater(session, CON_selectors[4], Graph4_selector, CON_selectors[4])
   Selector_Updater(session, CON_topBar[2], Topbar_selector1, CON_topBar[2])
   # Mark that the widgets have been loaded
   CON_widgetsLoaded <<- TRUE
