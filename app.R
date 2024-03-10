@@ -52,8 +52,8 @@ ui <- dashboardPage(
     tabItems(
       CFS_tab(), # Calls for service tab
       COL_tab(), # Collision Tab
-      UOF_tab(), # Use of force Tab
-      CON_tab(), # Contacts Tab
+      UOF_tab(), # Use of force Tab 
+      CON_tab(), # Contacts Tab 
       OFF_tab()  # Offense Tab
       )
   )
