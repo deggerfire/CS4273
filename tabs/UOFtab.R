@@ -33,19 +33,15 @@ UOF_Race_PC <- function(plotName){
     plotOutput(plotName),                 # plotOutput name
     # Graph controls
     checkboxGroupInput("checkGroup", 
-      label = h3("Checkbox group"), 
-      choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),selected = 1))
+      label = h3("Display Race"), 
+      choices = list("Asain" = 1, "Black" = 2, "Filipino" = 3, "Hispanic" = 4, "Mixed" = 5, "Native Am" = 6, "Unknown" = 7, "White" = 8)))
   return(tab)
 }
 
 # Makes the tab for sex piechart
 UOF_Sex_PC <- function(plotName){
   tab <- tabPanel('Sex Piechart', # Tab title
-                  plotOutput(plotName),                 # plotOutput name
-                  # Graph controls
-                  checkboxGroupInput("checkGroup", 
-                                     label = h3("Checkbox group"), 
-                                     choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),selected = 1))
+                  plotOutput(plotName))                 # plotOutput name
   return(tab)
 }
 
@@ -55,8 +51,8 @@ UOF_Years_Employed_BP <- function(plotName){
                   plotOutput(plotName),                 # plotOutput name
                   # Graph controls
                   checkboxGroupInput("checkGroup", 
-                                     label = h3("Checkbox group"), 
-                                     choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),selected = 1))
+                                     label = h3("Years Employed Display"), 
+                                     choices = list("0-10" = 1, "11-20" = 2)))
   return(tab)
 }
 
@@ -67,8 +63,8 @@ UOF_Involvement_BP <- function(plotName){
                   plotOutput(plotName),                 # plotOutput name
                   # Graph controls
                   checkboxGroupInput("checkGroup", 
-                                     label = h3("Checkbox group"), 
-                                     choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),selected = 1))
+                                     label = h3("Involvement Display"), 
+                                     choices = list("Complainant" = 1, "Officer" = 2, "Witness" = 3)))
   return(tab)
 }
 
@@ -77,9 +73,7 @@ UOF_Age_BP <- function(plotName){
   tab <- tabPanel('Age Bargraph', # Tab title
                   plotOutput(plotName),                 # plotOutput name
                   # Graph controls
-                  checkboxGroupInput("checkGroup", 
-                                     label = h3("Checkbox group"), 
-                                     choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),selected = 1))
+                  sliderInput("slider", label = "Select Age Range", min=0, max=100, value = 0))
   return(tab)
 }
 
@@ -92,8 +86,8 @@ UOF_Subject_Type_BP <- function(plotName){
                   plotOutput(plotName),                 # plotOutput name
                   # Graph controls
                   checkboxGroupInput("checkGroup", 
-                                     label = h3("Checkbox group"), 
-                                     choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3),selected = 1))
+                                     label = h3("Subject Type Display"), 
+                                     choices = list("Citizen" = 1, "Officer" = 2, "Officer/Reporter" = 3, "Officer/Witness" = 4)))
   return(tab)
 }
 
