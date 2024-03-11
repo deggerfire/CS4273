@@ -173,8 +173,7 @@ server <- function(input, output, session) {
         {
           return(x)
         }
-        
-        if (grepl("N/A", x)) # N/A accounted for
+        else if(grepl("N/A", x)) # N/A accounted for
         {
           return(NA)
         }
@@ -193,15 +192,10 @@ server <- function(input, output, session) {
         {
           return(x) 
         }
-        
       })
-      
       
       # Final Output
       race <- outputPieChart(table(data$RACE), label = "Race")
-      
-      
-      
       
       # 2. Sex
       
@@ -215,7 +209,6 @@ server <- function(input, output, session) {
         {
           return(x)
         }
-        
         else if (grepl("emale", x)) # Female and female accounted for
         { 
           return("Female")
@@ -234,17 +227,12 @@ server <- function(input, output, session) {
       # Final Output
       sex <- outputPieChart(table(data$SEX), label = "Sex")
       
-      
-      
       # BAR CHARTS
-      
-      
       
       # 3. Years Employed
       
       # Replace CI values with NA so that CI data is filtered out
       data$YRS_EMPL <- replace(data$YRS_EMPL, grepl("Complaint", data$INCIDENT_TYPE), NA)
-      
       
       # Fix Data - Too many values, sort them into ranges
       data$YRS_EMPL <- sapply(data$YRS_EMPL, function(x) 
@@ -257,7 +245,6 @@ server <- function(input, output, session) {
         {
           return("0-10")
         }
-        
         else if (11 <= x && x <= 20) # Female and female accounted for
         { 
           return("11-20")
@@ -274,18 +261,10 @@ server <- function(input, output, session) {
         {
           return("41-50") 
         }
-        
-        
-        
       })
-      
       
       # Final Output
       years_employed <- outputBarPlot(table(data$YRS_EMPL), label = "Years Employed")
-      
-      
-      
-      
       
       # 4. Involvement
       
@@ -295,10 +274,6 @@ server <- function(input, output, session) {
       #Final Output
       involvement <- outputBarPlot(table(data$INVOLVMENT), label = "Involvement")
       
-      
-      
-      
-      
       # 5. Age
       
       # Replace UOF values with NA so that UOF data is filtered out
@@ -306,10 +281,6 @@ server <- function(input, output, session) {
       
       # Final Output
       age <- outputBarPlot(table(data$AGE), label = "Age")
-      
-      
-      
-      
       
       # 6. Subject Type
       
@@ -320,7 +291,6 @@ server <- function(input, output, session) {
       subject_type <- outputBarPlot(table(data$SUBJ_TYPE), label = "Subject Type")
       
       # Render
-      
       UOF_render(output, race, sex, years_employed, involvement, age, subject_type)
       
       output$UOF_table_1 <- race
@@ -349,35 +319,26 @@ server <- function(input, output, session) {
         {
           return(x)
         }
-        
-        if (grepl("N/A", x)) # N/A accounted for
+        else if(grepl("N/A", x)) # N/A accounted for
         {
           return(NA)
         }
-        
         else if(grepl("black", x)) # black accounted for
         { 
           return("Black")
         }  
-        
         else if (grepl("w", x) ) # white, w accounted for
         { 
           return("White")
         } 
-        
         else  # Amer Ind, Asian, Black, Hispanic, "Vietnamese", "White" is accounted for
         {
           return(x) 
         }
-        
       })
-      
       
       # Final Output
       race <- outputPieChart(table(data$RACE), label = "Race")
-      
-      
-      
       
       # 2. Sex
       
@@ -391,7 +352,6 @@ server <- function(input, output, session) {
         {
           return(x)
         }
-        
         else if (grepl("emale", x)) # Female and female accounted for
         { 
           return("Female")
@@ -404,21 +364,17 @@ server <- function(input, output, session) {
         {
           return(x) 
         }
-        
       })
       
       # Final Output
       sex <- outputPieChart(table(data$SEX), label = "Sex")
       
-      
       # BAR CHARTS
-      
       
       # 3. Years Employed
       
       # Replace UOF values with NA so that UOF data is filtered out
       data$YRS_EMPL <- replace(data$YRS_EMPL, data$INCIDENT_TYPE == "Use of force", NA)
-      
       
       # Fix Data - Too many values, sort them into ranges
       data$YRS_EMPL <- sapply(data$YRS_EMPL, function(x) 
@@ -431,7 +387,6 @@ server <- function(input, output, session) {
         {
           return("0-10")
         }
-        
         else if (11 <= x && x <= 20) # Female and female accounted for
         { 
           return("11-20")
@@ -448,19 +403,10 @@ server <- function(input, output, session) {
         {
           return("41-50") 
         }
-        
-        
-        
       })
-      
       
       # Final Output
       years_employed <- outputBarPlot(table(data$YRS_EMPL), label = "Years Employed")
-      
-      
-      
-      
-      
       
       # 4. Allegations Made 
       
@@ -479,9 +425,6 @@ server <- function(input, output, session) {
       # Final Output (Special Bar Plot function used)
       allegations <- outputSpecialBarPlot(table(data$ALLEGATION_MADE), label = "Allegation")
       
-      
-      
-      
       # 5. Involvement
       
       # Replace UOF values with NA so that UOF data is filtered out
@@ -489,9 +432,6 @@ server <- function(input, output, session) {
       
       # Final Output
       involvement <- outputBarPlot(table(data$INVOLVMENT), label = "Involvement")
-      
-      
-      
       
       # 6. Age
       
@@ -501,9 +441,6 @@ server <- function(input, output, session) {
       # Final Output
       age <- outputBarPlot(table(data$AGE), label = "Age")
       
-      
-      
-      
       # 7. Subject Type
       
       # Replace UOF values with NA so that UOF data is filtered out
@@ -511,9 +448,6 @@ server <- function(input, output, session) {
       
       # Final Output
       subject_type <- outputBarPlot(table(data$SUBJ_TYPE), label = "Subject Type")
-      
-      
-      
       
       # Render
       CI_render(output, race, sex, years_employed, allegations, involvement, age, subject_type)
@@ -525,12 +459,7 @@ server <- function(input, output, session) {
       output$CI_table_5 <- involvement
       output$CI_table_6 <- age
       output$CI_table_7 <- subject_type
-      
-      
-      
     }
-    
-    
   }
   
   ######################################################################
