@@ -4,9 +4,11 @@ library(dplyr)          # Used for data handling
 library(shinydashboard) # Used for fancy UI stuff
 
 # Import the tab files
+
 source("tabs/CFStab.R")
 source("tabs/COLtab.R")
 source("tabs/UOFtab.R")
+source("tabs/CItab.R")
 source("tabs/CONtab.R")
 source("tabs/OFFtab.R")
 ui <- dashboardPage(
@@ -29,33 +31,38 @@ ui <- dashboardPage(
       #             name on the sidebar for user                  var name in code      icon on screen
       menuItem("Calls for Service"                               , tabName = "CFS", icon = icon("phone")),
       menuItem("Collisions"                                      , tabName = "COL", icon = icon("car-burst"),
-        menuSubItem('By Severity'                                , tabName = 'COLl', icon = icon('triangle-exclamation')),
-        menuSubItem('By injury'                                  , tabName = 'COL2', icon = icon('user-injured'))),
-      menuItem("Complaints, Inquiries and Use of force"          , tabName = "UOF", icon = icon("gun")),
-        #menuSubItem('Incidents by Type and Disposition'          , tabName = 'UOF1'),
-        #menuSubItem('Subjects by Incidents and Demographics'     , tabName = 'UOF2'),
-        #menuSubItem('Subjects by Allegation and Finding'         , tabName = 'UOF3'),
-        #menuSubItem('Subjects by Resistance and Force'           , tabName = 'UOF4')),
+               menuSubItem('By Severity'                                , tabName = 'COLl', icon = icon('triangle-exclamation')),
+               menuSubItem('By injury'                                  , tabName = 'COL2', icon = icon('user-injured'))),
+      
+      menuItem("Use of Force"                                     , tabName = "UOF", icon = icon("gun")),
+      #menuSubItem('Subjects by Resistance and Force'           , tabName = 'UOF4')),
+      #menuSubItem('Subjects by Incidents and Demographics'     , tabName = 'UOF5')),
+      menuItem("Complaints and Inquiries"                        , tabName = "CI", icon = icon("gun")),
+      #menuSubItem('Incidents by Type and Disposition'          , tabName = 'CI1'),
+      #menuSubItem('Subjects by Incidents and Demographics'     , tabName = 'CI2'),
+      #menuSubItem('Subjects by Allegation and Finding'         , tabName = 'CI3'),
+      
       menuItem("Contacts"                                        , tabName = "CON", icon = icon("hand")),
-        #menuSubItem('Traffic and Parking Contacts'               , tabName = 'CON1')),
+      #menuSubItem('Traffic and Parking Contacts'               , tabName = 'CON1')),
       menuItem("Offenses"                                        , tabName = "OFF", icon = icon("handcuffs"))
-        #menuSubItem('Case Offenses'                              , tabName = 'OFF1',),
-        #menuSubItem('Case Details'                               , tabName = 'OFF2',),
-        #menuSubItem('Subjects'                                   , tabName = 'OFF3',),
-        #menuSubItem('Arrests'                                    , tabName = 'OFF4',))
-        
+      #menuSubItem('Case Offenses'                              , tabName = 'OFF1',),
+      #menuSubItem('Case Details'                               , tabName = 'OFF2',),
+      #menuSubItem('Subjects'                                   , tabName = 'OFF3',),
+      #menuSubItem('Arrests'                                    , tabName = 'OFF4',))
+      
     )
   ),
   
   # Main body where graphs are rendered (they are all in their own files)
   dashboardBody(id = "tabs",
-    tabItems(
-      CFS_tab(), # Calls for service tab
-      COL_tab(), # Collision Tab
-      UOF_tab(), # Use of force Tab 
-      CON_tab(), # Contacts Tab 
-      OFF_tab()  # Offense Tab
-      )
+                tabItems(
+                  CFS_tab(), # Calls for service tab
+                  COL_tab(), # Collision Tab
+                  UOF_tab(), # Use of force Tab
+                  CI_tab(),  # Complaints and Inquiries Tab
+                  CON_tab(), # Contacts Tab 
+                  OFF_tab()  # Offense Tab
+                )
   )
 )
 
@@ -73,8 +80,8 @@ server <- function(input, output, session) {
   ######################################################################
   # Makes a barplot object using the inputted data
   # This function is for step 3
-    # data - the data that is to be rendered, must be tabled
-    # label - string for graph labels
+  # data - the data that is to be rendered, must be tabled
+  # label - string for graph labels
   outputBarPlot <- function(data, label = ""){
     plot <- renderPlot({# Put the plot at plotOutput("Barplot") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) # Setup graph data
@@ -83,15 +90,32 @@ server <- function(input, output, session) {
       graph = graph + guides(fill=guide_legend(title = label))                # Set the title of the legend
       graph = graph + theme(text = element_text(size = 18), axis.text.x = element_text(angle = 15, vjust = 0.5, hjust=1))                   # Set the font size
       print(graph)                                                            # Print the graph
-      }
+    }
     )
     return(plot)
   }
   
+  
+  # Makes a special barplot that is intended for data with long, descriptive labels. Legends are removed and a scroll should be added. 
+  outputSpecialBarPlot <- function(data, label = ""){
+    plot <- renderPlot({# Put the plot at plotOutput("Barplot") in the shiny code
+      graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) # Setup graph data
+      graph = graph + geom_bar(stat = "identity", width = .8, show.legend = FALSE)                 # Set up the data as a bar chart
+      graph = graph + xlab(label) + ylab("Amount")                                # Set the x/y labels
+      graph = graph + guides(fill=guide_legend(title = label))                # Set the title of the legend
+      graph = graph + theme(axis.text.x = element_text(angle = -45, vjust = 1, hjust = 0))                  # Set the font size
+      print(graph)                                                            # Print the graph
+    }
+    )
+    return(plot)
+  }
+  
+  
+  
   # Makes a piechart object using the inputted data
   # This function is for step 3
-    # data - the data that is to be rendered, must be tabled
-    # label - string for graph labels
+  # data - the data that is to be rendered, must be tabled
+  # label - string for graph labels
   outputPieChart <- function(data, label = ""){
     plot <- renderPlot({# Put the plot at plotOutput("Piechart") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = "", y = Freq, fill = Var1))  # Set up graph data
@@ -130,31 +154,392 @@ server <- function(input, output, session) {
   # Groups A's method that gets triggered when the graph is suppose to change
   groupAtrigger <- function(){
     # If chain that checks for what type of graph is selected
-      #(R's switch would not work here)
+    #(R's switch would not work here)
     if(input$sidebar == "UOF")
     {
-      data <- read.csv(file("UOF.csv"))
+      data <- read.csv(file("joined-data.csv"))
+      
+      # PIE CHARTS 
+      
+      # 1. Race
+      
+      # Replace CI values with NA so that CI data is filtered out
+      data$RACE <- replace(data$RACE, grepl("Complaint", data$INCIDENT_TYPE), NA)
+      
+      # Fix Data - Typos
+      data$RACE <- sapply(data$RACE, function(x) {
+        
+        if (grepl("Unkn", x)) # Unknown accounted for
+        {
+          return(x)
+        }
+        
+        if (grepl("N/A", x)) # N/A accounted for
+        {
+          return(NA)
+        }
+        
+        else if(grepl("black", x)) # black accounted for
+        { 
+          return("Black")
+        }  
+        
+        else if (grepl("w", x) ) # white, w accounted for
+        { 
+          return("White")
+        } 
+        
+        else  # Amer Ind, Asian, Black, Hispanic, "Vietnamese", "White" is accounted for
+        {
+          return(x) 
+        }
+        
+      })
+      
+      
+      # Final Output
       race <- outputPieChart(table(data$RACE), label = "Race")
+      
+      
+      
+      
+      # 2. Sex
+      
+      # Replace CI values with NA so that CI data is filtered out
+      data$SEX <- replace(data$SEX, grepl("Complaint", data$INCIDENT_TYPE), NA)
+      
+      # Fix Data - Typos
+      data$SEX <- sapply(data$SEX, function(x) {
+        
+        if (grepl("Unkn", x)) # Unknown accounted for
+        {
+          return(x)
+        }
+        
+        else if (grepl("emale", x)) # Female and female accounted for
+        { 
+          return("Female")
+        }  
+        else if(!grepl("Male", x)) # male, m accounted for
+        {
+          return("Male")
+        }
+        else  # NA and Male accounted for
+        {
+          return(x) 
+        }
+        
+      })
+      
+      # Final Output
       sex <- outputPieChart(table(data$SEX), label = "Sex")
       
-      involvement <- outputBarPlot(table(data$RACE), label = "Involvement")
-      subject_type <- outputBarPlot(table(data$SEX), label = "Subject_Type")
       
-      UOF_render(output, race, sex, involvement, subject_type)
+      
+      # BAR CHARTS
+      
+      
+      
+      # 3. Years Employed
+      
+      # Replace CI values with NA so that CI data is filtered out
+      data$YRS_EMPL <- replace(data$YRS_EMPL, grepl("Complaint", data$INCIDENT_TYPE), NA)
+      
+      
+      # Fix Data - Too many values, sort them into ranges
+      data$YRS_EMPL <- sapply(data$YRS_EMPL, function(x) 
+      {
+        if(is.na(x))
+        {
+          return(NA)
+        }
+        else if (x < 11) # Unknown accounted for
+        {
+          return("0-10")
+        }
+        
+        else if (11 <= x && x <= 20) # Female and female accounted for
+        { 
+          return("11-20")
+        }  
+        else if(21 <= x && x <= 30) # male, m accounted for
+        {
+          return("21-30")
+        }
+        else if(31 <= x && x <= 40)
+        {
+          return("31-40") 
+        }
+        else if(40 <= x && x<= 50)
+        {
+          return("41-50") 
+        }
+        
+        
+        
+      })
+      
+      
+      # Final Output
+      years_employed <- outputBarPlot(table(data$YRS_EMPL), label = "Years Employed")
+      
+      
+      
+      
+      
+      # 4. Involvement
+      
+      # Replace CI values with NA so that CI data is filtered out
+      data$INVOLVMENT <- replace(data$INVOLVMENT, grepl("Complaint", data$INCIDENT_TYPE), NA)
+      
+      #Final Output
+      involvement <- outputBarPlot(table(data$INVOLVMENT), label = "Involvement")
+      
+      
+      
+      
+      
+      # 5. Age
+      
+      # Replace UOF values with NA so that UOF data is filtered out
+      data$AGE <- replace(data$AGE, grepl("Complaint", data$INCIDENT_TYPE), NA)
+      
+      # Final Output
+      age <- outputBarPlot(table(data$AGE), label = "Age")
+      
+      
+      
+      
+      
+      # 6. Subject Type
+      
+      # Replace CI values with NA so that CI data is filtered out
+      data$SUBJ_TYPE <- replace(data$SUBJ_TYPE, grepl("Complaint", data$INCIDENT_TYPE), NA)
+      
+      # Final Output
+      subject_type <- outputBarPlot(table(data$SUBJ_TYPE), label = "Subject Type")
+      
+      # Render
+      
+      UOF_render(output, race, sex, years_employed, involvement, age, subject_type)
       
       output$UOF_table_1 <- race
       output$UOF_table_2 <- sex
-      output$UOF_table_3 <- involvement
-      output$UOF_table_4 <- subject_type
+      output$UOF_table_3 <- years_employed
+      output$UOF_table_4 <- involvement
+      output$UOF_table_5 <- age
+      output$UOF_table_6 <- subject_type
     }
+    
+    else if (input$sidebar == "CI") 
+    {
+      data <- read.csv(file("joined-data.csv"))
+      
+      # PIE CHARTS
+      
+      # 1. Race 
+      
+      # Replace UOF values with NA so that UOF data is filtered out
+      data$RACE <- replace(data$RACE, data$INCIDENT_TYPE == "Use of force", NA)
+      
+      # Fix Data - Typos
+      data$RACE <- sapply(data$RACE, function(x) {
+        
+        if (grepl("Unkn", x)) # Unknown accounted for
+        {
+          return(x)
+        }
+        
+        if (grepl("N/A", x)) # N/A accounted for
+        {
+          return(NA)
+        }
+        
+        else if(grepl("black", x)) # black accounted for
+        { 
+          return("Black")
+        }  
+        
+        else if (grepl("w", x) ) # white, w accounted for
+        { 
+          return("White")
+        } 
+        
+        else  # Amer Ind, Asian, Black, Hispanic, "Vietnamese", "White" is accounted for
+        {
+          return(x) 
+        }
+        
+      })
+      
+      
+      # Final Output
+      race <- outputPieChart(table(data$RACE), label = "Race")
+      
+      
+      
+      
+      # 2. Sex
+      
+      # Replace UOF values with NA so that UOF data is filtered out
+      data$SEX <- replace(data$SEX, data$INCIDENT_TYPE == "Use of force", NA)
+      
+      # Fix Data - Typos
+      data$SEX <- sapply(data$SEX, function(x) {
+        
+        if (grepl("Unkn", x)) # Unknown accounted for
+        {
+          return(x)
+        }
+        
+        else if (grepl("emale", x)) # Female and female accounted for
+        { 
+          return("Female")
+        }  
+        else if(!grepl("Male", x)) # male, m accounted for
+        {
+          return("Male")
+        }
+        else  # NA and Male accounted for
+        {
+          return(x) 
+        }
+        
+      })
+      
+      # Final Output
+      sex <- outputPieChart(table(data$SEX), label = "Sex")
+      
+      
+      # BAR CHARTS
+      
+      
+      # 3. Years Employed
+      
+      # Replace UOF values with NA so that UOF data is filtered out
+      data$YRS_EMPL <- replace(data$YRS_EMPL, data$INCIDENT_TYPE == "Use of force", NA)
+      
+      
+      # Fix Data - Too many values, sort them into ranges
+      data$YRS_EMPL <- sapply(data$YRS_EMPL, function(x) 
+      {
+        if(is.na(x))
+        {
+          return(NA)
+        }
+        else if (x < 11) # Unknown accounted for
+        {
+          return("0-10")
+        }
+        
+        else if (11 <= x && x <= 20) # Female and female accounted for
+        { 
+          return("11-20")
+        }  
+        else if(21 <= x && x <= 30) # male, m accounted for
+        {
+          return("21-30")
+        }
+        else if(31 <= x && x <= 40)
+        {
+          return("31-40") 
+        }
+        else if(40 <= x && x<= 50)
+        {
+          return("41-50") 
+        }
+        
+        
+        
+      })
+      
+      
+      # Final Output
+      years_employed <- outputBarPlot(table(data$YRS_EMPL), label = "Years Employed")
+      
+      
+      
+      
+      
+      
+      # 4. Allegations Made 
+      
+      # No Allegations in UOF, no need to filter
+      
+      # Fix Data -  Labels are too long, need to reduce number of characters
+      data$ALLEGATION_MADE <- sapply(data$ALLEGATION_MADE, function(x) {
+        if (is.na(x) || x == "Discrimination, Oppression or Favoritism - Color") # "Color" by itself is a strange allegation
+        { 
+          return(x)
+        } else {
+          return(strsplit(as.character(x), split = " - ")[[1]][2]) # Splits into before and after '-', using elements in [2]
+        }
+      })
+      
+      # Final Output (Special Bar Plot function used)
+      allegations <- outputSpecialBarPlot(table(data$ALLEGATION_MADE), label = "Allegation")
+      
+      
+      
+      
+      # 5. Involvement
+      
+      # Replace UOF values with NA so that UOF data is filtered out
+      data$INVOLVMENT <- replace(data$INVOLVMENT, data$INCIDENT_TYPE == "Use of force", NA)
+      
+      # Final Output
+      involvement <- outputBarPlot(table(data$INVOLVMENT), label = "Involvement")
+      
+      
+      
+      
+      # 6. Age
+      
+      # Replace UOF values with NA so that UOF data is filtered out
+      data$AGE <- replace(data$AGE, data$INCIDENT_TYPE == "Use of force", NA)
+      
+      # Final Output
+      age <- outputBarPlot(table(data$AGE), label = "Age")
+      
+      
+      
+      
+      # 7. Subject Type
+      
+      # Replace UOF values with NA so that UOF data is filtered out
+      data$SUBJ_TYPE <- replace(data$SUBJ_TYPE, data$INCIDENT_TYPE == "Use of force", NA)
+      
+      # Final Output
+      subject_type <- outputBarPlot(table(data$SUBJ_TYPE), label = "Subject Type")
+      
+      
+      
+      
+      # Render
+      CI_render(output, race, sex, years_employed, allegations, involvement, age, subject_type)
+      
+      output$CI_table_1 <- race
+      output$CI_table_2 <- sex
+      output$CI_table_3 <- years_employed
+      output$CI_table_4 <- allegations
+      output$CI_table_5 <- involvement
+      output$CI_table_6 <- age
+      output$CI_table_7 <- subject_type
+      
+      
+      
+    }
+    
+    
   }
+  
   ######################################################################
   ###################  Group L's trigger method ########################
   ######################################################################
   # Groups L's method that gets triggered when the graph is suppose to change
   groupLtrigger <- function(){
     # If chain that checks for what type of graph is selected
-      #(R's switch would not work here)
+    #(R's switch would not work here)
     if(input$sidebar == "CFS")
     {
       ######################
