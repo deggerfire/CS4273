@@ -198,7 +198,7 @@ server <- function(input, output, session) {
       ######################
       # Step 1: read in the data
       ######################
-      data <- read.csv(file("Contacts.csv"))
+      data <- read.csv(file("Contacts/all_contacts.csv"))
       CON_populate_Widgets(session, data$Sex, data$Race, data$Race, data$Race, data$Race)
       ######################
       # Step 2: Format the data
@@ -211,10 +211,12 @@ server <- function(input, output, session) {
       ######################
       Contacts_Sex   <- outputPieChart (table(data$Sex), label = "Sex")
       Contacts_Race   <- outputBarPlot (table(data$Race), label = "Race")
+      Contacts_Ethnicity <- outputPieChart (table(data$Ethnicity), label ="Ethnicity")
+      Contacts_TicketType <- outputPieChart (table(data$TicketType), label = "TicketType")
       ######################
       # Step 4: Put the graphs on screen
       ######################
-      CON_render(output, Contacts_Sex, Contacts_Race, Contacts_Race, Contacts_Race)
+      CON_render(output, Contacts_Sex, Contacts_Race, Contacts_Ethnicity, Contacts_TicketType)
     }
     else if(input$sidebar == "OFF"){
       ######################
