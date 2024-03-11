@@ -95,7 +95,6 @@ server <- function(input, output, session) {
     return(plot)
   }
   
-  
   # Makes a special barplot that is intended for data with long, descriptive labels. Legends are removed and a scroll should be added. 
   outputSpecialBarPlot <- function(data, label = ""){
     plot <- renderPlot({# Put the plot at plotOutput("Barplot") in the shiny code
@@ -109,8 +108,6 @@ server <- function(input, output, session) {
     )
     return(plot)
   }
-  
-  
   
   # Makes a piechart object using the inputted data
   # This function is for step 3
@@ -177,7 +174,6 @@ server <- function(input, output, session) {
         {
           return(NA)
         }
-        
         else if(grepl("black", x)) # black accounted for
         { 
           return("Black")
@@ -187,7 +183,6 @@ server <- function(input, output, session) {
         { 
           return("White")
         } 
-        
         else  # Amer Ind, Asian, Black, Hispanic, "Vietnamese", "White" is accounted for
         {
           return(x) 
@@ -300,7 +295,6 @@ server <- function(input, output, session) {
       output$UOF_table_5 <- age
       output$UOF_table_6 <- subject_type
     }
-    
     else if (input$sidebar == "CI") 
     {
       data <- read.csv(file("joined-data.csv"))
@@ -459,6 +453,26 @@ server <- function(input, output, session) {
       output$CI_table_5 <- involvement
       output$CI_table_6 <- age
       output$CI_table_7 <- subject_type
+    }
+    else if (input$sidebar == "CON")
+    {
+      # TODO (Daniel)
+      
+      ##########################
+      # Step 1: Read in the data
+      ##########################
+      
+      #########################
+      # Step 2: Format the data
+      #########################
+      
+      ###################################################
+      # Step 3: Send the formatted data to become a graph
+      ###################################################
+      
+      #################################################
+      # Step 4: Render the graph, which will display it
+      #################################################
     }
   }
   

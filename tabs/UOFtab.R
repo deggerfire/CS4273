@@ -14,11 +14,11 @@ UOF_tab <- function(){
      tabBox(
       height = "500px",
         UOF_Race_PC("UOF_table_1"),
-        UOF_Sex_PC("UOF_table_2")
+        UOF_Sex_PC("UOF_table_2"),
+        UOF_Years_Employed_BP("UOF_table_3")
       ),
      tabBox(
        height = "500px",
-       UOF_Years_Employed_BP("UOF_table_3"),
        UOF_Involvement_BP("UOF_table_4"),
        UOF_Age_BP("UOF_table_5"),
        UOF_Subject_Type_BP("UOF_table_6")

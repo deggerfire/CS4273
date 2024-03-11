@@ -14,11 +14,11 @@ CI_tab <- function(){
                  tabBox(
                    height = "500px",
                    CI_Race_PC("CI_table_1"),
-                   CI_Sex_PC("CI_table_2")
+                   CI_Sex_PC("CI_table_2"),
+                   CI_Years_Employed_BP("CI_table_3")
                  ),
                  tabBox(
                    height = "500px",
-                   CI_Years_Employed_BP("CI_table_3"),
                    CI_Allegations_BP("CI_table_4"),
                    CI_Involvement_BP("CI_table_5"),
                    CI_Age_BP("CI_table_6"),
