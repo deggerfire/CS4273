@@ -37,7 +37,20 @@ CI_Race_PC <- function(plotName){
                   # Graph controls
                   checkboxGroupInput("checkGroup", 
                                      label = h3("Display Race"), 
-                                     choices = list("Amer Ind" = 1, "Asain" = 2, "Black" = 3, "Hispanic" = 4, "Unknown" = 5, "Vietnamese" = 6, "White" = 7)))
+                                     choices = list("Amer Ind" = 1, "Asain" = 2, "Black" = 3, "Hispanic" = 4, "Unknown" = 5, "Vietnamese" = 6, "White" = 7)),
+                  # Button
+                  actionButton("select", 
+                               "Button"),
+                  
+                  # Date range
+                  dateRangeInput("daterange", 
+                                 "Date Range"),
+                  
+                  # Multiple button options to select from
+                  radioButtons("radioButton", 
+                               "Buttons", 
+                               choices = list("Option1" = 1, "Option2" = 2))
+                  )
   return(tab)
 }
 
@@ -48,7 +61,20 @@ CI_Sex_PC <- function(plotName){
                   # Graph controls
                   checkboxGroupInput("checkGroup", 
                                      label = h3("Display Gender"), 
-                                     choices = list("Female" = 1, "Male" = 2, "Unknown" = 3)))
+                                     choices = list("Female" = 1, "Male" = 2, "Unknown" = 3)),
+                  # Button
+                  actionButton("select", 
+                               "Button"),
+                  
+                  # Date range
+                  dateRangeInput("daterange", 
+                                 "Date Range"),
+                  
+                  # Multiple button options to select from
+                  radioButtons("radioButton", 
+                               "Buttons", 
+                               choices = list("Option1" = 1, "Option2" = 2))
+                  )
   return(tab)
 }
 
@@ -63,7 +89,20 @@ CI_Years_Employed_BP <- function(plotName){
                   # Graph controls
                   checkboxGroupInput("checkGroup", 
                                      label = h3("Display Years Employed"), 
-                                     choices = list("0-10" = 1, "11-20" = 2, "21-30" = 3, "31-40" = 3)))
+                                     choices = list("0-10" = 1, "11-20" = 2, "21-30" = 3, "31-40" = 3)),
+                  # Button
+                  actionButton("select", 
+                               "Button"),
+                  
+                  # Date range
+                  dateRangeInput("daterange", 
+                                 "Date Range"),
+                  
+                  # Multiple button options to select from
+                  radioButtons("radioButton", 
+                               "Buttons", 
+                               choices = list("Option1" = 1, "Option2" = 2))
+                  )
   return(tab)
 }
 
@@ -71,7 +110,21 @@ CI_Years_Employed_BP <- function(plotName){
 # Makes the tab for allegations barplot
 CI_Allegations_BP <- function(plotName){
   tab <- tabPanel('Allegations Bargraph', # Tab title
-                  plotOutput(plotName))                 # plotOutput name
+                  plotOutput(plotName), # plotOutput name
+                  
+                  # Button
+                  actionButton("select", 
+                               "Button"),
+                  
+                  # Date range
+                  dateRangeInput("daterange", 
+                                 "Date Range"),
+                  
+                  # Multiple button options to select from
+                  radioButtons("radioButton", 
+                               "Buttons", 
+                               choices = list("Option1" = 1, "Option2" = 2))
+                  )
   return(tab)
 }
 
@@ -83,7 +136,20 @@ CI_Involvement_BP <- function(plotName){
                   # Graph controls
                   checkboxGroupInput("checkGroup", 
                                      label = h3("Display Involvement"), 
-                                     choices = list("Complainant" = 1, "Officer" = 2, "Choice 3" = 3)))
+                                     choices = list("Complainant" = 1, "Officer" = 2, "Choice 3" = 3)),
+                  # Button
+                  actionButton("select", 
+                               "Button"),
+                  
+                  # Date range
+                  dateRangeInput("daterange", 
+                                 "Date Range"),
+                  
+                  # Multiple button options to select from
+                  radioButtons("radioButton", 
+                               "Buttons", 
+                               choices = list("Option1" = 1, "Option2" = 2))
+                  )
   return(tab)
 }
 
@@ -92,8 +158,20 @@ CI_Age_BP <- function(plotName){
   tab <- tabPanel('Age Bargraph', # Tab title
                   plotOutput(plotName),                 # plotOutput name
                   # Graph controls
-                  sliderInput("slider", label = "Select Age Range", min=0, max=100, value = 0))
-  return(tab)
+                  sliderInput("slider", label = "Select Age Range", min=0, max=100, value = 0),
+                  # Button
+                  actionButton("select", 
+                               "Button"),
+                  
+                  # Date range
+                  dateRangeInput("daterange", 
+                                 "Date Range"),
+                  
+                  # Multiple button options to select from
+                  radioButtons("radioButton", 
+                               "Buttons", 
+                               choices = list("Option1" = 1, "Option2" = 2))
+                  )
 }
 
 
@@ -106,7 +184,20 @@ CI_Subject_Type_BP <- function(plotName){
                   # Graph controls
                   checkboxGroupInput("checkGroup", 
                                      label = h3("Display Subject Type"), 
-                                     choices = list("Citizen" = 1, "Officer" = 2)))
+                                     choices = list("Citizen" = 1, "Officer" = 2)),
+                  # Button
+                  actionButton("select", 
+                               "Button"),
+                  
+                  # Date range
+                  dateRangeInput("daterange", 
+                                 "Date Range"),
+                  
+                  # Multiple button options to select from
+                  radioButtons("radioButton", 
+                               "Buttons", 
+                               choices = list("Option1" = 1, "Option2" = 2))
+                  )
   return(tab)
 }
 
