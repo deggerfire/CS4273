@@ -30,9 +30,7 @@ ui <- dashboardPage(
       id = "sidebar",
       #             name on the sidebar for user                  var name in code      icon on screen
       menuItem("Calls for Service"                               , tabName = "CFS", icon = icon("phone")),
-      menuItem("Collisions"                                      , tabName = "COL", icon = icon("car-burst"),
-               menuSubItem('By Severity'                                , tabName = 'COLl', icon = icon('triangle-exclamation')),
-               menuSubItem('By injury'                                  , tabName = 'COL2', icon = icon('user-injured'))),
+      menuItem("Collisions"                                      , tabName = "COL", icon = icon("car-burst")),
       
       menuItem("Use of Force"                                     , tabName = "UOF", icon = icon("gun")),
       #menuSubItem('Subjects by Resistance and Force'           , tabName = 'UOF4')),
@@ -473,6 +471,31 @@ server <- function(input, output, session) {
       #################################################
       # Step 4: Render the graph, which will display it
       #################################################
+    }
+    else if(input$sidebar == "COL") 
+    {
+      ##########################
+      # Step 1: Read in the data  
+      ##########################
+      data <- read.csv("COL.csv")
+      #########################
+      # Step 2: Format the data
+      #########################
+      
+      race <- outputPieChart(table(data$Race), label = "Race")
+      gender <- outputPieChart(table(data$Sex), label = "Sex")
+      
+      type <- outputBarPlot(table(data$TicketType), label = "Type")
+      description <- outputBarPlot(table(data$Description), label = "Description")
+      
+      ###################################################
+      # Step 3: Send the formatted data to become a graph
+      ###################################################
+      
+      #################################################
+      # Step 4: Render the graph, which will display it
+      #################################################
+      COL_render(output,race, gender,type,description)
     }
   }
   

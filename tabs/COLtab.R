@@ -8,6 +8,14 @@
 ## TODO: make this file do something
 
 # Function that handles the large scale formatting of the main area (dashboardBody) and the tabs on top
+
+COL_render <- function(output, plot1, plot2, plot3, plot4){
+  output$COL_table_1 <- plot1
+  output$COL_table_2 <- plot2
+  output$COL_table_3 <- plot3
+  output$COL_table_4 <- plot4
+}
+
 COL_tab <- function(){
   tab <- tabItem(tabName = "COL",
     tabBox(
