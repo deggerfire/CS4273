@@ -4,14 +4,15 @@ library(dplyr)
 library(shinydashboard)
 
 # Load data
-data <- read.csv('UOF.csv')
+data <- read.csv('TPC.csv')
 
 ui <- dashboardPage(
   dashboardHeader(title = 'Norman PD'),
   dashboardSidebar(
     sidebarMenu(
       menuItem("Use of Force", tabName = "UOF", icon = icon("dashboard")),
-      menuItem("Calls for Service", tabName = "CFS", icon = icon("th"))
+      menuItem("Calls for Service", tabName = "CFS", icon = icon("th")),
+      menuItem("New Tab", tabName = "new_tab", icon = icon("chart-bar"))
     )
   ),
   dashboardBody(
@@ -35,6 +36,12 @@ ui <- dashboardPage(
                 tabPanel('By Involvement', plotOutput("byInvolvement")),
                 tabPanel("Incident Type", plotOutput("CFS_Incident"))
               )
+      ),
+      tabItem(tabName = "new_tab",
+              fluidRow(
+                box(width = 6, height = 500, plotOutput("new_tab_plot1", height = "500px")),
+                box(width = 6, height = 500, plotOutput("new_tab_plot2", height = "500px"))
+              )
       )
     ),
     uiOutput("subjTypeFilter"),  # Add the Subject Type filter UI
@@ -51,7 +58,7 @@ server <- function(input, output) {
     if (input$subjTypeFilter == "All") {
       return(data)
     } else {
-      return(data %>% filter(SUBJ_TYPE == input$subjTypeFilter))
+      return(data %>% filter(Sex == input$subjTypeFilter)) # Assuming Sex as SUBJ_TYPE
     }
   })
   
@@ -61,17 +68,17 @@ server <- function(input, output) {
     if (input$incidentTypeFilter == "All") {
       return(data)
     } else {
-      return(data %>% filter(INCIDENT_TYPE == input$incidentTypeFilter))
+      return(data %>% filter(TicketType == input$incidentTypeFilter)) # Assuming TicketType as INCIDENT_TYPE
     }
   })
   
   output$subPlot <- renderPlot({
     filtered_data <- subj_type_filter()
     subject_type_counts <- filtered_data %>% 
-      group_by(SUBJ_TYPE) %>% 
+      group_by(Sex) %>% 
       summarise(count = n())
     
-    ggplot(subject_type_counts, aes(x = SUBJ_TYPE, y = count, fill = SUBJ_TYPE)) +
+    ggplot(subject_type_counts, aes(x = Sex, y = count, fill = Sex)) +
       geom_bar(stat = "identity") +
       xlab("Subject Type") +
       ylab("Count") +
@@ -81,10 +88,10 @@ server <- function(input, output) {
   output$incidentPlot <- renderPlot({
     filtered_data <- incident_type_filter()
     incident_type_counts <- filtered_data %>% 
-      group_by(INCIDENT_TYPE) %>% 
+      group_by(TicketType) %>% 
       summarise(count = n())
     
-    ggplot(incident_type_counts, aes(x = "", y = count, fill = INCIDENT_TYPE)) +
+    ggplot(incident_type_counts, aes(x = "", y = count, fill = TicketType)) +
       geom_bar(stat = "identity") +
       coord_polar("y", start = 0) +
       theme_void() +
@@ -94,10 +101,10 @@ server <- function(input, output) {
   output$CFS_Subject <- renderPlot({
     filtered_data <- subj_type_filter()
     subject_type_counts <- filtered_data %>% 
-      group_by(SUBJ_TYPE) %>% 
+      group_by(Sex) %>% 
       summarise(count = n())
     
-    ggplot(subject_type_counts, aes(x = SUBJ_TYPE, y = count, fill = SUBJ_TYPE)) +
+    ggplot(subject_type_counts, aes(x = Sex, y = count, fill = Sex)) +
       geom_bar(stat = "identity") +
       xlab("Subject Type") +
       ylab("Count") +
@@ -107,10 +114,10 @@ server <- function(input, output) {
   output$CFS_Incident <- renderPlot({
     filtered_data <- incident_type_filter()
     incident_type_counts <- filtered_data %>% 
-      group_by(INCIDENT_TYPE) %>% 
+      group_by(TicketType) %>% 
       summarise(count = n())
     
-    ggplot(incident_type_counts, aes(x = "", y = count, fill = INCIDENT_TYPE)) +
+    ggplot(incident_type_counts, aes(x = "", y = count, fill = TicketType)) +
       geom_bar(stat = "identity") +
       coord_polar("y", start = 0) +
       theme_void() +
@@ -118,7 +125,7 @@ server <- function(input, output) {
   })
   
   output$byAge <- renderPlot({
-    ggplot(data, aes(x = AGE)) +
+    ggplot(data, aes(x = Age)) +
       geom_histogram(binwidth = 5, fill = "skyblue", color = "black") +
       labs(title = "Age Distribution",
            x = "Age",
@@ -127,9 +134,9 @@ server <- function(input, output) {
   
   output$byInvolvement <- renderPlot({
     data %>%
-      group_by(INVOLVMENT) %>%
+      group_by(Ethnicity) %>%
       summarise(count = n()) %>%
-      ggplot(aes(x = INVOLVMENT, y = count, fill = INVOLVMENT)) +
+      ggplot(aes(x = Ethnicity, y = count, fill = Ethnicity)) +
       geom_bar(stat = "identity", color = "black") +
       labs(title = "Involvement Distribution",
            x = "Involvement Type",
@@ -138,23 +145,35 @@ server <- function(input, output) {
       theme_void()
   })
   
+  # New Tab Plots
+  output$new_tab_plot1 <- renderPlot({
+    ggplot(data, aes(x = Race)) +
+      geom_bar(fill = "blue") +
+      labs(title = "Race Distribution",
+           x = "Race",
+           y = "Count")
+  })
+  
+  output$new_tab_plot2 <- renderPlot({
+    ggplot(data, aes(x = Age, y = TicketNumber)) +
+      geom_point(color = "red") +
+      labs(title = "Ticket Number vs Age",
+           x = "Age",
+           y = "Ticket Number")
+  })
+  
   # Subject Type Filter
   output$subjTypeFilter <- renderUI({
     selectInput("subjTypeFilter", "Filter by Subject Type:",
-                c("All", unique(data$SUBJ_TYPE)))
+                c("All", unique(data$Sex)))
   })
   
   # Incident Type Filter
   output$incidentTypeFilter <- renderUI({
     selectInput("incidentTypeFilter", "Filter by Incident Type:",
-                c("All", unique(data$INCIDENT_TYPE)))
+                c("All", unique(data$TicketType)))
   })
   
 }
-
-shinyApp(ui = ui, server = server)
-
-
-
 
 shinyApp(ui = ui, server = server)
