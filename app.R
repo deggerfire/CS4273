@@ -124,12 +124,18 @@ server <- function(input, output, session) {
   # data - the data that is to be rendered, must be tabled
   # label - string for graph labels
   outputPieChart <- function(data, label = ""){
+    
+    # Calculates percentage
+    percent <- (data / sum(data)) * 100
+    percent <- round(percent, digits = 2)
+    
     plot <- renderPlot({# Put the plot at plotOutput("Piechart") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = "", y = Freq, fill = Var1))  # Set up graph data
       graph = graph + geom_bar(stat = "identity", width = 1)                 # Set up the data as a bar chart
       graph = graph + guides(fill=guide_legend(title = label))               # Set the title of the legend
       graph = graph + theme_void() + theme(text = element_text(size = 18))   # Remove the background and set the font size
       graph = graph + coord_polar("y", start = 0)                            # Convert the graph to polar
+      graph = graph + geom_text(aes(label = percent), size = 6.5, position = position_dodge(width = 1))
       print(graph)                                                           # Print the graph
     })
     return(plot)
