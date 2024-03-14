@@ -31,24 +31,27 @@ ui <- dashboardPage(
       #             name on the sidebar for user                  var name in code      icon on screen
       menuItem("Calls for Service"                               , tabName = "CFS", icon = icon("phone")),
       menuItem("Collisions"                                      , tabName = "COL", icon = icon("car-burst"),
-               menuSubItem('By Severity'                                , tabName = 'COLl', icon = icon('triangle-exclamation')),
-               menuSubItem('By injury'                                  , tabName = 'COL2', icon = icon('user-injured'))),
+               menuSubItem('By Severity'                         , tabName = 'COLl', icon = icon('triangle-exclamation')),
+               menuSubItem('By injury'                           , tabName = 'COL2', icon = icon('user-injured'))),
       
-      menuItem("Use of Force"                                     , tabName = "UOF", icon = icon("gun")),
-      #menuSubItem('Subjects by Resistance and Force'           , tabName = 'UOF4')),
-      #menuSubItem('Subjects by Incidents and Demographics'     , tabName = 'UOF5')),
+      menuItem("Use of Force"                                    , tabName = "UOF", icon = icon("gun")),
+      #menuSubItem('Subjects by Resistance and Force'            , tabName = 'UOF4')),
+      #menuSubItem('Subjects by Incidents and Demographics'      , tabName = 'UOF5')),
       menuItem("Complaints and Inquiries"                        , tabName = "CI", icon = icon("gun")),
-      #menuSubItem('Incidents by Type and Disposition'          , tabName = 'CI1'),
-      #menuSubItem('Subjects by Incidents and Demographics'     , tabName = 'CI2'),
-      #menuSubItem('Subjects by Allegation and Finding'         , tabName = 'CI3'),
+      #menuSubItem('Incidents by Type and Disposition'           , tabName = 'CI1'),
+      #menuSubItem('Subjects by Incidents and Demographics'      , tabName = 'CI2'),
+      #menuSubItem('Subjects by Allegation and Finding'          , tabName = 'CI3'),
       
       menuItem("Contacts"                                        , tabName = "CON", icon = icon("hand")),
-      #menuSubItem('Traffic and Parking Contacts'               , tabName = 'CON1')),
-      menuItem("Offenses"                                        , tabName = "OFF", icon = icon("handcuffs"))
-      #menuSubItem('Case Offenses'                              , tabName = 'OFF1',),
-      #menuSubItem('Case Details'                               , tabName = 'OFF2',),
-      #menuSubItem('Subjects'                                   , tabName = 'OFF3',),
-      #menuSubItem('Arrests'                                    , tabName = 'OFF4',))
+      #menuSubItem('Traffic and Parking Contacts'                , tabName = 'CON1')),
+      menuItem("Offenses"                                        , tabName = "OFF", icon = icon("handcuffs")),
+      #menuSubItem('Case Offenses'                               , tabName = 'OFF1',),
+      #menuSubItem('Case Details'                                , tabName = 'OFF2',),
+      #menuSubItem('Subjects'                                    , tabName = 'OFF3',),
+      #menuSubItem('Arrests'                                     , tabName = 'OFF4',))
+      menuItem("Tab1"                                            , tabName = "Tab1"),
+      menuItem("Tab2"                                            , tabName = "Tab2"),
+      menuItem("Tab3"                                            , tabName = "Tab3")
       
     )
   ),
