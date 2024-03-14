@@ -19,12 +19,13 @@ ui <- dashboardPage(
   ######################################################################
   ######################################################################
   
-  # Sets the title
-  dashboardHeader(title='Norman PD', titleWidth = 295),
+  # Sets the title and also adds logo
+  dashboardHeader(title='Norman PD', titleWidth = 275,
+                  tags$li(class = "dropdown", imageOutput("logo", height = 50))),
   
   # Left sidebar, used to to get to major catogories
   dashboardSidebar(
-    width = 295,
+    width = 275,
     sidebarMenu(
       # Variable name of this sidebar
       id = "sidebar",
@@ -65,7 +66,7 @@ ui <- dashboardPage(
                   CI_tab(),  # Complaints and Inquiries Tab
                   CON_tab(), # Contacts Tab 
                   OFF_tab()  # Offense Tab
-                )
+                ),
   )
 )
 
@@ -76,6 +77,12 @@ ui <- dashboardPage(
 # working in your teams trigger method
 
 server <- function(input, output, session) {
+  
+  # Renders logo
+  output$logo <- renderImage({
+    list(src = "norman_pd_logo.jpeg", height = 100)
+  }, deleteFile = FALSE)
+  
   ######################################################################
   ######################################################################
   #######################  Graph making methods ########################
