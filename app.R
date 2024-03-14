@@ -144,6 +144,14 @@ server <- function(input, output, session) {
           theme_minimal() +
           theme(axis.text.x = element_text(angle = 45, hjust = 1))
       })
+      incident_type <- renderPlot({
+        ggplot(data, aes(x = INCIDENT_TYPE, fill = INCIDENT_TYPE)) +
+          geom_bar() +
+          geom_text(stat='count', aes(label=..count..), vjust=-0.5) + 
+          labs(title = "Total Incidents by Incident Type (Use of Force)", x = "Incident Type", y = "Total Incidents") +
+          theme_minimal() +
+          theme(axis.text.x = element_text(angle = 45, hjust = 1))
+      })
       
       involvement <- renderPlot({
         ggplot(data, aes(x = INVOLVMENT, fill = INVOLVMENT)) +
@@ -153,7 +161,7 @@ server <- function(input, output, session) {
           theme_minimal() +
           theme(axis.text.x = element_text(angle = 45, hjust = 1))
       })
-      
+  
       race <- renderPlot({
         ggplot(data, aes(x = "", fill = RACE)) +
           geom_bar(width = 1) +
@@ -175,6 +183,10 @@ server <- function(input, output, session) {
       
       UOF_render(output, incident_type, involvement, race, sex)
       
+      output$UOF_table_1 <- incident_type
+      output$UOF_table_2 <- involvement
+      output$UOF_table_3 <- race
+      output$UOF_table_4 <- sex
       output$UOF_table_1 <- incident_type
       output$UOF_table_2 <- involvement
       output$UOF_table_3 <- race
