@@ -147,7 +147,7 @@ UOF_Sex_PC <- function(data, plotName, widgetName){
 # Makes the tab for years employed
 UOF_Years_Employed_BP <- function(data, plotName, widgetName){
   tab <- tabPanel('Years Employed Bargraph', # Tab title
-                  plotlyOutput(plotName),                 # plotOutput name
+                  plotlyOutput(plotName),                 # plotlyOutput name
                   # Input selector
                   selectInput(widgetName, "Selector", c("Unselected", unique(data$YRS_EMPL)), selected = 1)
   )
@@ -158,7 +158,7 @@ UOF_Years_Employed_BP <- function(data, plotName, widgetName){
 # Makes the tab for involvement barplot
 UOF_Involvement_BP <- function(data, plotName, widgetName){
   tab <- tabPanel('Involvement Bargraph', # Tab title
-                  plotlyOutput(plotName),                 # plotOutput name
+                  plotlyOutput(plotName),                 # plotlyOutput name
                   # Input selector
                   selectInput(widgetName, "Selector", c("Unselected", unique(data$INVOLVMENT)), selected = 1)
   )
@@ -168,7 +168,7 @@ UOF_Involvement_BP <- function(data, plotName, widgetName){
 # Makes the tab for age barplot
 UOF_Age_BP <- function(data, plotName, widgetName){
   tab <- tabPanel('Age Bargraph', # Tab title
-                  plotlyOutput(plotName),                 # plotOutput name
+                  plotlyOutput(plotName),                 # plotlyOutput name
                   # Input selector
                   selectInput(widgetName, "Selector", c("Unselected", unique(data$AGE)), selected = 1)
   )
@@ -178,7 +178,7 @@ UOF_Age_BP <- function(data, plotName, widgetName){
 # Makes the tab for call source barplot
 UOF_Subject_Type_BP <- function(data, plotName, widgetName){
   tab <- tabPanel('Subject Type Bargraph', # Tab title
-                  plotlyOutput(plotName),                 # plotOutput name
+                  plotlyOutput(plotName),                 # plotlyOutput name
                   # Input selector
                   selectInput(widgetName, "Selector", c("Unselected", unique(data$SUBJ_TYPE)), selected = 1)
   )
