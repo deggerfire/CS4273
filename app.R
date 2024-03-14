@@ -129,13 +129,14 @@ server <- function(input, output, session) {
     percent <- (data / sum(data)) * 100
     percent <- round(percent, digits = 2)
     
-    plot <- renderPlot({# Put the plot at plotOutput("Piechart") in the shiny code
+    # Renders the splot
+    plot <- renderPlot({                                                     # Put the plot at plotOutput("Piechart") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = "", y = Freq, fill = Var1))  # Set up graph data
       graph = graph + geom_bar(stat = "identity", width = 1)                 # Set up the data as a bar chart
       graph = graph + guides(fill=guide_legend(title = label))               # Set the title of the legend
       graph = graph + theme_void() + theme(text = element_text(size = 18))   # Remove the background and set the font size
       graph = graph + coord_polar("y", start = 0)                            # Convert the graph to polar
-      graph = graph + geom_text(aes(label = percent), size = 6.5, position = position_dodge(width = 1))
+      graph = graph + geom_text(aes(label = percent), size = 6.5, position = position_dodge(width = 1)) # Adds the percentages to the pie chart
       print(graph)                                                           # Print the graph
     })
     return(plot)
@@ -203,6 +204,7 @@ server <- function(input, output, session) {
         }
       })
       
+      # Filters and updates graphs when user selects an option in this selector
       if(input$UOF_Race_Selector != "Unselected"){
         data <- data %>% filter(RACE == input$UOF_Race_Selector)
       }
@@ -237,6 +239,7 @@ server <- function(input, output, session) {
         
       })
       
+      # Filters and updates graphs when user selects an option in this selector
       if(input$UOF_Sex_Selector != "Unselected"){
         data <- data %>% filter(SEX == input$UOF_Sex_Selector)
       }
@@ -280,6 +283,7 @@ server <- function(input, output, session) {
         }
       })
       
+      # Filters and updates graphs when user selects an option in this selector
       if(input$UOF_Years_Employed_Selector != "Unselected"){
         data <- data %>% filter(YRS_EMPL == input$UOF_Years_Employed_Selector)
       }
@@ -292,6 +296,7 @@ server <- function(input, output, session) {
       # Replace CI values with NA so that CI data is filtered out
       data$INVOLVMENT <- replace(data$INVOLVMENT, grepl("Complaint", data$INCIDENT_TYPE), NA)
       
+      # Filters and updates graphs when user selects an option in this selector
       if(input$UOF_Involvement_Selector != "Unselected"){
         data <- data %>% filter(INVOLVMENT == input$UOF_Involvement_Selector)
       }
@@ -304,6 +309,7 @@ server <- function(input, output, session) {
       # Replace UOF values with NA so that UOF data is filtered out
       data$AGE <- replace(data$AGE, grepl("Complaint", data$INCIDENT_TYPE), NA)
       
+      # Filters and updates graphs when user selects an option in this selector
       if(input$UOF_Age_Selector != "Unselected"){
         data <- data %>% filter(AGE == input$UOF_Age_Selector)
       }
@@ -316,6 +322,7 @@ server <- function(input, output, session) {
       # Replace CI values with NA so that CI data is filtered out
       data$SUBJ_TYPE <- replace(data$SUBJ_TYPE, grepl("Complaint", data$INCIDENT_TYPE), NA)
       
+      # Filters and updates graphs when user selects an option in this selector
       if(input$UOF_Subject_Type_Selector != "Unselected"){
         data <- data %>% filter(SUBJ_TYPE == input$UOF_Subject_Type_Selector)
       }
@@ -369,6 +376,7 @@ server <- function(input, output, session) {
         }
       })
       
+      # Filters and updates graphs when user selects an option in this selector
       if(input$CI_Race_Selector != "Unselected"){
         data <- data %>% filter(RACE == input$CI_Race_Selector)
       }
@@ -402,6 +410,7 @@ server <- function(input, output, session) {
         }
       })
       
+      # Filters and updates graphs when user selects an option in this selector
       if(input$CI_Sex_Selector != "Unselected"){
         data <- data %>% filter(SEX == input$CI_Sex_Selector)
       }
@@ -445,6 +454,7 @@ server <- function(input, output, session) {
         }
       })
       
+      # Filters and updates graphs when user selects an option in this selector
       if(input$CI_Years_Employed_Selector != "Unselected"){
         data <- data %>% filter(YRS_EMPL == input$CI_Years_Employed_Selector)
       }
@@ -466,6 +476,7 @@ server <- function(input, output, session) {
         }
       })
       
+      # Filters and updates graphs when user selects an option in this selector
       if(input$CI_Allegations_Selector != "Unselected"){
         data <- data %>% filter(ALLEGATION_MADE == input$CI_Allegations_Selector)
       }
@@ -478,6 +489,7 @@ server <- function(input, output, session) {
       # Replace UOF values with NA so that UOF data is filtered out
       data$INVOLVMENT <- replace(data$INVOLVMENT, data$INCIDENT_TYPE == "Use of force", NA)
       
+      # Filters and updates graphs when user selects an option in this selector
       if(input$CI_Involvement_Selector != "Unselected"){
         data <- data %>% filter(INVOLVMENT == input$CI_Involvement_Selector)
       }
@@ -490,6 +502,7 @@ server <- function(input, output, session) {
       # Replace UOF values with NA so that UOF data is filtered out
       data$AGE <- replace(data$AGE, data$INCIDENT_TYPE == "Use of force", NA)
       
+      # Filters and updates graphs when user selects an option in this selector
       if(input$CI_Age_Selector != "Unselected"){
         data <- data %>% filter(AGE == input$CI_Age_Selector)
       }
@@ -502,6 +515,7 @@ server <- function(input, output, session) {
       # Replace UOF values with NA so that UOF data is filtered out
       data$SUBJ_TYPE <- replace(data$SUBJ_TYPE, data$INCIDENT_TYPE == "Use of force", NA)
       
+      # Filters and updates graphs when user selects an option in this selector
       if(input$CI_Subject_Type_Selector != "Unselected"){
         data <- data %>% filter(SUBJ_TYPE == input$CI_Subject_Type_Selector)
       }
