@@ -147,101 +147,13 @@ server <- function(input, output, session) {
   ######################################################################
   ######################################################################
   
-  # IF YOU WANT A TRIGGER ON A SELECTOR YOU NEED TO CHANGE CFS_Source_of_Call_Selector TO THE NAME OF THE SELECTOR YOU WANT
-  observeEvent(input$CFS_Source_of_Call_Selector, {
-    # Call both group A's and group L's trigger function
-    groupAtrigger()
-    groupLtrigger()
+  # List that triggers observeEvent() whenever anything on the screen is changed
+  toObserve <- reactive({
+    reactiveValuesToList(input)
   })
   
-  ####################
-  # UOF observe events
-  ####################
-  
-  observeEvent(input$UOF_Race_Selector, {
-    # Call both group A's and group L's trigger function
-    groupAtrigger()
-    groupLtrigger()
-  })
-  
-  observeEvent(input$UOF_Sex_Selector, {
-    # Call both group A's and group L's trigger function
-    groupAtrigger()
-    groupLtrigger()
-  })
-  
-  observeEvent(input$UOF_Years_Employed_Selector, {
-    # Call both group A's and group L's trigger function
-    groupAtrigger()
-    groupLtrigger()
-  })
-  
-  observeEvent(input$UOF_Involvement_Selector, {
-    # Call both group A's and group L's trigger function
-    groupAtrigger()
-    groupLtrigger()
-  })
-  
-  observeEvent(input$UOF_Age_Selector, {
-    # Call both group A's and group L's trigger function
-    groupAtrigger()
-    groupLtrigger()
-  })
-  
-  observeEvent(input$UOF_Subject_Type_Selector, {
-    # Call both group A's and group L's trigger function
-    groupAtrigger()
-    groupLtrigger()
-  })
-  
-  ####################
-  # CFS observe events
-  ####################
-  
-  observeEvent(input$CI_Race_Selector, {
-    # Call both group A's and group L's trigger function
-    groupAtrigger()
-    groupLtrigger()
-  })
-  
-  observeEvent(input$CI_Sex_Selector, {
-    # Call both group A's and group L's trigger function
-    groupAtrigger()
-    groupLtrigger()
-  })
-  
-  observeEvent(input$CI_Years_Employed_Selector, {
-    # Call both group A's and group L's trigger function
-    groupAtrigger()
-    groupLtrigger()
-  })
-  
-  observeEvent(input$CI_Allegations_Selector, {
-    # Call both group A's and group L's trigger function
-    groupAtrigger()
-    groupLtrigger()
-  })
-  
-  observeEvent(input$CI_Involvement_Selector, {
-    # Call both group A's and group L's trigger function
-    groupAtrigger()
-    groupLtrigger()
-  })
-  
-  observeEvent(input$CI_Age_Selector, {
-    # Call both group A's and group L's trigger function
-    groupAtrigger()
-    groupLtrigger()
-  })
-  
-  observeEvent(input$CI_Subject_Type_Selector, {
-    # Call both group A's and group L's trigger function
-    groupAtrigger()
-    groupLtrigger()
-  })
-  
-  # Method that gets triggered when the graph is suppose to change
-  observeEvent(input$sidebar, {
+  # Method that gets triggered when the graph is suppose to change or update
+  observeEvent(toObserve(), {
     # Call both group A's and group L's trigger function
     groupAtrigger()
     groupLtrigger()
