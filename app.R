@@ -138,6 +138,92 @@ server <- function(input, output, session) {
     groupLtrigger()
   })
   
+  ####################
+  # UOF observe events
+  ####################
+  
+  observeEvent(input$UOF_Race_Selector, {
+    # Call both group A's and group L's trigger function
+    groupAtrigger()
+    groupLtrigger()
+  })
+  
+  observeEvent(input$UOF_Sex_Selector, {
+    # Call both group A's and group L's trigger function
+    groupAtrigger()
+    groupLtrigger()
+  })
+  
+  observeEvent(input$UOF_Years_Employed_Selector, {
+    # Call both group A's and group L's trigger function
+    groupAtrigger()
+    groupLtrigger()
+  })
+  
+  observeEvent(input$UOF_Involvement_Selector, {
+    # Call both group A's and group L's trigger function
+    groupAtrigger()
+    groupLtrigger()
+  })
+  
+  observeEvent(input$UOF_Age_Selector, {
+    # Call both group A's and group L's trigger function
+    groupAtrigger()
+    groupLtrigger()
+  })
+  
+  observeEvent(input$UOF_Subject_Type_Selector, {
+    # Call both group A's and group L's trigger function
+    groupAtrigger()
+    groupLtrigger()
+  })
+  
+  ####################
+  # CFS observe events
+  ####################
+  
+  observeEvent(input$CI_Race_Selector, {
+    # Call both group A's and group L's trigger function
+    groupAtrigger()
+    groupLtrigger()
+  })
+  
+  observeEvent(input$CI_Sex_Selector, {
+    # Call both group A's and group L's trigger function
+    groupAtrigger()
+    groupLtrigger()
+  })
+  
+  observeEvent(input$CI_Years_Employed_Selector, {
+    # Call both group A's and group L's trigger function
+    groupAtrigger()
+    groupLtrigger()
+  })
+  
+  observeEvent(input$CI_Allegations_Selector, {
+    # Call both group A's and group L's trigger function
+    groupAtrigger()
+    groupLtrigger()
+  })
+  
+  observeEvent(input$CI_Involvement_Selector, {
+    # Call both group A's and group L's trigger function
+    groupAtrigger()
+    groupLtrigger()
+  })
+  
+  observeEvent(input$CI_Age_Selector, {
+    # Call both group A's and group L's trigger function
+    groupAtrigger()
+    groupLtrigger()
+  })
+  
+  observeEvent(input$CI_Subject_Type_Selector, {
+    # Call both group A's and group L's trigger function
+    groupAtrigger()
+    groupLtrigger()
+  })
+  
   # Method that gets triggered when the graph is suppose to change
   observeEvent(input$sidebar, {
     # Call both group A's and group L's trigger function
@@ -189,6 +275,10 @@ server <- function(input, output, session) {
         }
       })
       
+      if(input$UOF_Race_Selector != "Unselected"){
+        data <- data %>% filter(RACE == input$UOF_Race_Selector)
+      }
+      
       # Final Output
       race <- outputPieChart(table(data$RACE), label = "Race")
       
@@ -218,6 +308,10 @@ server <- function(input, output, session) {
         }
         
       })
+      
+      if(input$UOF_Sex_Selector != "Unselected"){
+        data <- data %>% filter(SEX == input$UOF_Sex_Selector)
+      }
       
       # Final Output
       sex <- outputPieChart(table(data$SEX), label = "Sex")
@@ -258,6 +352,10 @@ server <- function(input, output, session) {
         }
       })
       
+      if(input$UOF_Years_Employed_Selector != "Unselected"){
+        data <- data %>% filter(YRS_EMPL == input$UOF_Years_Employed_Selector)
+      }
+      
       # Final Output
       years_employed <- outputBarPlot(table(data$YRS_EMPL), label = "Years Employed")
       
@@ -265,6 +363,10 @@ server <- function(input, output, session) {
       
       # Replace CI values with NA so that CI data is filtered out
       data$INVOLVMENT <- replace(data$INVOLVMENT, grepl("Complaint", data$INCIDENT_TYPE), NA)
+      
+      if(input$UOF_Involvement_Selector != "Unselected"){
+        data <- data %>% filter(INVOLVMENT == input$UOF_Involvement_Selector)
+      }
       
       #Final Output
       involvement <- outputBarPlot(table(data$INVOLVMENT), label = "Involvement")
@@ -274,6 +376,10 @@ server <- function(input, output, session) {
       # Replace UOF values with NA so that UOF data is filtered out
       data$AGE <- replace(data$AGE, grepl("Complaint", data$INCIDENT_TYPE), NA)
       
+      if(input$UOF_Age_Selector != "Unselected"){
+        data <- data %>% filter(AGE == input$UOF_Age_Selector)
+      }
+      
       # Final Output
       age <- outputBarPlot(table(data$AGE), label = "Age")
       
@@ -281,6 +387,10 @@ server <- function(input, output, session) {
       
       # Replace CI values with NA so that CI data is filtered out
       data$SUBJ_TYPE <- replace(data$SUBJ_TYPE, grepl("Complaint", data$INCIDENT_TYPE), NA)
+      
+      if(input$UOF_Subject_Type_Selector != "Unselected"){
+        data <- data %>% filter(SUBJ_TYPE == input$UOF_Subject_Type_Selector)
+      }
       
       # Final Output
       subject_type <- outputBarPlot(table(data$SUBJ_TYPE), label = "Subject Type")
@@ -331,6 +441,10 @@ server <- function(input, output, session) {
         }
       })
       
+      if(input$CI_Race_Selector != "Unselected"){
+        data <- data %>% filter(RACE == input$CI_Race_Selector)
+      }
+      
       # Final Output
       race <- outputPieChart(table(data$RACE), label = "Race")
       
@@ -359,6 +473,10 @@ server <- function(input, output, session) {
           return(x) 
         }
       })
+      
+      if(input$CI_Sex_Selector != "Unselected"){
+        data <- data %>% filter(SEX == input$CI_Sex_Selector)
+      }
       
       # Final Output
       sex <- outputPieChart(table(data$SEX), label = "Sex")
@@ -399,6 +517,10 @@ server <- function(input, output, session) {
         }
       })
       
+      if(input$CI_Years_Employed_Selector != "Unselected"){
+        data <- data %>% filter(YRS_EMPL == input$CI_Years_Employed_Selector)
+      }
+      
       # Final Output
       years_employed <- outputBarPlot(table(data$YRS_EMPL), label = "Years Employed")
       
@@ -416,6 +538,10 @@ server <- function(input, output, session) {
         }
       })
       
+      if(input$CI_Allegations_Selector != "Unselected"){
+        data <- data %>% filter(ALLEGATION_MADE == input$CI_Allegations_Selector)
+      }
+      
       # Final Output (Special Bar Plot function used)
       allegations <- outputSpecialBarPlot(table(data$ALLEGATION_MADE), label = "Allegation")
       
@@ -423,6 +549,10 @@ server <- function(input, output, session) {
       
       # Replace UOF values with NA so that UOF data is filtered out
       data$INVOLVMENT <- replace(data$INVOLVMENT, data$INCIDENT_TYPE == "Use of force", NA)
+      
+      if(input$CI_Involvement_Selector != "Unselected"){
+        data <- data %>% filter(INVOLVMENT == input$CI_Involvement_Selector)
+      }
       
       # Final Output
       involvement <- outputBarPlot(table(data$INVOLVMENT), label = "Involvement")
@@ -432,6 +562,10 @@ server <- function(input, output, session) {
       # Replace UOF values with NA so that UOF data is filtered out
       data$AGE <- replace(data$AGE, data$INCIDENT_TYPE == "Use of force", NA)
       
+      if(input$CI_Age_Selector != "Unselected"){
+        data <- data %>% filter(AGE == input$CI_Age_Selector)
+      }
+      
       # Final Output
       age <- outputBarPlot(table(data$AGE), label = "Age")
       
@@ -439,6 +573,10 @@ server <- function(input, output, session) {
       
       # Replace UOF values with NA so that UOF data is filtered out
       data$SUBJ_TYPE <- replace(data$SUBJ_TYPE, data$INCIDENT_TYPE == "Use of force", NA)
+      
+      if(input$CI_Subject_Type_Selector != "Unselected"){
+        data <- data %>% filter(SUBJ_TYPE == input$CI_Subject_Type_Selector)
+      }
       
       # Final Output
       subject_type <- outputBarPlot(table(data$SUBJ_TYPE), label = "Subject Type")
