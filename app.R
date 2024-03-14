@@ -2,6 +2,7 @@ library(shiny)          # The sever thingy
 library(ggplot2)        # Used for plotting
 library(dplyr)          # Used for data handling
 library(shinydashboard) # Used for fancy UI stuff
+library(plotly)
 
 # Import the tab files
 
@@ -93,13 +94,15 @@ server <- function(input, output, session) {
   # data - the data that is to be rendered, must be tabled
   # label - string for graph labels
   outputBarPlot <- function(data, label = ""){
-    plot <- renderPlot({# Put the plot at plotOutput("Barplot") in the shiny code
+    plot <- renderPlotly({# Put the plot at plotOutput("Barplot") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) # Setup graph data
       graph = graph + geom_bar(stat = "identity", width = .8)                 # Set up the data as a bar chart
       graph = graph + xlab(label) + ylab("Amount")                                # Set the x/y labels
       graph = graph + guides(fill=guide_legend(title = label))                # Set the title of the legend
       graph = graph + theme(text = element_text(size = 18), axis.text.x = element_text(angle = 15, vjust = 0.5, hjust=1))                   # Set the font size
-      print(graph)                                                            # Print the graph
+      #print(graph)                                                            # Print the graph
+      p <- ggplotly(graph)
+      p
     }
     )
     return(plot)
@@ -107,13 +110,15 @@ server <- function(input, output, session) {
   
   # Makes a special barplot that is intended for data with long, descriptive labels. Legends are removed and a scroll should be added. 
   outputSpecialBarPlot <- function(data, label = ""){
-    plot <- renderPlot({# Put the plot at plotOutput("Barplot") in the shiny code
+    plot <- renderPlotly({# Put the plot at plotOutput("Barplot") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) # Setup graph data
       graph = graph + geom_bar(stat = "identity", width = .8, show.legend = FALSE)                 # Set up the data as a bar chart
       graph = graph + xlab(label) + ylab("Amount")                                # Set the x/y labels
       graph = graph + guides(fill=guide_legend(title = label))                # Set the title of the legend
       graph = graph + theme(axis.text.x = element_text(angle = -45, vjust = 1, hjust = 0))                  # Set the font size
-      print(graph)                                                            # Print the graph
+      #print(graph)                                                            # Print the graph
+      p <- ggplotly(graph)
+      p
     }
     )
     return(plot)
