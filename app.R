@@ -452,32 +452,12 @@ server <- function(input, output, session) {
       output$CI_table_6 <- age
       output$CI_table_7 <- subject_type
     }
-    else if (input$sidebar == "CON")
-    {
-      # TODO (Daniel)
-      
-      ##########################
-      # Step 1: Read in the data
-      ##########################
-      
-      #########################
-      # Step 2: Format the data
-      #########################
-      
-      ###################################################
-      # Step 3: Send the formatted data to become a graph
-      ###################################################
-      
-      #################################################
-      # Step 4: Render the graph, which will display it
-      #################################################
-    }
-    else if(input$sidebar == "COL") 
+    else if(input$sidebar == "CON") 
     {
       ##########################
       # Step 1: Read in the data  
       ##########################
-      data <- read.csv("COL.csv")
+      data <- read.csv("CONT.csv")
       #########################
       # Step 2: Format the data
       #########################
@@ -495,7 +475,7 @@ server <- function(input, output, session) {
       #################################################
       # Step 4: Render the graph, which will display it
       #################################################
-      COL_render(output,race, gender,type,description)
+      CON_render(output,race, gender,type,description)
     }
   }
   
@@ -542,20 +522,6 @@ server <- function(input, output, session) {
       # Send the graphs off to the call for service render function to be put on screen
       CFS_render(output, CS_BP, PCS_PC, PCP_BP, City_PC)
       
-    }
-    else if(input$sidebar == "CON"){
-      ######################
-      # Step 1: read in the data
-      ######################
-      ######################
-      # Step 2: Format the data
-      ######################
-      ######################
-      # Step 3: Send the formatted data to become a graph
-      ######################
-      ######################
-      # Step 4: Put the graphs on screen
-      ######################
     }
     else if(input$sidebar == "OFF"){
       ######################
