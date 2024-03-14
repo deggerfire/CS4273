@@ -132,22 +132,53 @@ server <- function(input, output, session) {
   # Groups A's method that gets triggered when the graph is suppose to change
   groupAtrigger <- function(){
     # If chain that checks for what type of graph is selected
-      #(R's switch would not work here)
+    #(R's switch would not work here)
     if(input$sidebar == "UOF")
     {
       data <- read.csv(file("UOF.csv"))
-      race <- outputPieChart(table(data$RACE), label = "Race")
-      sex <- outputPieChart(table(data$SEX), label = "Sex")
+      incident_type <- renderPlot({
+        ggplot(data, aes(x = INCIDENT_TYPE, fill = INCIDENT_TYPE)) +
+          geom_bar() +
+          geom_text(stat='count', aes(label=..count..), vjust=-0.5) + 
+          labs(title = "Total Incidents by Incident Type (Use of Force)", x = "Incident Type", y = "Total Incidents") +
+          theme_minimal() +
+          theme(axis.text.x = element_text(angle = 45, hjust = 1))
+      })
       
-      involvement <- outputBarPlot(table(data$RACE), label = "Involvement")
-      subject_type <- outputBarPlot(table(data$SEX), label = "Subject_Type")
+      involvement <- renderPlot({
+        ggplot(data, aes(x = INVOLVMENT, fill = INVOLVMENT)) +
+          geom_bar() +
+          geom_text(stat='count', aes(label=..count..), vjust=-0.5) +
+          labs(title = "Total Incidents by Involvement Type (Use of Force)", x = "Involvement Type", y = "Total Incidents") +
+          theme_minimal() +
+          theme(axis.text.x = element_text(angle = 45, hjust = 1))
+      })
       
-      UOF_render(output, race, sex, involvement, subject_type)
+      race <- renderPlot({
+        ggplot(data, aes(x = "", fill = RACE)) +
+          geom_bar(width = 1) +
+          coord_polar(theta = "y") +
+          labs(title = "Race Distribution", fill = "Race") +
+          theme_minimal() +
+          theme(axis.text.x = element_blank())
+      })
       
-      output$UOF_table_1 <- race
-      output$UOF_table_2 <- sex
-      output$UOF_table_3 <- involvement
-      output$UOF_table_4 <- subject_type
+      sex <- renderPlot({ 
+        ggplot(data, aes(x = "", fill = SEX)) +
+          geom_bar(width = 1) +
+          coord_polar(theta = "y") +
+          labs(title = "Gender Distribution", fill = "Sex") +
+          theme_minimal() +
+          theme(axis.text.x = element_blank())
+      })
+      
+      
+      UOF_render(output, incident_type, involvement, race, sex)
+      
+      output$UOF_table_1 <- incident_type
+      output$UOF_table_2 <- involvement
+      output$UOF_table_3 <- race
+      output$UOF_table_4 <- sex
     }
   }
   ######################################################################
