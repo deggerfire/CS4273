@@ -3,10 +3,17 @@ library(ggplot2)        # Used for plotting
 library(dplyr)          # Used for data handling
 library(shinydashboard) # Used for fancy UI stuff
 
+# Stuff for running a server
+#options(shiny.host = '10.204.155.94') # IP-address of computer
+#options(shiny.port = 5111) # Port you want to host on
+
 # Import the tab files
 source("tabs/CFStab.R")
 source("tabs/COLtab.R")
-source("tabs/UOFtab.R")
+source("tabs/UOF1tab.R")
+source("tabs/UOF2tab.R")
+source("tabs/UOF3tab.R")
+source("tabs/UOF4tab.R")
 source("tabs/CONtab.R")
 source("tabs/OFFtab.R")
 ui <- dashboardPage(
@@ -31,18 +38,17 @@ ui <- dashboardPage(
       menuItem("Collisions"                                      , tabName = "COL", icon = icon("car-burst"),
         menuSubItem('By Severity'                                , tabName = 'COLl', icon = icon('triangle-exclamation')),
         menuSubItem('By injury'                                  , tabName = 'COL2', icon = icon('user-injured'))),
-      menuItem("Complaints, Inquiries and Use of force"          , tabName = "UOF", icon = icon("gun")),
-        #menuSubItem('Incidents by Type and Disposition'          , tabName = 'UOF1'),
-        #menuSubItem('Subjects by Incidents and Demographics'     , tabName = 'UOF2'),
-        #menuSubItem('Subjects by Allegation and Finding'         , tabName = 'UOF3'),
-        #menuSubItem('Subjects by Resistance and Force'           , tabName = 'UOF4')),
+      menuItem("Complaints, Inquiries and Use of force"          , tabName = "UOF", icon = icon("gun"),
+        menuSubItem('Incidents by Type and Disposition'          , tabName = 'UOF1'),
+        menuSubItem('Subjects by Incidents and Demographics'     , tabName = 'UOF2'),
+        menuSubItem('Subjects by Allegation and Finding'         , tabName = 'UOF3'),
+        menuSubItem('Subjects by Resistance and Force'           , tabName = 'UOF4')),
       menuItem("Contacts"                                        , tabName = "CON", icon = icon("hand")),
-        #menuSubItem('Traffic and Parking Contacts'               , tabName = 'CON1')),
-      menuItem("Offenses"                                        , tabName = "OFF", icon = icon("handcuffs"))
-        #menuSubItem('Case Offenses'                              , tabName = 'OFF1',),
-        #menuSubItem('Case Details'                               , tabName = 'OFF2',),
-        #menuSubItem('Subjects'                                   , tabName = 'OFF3',),
-        #menuSubItem('Arrests'                                    , tabName = 'OFF4',))
+      menuItem("Offenses"                                        , tabName = "OFF", icon = icon("handcuffs"),
+        menuSubItem('Case Offenses'                              , tabName = 'OFF1',),
+        menuSubItem('Case Details'                               , tabName = 'OFF2',),
+        menuSubItem('Subjects'                                   , tabName = 'OFF3',),
+        menuSubItem('Arrests'                                    , tabName = 'OFF4',))
         
     )
   ),
@@ -52,7 +58,10 @@ ui <- dashboardPage(
     tabItems(
       CFS_tab(), # Calls for service tab
       COL_tab(), # Collision Tab
-      UOF_tab(), # Use of force Tab
+      UOF1_tab(), # 1st Use of force Tab
+      UOF2_tab(), # 2nd Use of force Tab
+      UOF3_tab(), # 3rd Use of force Tab
+      UOF4_tab(), # 4th Use of force Tab
       CON_tab(), # Contacts Tab
       OFF_tab()  # Offense Tab
       )
@@ -128,22 +137,65 @@ server <- function(input, output, session) {
   # Groups A's method that gets triggered when the graph is suppose to change
   groupAtrigger <- function(){
     # If chain that checks for what type of graph is selected
-      #(R's switch would not work here)
+    #(R's switch would not work here)
     if(input$sidebar == "UOF")
     {
       data <- read.csv(file("UOF.csv"))
-      race <- outputPieChart(table(data$RACE), label = "Race")
-      sex <- outputPieChart(table(data$SEX), label = "Sex")
+      incident_type <- renderPlot({
+        ggplot(data, aes(x = INCIDENT_TYPE, fill = INCIDENT_TYPE)) +
+          geom_bar() +
+          geom_text(stat='count', aes(label=..count..), vjust=-0.5) + 
+          labs(title = "Total Incidents by Incident Type (Use of Force)", x = "Incident Type", y = "Total Incidents") +
+          theme_minimal() +
+          theme(axis.text.x = element_text(angle = 45, hjust = 1))
+      })
+      incident_type <- renderPlot({
+        ggplot(data, aes(x = INCIDENT_TYPE, fill = INCIDENT_TYPE)) +
+          geom_bar() +
+          geom_text(stat='count', aes(label=..count..), vjust=-0.5) + 
+          labs(title = "Total Incidents by Incident Type (Use of Force)", x = "Incident Type", y = "Total Incidents") +
+          theme_minimal() +
+          theme(axis.text.x = element_text(angle = 45, hjust = 1))
+      })
       
-      involvement <- outputBarPlot(table(data$RACE), label = "Involvement")
-      subject_type <- outputBarPlot(table(data$SEX), label = "Subject_Type")
+      involvement <- renderPlot({
+        ggplot(data, aes(x = INVOLVMENT, fill = INVOLVMENT)) +
+          geom_bar() +
+          geom_text(stat='count', aes(label=..count..), vjust=-0.5) +
+          labs(title = "Total Incidents by Involvement Type (Use of Force)", x = "Involvement Type", y = "Total Incidents") +
+          theme_minimal() +
+          theme(axis.text.x = element_text(angle = 45, hjust = 1))
+      })
+  
+      race <- renderPlot({
+        ggplot(data, aes(x = "", fill = RACE)) +
+          geom_bar(width = 1) +
+          coord_polar(theta = "y") +
+          labs(title = "Race Distribution", fill = "Race") +
+          theme_minimal() +
+          theme(axis.text.x = element_blank())
+      })
       
-      UOF_render(output, race, sex, involvement, subject_type)
+      sex <- renderPlot({ 
+        ggplot(data, aes(x = "", fill = SEX)) +
+          geom_bar(width = 1) +
+          coord_polar(theta = "y") +
+          labs(title = "Gender Distribution", fill = "Sex") +
+          theme_minimal() +
+          theme(axis.text.x = element_blank())
+      })
       
-      output$UOF_table_1 <- race
-      output$UOF_table_2 <- sex
-      output$UOF_table_3 <- involvement
-      output$UOF_table_4 <- subject_type
+      
+      UOF_render(output, incident_type, involvement, race, sex)
+      
+      output$UOF_table_1 <- incident_type
+      output$UOF_table_2 <- involvement
+      output$UOF_table_3 <- race
+      output$UOF_table_4 <- sex
+      output$UOF_table_1 <- incident_type
+      output$UOF_table_2 <- involvement
+      output$UOF_table_3 <- race
+      output$UOF_table_4 <- sex
     }
   }
   ######################################################################
