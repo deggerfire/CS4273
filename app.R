@@ -35,18 +35,17 @@ ui <- dashboardPage(
       menuItem("Collisions"                                      , tabName = "COL", icon = icon("car-burst"),
         menuSubItem('By Severity'                                , tabName = 'COLl', icon = icon('triangle-exclamation')),
         menuSubItem('By injury'                                  , tabName = 'COL2', icon = icon('user-injured'))),
-      menuItem("Complaints, Inquiries and Use of force"          , tabName = "UOF", icon = icon("gun")),
-        #menuSubItem('Incidents by Type and Disposition'          , tabName = 'UOF1'),
-        #menuSubItem('Subjects by Incidents and Demographics'     , tabName = 'UOF2'),
-        #menuSubItem('Subjects by Allegation and Finding'         , tabName = 'UOF3'),
-        #menuSubItem('Subjects by Resistance and Force'           , tabName = 'UOF4')),
+      menuItem("Complaints, Inquiries and Use of force"          , tabName = "UOF", icon = icon("gun"),
+        menuSubItem('Incidents by Type and Disposition'          , tabName = 'UOF1'),
+        menuSubItem('Subjects by Incidents and Demographics'     , tabName = 'UOF2'),
+        menuSubItem('Subjects by Allegation and Finding'         , tabName = 'UOF3'),
+        menuSubItem('Subjects by Resistance and Force'           , tabName = 'UOF4')),
       menuItem("Contacts"                                        , tabName = "CON", icon = icon("hand")),
-        #menuSubItem('Traffic and Parking Contacts'               , tabName = 'CON1')),
-      menuItem("Offenses"                                        , tabName = "OFF", icon = icon("handcuffs"))
-        #menuSubItem('Case Offenses'                              , tabName = 'OFF1',),
-        #menuSubItem('Case Details'                               , tabName = 'OFF2',),
-        #menuSubItem('Subjects'                                   , tabName = 'OFF3',),
-        #menuSubItem('Arrests'                                    , tabName = 'OFF4',))
+      menuItem("Offenses"                                        , tabName = "OFF", icon = icon("handcuffs"),
+        menuSubItem('Case Offenses'                              , tabName = 'OFF1',),
+        menuSubItem('Case Details'                               , tabName = 'OFF2',),
+        menuSubItem('Subjects'                                   , tabName = 'OFF3',),
+        menuSubItem('Arrests'                                    , tabName = 'OFF4',))
         
     )
   ),
