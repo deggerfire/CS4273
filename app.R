@@ -12,6 +12,8 @@ source("tabs/CFStab.R")
 source("tabs/COLtab.R")
 source("tabs/UOF1tab.R")
 source("tabs/UOF2tab.R")
+source("tabs/UOF3tab.R")
+source("tabs/UOF4tab.R")
 source("tabs/CONtab.R")
 source("tabs/OFFtab.R")
 ui <- dashboardPage(
@@ -58,6 +60,8 @@ ui <- dashboardPage(
       COL_tab(), # Collision Tab
       UOF1_tab(), # 1st Use of force Tab
       UOF2_tab(), # 2nd Use of force Tab
+      UOF3_tab(), # 3rd Use of force Tab
+      UOF4_tab(), # 4th Use of force Tab
       CON_tab(), # Contacts Tab
       OFF_tab()  # Offense Tab
       )
