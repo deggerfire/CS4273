@@ -195,12 +195,15 @@ server <- function(input, output, session) {
       # Step 1: read in the data
       ######################
       data <- read.csv(file("Contacts.csv"))
-      CON_populate_Widgets(session, data$Sex, data$Race, data$Race, data$Race, data$Race)
+      CON_populate_Widgets(session, data$Sex, data$Race, data$Race, data$Sex, data$Race)
       ######################
       # Step 2: Format the data
       ######################
       if(input$CON_Selector_1 != "Unselected"){
         data <- data %>% filter(Sex == input$CON_Selector_1)
+      } 
+      if(input$CON_Selector_4 != "Unselected"){
+        data <- data %>% filter(Sex == input$CON_Selector_4)
       }
       ######################
       # Step 3: Send the formatted data to become a graph
@@ -210,21 +213,31 @@ server <- function(input, output, session) {
       ######################
       # Step 4: Put the graphs on screen
       ######################
-      CON_render(output, Contacts_Sex, Contacts_Race, Contacts_Race, Contacts_Race)
+      CON_render(output, Contacts_Sex, Contacts_Race, Contacts_Race, Contacts_Sex)
     }
     else if(input$sidebar == "OFF"){
       ######################
       # Step 1: read in the data
       ######################
+      data <- read.csv(file("Subjects.csv"))
+      OFF_populate_Widgets(session, data$Sex, data$Race, data$CaseSubjectType, data$CaseSubjectSubType, data$Race)
       ######################
       # Step 2: Format the data
       ######################
+      if(input$OFF_Selector_1 != "Unselected"){
+        data <- data %>% filter(Sex == input$OFF_Selector_1)
+      } 
       ######################
       # Step 3: Send the formatted data to become a graph
       ######################
+      Offenses_Sex   <- outputPieChart (table(data$Sex), label = "Sex")
+      Offenses_Race   <- outputBarPlot (table(data$Race), label = "Race")
+      Offenses_SubjectType <- outputBarPlot (table(data$CaseSubjectType), label = "Subject Type")
+      Offenses_SubjectSubType <- outputBarPlot (table(data$CaseSubjectSubType), label = "Sub-Type")
       ######################
       # Step 4: Put the graphs on screen
       ######################
+      OFF_render(output, Offenses_Sex, Offenses_Race, Offenses_SubjectType, Offenses_SubjectSubType)
     }
     # If block for call for service tab
     
