@@ -10,7 +10,8 @@ library(shinydashboard) # Used for fancy UI stuff
 # Import the tab files
 source("tabs/CFStab.R")
 source("tabs/COLtab.R")
-source("tabs/UOFtab.R")
+source("tabs/UOF1tab.R")
+source("tabs/UOF2tab.R")
 source("tabs/CONtab.R")
 source("tabs/OFFtab.R")
 ui <- dashboardPage(
@@ -55,7 +56,8 @@ ui <- dashboardPage(
     tabItems(
       CFS_tab(), # Calls for service tab
       COL_tab(), # Collision Tab
-      UOF_tab(), # Use of force Tab
+      UOF1_tab(), # 1st Use of force Tab
+      UOF2_tab(), # 2nd Use of force Tab
       CON_tab(), # Contacts Tab
       OFF_tab()  # Offense Tab
       )
