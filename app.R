@@ -3,6 +3,10 @@ library(ggplot2)        # Used for plotting
 library(dplyr)          # Used for data handling
 library(shinydashboard) # Used for fancy UI stuff
 
+# Stuff for running a server
+#options(shiny.host = '10.204.155.94') # IP-address of computer
+#options(shiny.port = 5111) # Port you want to host on
+
 # Import the tab files
 
 # test
@@ -577,8 +581,8 @@ server <- function(input, output, session) {
       ######################
       # Read in the call for service 2022
       data <- read.csv(file("CFS-2022.csv"))
-      # Popultae the widgets in CFS
-      CFS_populate_Widgets(session, input, data)
+      # Populate the widgets in CFS
+      CFS_populate_Widgets(session, data$CallSource, data$PoliceCallStatus, data$PoliceCallPriority, data$City, data$PoliceCallType)
       ######################
       # Step 2: Filter the data
       ######################
@@ -606,6 +610,28 @@ server <- function(input, output, session) {
       # Send the graphs off to the call for service render function to be put on screen
       CFS_render(output, CS_BP, PCS_PC, PCP_BP, City_PC)
       
+    }
+    else if(input$sidebar == "CON"){
+      ######################
+      # Step 1: read in the data
+      ######################
+      data <- read.csv(file("Contacts.csv"))
+      CON_populate_Widgets(session, data$Sex, data$Race, data$Race, data$Race, data$Race)
+      ######################
+      # Step 2: Format the data
+      ######################
+      if(input$CON_Selector_1 != "Unselected"){
+        data <- data %>% filter(Sex == input$CON_Selector_1)
+      }
+      ######################
+      # Step 3: Send the formatted data to become a graph
+      ######################
+      Contacts_Sex   <- outputPieChart (table(data$Sex), label = "Sex")
+      Contacts_Race   <- outputBarPlot (table(data$Race), label = "Race")
+      ######################
+      # Step 4: Put the graphs on screen
+      ######################
+      CON_render(output, Contacts_Sex, Contacts_Race, Contacts_Race, Contacts_Race)
     }
     else if(input$sidebar == "OFF"){
       ######################

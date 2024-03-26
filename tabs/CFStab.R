@@ -3,13 +3,19 @@
 ##             File for the call for service UI                 ##
 ##################################################################
 ##################################################################
-
-# List of the widget id's on the screen. This list does have functionally
+source("tabs/UIHelperFunctions.R")
+# List of the widget id's on the screen in the top bar. This list does have functionally
+# This should help with step 2
+CFS_topBar <- c("CFS_dates", 
+                "CFS_Top_Selector"
+)
+# List of the widget id's on the screen under the graphs. This list does have functionally
 # This should help with step 2
 CFS_selectors <- c("CFS_Source_of_Call_Selector"    , 
                    "CFS_Police_Call_Status_Selector", 
                    "CFS_Police_Call_Prioty_Selector", 
-                   "CFS_City_Selector"
+                   "CFS_City_Selector",
+                   "CFS_Top_Selector"
              )
 
 # Render function for call for service (puts graphs on screen)
@@ -26,6 +32,28 @@ CFS_render <- function(output, plot1, plot2, plot3, plot4){
   output$CFS_table_4 <- plot4
 }
 
+# Boolean to tell if the widgets have been loaded
+CFS_widgetsLoaded <- FALSE
+
+# Sets of the selectors based on the inputted data
+# This function is the setup for the conditions in step 2
+#   session:  this is the session variable passes into the server function
+#     see this line in app.R (use ctrl+f) "server <- function(input, output, session) {"
+#   selector1Data, ..., selectorxData: The data that will be put in the selectors
+#     goes from upper left to lower right order
+CFS_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Graph3_selector, Graph4_selector, Topbar_selector1){
+  # Check in the widgets have already been loaded
+  if(CFS_widgetsLoaded){return()}
+  # Populate the widgets with each of the unique values in the given data
+  Selector_Updater(session, CFS_selectors[1], Graph1_selector, CFS_selectors[1])
+  Selector_Updater(session, CFS_selectors[2], Graph2_selector, CFS_selectors[2])
+  Selector_Updater(session, CFS_selectors[3], Graph3_selector, CFS_selectors[3])
+  Selector_Updater(session, CFS_selectors[4], Graph4_selector, CFS_selectors[4])
+  Selector_Updater(session, CFS_topBar[2], Topbar_selector1, CFS_topBar[2])
+  # Mark that the widgets have been loaded
+  CFS_widgetsLoaded <<- TRUE
+}
+
 ##################################################################
 ##          Everything below this point is UI stuff             ##
 ##    odds are what you are looking for is not down here        ##
@@ -35,61 +63,29 @@ CFS_render <- function(output, plot1, plot2, plot3, plot4){
 CFS_tab <- function(){
   # Makes the object of the entire main area
   tab <- tabItem(tabName = "CFS",
-    # Makes the first graph area
-    tabBox(
-      height = "500px",
-      # Uses functions to make what is in each tab (string is the name of the plotOutput)
-      CFS_Plot("Source of Call"    , "CFS_table_1", CFS_selectors[1]),
-      CFS_Plot("Police Call Status", "CFS_table_2", CFS_selectors[2])
+    # Topbar area
+    fluidRow(box(width = 12, 
+      column(width = 3, dateRangeInput(CFS_topBar[1], label = CFS_topBar[1])),
+      column(width = 2, selectInput(CFS_topBar[2], CFS_topBar[2], "Unselected", selected = 1)),
+      )
     ),
-    # Makes the second graph area
-    tabBox(
-      height = "500px",
-      # Uses functions to make what is in each tab (string is the name of the plotOutput)
-      CFS_Plot("Police Call Prioty", "CFS_table_3", CFS_selectors[3]),
-      CFS_Plot("City"              , "CFS_table_4", CFS_selectors[4])
+    # Main graph area
+    fluidRow(
+      # Makes the first graph area
+      tabBox(
+        width = 6,
+        # Uses functions to make what is in each tab (string is the name of the plotOutput)
+        Plot_Maker("Source of Call"    , "CFS_table_1", CFS_selectors[1]),
+        Plot_Maker("Police Call Status", "CFS_table_2", CFS_selectors[2])
+      ),
+      # Makes the second graph area
+      tabBox(
+        width = 6,
+        # Uses functions to make what is in each tab (string is the name of the plotOutput)
+        Plot_Maker("Police Call Prioty", "CFS_table_3", CFS_selectors[3]),
+        Plot_Maker("City"              , "CFS_table_4", CFS_selectors[4])
+      )
     )
   )
   return(tab)
-}
-
-# Makes the tab for call source barplot
-CFS_Plot <- function(tabName, plotName, widgetName){
-  tab <- tabPanel(tabName, # Tab title
-    plotOutput(plotName),                 # plotOutput name
-    # Graph controls
-    selectInput(widgetName, "Selector", "Unselected", selected = 1))
-  return(tab)
-}
-
-# Boolean to tell if the widgets have been loaded
-CFS_widgetsLoaded <- FALSE
-
-# Sets up the widgets based on whats in the data
-CFS_populate_Widgets <-function(session, input, data){
-  if(CFS_widgetsLoaded){return()}
-  # Selector widget for the source of call
-  updateSelectInput(session, CFS_selectors[1], 
-                    label = "Selector", 
-                    choices = c("Unselected", unique(data$CallSource)), 
-                    selected = "Unselected")
-  
-  # Selector widget for the police call status
-  updateSelectInput(session, CFS_selectors[2], 
-                    label = "Selector", 
-                    choices = c("Unselected", unique(data$PoliceCallStatus)), 
-                    selected = "Unselected")
-
-  # Selector widget for the call priory
-  updateSelectInput(session, CFS_selectors[3], 
-                    label = "Selector", 
-                    choices = c("Unselected", unique(data$PoliceCallPriority)), 
-                    selected = "Unselected")
-
-  # Selector widget for the city
-  updateSelectInput(session, CFS_selectors[4], 
-                    label = "Selector", 
-                    choices = c("Unselected", unique(data$City)), 
-                    selected = "Unselected")
-  CFS_widgetsLoaded <<- TRUE
 }
