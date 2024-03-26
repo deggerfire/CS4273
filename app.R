@@ -51,14 +51,11 @@ ui <- dashboardPage(
       
       menuItem("Contacts"                                        , tabName = "CON", icon = icon("hand")),
       #menuSubItem('Traffic and Parking Contacts'                , tabName = 'CON1')),
-      menuItem("Offenses"                                        , tabName = "OFF", icon = icon("handcuffs")),
-      #menuSubItem('Case Offenses'                               , tabName = 'OFF1',),
-      #menuSubItem('Case Details'                                , tabName = 'OFF2',),
-      #menuSubItem('Subjects'                                    , tabName = 'OFF3',),
-      #menuSubItem('Arrests'                                     , tabName = 'OFF4',))
-      menuItem("Tab1"                                            , tabName = "Tab1"),
-      menuItem("Tab2"                                            , tabName = "Tab2"),
-      menuItem("Tab3"                                            , tabName = "Tab3")
+      menuItem("Offenses"                                        , tabName = "OFF", icon = icon("handcuffs"),
+               menuSubItem('Case Offenses'                       , tabName = 'OFF1', icon = icon("handcuffs")),
+               menuSubItem('Case Details'                        , tabName = 'OFF2', icon = icon("handcuffs")),
+               menuSubItem('Subjects'                            , tabName = 'OFF3', icon = icon("handcuffs")),
+               menuSubItem('Arrests'                             , tabName = 'OFF4', icon = icon("handcuffs")))
       
     )
   ),
