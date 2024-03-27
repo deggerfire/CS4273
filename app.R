@@ -12,11 +12,15 @@ library(shinydashboard) # Used for fancy UI stuff
 # test
 
 source("tabs/CFStab.R")
-source("tabs/COLtab.R")
+source("tabs/COL1tab.R")
+source("tabs/COL2tab.R")
 source("tabs/UOFtab.R")
 source("tabs/CItab.R")
 source("tabs/CONtab.R")
-source("tabs/OFFtab.R")
+source("tabs/OFF1tab.R")
+source("tabs/OFF2tab.R")
+source("tabs/OFF3tab.R")
+source("tabs/OFF4tab.R")
 ui <- dashboardPage(
   ######################################################################
   ######################################################################
@@ -38,7 +42,7 @@ ui <- dashboardPage(
       #             name on the sidebar for user                  var name in code      icon on screen
       menuItem("Calls for Service"                               , tabName = "CFS", icon = icon("phone")),
       menuItem("Collisions"                                      , tabName = "COL", icon = icon("car-burst"),
-               menuSubItem('By Severity'                         , tabName = 'COLl', icon = icon('triangle-exclamation')),
+               menuSubItem('By Severity'                         , tabName = 'COL1', icon = icon('triangle-exclamation')),
                menuSubItem('By injury'                           , tabName = 'COL2', icon = icon('user-injured'))),
       
       menuItem("Use of Force"                                    , tabName = "UOF", icon = icon("gun")),
@@ -64,11 +68,15 @@ ui <- dashboardPage(
   dashboardBody(id = "tabs",
                 tabItems(
                   CFS_tab(), # Calls for service tab
-                  COL_tab(), # Collision Tab
+                  COL1_tab(),# Collision Tab, By Severity
+                  COL2_tab(),# Collision Tab, By injury
                   UOF_tab(), # Use of force Tab
                   CI_tab(),  # Complaints and Inquiries Tab
-                  CON_tab(), # Contacts Tab 
-                  OFF_tab()  # Offense Tab
+                  CON_tab(), # Contacts Tab
+                  OFF1_tab(),# Offense Tab, case offenses
+                  OFF2_tab(),# Offense Tab, case details
+                  OFF3_tab(),# Offense Tab, subjects
+                  OFF4_tab() # Offense Tab, arrests
                 ),
   )
 )
