@@ -8,6 +8,15 @@ Plot_Maker <- function(tabName, plotName, widgetName){
   return(tab)
 }
 
+
+Plot_MakerWOSelect <- function(tabName, plotName){
+  tab <- tabPanel(tabName, # Tab title
+                  plotName,
+                  plotOutput(plotName)) # plotOutput name
+
+  return(tab)
+}
+
 # Updates the selector with its new selection
 Selector_Updater <- function(session, selectorName, data, label = "Selector"){
   updateSelectInput(session, selectorName, 
