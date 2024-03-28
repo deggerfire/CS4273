@@ -97,7 +97,7 @@ server <- function(input, output, session) {
   
   # Renders logo
   output$logo <- renderImage({
-    list(src = "norman_pd_logo.jpeg", height = 100)
+    list(src = "norman_pd_logo.jpeg", height = 50)
   }, deleteFile = FALSE)
   
   ######################################################################
