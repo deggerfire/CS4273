@@ -14,6 +14,8 @@ library(shinydashboard) # Used for fancy UI stuff
 source("tabs/CFStab.R")
 source("tabs/COL1tab.R")
 source("tabs/COL2tab.R")
+source("tabs/COL3tab.R")
+source("tabs/COL4tab.R")
 source("tabs/UOFtab.R")
 source("tabs/CItab.R")
 source("tabs/CONtab.R")
@@ -43,7 +45,9 @@ ui <- dashboardPage(
       menuItem("Calls for Service"                               , tabName = "CFS", icon = icon("phone")),
       menuItem("Collisions"                                      , tabName = "COL", icon = icon("car-burst"),
                menuSubItem('By Severity'                         , tabName = 'COL1', icon = icon('triangle-exclamation')),
-               menuSubItem('By injury'                           , tabName = 'COL2', icon = icon('user-injured'))),
+               menuSubItem('By injury'                           , tabName = 'COL2', icon = icon('user-injured')),
+               menuSubItem('By Location'                           , tabName = 'COL3', icon = icon('location-dot')),
+               menuSubItem('Throughout Year'                           , tabName = 'COL4', icon = icon('calendar-days'))),
       
       menuItem("Use of Force"                                    , tabName = "UOF", icon = icon("gun")),
       #menuSubItem('Subjects by Resistance and Force'            , tabName = 'UOF4')),
@@ -70,6 +74,8 @@ ui <- dashboardPage(
                   CFS_tab(), # Calls for service tab
                   COL1_tab(),# Collision Tab, By Severity
                   COL2_tab(),# Collision Tab, By injury
+                  COL3_tab(),# Collision Tab, By Location
+                  COL4_tab(),# Collision Tab, Throughout Year
                   UOF_tab(), # Use of force Tab
                   CI_tab(),  # Complaints and Inquiries Tab
                   CON_tab(), # Contacts Tab
@@ -152,6 +158,53 @@ server <- function(input, output, session) {
     })
     return(plot)
   }
+  
+  #Functions used for creating the Collision location and throughout year graphs
+
+  #Outputs a line graph given the data, x, y and respected labels
+  outputLineGraph <- function(data, x, y, label = "", xlab = "", ylab = ""){
+    plot <- renderPlot({# Put the plot at plotOutput("Piechart") in the shiny code
+      graph <- ggplot(data,aes(x= x,y,group = 1))+ 
+        geom_line(colour = 'red') +
+        xlab(xlab) + 
+        ylab(ylab) + 
+        ggtitle(label)
+      print(graph)                                                           # Print the graph
+    })
+    return(plot)
+  }
+  
+  #Used to get the number of accidents per week for throughout year
+  getAccidentsPerWeek <- function(data, bool){
+    #Code to get the number of accidents per month
+    
+    #Needs if statement to change where substring starts/ends to compare in for loop
+    if(bool == TRUE){ a = 4; b = 5}
+    else{a = 3; b = 4}
+    
+    week1 = 0
+    week2 = 0
+    week3 = 0
+    week4 = 0
+    week5 = 0
+    for (i in 1:length(data)){
+      x = substr(data[i], a, b)
+      if(x == "1/" | x == "2/" | x == "3/" | x == "4/" | x == "5/" | x == "6/" | x == "7/")
+        week1 = week1 + 1
+      else if(x == "8/" | x == "9/" | x == "10" | x == "11" | x == "12" | x == "13" | x == "14")
+        week2 = week2 + 1
+      else if(x == "15" | x == "16" | x == "17" | x == "18" | x == "19" | x == "20" | x == "21")
+        week3 = week3 + 1
+      else if(x == "22" | x == "23" | x == "24" | x == "25" | x == "26" | x == "27" | x == "28")
+        week4 = week4 + 1
+      else if(x == "29" | x == "30" | x == "31")
+        week5 = week5 + 1
+    }
+    weeks = c(week1, week2, week3, week4, week5)
+    return(weeks)
+  }
+  
+  
   
   ######################################################################
   ######################################################################
@@ -615,6 +668,284 @@ server <- function(input, output, session) {
       # Send the graphs off to the call for service render function to be put on screen
       CFS_render(output, CS_BP, PCS_PC, PCP_BP, City_PC)
       
+    }
+    else if(input$sidebar == "COL3")
+    {
+      ######################
+      # Step 1: read in the data
+      ######################
+      data2 <- read.csv(file("pdicollisionsq-2023.csv"))
+      ######################
+      # Step 2: Format the data
+      ######################
+      
+      #Thirteen streets per dataSet, Each graph is by first letter in street. 
+      streetAB = data2 %>% select(StreetType, StreetName) %>% filter(StreetType == "ST") %>% filter(substr(StreetName, 1, 1) == "A" 
+                                                                                                    | substr(StreetName, 1, 1) == "B")
+      
+      streetCG = data2 %>% select(StreetType, StreetName) %>% filter(StreetType == "ST") %>% filter(substr(StreetName, 1, 1) == "C" 
+                                                                                                    | substr(StreetName, 1, 1) == "D" 
+                                                                                                    | substr(StreetName, 1, 1) == "E" 
+                                                                                                    | substr(StreetName, 1, 1) == "F" 
+                                                                                                    | substr(StreetName, 1, 1) == "G")
+      
+      streetHL = data2 %>% select(StreetType, StreetName) %>% filter(StreetType == "ST") %>% filter(substr(StreetName, 1, 1) == "H"
+                                                                                                    | substr(StreetName, 1, 1) == "I"
+                                                                                                    | substr(StreetName, 1, 1) == "J"
+                                                                                                    | substr(StreetName, 1, 1) == "J"
+                                                                                                    | substr(StreetName, 1, 1) == "K"
+                                                                                                    | substr(StreetName, 1, 1) == "L")
+      
+      
+      streetMZ = data2 %>% select(StreetType, StreetName) %>% filter(StreetType == "ST") %>% filter(substr(StreetName, 1, 1) == "M" 
+                                                                                                    | substr(StreetName, 1, 1) == "N" 
+                                                                                                    | substr(StreetName, 1, 1) == "O"
+                                                                                                    | substr(StreetName, 1, 1) == "P" 
+                                                                                                    | substr(StreetName, 1, 1) == "Q" 
+                                                                                                    | substr(StreetName, 1, 1) == "R"
+                                                                                                    | substr(StreetName, 1, 1) == "S" 
+                                                                                                    | substr(StreetName, 1, 1) == "T" 
+                                                                                                    | substr(StreetName, 1, 1) == "U"
+                                                                                                    | substr(StreetName, 1, 1) == "V" 
+                                                                                                    | substr(StreetName, 1, 1) == "W" 
+                                                                                                    | substr(StreetName, 1, 1) == "X" 
+                                                                                                    | substr(StreetName, 1, 1) == "Y" 
+                                                                                                    | substr(StreetName, 1, 1) == "Z" )
+      
+      #Code to get the Main Street Graph
+      mainStreets = data2 %>% select(StreetType, StreetName) %>% filter(StreetType == "ST") %>% filter(StreetName == "LINDSEY"
+                                                                                                       | StreetName == "BOYD"
+                                                                                                       | StreetName == "ALAMEDA"
+                                                                                                       | StreetName == "GRAY"
+                                                                                                       | StreetName == "MAIN"
+                                                                                                       | StreetName == "ROBINSON")
+      
+      
+      ######################
+      # Step 3: Send the formatted data to become a graph
+      #####################
+      
+      # Graphs for comparing number of accidents on streets through a bar chart
+      SN_BP1 = outputSpecialBarPlot(table(streetAB$StreetName ), label = "Streets A-B")
+      SN_BP2 = outputSpecialBarPlot(table(streetCG$StreetName ), label = "Streets C-G")
+      SN_BP3 = outputSpecialBarPlot(table(streetHL$StreetName ), label = "Streets H-L")
+      SN_BP4 = outputSpecialBarPlot(table(streetMZ$StreetName ), label = "Streets M-Z")
+      
+      # Graphs for comparing number of accidents on streets through a pie chart
+      SN_PC1 = outputPieChart(table(streetAB$StreetName ), label = "Streets A-B")
+      SN_PC2 = outputPieChart(table(streetCG$StreetName ), label = "Streets C-G")
+      SN_PC3 = outputPieChart(table(streetHL$StreetName ), label = "Streets H-L")
+      SN_PC4 = outputPieChart(table(streetMZ$StreetName ), label = "Streets M-Z")
+      
+      
+      MS_BP1 = outputBarPlot(table(mainStreets$StreetName ), label = "Main Street Collisions 2024")
+      MS_PC1 = outputPieChart(table(mainStreets$StreetName ), label = "Main Street Collisions 2024")
+      
+      
+      COL3_render(output, SN_BP1, SN_BP2, SN_BP3, SN_BP4, SN_PC1, SN_PC2, SN_PC3, SN_PC4, MS_BP1, MS_PC1)
+    }
+    else if(input$sidebar == "COL4")
+    {
+      ######################
+      # Step 1: read in the data
+      ######################
+      data2 <- read.csv(file("pdicollisionsq-2023.csv"))
+      ######################
+      # Step 2: Format the data
+      ######################
+      
+      
+      #Code manipulating the data to get number of occurances per year       
+      janCount = 0
+      febCount = 0
+      marCount = 0
+      aprCount = 0
+      mayCount = 0
+      junCount = 0
+      julCount = 0
+      augCount = 0
+      sepCount = 0
+      octCount = 0
+      novCount = 0
+      decCount = 0
+      for (i in 1:length(substr(data2$AccidentDatetime, 1, 2))){
+        x = substr(data2$AccidentDatetime[i], 1, 2)
+        if(x == "1/")
+          janCount = janCount + 1
+        else if(x == "2/")
+          febCount = febCount + 1
+        else if(x == "3/")
+          marCount = marCount + 1
+        else if(x == "4/")
+          aprCount = aprCount + 1
+        else if(x == "5/")
+          mayCount = mayCount + 1
+        else if(x == "6/")
+          junCount = junCount + 1
+        else if(x == "7/")
+          julCount = julCount + 1
+        else if(x == "8/")
+          augCount = augCount + 1
+        else if(x == "9/")
+          sepCount = sepCount + 1
+        else if(x == "10")
+          octCount = octCount + 1
+        else if(x == "11")
+          novCount = novCount + 1
+        else if(x == "12")
+          decCount = decCount + 1
+      }
+      monthNumbers = c(janCount, febCount, marCount, aprCount, mayCount, junCount, julCount, augCount, sepCount, octCount, novCount, decCount)
+      months = factor(c('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'), levels = month.abb)
+      monthData = data.frame(monthNumbers, months)
+      
+      ############################
+      #--------------------------#
+      ############################
+      
+      #Week range used for all graphs showing collisions per month
+      weekRange = c('1st-7th', '8th-14th', '15th-21nd', '22nd-28th', '29th-31st')
+      
+      #Getting January data
+      janMonthData = data2 %>% select(AccidentDatetime) %>% filter(substr(AccidentDatetime, 1, 2) == "1/")
+      janWeekData = janMonthData$AccidentDatetime        #Preparing data to be sent into function
+      janWeekOccurances = getAccidentsPerWeek(janWeekData, FALSE)   #Calls function, returns columns week1-week5snip
+      janWeekData = data.frame(janWeekOccurances, weekRange) #Creating the dataframe to be graphed
+      
+      #Getting February data
+      febMonthData = data2 %>% select(AccidentDatetime) %>% filter(substr(AccidentDatetime, 1, 2) == "2/")
+      febWeekData = febMonthData$AccidentDatetime        #Preparing data to be sent into function
+      febWeekOccurances = getAccidentsPerWeek(febWeekData, FALSE)   #Calls function, returns columns week1-week5
+      febWeekData = data.frame(febWeekOccurances, weekRange) #Creating the dataframe to be graphed
+      
+      #Getting March data
+      marMonthData = data2 %>% select(AccidentDatetime) %>% filter(substr(AccidentDatetime, 1, 2) == "3/")
+      marWeekData = marMonthData$AccidentDatetime        #Preparing data to be sent into function
+      marWeekOccurances = getAccidentsPerWeek(marWeekData, FALSE)   #Calls function, returns columns week1-week5
+      marWeekData = data.frame(marWeekOccurances, weekRange) #Creating the dataframe to be graphed
+      
+      #Getting April data
+      aprMonthData = data2 %>% select(AccidentDatetime) %>% filter(substr(AccidentDatetime, 1, 2) == "4/")
+      aprWeekData = aprMonthData$AccidentDatetime        #Preparing data to be sent into function
+      aprWeekOccurances = getAccidentsPerWeek(aprWeekData, FALSE)   #Calls function, returns columns week1-week5
+      aprWeekData = data.frame(aprWeekOccurances, weekRange) #Creating the dataframe to be graphed
+      
+      #Getting May data
+      mayMonthData = data2 %>% select(AccidentDatetime) %>% filter(substr(AccidentDatetime, 1, 2) == "5/")
+      mayWeekData = mayMonthData$AccidentDatetime        #Preparing data to be sent into function
+      mayWeekOccurances = getAccidentsPerWeek(mayWeekData, FALSE)   #Calls function, returns columns week1-week5
+      mayWeekData = data.frame(mayWeekOccurances, weekRange) #Creating the dataframe to be graphed
+      
+      #Getting June data
+      junMonthData = data2 %>% select(AccidentDatetime) %>% filter(substr(AccidentDatetime, 1, 2) == "6/")
+      junWeekData = junMonthData$AccidentDatetime        #Preparing data to be sent into function
+      junWeekOccurances = getAccidentsPerWeek(junWeekData, FALSE)   #Calls function, returns columns week1-week5
+      junWeekData = data.frame(junWeekOccurances, weekRange) #Creating the dataframe to be graphed
+      
+      #Getting July data
+      julMonthData = data2 %>% select(AccidentDatetime) %>% filter(substr(AccidentDatetime, 1, 2) == "7/")
+      julWeekData = julMonthData$AccidentDatetime        #Preparing data to be sent into function
+      julWeekOccurances = getAccidentsPerWeek(julWeekData, FALSE)   #Calls function, returns columns week1-week5
+      julWeekData = data.frame(julWeekOccurances, weekRange) #Creating the dataframe to be graphed
+      
+      #Getting August data
+      augMonthData = data2 %>% select(AccidentDatetime) %>% filter(substr(AccidentDatetime, 1, 2) == "8/")
+      augWeekData = augMonthData$AccidentDatetime        #Preparing data to be sent into function
+      augWeekOccurances = getAccidentsPerWeek(augWeekData, FALSE)   #Calls function, returns columns week1-week5
+      augWeekData = data.frame(augWeekOccurances, weekRange) #Creating the dataframe to be graphed
+      
+      #Getting September data
+      sepMonthData = data2 %>% select(AccidentDatetime) %>% filter(substr(AccidentDatetime, 1, 2) == "9/")
+      sepWeekData = sepMonthData$AccidentDatetime        #Preparing data to be sent into function
+      sepWeekOccurances = getAccidentsPerWeek(sepWeekData, FALSE)   #Calls function, returns columns week1-week5
+      sepWeekData = data.frame(sepWeekOccurances, weekRange) #Creating the dataframe to be graphed
+      
+      #Getting October data
+      octMonthData = data2 %>% select(AccidentDatetime) %>% filter(substr(AccidentDatetime, 1, 2) == "10")
+      octWeekData = octMonthData$AccidentDatetime        #Preparing data to be sent into function
+      octWeekData
+      octWeekOccurances = getAccidentsPerWeek(octWeekData, TRUE)   #Calls function, returns columns week1-week5
+      octWeekOccurances
+      octWeekData = data.frame(octWeekOccurances, weekRange) #Creating the dataframe to be graphed
+      
+      #Getting November data
+      novMonthData = data2 %>% select(AccidentDatetime) %>% filter(substr(AccidentDatetime, 1, 2) == "11")
+      novWeekData = novMonthData$AccidentDatetime        #Preparing data to be sent into function
+      novWeekOccurances = getAccidentsPerWeek(novWeekData, TRUE)   #Calls function, returns columns week1-week5
+      novWeekData = data.frame(novWeekOccurances, weekRange) #Creating the dataframe to be graphed
+      
+      #Getting December data
+      decMonthData = data2 %>% select(AccidentDatetime) %>% filter(substr(AccidentDatetime, 1, 2) == "12")
+      decWeekData = decMonthData$AccidentDatetime        #Preparing data to be sent into function
+      decWeekOccurances = getAccidentsPerWeek(decWeekData, TRUE)   #Calls function, returns columns week1-week5
+      decWeekData = data.frame(decWeekOccurances, weekRange) #Creating the dataframe to be graphed
+      
+      
+      
+      ######################
+      # Step 3: Send the formatted data to become a graph
+      #####################
+      
+      
+      #Line graph showing the number of crashes over the year
+      collisionYear_LG = outputLineGraph(monthData, monthData$months, monthData$monthNumbers, label = "Number of Crashes over the year", xlab = "Months", ylab = "Number of Crashes")
+      
+      #Line Graphs showing the number of crashes over the months
+      janWeekGraph =outputLineGraph(janWeekData,reorder(janWeekData$weekRange, c(1,2,3,4,5)), 
+                                    janWeekOccurances, label = "Number of Crashes over January", 
+                                    xlab = "Days of the week", ylab = "Number of Crashes")
+      
+      febWeekGraph =outputLineGraph(febWeekData,reorder(febWeekData$weekRange, c(1,2,3,4,5)), 
+                                    febWeekOccurances, label = "Number of Crashes over February", 
+                                    xlab = "Days of the week", ylab = "Number of Crashes")
+      
+      marWeekGraph =outputLineGraph(marWeekData,reorder(marWeekData$weekRange, c(1,2,3,4,5)), 
+                                    marWeekOccurances, label = "Number of Crashes over March", 
+                                    xlab = "Days of the week", ylab = "Number of Crashes")
+      
+      aprWeekGraph =outputLineGraph(aprWeekData,reorder(aprWeekData$weekRange, c(1,2,3,4,5)), 
+                                    aprWeekOccurances, label = "Number of Crashes over April", 
+                                    xlab = "Days of the week", ylab = "Number of Crashes")
+      
+      mayWeekGraph =outputLineGraph(mayWeekData,reorder(mayWeekData$weekRange, c(1,2,3,4,5)), 
+                                    mayWeekOccurances, label = "Number of Crashes over May", 
+                                    xlab = "Days of the week", ylab = "Number of Crashes")
+      
+      junWeekGraph =outputLineGraph(junWeekData,reorder(junWeekData$weekRange, c(1,2,3,4,5)), 
+                                    junWeekOccurances, label = "Number of Crashes over June", 
+                                    xlab = "Days of the week", ylab = "Number of Crashes")
+      
+      julWeekGraph =outputLineGraph(julWeekData,reorder(julWeekData$weekRange, c(1,2,3,4,5)), 
+                                    julWeekOccurances, label = "Number of Crashes over July", 
+                                    xlab = "Days of the week", ylab = "Number of Crashes")
+      
+      augWeekGraph =outputLineGraph(augWeekData,reorder(augWeekData$weekRange, c(1,2,3,4,5)), 
+                                    augWeekOccurances, label = "Number of Crashes over August", 
+                                    xlab = "Days of the week", ylab = "Number of Crashes")
+      
+      sepWeekGraph =outputLineGraph(sepWeekData,reorder(sepWeekData$weekRange, c(1,2,3,4,5)), 
+                                    sepWeekOccurances, label = "Number of Crashes over September", 
+                                    xlab = "Days of the week", ylab = "Number of Crashes")
+      
+      octWeekGraph =outputLineGraph(octWeekData,reorder(octWeekData$weekRange, c(1,2,3,4,5)), 
+                                    octWeekOccurances, label = "Number of Crashes over October", 
+                                    xlab = "Days of the week", ylab = "Number of Crashes")
+      
+      novWeekGraph =outputLineGraph(novWeekData,reorder(novWeekData$weekRange, c(1,2,3,4,5)), 
+                                    novWeekOccurances, label = "Number of Crashes over November", 
+                                    xlab = "Days of the week", ylab = "Number of Crashes")
+      
+      decWeekGraph =outputLineGraph(decWeekData,reorder(decWeekData$weekRange, c(1,2,3,4,5)), 
+                                    decWeekOccurances, label = "Number of Crashes over December", 
+                                    xlab = "Days of the week", ylab = "Number of Crashes")
+      
+      ######################
+      # Step 4: Put the graphs on screen
+      ######################
+      
+      COL4_render(output,janWeekGraph, febWeekGraph, marWeekGraph, aprWeekGraph, mayWeekGraph, junWeekGraph, julWeekGraph,
+                  augWeekGraph, sepWeekGraph, octWeekGraph, novWeekGraph, decWeekGraph, collisionYear_LG)
+    
     }
     else if(input$sidebar == "CON"){
       ######################
