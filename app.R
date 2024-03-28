@@ -79,43 +79,34 @@ server <- function(input, output, session) {
   # This function is for step 3
     # data - the data that is to be rendered, must be tabled
     # label - string for graph labels
-  library(ggplot2)
-  
-  outputBarPlot <- function(data, label = "") {
-    plot <- renderPlot({
-      # Put the plot at plotOutput("Barplot") in the shiny code
-      graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) +
-        geom_bar(stat = "identity", width = 0.8) +
-        labs(x = label, y = "Amount", fill = label) +
-        theme_minimal() +
-        theme(
-          text = element_text(size = 14),
-          axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
-          legend.position = "none"
-        )
-      print(graph)
-    })
+  outputBarPlot <- function(data, label = ""){
+    plot <- renderPlot({# Put the plot at plotOutput("Barplot") in the shiny code
+      graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) # Setup graph data
+      graph = graph + geom_bar(stat = "identity", width = .8)                 # Set up the data as a bar chart
+      graph = graph + xlab(label) + ylab("Amount")                                # Set the x/y labels
+      graph = graph + guides(fill=guide_legend(title = label))                # Set the title of the legend
+      graph = graph + theme(text = element_text(size = 18), axis.text.x = element_text(angle = 15, vjust = 0.5, hjust=1))                   # Set the font size
+      print(graph)                                                            # Print the graph
+      }
+    )
     return(plot)
   }
   
-  outputPieChart <- function(data, label = "") {
-    plot <- renderPlot({
-      # Put the plot at plotOutput("Piechart") in the shiny code
-      graph <- ggplot(data.frame(data), aes(x = "", y = Freq, fill = Var1)) +
-        geom_bar(stat = "identity", width = 1) +
-        labs(fill = label) +
-        theme_void() +
-        theme(
-          text = element_text(size = 14),
-          legend.position = "right"
-        ) +
-        coord_polar("y", start = 0) +
-        scale_fill_brewer(palette = "Set3")
-      print(graph)
+  # Makes a piechart object using the inputted data
+  # This function is for step 3
+    # data - the data that is to be rendered, must be tabled
+    # label - string for graph labels
+  outputPieChart <- function(data, label = ""){
+    plot <- renderPlot({# Put the plot at plotOutput("Piechart") in the shiny code
+      graph <- ggplot(data.frame(data), aes(x = "", y = Freq, fill = Var1))  # Set up graph data
+      graph = graph + geom_bar(stat = "identity", width = 1)                 # Set up the data as a bar chart
+      graph = graph + guides(fill=guide_legend(title = label))               # Set the title of the legend
+      graph = graph + theme_void() + theme(text = element_text(size = 18))   # Remove the background and set the font size
+      graph = graph + coord_polar("y", start = 0)                            # Convert the graph to polar
+      print(graph)                                                           # Print the graph
     })
     return(plot)
   }
-  
   
   ######################################################################
   ######################################################################
