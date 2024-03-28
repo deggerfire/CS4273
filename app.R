@@ -109,70 +109,73 @@ server <- function(input, output, session) {
   # This function is for step 3
   # data - the data that is to be rendered, must be tabled
   # label - string for graph labels
-  outputBarPlot <- function(data, label = ""){
-    plot <- renderPlot({# Put the plot at plotOutput("Barplot") in the shiny code
-      graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) # Setup graph data
-      graph = graph + geom_bar(stat = "identity", width = .8)                 # Set up the data as a bar chart
-      graph = graph + xlab(label) + ylab("Amount")                                # Set the x/y labels
-      graph = graph + guides(fill=guide_legend(title = label))                # Set the title of the legend
-      graph = graph + theme(text = element_text(size = 18), axis.text.x = element_text(angle = 15, vjust = 0.5, hjust=1))                   # Set the font size
-      print(graph)                                                            # Print the graph
-    }
-    )
-    return(plot)
-  }
-  
-  # Makes a special barplot that is intended for data with long, descriptive labels. Legends are removed and a scroll should be added. 
-  outputSpecialBarPlot <- function(data, label = ""){
-    plot <- renderPlot({# Put the plot at plotOutput("Barplot") in the shiny code
-      graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) # Setup graph data
-      graph = graph + geom_bar(stat = "identity", width = .8, show.legend = FALSE)                 # Set up the data as a bar chart
-      graph = graph + xlab(label) + ylab("Amount")                                # Set the x/y labels
-      graph = graph + guides(fill=guide_legend(title = label))                # Set the title of the legend
-      graph = graph + theme(axis.text.x = element_text(angle = -45, vjust = 1, hjust = 0))                  # Set the font size
-      print(graph)                                                            # Print the graph
-    }
-    )
-    return(plot)
-  }
-  
-  # Makes a piechart object using the inputted data
-  # This function is for step 3
-  # data - the data that is to be rendered, must be tabled
-  # label - string for graph labels
-  outputPieChart <- function(data, label = ""){
-    
-    # Calculates percentage
-    percent <- (data / sum(data)) * 100
-    percent <- round(percent, digits = 2)
-    
-    # Renders the splot
-    plot <- renderPlot({                                                     # Put the plot at plotOutput("Piechart") in the shiny code
-      graph <- ggplot(data.frame(data), aes(x = "", y = Freq, fill = Var1))  # Set up graph data
-      graph = graph + geom_bar(stat = "identity", width = 1)                 # Set up the data as a bar chart
-      graph = graph + guides(fill=guide_legend(title = label))               # Set the title of the legend
-      graph = graph + theme_void() + theme(text = element_text(size = 18))   # Remove the background and set the font size
-      graph = graph + coord_polar("y", start = 0)                            # Convert the graph to polar
-      graph = graph + geom_text(aes(label = percent), size = 6.5, position = position_dodge(width = 1)) # Adds the percentages to the pie chart
-      print(graph)                                                           # Print the graph
+  outputBarPlot <- function(data, label = "") {
+    plot <- renderPlot({
+      # Put the plot at plotOutput("Barplot") in the shiny code
+      graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) +
+        geom_bar(stat = "identity", width = 0.8) +
+        labs(x = label, y = "Amount", fill = label) +
+        theme_minimal() +
+        theme(
+          text = element_text(size = 14),
+          axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
+          legend.position = "none"
+        )
+      print(graph)
     })
     return(plot)
   }
   
-  #Functions used for creating the Collision location and throughout year graphs
-
-  #Outputs a line graph given the data, x, y and respected labels
-  outputLineGraph <- function(data, x, y, label = "", xlab = "", ylab = ""){
-    plot <- renderPlot({# Put the plot at plotOutput("Piechart") in the shiny code
-      graph <- ggplot(data,aes(x= x,y,group = 1))+ 
+  outputSpecialBarPlot <- function(data, label = "") {
+    plot <- renderPlot({
+      # Put the plot at plotOutput("Barplot") in the shiny code
+      graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) +
+        geom_bar(stat = "identity", width = 0.8, show.legend = FALSE) +
+        labs(x = label, y = "Amount", fill = label) +
+        theme_minimal() +
+        theme(
+          axis.text.x = element_text(angle = -45, vjust = 1, hjust = 0),
+          text = element_text(size = 14)
+        )
+      print(graph)
+    })
+    return(plot)
+  }
+  
+  outputPieChart <- function(data, label = "") {
+    plot <- renderPlot({
+      # Put the plot at plotOutput("Piechart") in the shiny code
+      graph <- ggplot(data.frame(data), aes(x = "", y = Freq, fill = Var1)) +
+        geom_bar(stat = "identity", width = 1) +
+        labs(fill = label) +
+        theme_void() +
+        theme(
+          text = element_text(size = 14),
+          legend.position = "right"
+        ) +
+        coord_polar("y", start = 0) +
+        scale_fill_brewer(palette = "Set3")
+      print(graph)
+    })
+    return(plot)
+  }
+  
+  outputLineGraph <- function(data, x, y, label = "", xlab = "", ylab = "") {
+    plot <- renderPlot({
+      # Put the plot at plotOutput("Piechart") in the shiny code
+      graph <- ggplot(data, aes_string(x = x, y = y, group = 1)) +
         geom_line(colour = 'red') +
-        xlab(xlab) + 
-        ylab(ylab) + 
-        ggtitle(label)
-      print(graph)                                                           # Print the graph
+        xlab(xlab) +
+        ylab(ylab) +
+        ggtitle(label) +
+        theme(
+          text = element_text(size = 14)
+        )
+      print(graph)
     })
     return(plot)
   }
+  
   
   #Used to get the number of accidents per week for throughout year
   getAccidentsPerWeek <- function(data, bool){
