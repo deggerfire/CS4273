@@ -4,8 +4,8 @@ library(dplyr)          # Used for data handling
 library(shinydashboard) # Used for fancy UI stuff
 
 # Stuff for running a server
-#options(shiny.host = '10.204.155.94') # IP-address of computer
-#options(shiny.port = 5111) # Port you want to host on
+options(shiny.host = '0.0.0.0') # IP-address of computer
+options(shiny.port = 5111) # Port you want to host on
 
 # Import the tab files
 
