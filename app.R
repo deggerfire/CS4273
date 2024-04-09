@@ -972,7 +972,7 @@ server <- function(input, output, session) {
       ######################
       CON_render(output, Contacts_Sex, Contacts_Race, Contacts_Race, Contacts_Race)
     }
-    else if(input$sidebar == "OFF"){
+    else if(input$sidebar == "OFF1"){
       ######################
       # Step 1: read in the data
       ######################
@@ -987,7 +987,125 @@ server <- function(input, output, session) {
       ######################
     }
     # If block for call for service tab
-    
+    else if(input$sidebar == "OFF2") {
+      ######################
+      # Step 1: read in the data
+      ######################
+      ######################
+      # Step 2: Format the data
+      ######################
+      ######################
+      # Step 3: Send the formatted data to become a graph
+      ######################
+      ######################
+      # Step 4: Put the graphs on screen
+      ######################
+    }
+    else if(input$sidebar == "OFF3") {
+      ######################
+      # Step 1: read in the data
+      ######################
+      ######################
+      # Step 2: Format the data
+      ######################
+      ######################
+      # Step 3: Send the formatted data to become a graph
+      ######################
+      ######################
+      # Step 4: Put the graphs on screen
+      ######################
+    }
+    ## this is for arrests
+    else if(input$sidebar == "OFF4") {
+      ######################
+      # Step 1: read in the data
+      ######################
+      data <- read.csv(file("Arrests_2022.csv"))
+      # Populate widgets for OFF4 
+      OFF4_populate_Widgets(session, data$Race, data$Sex, data$ArrestType, data$Description, data$Race)
+      ######################
+      # Step 2: Format the data
+      ######################
+      if(input$OFF4_Selector_1 != "Unselected"){
+        data <- data %>% filter(Race == input$OFF4_Selector_1)
+      }
+      ######################
+      # Step 3: Send the formatted data to become a graph
+      ######################
+      # Makes the graph for source of call
+      Race_BP   <- outputBarPlot (table(data$Race        ), label = "Arrestee Race")
+      # Makes the graph for police call status
+      Sex_PC  <- outputPieChart(table(data$Sex  ), label = "Arrestee Sex")
+      # Makes the graph for police call priority
+      ArrType_BP  <- outputBarPlot (table(data$ArrestType), label = "Arrest Type")
+      # Makes the graph for city
+      # Calculate frequency of each description
+      desc_freq <- data %>%
+        group_by(Description) %>%
+        summarise(Count = n()) %>%
+        arrange(desc(Count)) %>%
+        top_n(8, Count) %>%
+        ungroup() %>%
+        mutate(Description = factor(Description, levels = Description))
+      
+      # Filter data to only include top 8 descriptions
+      data_filtered <- data %>%
+        filter(Description %in% desc_freq$Description)
+      
+      # Makes the graph for city with top 8 descriptions
+      Desc_BP <- outputBarPlot(table(data_filtered$Description), label = "Description")
+      # Desc_BP <- outputBarPlot(table(data$Description              ), label = "Description")
+      
+      ######################
+      # Step 4: Put the graphs on screen
+      ######################
+      OFF4_render(output, Race_BP, Sex_PC, ArrType_BP, Desc_BP)
+    }
+    else if(input$sidebar == "COL1") {
+      ######################
+      # Step 1: read in the data
+      ######################
+      data <- read.csv(file("By_Severity_2022.csv"))
+      # Populate widgets for OFF4 
+      OFF4_populate_Widgets(session, data$Race, data$Sex, data$ArrestType, data$Description, data$Race)
+      ######################
+      # Step 2: Format the data
+      ######################
+      if(input$OFF4_Selector_1 != "Unselected"){
+        data <- data %>% filter(Race == input$OFF4_Selector_1)
+      }
+      ######################
+      # Step 3: Send the formatted data to become a graph
+      ######################
+      # Makes the graph for source of call
+      Race_BP   <- outputBarPlot (table(data$Race        ), label = "Arrestee Race")
+      # Makes the graph for police call status
+      Sex_PC  <- outputPieChart(table(data$Sex  ), label = "Arrestee Sex")
+      # Makes the graph for police call priority
+      ArrType_BP  <- outputBarPlot (table(data$ArrestType), label = "Arrest Type")
+      # Makes the graph for city
+      # Calculate frequency of each description
+      desc_freq <- data %>%
+        group_by(Description) %>%
+        summarise(Count = n()) %>%
+        arrange(desc(Count)) %>%
+        top_n(8, Count) %>%
+        ungroup() %>%
+        mutate(Description = factor(Description, levels = Description))
+      
+      # Filter data to only include top 8 descriptions
+      data_filtered <- data %>%
+        filter(Description %in% desc_freq$Description)
+      
+      # Makes the graph for city with top 8 descriptions
+      Desc_BP <- outputBarPlot(table(data_filtered$Description), label = "Description")
+      # Desc_BP <- outputBarPlot(table(data$Description              ), label = "Description")
+      
+      ######################
+      # Step 4: Put the graphs on screen
+      ######################
+      OFF4_render(output, Race_BP, Sex_PC, ArrType_BP, Desc_BP)
+    }
   }
 }
 
