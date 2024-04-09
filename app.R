@@ -652,6 +652,10 @@ server <- function(input, output, session) {
       if(input$CFS_Source_of_Call_Selector != "Unselected"){
         data <- data %>% filter(CallSource == input$CFS_Source_of_Call_Selector)
       }
+      if(input$CFS_Police_Call_Status_Selector != "Unselected"){
+        data <- data %>% filter(PoliceCallStatus == input$CFS_Police_Call_Status_Selector)
+      }
+      
       
       ######################
       # Step 3: Send the formatted data to become a graph
