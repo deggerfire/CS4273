@@ -976,16 +976,55 @@ server <- function(input, output, session) {
       ######################
       # Step 1: read in the data
       ######################
+      data <- read.csv(file("CaseOffenses_2023.csv"))
+      OFF1_populate_Widgets(session, data$Counts, data$Counts, data$IBRCrimeCode, data$Counts, data$Counts)
+      
       ######################
       # Step 2: Format the data
       ######################
+      if(input$OFF1_Selector_1 != "Unselected"){
+        data <- data %>% filter(Counts == input$OFF1_Selector_1)
+      }
+      
+      # For the Counts pie chart, find the most frequent Counts
+      top_Counts <- data %>%
+        group_by(Counts) %>%
+        summarise(Frequency = n()) %>%
+        arrange(desc(Frequency)) %>%
+        slice_head(n = 6) %>%
+        pull(Counts) # Extract the Counts values for filtering
+      
+      # Filter the original dataset to keep only the rows with the top 5 most frequent Counts
+      data_filtered_for_top_Counts <- data %>%
+        filter(Counts %in% top_Counts)
+      
+      # For the IBR Crime Code pie chart, find the top 5 most frequent IBR Crime Codes
+      top_IBRCrimeCodes <- data %>%
+        group_by(IBRCrimeCode) %>%
+        summarise(Frequency = n()) %>%
+        arrange(desc(Frequency)) %>%
+        slice_head(n = 5) %>%
+        pull(IBRCrimeCode) # Extract just the IBR Crime Code values for filtering
+      
+      # Filter the original dataset for the top 5 IBR Crime Codes
+      data_filtered_for_top_IBRCrimeCode <- data %>%
+        filter(IBRCrimeCode %in% top_IBRCrimeCodes)
+      
       ######################
       # Step 3: Send the formatted data to become a graph
       ######################
+      # Generate the pie charts using the specifically prepared data
+      Offenses_Counts <- outputPieChart(table(data_filtered_for_top_Counts$Counts), label = "Counts")
+      
+      Offenses_IBRCrimeCode <- outputPieChart(table(data_filtered_for_top_IBRCrimeCode$IBRCrimeCode), label = "IBR Crime Code")
+      
       ######################
       # Step 4: Put the graphs on screen
       ######################
+      OFF1_render(output, Offenses_Counts, Offenses_Counts, Offenses_IBRCrimeCode, Offenses_Counts)
     }
+    
+    
     # If block for call for service tab
     else if(input$sidebar == "OFF2") {
       ######################
@@ -1001,19 +1040,29 @@ server <- function(input, output, session) {
       # Step 4: Put the graphs on screen
       ######################
     }
-    else if(input$sidebar == "OFF3") {
+    else if(input$sidebar == "OFF3"){
       ######################
       # Step 1: read in the data
       ######################
+      data <- read.csv(file("Subjects_2023.csv"))
+      OFF3_populate_Widgets(session, data$Sex, data$Race, data$CaseSubjectType, data$CaseSubjectSubType, data$Race)
       ######################
       # Step 2: Format the data
       ######################
+      if(input$OFF3_Selector_1 != "Unselected"){
+        data <- data %>% filter(Sex == input$OFF3_Selector_1)
+      } 
       ######################
       # Step 3: Send the formatted data to become a graph
       ######################
+      Offenses_Sex   <- outputPieChart (table(data$Sex), label = "Sex")
+      Offenses_Race   <- outputBarPlot (table(data$Race), label = "Race")
+      Offenses_SubjectType <- outputBarPlot (table(data$CaseSubjectType), label = "Subject Type")
+      Offenses_SubjectSubType <- outputBarPlot (table(data$CaseSubjectSubType), label = "Sub-Type")
       ######################
       # Step 4: Put the graphs on screen
       ######################
+      OFF3_render(output, Offenses_Sex, Offenses_Race, Offenses_SubjectType, Offenses_SubjectSubType)
     }
     ## this is for arrests
     else if(input$sidebar == "OFF4") {
