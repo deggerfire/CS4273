@@ -1116,44 +1116,44 @@ server <- function(input, output, session) {
       ######################
       data <- read.csv(file("By_Severity_2022.csv"))
       # Populate widgets for OFF4 
-      OFF4_populate_Widgets(session, data$Race, data$Sex, data$ArrestType, data$Description, data$Race)
+      COL1_populate_Widgets(session, data$UnitType, data$DriverPedCondition, data$ChemicalTest, data$ContributingFactors, data$UnitType)
       ######################
       # Step 2: Format the data
       ######################
-      if(input$OFF4_Selector_1 != "Unselected"){
-        data <- data %>% filter(Race == input$OFF4_Selector_1)
+      if(input$COL1_Selector_1 != "Unselected"){
+        data <- data %>% filter(UnitType == input$COL1_Selector_1)
       }
       ######################
       # Step 3: Send the formatted data to become a graph
       ######################
       # Makes the graph for source of call
-      Race_BP   <- outputBarPlot (table(data$Race        ), label = "Arrestee Race")
+      UnType_PC   <- outputPieChart (table(data$UnitType        ), label = "Unit Type")
       # Makes the graph for police call status
-      Sex_PC  <- outputPieChart(table(data$Sex  ), label = "Arrestee Sex")
+      ChemTest_PC  <- outputPieChart(table(data$ChemicalTest  ), label = "Chemical Test")
       # Makes the graph for police call priority
-      ArrType_BP  <- outputBarPlot (table(data$ArrestType), label = "Arrest Type")
+      DPC_BP  <- outputBarPlot (table(data$DriverPedCondition), label = "Driver Condition")
       # Makes the graph for city
-      # Calculate frequency of each description
-      desc_freq <- data %>%
-        group_by(Description) %>%
+
+      CF_freq <- data %>%
+        group_by(ContributingFactors) %>%
         summarise(Count = n()) %>%
         arrange(desc(Count)) %>%
         top_n(8, Count) %>%
         ungroup() %>%
-        mutate(Description = factor(Description, levels = Description))
-      
+        mutate(ContributingFactors = factor(ContributingFactors, levels = ContributingFactors))
+
       # Filter data to only include top 8 descriptions
       data_filtered <- data %>%
-        filter(Description %in% desc_freq$Description)
-      
+        filter(ContributingFactors %in% CF_freq$ContributingFactors)
+
       # Makes the graph for city with top 8 descriptions
-      Desc_BP <- outputBarPlot(table(data_filtered$Description), label = "Description")
+      CF_BP <- outputBarPlot(table(data_filtered$ContributingFactors), label = "Contributing Factors")
       # Desc_BP <- outputBarPlot(table(data$Description              ), label = "Description")
       
       ######################
       # Step 4: Put the graphs on screen
       ######################
-      OFF4_render(output, Race_BP, Sex_PC, ArrType_BP, Desc_BP)
+      COL1_render(output, UnType_PC, DPC_BP, ChemTest_PC, CF_BP)
     }
   }
 }

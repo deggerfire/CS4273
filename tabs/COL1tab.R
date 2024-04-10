@@ -74,15 +74,15 @@ COL1_tab <- function(){
       tabBox(
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("TAB 1", "COL1_table_1", COL1_selectors[1]),
-        Plot_Maker("TAB 2", "COL1_table_2", COL1_selectors[2])
+        Plot_Maker("Unit Type", "COL1_table_1", COL1_selectors[1]),
+        Plot_Maker("Driver Ped Condition", "COL1_table_2", COL1_selectors[2])
       ),
       # Makes the second graph area
       tabBox(
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("TAB 3", "COL1_table_3", COL1_selectors[3]),
-        Plot_Maker("TAB 4", "COL1_table_4", COL1_selectors[4])
+        Plot_Maker("Chem Test", "COL1_table_3", COL1_selectors[3]),
+        Plot_Maker("Contr. Factors", "COL1_table_4", COL1_selectors[4])
       )
     )
   )
