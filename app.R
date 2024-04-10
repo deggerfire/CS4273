@@ -143,6 +143,11 @@ server <- function(input, output, session) {
   }
   
   outputPieChart <- function(data, label = "") {
+    
+    # Calculates percentages
+    percent <- (data/sum(data))*100
+    percent <- round(percent, digits=2)
+    
     plot <- renderPlot({
       # Put the plot at plotOutput("Piechart") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = "", y = Freq, fill = Var1)) +
@@ -154,7 +159,7 @@ server <- function(input, output, session) {
           legend.position = "right"
         ) +
         coord_polar("y", start = 0) +
-        scale_fill_brewer(palette = "Set3")
+        scale_fill_brewer(palette = "Set3", labels=paste(data.frame(data)$Var1, " (", percent, "%)", sep=""))
       print(graph)
     })
     return(plot)
