@@ -35,7 +35,7 @@ ui <- dashboardPage(
   dashboardHeader(title='Norman PD', titleWidth = 275,
                   tags$li(class = "dropdown", imageOutput("logo", height = 50))),
   
-  # Left sidebar, used to to get to major catogories
+  # Left sidebar, used to to get to major categories
   dashboardSidebar(
     width = 275,
     sidebarMenu(
@@ -49,20 +49,20 @@ ui <- dashboardPage(
                menuSubItem('By Location'                           , tabName = 'COL3', icon = icon('location-dot')),
                menuSubItem('Throughout Year'                           , tabName = 'COL4', icon = icon('calendar-days'))),
       
-      menuItem("Use of Force"                                    , tabName = "UOF", icon = icon("gun")),
+      menuItem("Use of Force"                                    , tabName = "UOF", icon = icon("hand-fist")),
       #menuSubItem('Subjects by Resistance and Force'            , tabName = 'UOF4')),
       #menuSubItem('Subjects by Incidents and Demographics'      , tabName = 'UOF5')),
-      menuItem("Complaints and Inquiries"                        , tabName = "CI", icon = icon("gun")),
+      menuItem("Complaints and Inquiries"                        , tabName = "CI", icon = icon("bullhorn")),
       #menuSubItem('Incidents by Type and Disposition'           , tabName = 'CI1'),
       #menuSubItem('Subjects by Incidents and Demographics'      , tabName = 'CI2'),
       #menuSubItem('Subjects by Allegation and Finding'          , tabName = 'CI3'),
       
-      menuItem("Contacts"                                        , tabName = "CON", icon = icon("hand")),
+      menuItem("Contacts"                                        , tabName = "CON", icon = icon("people-arrows")),
       #menuSubItem('Traffic and Parking Contacts'                , tabName = 'CON1')),
-      menuItem("Offenses"                                        , tabName = "OFF", icon = icon("handcuffs"),
-               menuSubItem('Case Offenses'                       , tabName = 'OFF1', icon = icon("handcuffs")),
-               menuSubItem('Case Details'                        , tabName = 'OFF2', icon = icon("handcuffs")),
-               menuSubItem('Subjects'                            , tabName = 'OFF3', icon = icon("handcuffs")),
+      menuItem("Offenses"                                        , tabName = "OFF", icon = icon("gavel"),
+               menuSubItem('Case Offenses'                       , tabName = 'OFF1', icon = icon("bell")),
+               menuSubItem('Case Details'                        , tabName = 'OFF2', icon = icon("circle-info")),
+               menuSubItem('Subjects'                            , tabName = 'OFF3', icon = icon("circle-user")),
                menuSubItem('Arrests'                             , tabName = 'OFF4', icon = icon("handcuffs")))
       
     )
