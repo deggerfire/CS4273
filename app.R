@@ -672,6 +672,28 @@ server <- function(input, output, session) {
       CFS_render(output, CS_BP, PCS_PC, PCP_BP, City_PC)
       
     }
+    else if(input$sidebar == "COL2")
+    {
+      ######################
+      # Step 1: read in the data
+      ######################
+      data1 <- read.csv(file("pdicollisionsinjuriesq-2023.csv"))
+      ######################
+      # Step 2: Format the data
+      ######################
+      
+      desc <- outputPieChart(table(data1$Description), label = "Outcome")
+      severity <- outputBarPlot(table(data1$Sev_Num), label = "Severity Number")
+  
+     
+      
+      ######################
+      # Step 3: Send the formatted data to become a graph
+      #####################
+      #COL2_render(output, desc, desc, severity, severity)
+      COL2_render(output, desc, desc, severity, severity)
+      
+    }
     else if(input$sidebar == "COL3")
     {
       ######################
@@ -1030,15 +1052,25 @@ server <- function(input, output, session) {
       ######################
       # Step 1: read in the data
       ######################
+      data <- read.csv(file("Subjects_2023.csv"))
+      
       ######################
       # Step 2: Format the data
       ######################
+      
+      CaseSubjectSubType <- outputPieChart(table(data$CaseSubjectSubType), label = "Case Subject SubType")
+      CaseSubjectType <- outputBarPlot(table(data$CaseSubjectType), label = "Case Subject Type")
+      
       ######################
       # Step 3: Send the formatted data to become a graph
       ######################
       ######################
       # Step 4: Put the graphs on screen
       ######################
+      
+      OFF2_render(output, CaseSubjectSubType, CaseSubjectSubType, CaseSubjectType, CaseSubjectType)
+      
+      
     }
     else if(input$sidebar == "OFF3"){
       ######################
