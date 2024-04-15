@@ -84,6 +84,7 @@ ui <- dashboardPage(
                   OFF3_tab(),# Offense Tab, subjects
                   OFF4_tab() # Offense Tab, arrests
                 ),
+                error = div("An error occurred while rendering the tab. Please try again later.")
   )
 )
 
@@ -114,6 +115,7 @@ server <- function(input, output, session) {
       # Put the plot at plotOutput("Barplot") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) +
         geom_bar(stat = "identity", width = 0.8) +
+        geom_text(aes(label = Freq), vjust = -0.5, size = 4) +  # Add numbers to bars
         labs(x = label, y = "Amount", fill = label) +
         theme_minimal() +
         theme(
@@ -131,6 +133,7 @@ server <- function(input, output, session) {
       # Put the plot at plotOutput("Barplot") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) +
         geom_bar(stat = "identity", width = 0.8, show.legend = FALSE) +
+        geom_text(aes(label = Freq), vjust = -0.5, size = 4) +  # Add numbers to bars
         labs(x = label, y = "Amount", fill = label) +
         theme_minimal() +
         theme(
@@ -147,6 +150,7 @@ server <- function(input, output, session) {
       # Put the plot at plotOutput("Piechart") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = "", y = Freq, fill = Var1)) +
         geom_bar(stat = "identity", width = 1) +
+        geom_text(aes(label = paste0(round(Freq/sum(Freq)*100), "%")), position = position_stack(vjust = 0.5), size = 4, check_overlap = TRUE) +  # Add percentages to pie chart
         labs(fill = label) +
         theme_void() +
         theme(
@@ -175,6 +179,7 @@ server <- function(input, output, session) {
     })
     return(plot)
   }
+  
   
   
   #Used to get the number of accidents per week for throughout year
