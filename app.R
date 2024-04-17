@@ -113,16 +113,21 @@ server <- function(input, output, session) {
   outputBarPlot <- function(data, label = "") {
     plot <- renderPlot({
       # Put the plot at plotOutput("Barplot") in the shiny code
-      graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) +
-        geom_bar(stat = "identity", width = 0.8) +
-        geom_text(aes(label = Freq), vjust = -0.5, size = 4) +  # Add numbers to bars
-        labs(x = label, y = "Amount", fill = label) +
-        theme_minimal() +
-        theme(
-          text = element_text(size = 14),
-          axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
-          legend.position = "none"
-        )
+      if (nrow(data.frame(data)) == 0) {
+        graph <- ggplot(data.frame(data))
+      }
+      else {
+        graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) +
+          geom_bar(stat = "identity", width = 0.8) +
+          geom_text(aes(label = Freq), vjust = -0.5, size = 4) +  # Add numbers to bars
+          labs(x = label, y = "Amount", fill = label) +
+          theme_minimal() +
+          theme(
+            text = element_text(size = 14),
+            axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
+            legend.position = "none"
+          )
+      }
       print(graph)
     })
     return(plot)
@@ -131,15 +136,20 @@ server <- function(input, output, session) {
   outputSpecialBarPlot <- function(data, label = "") {
     plot <- renderPlot({
       # Put the plot at plotOutput("Barplot") in the shiny code
-      graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) +
-        geom_bar(stat = "identity", width = 0.8, show.legend = FALSE) +
-        geom_text(aes(label = Freq), vjust = -0.5, size = 4) +  # Add numbers to bars
-        labs(x = label, y = "Amount", fill = label) +
-        theme_minimal() +
-        theme(
-          axis.text.x = element_text(angle = -45, vjust = 1, hjust = 0),
-          text = element_text(size = 14)
-        )
+      if (nrow(data.frame(data)) == 0) {
+        graph <- ggplot(data.frame(data))
+      }
+      else {
+        graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) +
+          geom_bar(stat = "identity", width = 0.8, show.legend = FALSE) +
+          geom_text(aes(label = Freq), vjust = -0.5, size = 4) +  # Add numbers to bars
+          labs(x = label, y = "Amount", fill = label) +
+          theme_minimal() +
+          theme(
+            axis.text.x = element_text(angle = -45, vjust = 1, hjust = 0),
+            text = element_text(size = 14)
+          )
+      }
       print(graph)
     })
     return(plot)
@@ -147,23 +157,27 @@ server <- function(input, output, session) {
   
   outputPieChart <- function(data, label = "") {
     
-    # Calculates percentages
-    percent <- (data/sum(data))*100
-    percent <- round(percent, digits=2)
-    
     plot <- renderPlot({
       # Put the plot at plotOutput("Piechart") in the shiny code
-      graph <- ggplot(data.frame(data), aes(x = "", y = Freq, fill = Var1)) +
-        geom_bar(stat = "identity", width = 1) +
-        geom_text(aes(label = paste0(round(Freq/sum(Freq)*100), "%")), position = position_stack(vjust = 0.5), size = 4, check_overlap = TRUE) +  # Add percentages to pie chart
-        labs(fill = label) +
-        theme_void() +
-        theme(
-          text = element_text(size = 14),
-          legend.position = "right"
-        ) +
-        coord_polar("y", start = 0) +
-        scale_fill_brewer(palette = "Set3", labels=paste(data.frame(data)$Var1, " (", percent, "%)", sep=""))
+      if (nrow(data.frame(data)) == 0) {
+        graph <- ggplot(data.frame(data))
+      }
+      else {
+        # Calculates percentages
+        percent <- (data/sum(data))*100
+        percent <- round(percent, digits=2)
+        graph <- ggplot(data.frame(data), aes(x = "", y = Freq, fill = Var1)) +
+          geom_bar(stat = "identity", width = 1) +
+          geom_text(aes(label = paste0(round(Freq/sum(Freq)*100), "%")), position = position_stack(vjust = 0.5), size = 4, check_overlap = TRUE) +  # Add percentages to pie chart
+          labs(fill = label) +
+          theme_void() +
+          theme(
+            text = element_text(size = 14),
+            legend.position = "right"
+          ) +
+          coord_polar("y", start = 0) +
+          scale_fill_brewer(palette = "Set3", labels=paste(data.frame(data)$Var1, " (", percent, "%)", sep=""))
+      }
       print(graph)
     })
     return(plot)
@@ -172,14 +186,19 @@ server <- function(input, output, session) {
   outputLineGraph <- function(data, x, y, label = "", xlab = "", ylab = "") {
     plot <- renderPlot({
       # Put the plot at plotOutput("Piechart") in the shiny code
-      graph <- ggplot(data, aes_string(x = x, y = y, group = 1)) +
-        geom_line(colour = 'red') +
-        xlab(xlab) +
-        ylab(ylab) +
-        ggtitle(label) +
-        theme(
-          text = element_text(size = 14)
-        )
+      if (nrow(data.frame(data)) == 0) {
+        graph <- ggplot(data.frame(data))
+      }
+      else {
+        graph <- ggplot(data, aes_string(x = x, y = y, group = 1)) +
+          geom_line(colour = 'red') +
+          xlab(xlab) +
+          ylab(ylab) +
+          ggtitle(label) +
+          theme(
+            text = element_text(size = 14)
+          )
+      }
       print(graph)
     })
     return(plot)
