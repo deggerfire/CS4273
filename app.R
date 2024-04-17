@@ -35,7 +35,7 @@ ui <- dashboardPage(
   dashboardHeader(title='Norman PD', titleWidth = 275,
                   tags$li(class = "dropdown", imageOutput("logo", height = 50))),
   
-  # Left sidebar, used to to get to major catogories
+  # Left sidebar, used to to get to major categories
   dashboardSidebar(
     width = 275,
     sidebarMenu(
@@ -49,20 +49,20 @@ ui <- dashboardPage(
                menuSubItem('By Location'                           , tabName = 'COL3', icon = icon('location-dot')),
                menuSubItem('Throughout Year'                           , tabName = 'COL4', icon = icon('calendar-days'))),
       
-      menuItem("Use of Force"                                    , tabName = "UOF", icon = icon("gun")),
+      menuItem("Use of Force"                                    , tabName = "UOF", icon = icon("hand-fist")),
       #menuSubItem('Subjects by Resistance and Force'            , tabName = 'UOF4')),
       #menuSubItem('Subjects by Incidents and Demographics'      , tabName = 'UOF5')),
-      menuItem("Complaints and Inquiries"                        , tabName = "CI", icon = icon("gun")),
+      menuItem("Complaints and Inquiries"                        , tabName = "CI", icon = icon("bullhorn")),
       #menuSubItem('Incidents by Type and Disposition'           , tabName = 'CI1'),
       #menuSubItem('Subjects by Incidents and Demographics'      , tabName = 'CI2'),
       #menuSubItem('Subjects by Allegation and Finding'          , tabName = 'CI3'),
       
-      menuItem("Contacts"                                        , tabName = "CON", icon = icon("hand")),
+      menuItem("Contacts"                                        , tabName = "CON", icon = icon("people-arrows")),
       #menuSubItem('Traffic and Parking Contacts'                , tabName = 'CON1')),
-      menuItem("Offenses"                                        , tabName = "OFF", icon = icon("handcuffs"),
-               menuSubItem('Case Offenses'                       , tabName = 'OFF1', icon = icon("handcuffs")),
-               menuSubItem('Case Details'                        , tabName = 'OFF2', icon = icon("handcuffs")),
-               menuSubItem('Subjects'                            , tabName = 'OFF3', icon = icon("handcuffs")),
+      menuItem("Offenses"                                        , tabName = "OFF", icon = icon("gavel"),
+               menuSubItem('Case Offenses'                       , tabName = 'OFF1', icon = icon("bell")),
+               menuSubItem('Case Details'                        , tabName = 'OFF2', icon = icon("circle-info")),
+               menuSubItem('Subjects'                            , tabName = 'OFF3', icon = icon("circle-user")),
                menuSubItem('Arrests'                             , tabName = 'OFF4', icon = icon("handcuffs")))
       
     )
@@ -84,6 +84,7 @@ ui <- dashboardPage(
                   OFF3_tab(),# Offense Tab, subjects
                   OFF4_tab() # Offense Tab, arrests
                 ),
+                error = div("An error occurred while rendering the tab. Please try again later.")
   )
 )
 
@@ -114,6 +115,7 @@ server <- function(input, output, session) {
       # Put the plot at plotOutput("Barplot") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) +
         geom_bar(stat = "identity", width = 0.8) +
+        geom_text(aes(label = Freq), vjust = -0.5, size = 4) +  # Add numbers to bars
         labs(x = label, y = "Amount", fill = label) +
         theme_minimal() +
         theme(
@@ -131,6 +133,7 @@ server <- function(input, output, session) {
       # Put the plot at plotOutput("Barplot") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) +
         geom_bar(stat = "identity", width = 0.8, show.legend = FALSE) +
+        geom_text(aes(label = Freq), vjust = -0.5, size = 4) +  # Add numbers to bars
         labs(x = label, y = "Amount", fill = label) +
         theme_minimal() +
         theme(
@@ -152,6 +155,7 @@ server <- function(input, output, session) {
       # Put the plot at plotOutput("Piechart") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = "", y = Freq, fill = Var1)) +
         geom_bar(stat = "identity", width = 1) +
+        geom_text(aes(label = paste0(round(Freq/sum(Freq)*100), "%")), position = position_stack(vjust = 0.5), size = 4, check_overlap = TRUE) +  # Add percentages to pie chart
         labs(fill = label) +
         theme_void() +
         theme(
@@ -180,6 +184,7 @@ server <- function(input, output, session) {
     })
     return(plot)
   }
+  
   
   
   #Used to get the number of accidents per week for throughout year
@@ -677,6 +682,28 @@ server <- function(input, output, session) {
       CFS_render(output, CS_BP, PCS_PC, PCP_BP, City_PC)
       
     }
+    else if(input$sidebar == "COL2")
+    {
+      ######################
+      # Step 1: read in the data
+      ######################
+      data1 <- read.csv(file("pdicollisionsinjuriesq-2023.csv"))
+      ######################
+      # Step 2: Format the data
+      ######################
+      
+      desc <- outputPieChart(table(data1$Description), label = "Outcome")
+      severity <- outputBarPlot(table(data1$Sev_Num), label = "Severity Number")
+  
+     
+      
+      ######################
+      # Step 3: Send the formatted data to become a graph
+      #####################
+      #COL2_render(output, desc, desc, severity, severity)
+      COL2_render(output, desc, desc, severity, severity)
+      
+    }
     else if(input$sidebar == "COL3")
     {
       ######################
@@ -1035,15 +1062,25 @@ server <- function(input, output, session) {
       ######################
       # Step 1: read in the data
       ######################
+      data <- read.csv(file("Subjects_2023.csv"))
+      
       ######################
       # Step 2: Format the data
       ######################
+      
+      CaseSubjectSubType <- outputPieChart(table(data$CaseSubjectSubType), label = "Case Subject SubType")
+      CaseSubjectType <- outputBarPlot(table(data$CaseSubjectType), label = "Case Subject Type")
+      
       ######################
       # Step 3: Send the formatted data to become a graph
       ######################
       ######################
       # Step 4: Put the graphs on screen
       ######################
+      
+      OFF2_render(output, CaseSubjectSubType, CaseSubjectSubType, CaseSubjectType, CaseSubjectType)
+      
+      
     }
     else if(input$sidebar == "OFF3"){
       ######################
