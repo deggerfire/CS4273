@@ -6,15 +6,13 @@
 source("tabs/UIHelperFunctions.R")
 # List of the widget id's on the screen in the top bar. This list does have functionally
 # This should help with step 2
-COL2_topBar <- c("COL2_dates", 
-                "COL2_Top_Selector"
+COL2_topBar <- c(
+                "COL2Select_Year"
 )
 # List of the widget id's on the screen. This list does have functionally
 # This should help with step 2
 COL2_selectors <- c("COL2_Selector_1", 
-                   "COL2_Selector_2", 
-                   "COL2_Selector_3", 
-                   "COL2_Selector_4"
+                   "COL2_Selector_2"
              )
 
 # Render function for Col2 (puts graphs on screen)
@@ -27,12 +25,11 @@ COL2_selectors <- c("COL2_Selector_1",
 COL2_render <- function(output, plot1, plot2, plot3, plot4){
   output$COL2_table_1 <- plot1
   output$COL2_table_2 <- plot2
-  output$COL2_table_3 <- plot3
-  output$COL2_table_4 <- plot4
 }
 
 # Boolean to tell if the widgets have been loaded
 COL2_widgetsLoaded <- FALSE
+COL2_topBarLoaded <- FALSE
 
 # Sets of the selectors based on the inputted data
 # This function is the setup for the conditions in step 2
@@ -40,17 +37,20 @@ COL2_widgetsLoaded <- FALSE
 #     see this line in app.R (use ctrl+f) "server <- function(input, output, session) {"
 #   selector1Data, ..., selectorxData: The data that will be put in the selectors
 #     goes from upper left to lower right order
-COL2_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Graph3_selector, Graph4_selector, Topbar_selector1){
+COL2_populate_Widgets <-function(session, Graph1_selector, Graph3_selector){
   # Check in the widgets have already been loaded
   if(COL2_widgetsLoaded){return()}
   # Populate the widgets with each of the unique values in the given data
   Selector_Updater(session, COL2_selectors[1], Graph1_selector, COL2_selectors[1])
-  Selector_Updater(session, COL2_selectors[2], Graph2_selector, COL2_selectors[2])
-  Selector_Updater(session, COL2_selectors[3], Graph3_selector, COL2_selectors[3])
-  Selector_Updater(session, COL2_selectors[4], Graph4_selector, COL2_selectors[4])
-  Selector_Updater(session, COL2_topBar[2], Topbar_selector1, COL2_topBar[2])
+  Selector_Updater(session, COL2_selectors[2], Graph3_selector, COL2_selectors[2])
   # Mark that the widgets have been loaded
   COL2_widgetsLoaded <<- TRUE
+}
+COL2_poulateTopBar <-function(session, numberOfYears)
+{
+  if(COL2_topBarLoaded){return()}
+  Selector_Updater(session, COL2_topBar[1],numberOfYears, COL2_topBar[1])
+  COL2_topBarLoaded <<- TRUE
 }
 
 ##################################################################
@@ -64,8 +64,7 @@ COL2_tab <- function(){
   tab <- tabItem(tabName = "COL2",
   # Topbar area
     fluidRow(box(width = 12, 
-      column(width = 3, dateRangeInput(COL2_topBar[1], label = COL2_topBar[1])),
-      column(width = 2, selectInput(COL2_topBar[2], COL2_topBar[2], "Unselected", selected = 1)),
+      column(width = 2, selectInput(COL2_topBar[1], COL2_topBar[1], "Unselected", selected = 1)),
       )
     ),
     # Main graph area
@@ -74,15 +73,13 @@ COL2_tab <- function(){
       tabBox(
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("TAB 1", "COL2_table_1", COL2_selectors[1]),
-        Plot_Maker("TAB 2", "COL2_table_2", COL2_selectors[2])
+        Plot_Maker("TAB 1", "COL2_table_1", COL2_selectors[1])
       ),
       # Makes the second graph area
       tabBox(
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("TAB 3", "COL2_table_3", COL2_selectors[3]),
-        Plot_Maker("TAB 4", "COL2_table_4", COL2_selectors[4])
+        Plot_Maker("TAB 2", "COL2_table_2", COL2_selectors[2])
       )
     )
   )

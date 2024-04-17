@@ -6,8 +6,8 @@
 source("tabs/UIHelperFunctions.R")
 # List of the widget id's on the screen in the top bar. This list does have functionally
 # This should help with step 2
-COL1_topBar <- c("COL1_dates", 
-                "COL1_Top_Selector"
+COL1_topBar <- c( 
+                "COL1Select_Year"
 )
 # List of the widget id's on the screen. This list does have functionally
 # This should help with step 2
@@ -33,6 +33,7 @@ COL1_render <- function(output, plot1, plot2, plot3, plot4){
 
 # Boolean to tell if the widgets have been loaded
 COL1_widgetsLoaded <- FALSE
+COL1_topBarLoaded <- FALSE
 
 # Sets of the selectors based on the inputted data
 # This function is the setup for the conditions in step 2
@@ -40,7 +41,7 @@ COL1_widgetsLoaded <- FALSE
 #     see this line in app.R (use ctrl+f) "server <- function(input, output, session) {"
 #   selector1Data, ..., selectorxData: The data that will be put in the selectors
 #     goes from upper left to lower right order
-COL1_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Graph3_selector, Graph4_selector, Topbar_selector1){
+COL1_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Graph3_selector, Graph4_selector){
   # Check in the widgets have already been loaded
   if(COL1_widgetsLoaded){return()}
   # Populate the widgets with each of the unique values in the given data
@@ -48,9 +49,14 @@ COL1_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Grap
   Selector_Updater(session, COL1_selectors[2], Graph2_selector, COL1_selectors[2])
   Selector_Updater(session, COL1_selectors[3], Graph3_selector, COL1_selectors[3])
   Selector_Updater(session, COL1_selectors[4], Graph4_selector, COL1_selectors[4])
-  Selector_Updater(session, COL1_topBar[2], Topbar_selector1, COL1_topBar[2])
   # Mark that the widgets have been loaded
   COL1_widgetsLoaded <<- TRUE
+}
+COL1_poulateTopBar <-function(session, numberOfYears)
+{
+  if(COL1_topBarLoaded){return()}
+  Selector_Updater(session, COL1_topBar[1],numberOfYears, COL1_topBar[1])
+  COL1_topBarLoaded <<- TRUE
 }
 
 ##################################################################
@@ -64,8 +70,7 @@ COL1_tab <- function(){
   tab <- tabItem(tabName = "COL1",
   # Topbar area
     fluidRow(box(width = 12, 
-      column(width = 3, dateRangeInput(COL1_topBar[1], label = COL1_topBar[1])),
-      column(width = 2, selectInput(COL1_topBar[2], COL1_topBar[2], "Unselected", selected = 1)),
+      column(width = 2, selectInput(COL1_topBar[1],"Select Year", "Unselected", selected = 1)),
       )
     ),
     # Main graph area
