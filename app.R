@@ -114,7 +114,8 @@ server <- function(input, output, session) {
     plot <- renderPlot({
       # Put the plot at plotOutput("Barplot") in the shiny code
       if (nrow(data.frame(data)) == 0) {
-        graph <- ggplot(data.frame(data))
+        graph <- ggplot() +
+          annotate("text", x = 0, y = 0, size = 10, label = "No Data to Graph") + theme_void()
       }
       else {
         graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) +
@@ -137,7 +138,8 @@ server <- function(input, output, session) {
     plot <- renderPlot({
       # Put the plot at plotOutput("Barplot") in the shiny code
       if (nrow(data.frame(data)) == 0) {
-        graph <- ggplot(data.frame(data))
+        graph <- ggplot() +
+          annotate("text", x = 0, y = 0, size = 10, label = "No Data to Graph") + theme_void()
       }
       else {
         graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) +
@@ -160,7 +162,8 @@ server <- function(input, output, session) {
     plot <- renderPlot({
       # Put the plot at plotOutput("Piechart") in the shiny code
       if (nrow(data.frame(data)) == 0) {
-        graph <- ggplot(data.frame(data))
+        graph <- ggplot() +
+          annotate("text", x = 0, y = 0, size = 10, label = "No Data to Graph") + theme_void()
       }
       else {
         # Calculates percentages
@@ -187,7 +190,8 @@ server <- function(input, output, session) {
     plot <- renderPlot({
       # Put the plot at plotOutput("Piechart") in the shiny code
       if (nrow(data.frame(data)) == 0) {
-        graph <- ggplot(data.frame(data))
+        graph <- ggplot() +
+          annotate("text", x = 0, y = 0, size = 10, label = "No Data to Graph") + theme_void()
       }
       else {
         graph <- ggplot(data, aes_string(x = x, y = y, group = 1)) +
