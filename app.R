@@ -2,6 +2,7 @@ library(shiny)          # The sever thingy
 library(ggplot2)        # Used for plotting
 library(dplyr)          # Used for data handling
 library(shinydashboard) # Used for fancy UI stuff
+library(stringr)        #Used for subsetting the data into strings
 
 # Stuff for running a server
 options(shiny.host = '0.0.0.0') # IP-address of computer
@@ -33,9 +34,9 @@ ui <- dashboardPage(
   
   # Sets the title and also adds logo
   dashboardHeader(title='Norman PD', titleWidth = 275,
-                  tags$li(class = "dropdown", imageOutput("logo", height = 50))),
+                  tags$li(class = "dropdown", imageOutput("logo", height = 25))),
   
-  # Left sidebar, used to to get to major catogories
+  # Left sidebar, used to to get to major categories
   dashboardSidebar(
     width = 275,
     sidebarMenu(
@@ -49,20 +50,20 @@ ui <- dashboardPage(
                menuSubItem('By Location'                           , tabName = 'COL3', icon = icon('location-dot')),
                menuSubItem('Throughout Year'                           , tabName = 'COL4', icon = icon('calendar-days'))),
       
-      menuItem("Use of Force"                                    , tabName = "UOF", icon = icon("gun")),
+      menuItem("Use of Force"                                    , tabName = "UOF", icon = icon("hand-fist")),
       #menuSubItem('Subjects by Resistance and Force'            , tabName = 'UOF4')),
       #menuSubItem('Subjects by Incidents and Demographics'      , tabName = 'UOF5')),
-      menuItem("Complaints and Inquiries"                        , tabName = "CI", icon = icon("gun")),
+      menuItem("Complaints and Inquiries"                        , tabName = "CI", icon = icon("bullhorn")),
       #menuSubItem('Incidents by Type and Disposition'           , tabName = 'CI1'),
       #menuSubItem('Subjects by Incidents and Demographics'      , tabName = 'CI2'),
       #menuSubItem('Subjects by Allegation and Finding'          , tabName = 'CI3'),
       
-      menuItem("Contacts"                                        , tabName = "CON", icon = icon("hand")),
+      menuItem("Contacts"                                        , tabName = "CON", icon = icon("people-arrows")),
       #menuSubItem('Traffic and Parking Contacts'                , tabName = 'CON1')),
-      menuItem("Offenses"                                        , tabName = "OFF", icon = icon("handcuffs"),
-               menuSubItem('Case Offenses'                       , tabName = 'OFF1', icon = icon("handcuffs")),
-               menuSubItem('Case Details'                        , tabName = 'OFF2', icon = icon("handcuffs")),
-               menuSubItem('Subjects'                            , tabName = 'OFF3', icon = icon("handcuffs")),
+      menuItem("Offenses"                                        , tabName = "OFF", icon = icon("gavel"),
+               menuSubItem('Case Offenses'                       , tabName = 'OFF1', icon = icon("bell")),
+               menuSubItem('Case Details'                        , tabName = 'OFF2', icon = icon("circle-info")),
+               menuSubItem('Subjects'                            , tabName = 'OFF3', icon = icon("circle-user")),
                menuSubItem('Arrests'                             , tabName = 'OFF4', icon = icon("handcuffs")))
       
     )
@@ -84,6 +85,7 @@ ui <- dashboardPage(
                   OFF3_tab(),# Offense Tab, subjects
                   OFF4_tab() # Offense Tab, arrests
                 ),
+                error = div("An error occurred while rendering the tab. Please try again later.")
   )
 )
 
@@ -114,6 +116,7 @@ server <- function(input, output, session) {
       # Put the plot at plotOutput("Barplot") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) +
         geom_bar(stat = "identity", width = 0.8) +
+        geom_text(aes(label = Freq), vjust = -0.5, size = 4) +  # Add numbers to bars
         labs(x = label, y = "Amount", fill = label) +
         theme_minimal() +
         theme(
@@ -131,6 +134,7 @@ server <- function(input, output, session) {
       # Put the plot at plotOutput("Barplot") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) +
         geom_bar(stat = "identity", width = 0.8, show.legend = FALSE) +
+        geom_text(aes(label = Freq), vjust = -0.5, size = 4) +  # Add numbers to bars
         labs(x = label, y = "Amount", fill = label) +
         theme_minimal() +
         theme(
@@ -143,10 +147,16 @@ server <- function(input, output, session) {
   }
   
   outputPieChart <- function(data, label = "") {
+    
+    # Calculates percentages
+    percent <- (data/sum(data))*100
+    percent <- round(percent, digits=2)
+    
     plot <- renderPlot({
       # Put the plot at plotOutput("Piechart") in the shiny code
       graph <- ggplot(data.frame(data), aes(x = "", y = Freq, fill = Var1)) +
         geom_bar(stat = "identity", width = 1) +
+        geom_text(aes(label = paste0(round(Freq/sum(Freq)*100), "%")), position = position_stack(vjust = 0.5), size = 4, check_overlap = TRUE) +  # Add percentages to pie chart
         labs(fill = label) +
         theme_void() +
         theme(
@@ -154,7 +164,7 @@ server <- function(input, output, session) {
           legend.position = "right"
         ) +
         coord_polar("y", start = 0) +
-        scale_fill_brewer(palette = "Set3")
+        scale_fill_brewer(palette = "Set3", labels=paste(data.frame(data)$Var1, " (", percent, "%)", sep=""))
       print(graph)
     })
     return(plot)
@@ -175,6 +185,119 @@ server <- function(input, output, session) {
     })
     return(plot)
   }
+  findNumOfYears <- function(data, CFSCOL, CON, OFF, OFF23, OFF4)
+  {
+    #For all data sets except contacts
+    if(CFSCOL == TRUE)
+    {
+      numOfYear <- c()
+      first = head(data, 1)
+      last = tail(data, 1)
+      first = first %>% select(contains("Date")) %>% str_sub(-2, -1)
+      last = last %>%select(contains("Date")) %>% str_sub(-2, -1)
+      x = as.numeric(first)
+      numOfYear <- append(numOfYear, toString(x))
+      last = as.numeric(last)
+      while(x <= last)
+      {
+        numOfYear <- append(numOfYear, toString(x))
+        x = x + 1
+      }
+      sort(numOfYear, decreasing = FALSE)
+      numOfYear <- append(numOfYear, "All Years")
+      numOfYear
+      return(numOfYear)
+    }
+    #For the contacts dataset (This dataset shows times as well as date, and must be filtered differently)
+    else if(CON == TRUE)
+    {
+      numOfYear <- c()
+      first = head(data, 1)
+      last = tail(data, 1)
+      first = first %>% select(contains("Date")) %>% str_sub(-17, -16)
+      last = last %>%select(contains("Date")) %>% str_sub(-17, -16)
+      x = as.numeric(first)
+      numoOfYear = append(numOfYear, as.character(x))
+      last = as.numeric(last)
+      while(x <= last)
+      {
+        numOfYear <- append(numOfYear, as.character(x))
+        x = x + 1
+      }
+      numOfYear <- append(numOfYear, "All Years")
+      sort(numOfYear, decreasing = FALSE)
+      return(numOfYear)
+    }
+    else if(OFF == TRUE)
+    {
+     
+      if(OFF23 == TRUE)
+      {
+        df <- data.frame(data)
+        #Sorted by years through CaseNumber Column
+        numOfYear <- c()
+        first = head(data, 1)
+        last =  df[18779,]  #tail(data, 1) Normally used but there was empty hidden characters in the CSV #Change this row when data is fixed #########
+        first = first %>% select(contains("CaseN")) %>% str_sub(-11, -10)
+        last = last %>%select(contains("CaseN")) %>% str_sub(-11, -10)
+        x = as.numeric(first)
+        numoOfYear = append(numOfYear, as.character(x))
+        last = as.numeric(last)
+        while(x <= last)
+        {
+          numOfYear <- append(numOfYear, as.character(x))
+          x = x + 1
+        }
+        numOfYear <- append(numOfYear, "All Years")
+        sort(numOfYear, decreasing = FALSE)
+        return(numOfYear)
+      }
+      else if(OFF4 == TRUE)
+      {
+        df <- data.frame(data)
+        #Sorted by years through CaseNumber Column
+        numOfYear <- c()
+        first = head(data, 1)
+        last = tail(data, 1) #Normally used but there was empty hidden characters in the CSV #Change this row when data is fixed 
+        first = first %>% select(contains("CaseN")) %>% str_sub(-11, -10)
+        last = last %>%select(contains("CaseN")) %>% str_sub(-11, -10)
+        x = as.numeric(first)
+        numoOfYear = append(numOfYear, as.character(x))
+        last = as.numeric(last)
+        while(x <= last)
+        {
+          numOfYear <- append(numOfYear, as.character(x))
+          x = x + 1
+        }
+        numOfYear <- append(numOfYear, "All Years")
+        sort(numOfYear, decreasing = FALSE)
+        return(numOfYear)
+      }
+      else
+      {
+        #This is for OFF1
+        df <- data.frame(data)
+        #Sorted by years through CaseNumber Column
+        numOfYear <- c()
+        first = head(data, 1)
+        last =  df[15656,]  #tail(data, 1) Normally used but there was empty hidden characters in the CSV #Change this row when data is fixed 
+        first = first %>% select(contains("CaseN")) %>% str_sub(-11, -10)
+        last = last %>%select(contains("CaseN")) %>% str_sub(-11, -10)
+        x = as.numeric(first)
+        numoOfYear = append(numOfYear, as.character(x))
+        last = as.numeric(last)
+        while(x <= last)
+        {
+          numOfYear <- append(numOfYear, as.character(x))
+          x = x + 1
+        }
+        numOfYear <- append(numOfYear, "All Years")
+        sort(numOfYear, decreasing = FALSE)
+        return(numOfYear)
+      }
+    }
+  }
+  
   
   
   #Used to get the number of accidents per week for throughout year
@@ -601,31 +724,6 @@ server <- function(input, output, session) {
       output$CI_table_6 <- age
       output$CI_table_7 <- subject_type
     }
-    else if(input$sidebar == "CON") 
-    {
-      ##########################
-      # Step 1: Read in the data  
-      ##########################
-      data <- read.csv("CONT.csv")
-      #########################
-      # Step 2: Format the data
-      #########################
-      
-      race <- outputPieChart(table(data$Race), label = "Race")
-      gender <- outputPieChart(table(data$Sex), label = "Sex")
-      
-      type <- outputBarPlot(table(data$TicketType), label = "Type")
-      description <- outputBarPlot(table(data$Description), label = "Description")
-      
-      ###################################################
-      # Step 3: Send the formatted data to become a graph
-      ###################################################
-      
-      #################################################
-      # Step 4: Render the graph, which will display it
-      #################################################
-      CON_render(output,race, gender,type,description)
-    }
   }
   
   ######################################################################
@@ -642,8 +740,21 @@ server <- function(input, output, session) {
       ######################
       # Read in the call for service 2022
       data <- read.csv(file("CFS-2022.csv"))
+      
+      #Getting the number of years and then populating the top widget
+      numOfYears = findNumOfYears(data, TRUE, FALSE, FALSE, FALSE, FALSE)
+      CFS_poulateTopBar(session, numOfYears)
+
+      if(input$CFSSelect_Year == "Unselected" || input$CFSSelect_Year == "All Years")
+      {
+        data <- data 
+      }
+      else
+      {
+        data <- data %>% filter(str_sub(CreateDatetime.UTC., -2, -1) == input$CFSSelect_Year)
+      }
       # Populate the widgets in CFS
-      CFS_populate_Widgets(session, data$CallSource, data$PoliceCallStatus, data$PoliceCallPriority, data$City, data$PoliceCallType)
+      CFS_populate_Widgets(session, data$CallSource, data$PoliceCallStatus, data$PoliceCallPriority, data$City) #, data$PoliceCallType) This is the extra data for CFS tab
       ######################
       # Step 2: Filter the data
       ######################
@@ -652,10 +763,6 @@ server <- function(input, output, session) {
       if(input$CFS_Source_of_Call_Selector != "Unselected"){
         data <- data %>% filter(CallSource == input$CFS_Source_of_Call_Selector)
       }
-      if(input$CFS_Police_Call_Status_Selector != "Unselected"){
-        data <- data %>% filter(PoliceCallStatus == input$CFS_Police_Call_Status_Selector)
-      }
-      
       
       ######################
       # Step 3: Send the formatted data to become a graph
@@ -676,12 +783,119 @@ server <- function(input, output, session) {
       CFS_render(output, CS_BP, PCS_PC, PCP_BP, City_PC)
       
     }
+    else if(input$sidebar == "COL1") {
+      ######################
+      # Step 1: read in the data
+      ######################
+      data <- read.csv(file("By_Severity_2022.csv"))
+      
+      #Getting the number of years and then populating the top widget
+      numOfYears = findNumOfYears(data, TRUE, FALSE, FALSE, FALSE, FALSE)
+      numOfYears
+      COL1_poulateTopBar(session, numOfYears)
+      
+      if(input$COL1Select_Year == "Unselected" || input$COL1Select_Year == "All Years")
+      {
+          data <- data
+      }
+      else
+      {
+          data <- data %>% filter(str_sub(AccidentDatetime, -2, -1) == input$COL1Select_Year)
+      }
+      
+      # Populate widgets for COL1 
+      COL1_populate_Widgets(session, data$UnitType, data$DriverPedCondition, data$ChemicalTest, data$ContributingFactors)#data$UnitType) #Useless Data? Not being used currently ################################
+      ######################
+      # Step 2: Format the data
+      ######################
+      if(input$COL1_Selector_1 != "Unselected"){
+        data <- data %>% filter(UnitType == input$COL1_Selector_1)
+      }
+      ######################
+      # Step 3: Send the formatted data to become a graph
+      ######################
+      # Makes the graph for source of call
+      UnType_PC   <- outputPieChart (table(data$UnitType        ), label = "Unit Type")
+      # Makes the graph for police call status
+      ChemTest_PC  <- outputPieChart(table(data$ChemicalTest  ), label = "Chemical Test")
+      # Makes the graph for police call priority
+      DPC_BP  <- outputBarPlot (table(data$DriverPedCondition), label = "Driver Condition")
+      # Makes the graph for city
+
+      CF_freq <- data %>%
+        group_by(ContributingFactors) %>%
+        summarise(Count = n()) %>%
+        arrange(desc(Count)) %>%
+        top_n(8, Count) %>%
+        ungroup() %>%
+        mutate(ContributingFactors = factor(ContributingFactors, levels = ContributingFactors))
+
+      # Filter data to only include top 8 descriptions
+      data_filtered <- data %>%
+        filter(ContributingFactors %in% CF_freq$ContributingFactors)
+
+      # Makes the graph for city with top 8 descriptions
+      CF_BP <- outputBarPlot(table(data_filtered$ContributingFactors), label = "Contributing Factors")
+      
+      ######################
+      # Step 4: Put the graphs on screen
+      ######################
+      COL1_render(output, UnType_PC, DPC_BP, ChemTest_PC, CF_BP)
+    }
+    else if(input$sidebar == "COL2")
+    {
+      ######################
+      # Step 1: read in the data
+      ######################
+      data1 <- read.csv(file("pdicollisionsinjuriesq-2023.csv"))
+      
+      #Getting the number of years and then populating the top widget
+      numOfYears = findNumOfYears(data1, TRUE, FALSE, FALSE, FALSE, FALSE)
+      COL2_poulateTopBar(session, numOfYears)
+      
+      if(input$COL2Select_Year == "Unselected" || input$COL2Select_Year == "All Years")
+      {
+          data1 <- data1
+      }
+      else
+      {
+          data1 <- data1 %>% filter(str_sub(AccidentDatetime, -2, -1) == input$COL2Select_Year)
+      }
+      
+      
+      ######################
+      # Step 2: Format the data
+      ######################
+      
+      desc <- outputPieChart(table(data1$Description), label = "Outcome")
+      severity <- outputBarPlot(table(data1$Sev_Num), label = "Severity Number")
+      
+      
+      
+      ######################
+      # Step 3: Send the formatted data to become a graph
+      #####################
+      COL2_render(output, desc, severity)
+    }
     else if(input$sidebar == "COL3")
     {
       ######################
       # Step 1: read in the data
       ######################
       data2 <- read.csv(file("pdicollisionsq-2023.csv"))
+      
+      #Getting the number of years and then populating the top widget
+      numOfYears = findNumOfYears(data2, TRUE, FALSE, FALSE, FALSE, FALSE)
+      COL3_poulateTopBar(session, numOfYears)
+
+      if(input$COL3Select_Year == "Unselected" || input$COL3Select_Year == "All Years")
+      {
+        data2 <- data2
+      }
+      else
+      {
+        data2 <- data2 %>% filter(str_sub(AccidentDatetime, -2, -1) == input$COL3Select_Year)
+      }
       ######################
       # Step 2: Format the data
       ######################
@@ -757,6 +971,20 @@ server <- function(input, output, session) {
       # Step 1: read in the data
       ######################
       data2 <- read.csv(file("pdicollisionsq-2023.csv"))
+      
+      #Getting the number of years and then populating the top widget
+      numOfYears = findNumOfYears(data2, TRUE, FALSE, FALSE, FALSE, FALSE)
+      COL4_poulateTopBar(session, numOfYears)
+      
+      if(input$COL4Select_Year == "Unselected" || input$COL4Select_Year == "All Years")
+      {
+        data2 <- data2
+      }
+      else
+      {
+        data2 <- data2 %>% filter(str_sub(AccidentDatetime, -2, -1) == input$COL4Select_Year)
+      }
+      
       ######################
       # Step 2: Format the data
       ######################
@@ -958,8 +1186,22 @@ server <- function(input, output, session) {
       ######################
       # Step 1: read in the data
       ######################
-      data <- read.csv(file("Contacts.csv"))
-      CON_populate_Widgets(session, data$Sex, data$Race, data$Race, data$Race, data$Race)
+      data <- read.csv("CONT.csv")
+      
+      #Getting the number of years and then populating the top widget
+      numOfYears = findNumOfYears(data, FALSE, TRUE, FALSE, FALSE, FALSE)
+      CON_poulateTopBar(session, numOfYears)
+      
+      if(input$CONSelect_Year == "Unselected" || input$CONSelect_Year == "All Years")
+      {
+        data <- data
+      }
+      else
+      {
+        data <- data %>% filter(str_sub(data$TicketDatetime, -17, -16) == input$CONSelect_Year)
+      }
+      
+      CON_populate_Widgets(session, data$Sex, data$Race, data$TicketType, data$Race)
       ######################
       # Step 2: Format the data
       ######################
@@ -971,27 +1213,216 @@ server <- function(input, output, session) {
       ######################
       Contacts_Sex   <- outputPieChart (table(data$Sex), label = "Sex")
       Contacts_Race   <- outputBarPlot (table(data$Race), label = "Race")
+      Contacts_TicketType <- outputBarPlot(table(data$TicketType), label = "Type")
       ######################
       # Step 4: Put the graphs on screen
       ######################
-      CON_render(output, Contacts_Sex, Contacts_Race, Contacts_Race, Contacts_Race)
+      CON_render(output, Contacts_Sex, Contacts_Race, Contacts_TicketType)
     }
-    else if(input$sidebar == "OFF"){
+    else if(input$sidebar == "OFF1"){
       ######################
       # Step 1: read in the data
       ######################
+      data <- read.csv(file("CaseOffenses_2023.csv"))
+      
+      #Getting the number of years and then populating the top widget
+      numOfYears = findNumOfYears(data, FALSE, FALSE, TRUE, FALSE, FALSE)
+      OFF1_poulateTopBar(session, numOfYears)
+      
+      if(input$OFF1Year_Selector_By_CaseNumber == "Unselected" || input$OFF1Year_Selector_By_CaseNumber == "All Years")
+      {
+        data <- data
+      }
+      else
+      {
+        data <- data %>% filter(str_sub(CaseNumber, -11, -10) == input$OFF1Year_Selector_By_CaseNumber)
+      }
+      
+      OFF1_populate_Widgets(session, data$Counts, data$IBRCrimeCode)
+      
       ######################
       # Step 2: Format the data
       ######################
+      if(input$OFF1_Selector_1 != "Unselected"){
+        data <- data %>% filter(Counts == input$OFF1_Selector_1)
+      }
+      
+      # For the Counts pie chart, find the most frequent Counts
+      top_Counts <- data %>%
+        group_by(Counts) %>%
+        summarise(Frequency = n()) %>%
+        arrange(desc(Frequency)) %>%
+        slice_head(n = 6) %>%
+        pull(Counts) # Extract the Counts values for filtering
+      
+      # Filter the original dataset to keep only the rows with the top 5 most frequent Counts
+      data_filtered_for_top_Counts <- data %>%
+        filter(Counts %in% top_Counts)
+      
+      # For the IBR Crime Code pie chart, find the top 5 most frequent IBR Crime Codes
+      top_IBRCrimeCodes <- data %>%
+        group_by(IBRCrimeCode) %>%
+        summarise(Frequency = n()) %>%
+        arrange(desc(Frequency)) %>%
+        slice_head(n = 5) %>%
+        pull(IBRCrimeCode) # Extract just the IBR Crime Code values for filtering
+      
+      # Filter the original dataset for the top 5 IBR Crime Codes
+      data_filtered_for_top_IBRCrimeCode <- data %>%
+        filter(IBRCrimeCode %in% top_IBRCrimeCodes)
+      
+      ######################
+      # Step 3: Send the formatted data to become a graph
+      ######################
+      # Generate the pie charts using the specifically prepared data
+      Offenses_Counts <- outputPieChart(table(data_filtered_for_top_Counts$Counts), label = "Counts")
+      
+      Offenses_IBRCrimeCode <- outputPieChart(table(data_filtered_for_top_IBRCrimeCode$IBRCrimeCode), label = "IBR Crime Code")
+      
+      ######################
+      # Step 4: Put the graphs on screen
+      ######################
+      OFF1_render(output, Offenses_Counts, Offenses_IBRCrimeCode)
+    }
+    
+    
+    # If block for call for service tab
+    else if(input$sidebar == "OFF2") {
+      ######################
+      # Step 1: read in the data
+      ######################
+      data <- read.csv(file("Subjects_2023.csv"))
+      
+      #Getting the number of years and then populating the top widget
+      numOfYears = findNumOfYears(data, FALSE, FALSE, TRUE, TRUE, FALSE)
+      numOfYears
+      OFF2_poulateTopBar(session, numOfYears)
+      
+      if(input$OFF2Year_Selector_By_CaseNumber == "Unselected" || input$OFF2Year_Selector_By_CaseNumber == "All Years")
+      {
+        data <- data
+      }
+      else
+      {
+        data <- data %>% filter(str_sub(CaseNumber, -11, -10) == input$OFF2Year_Selector_By_CaseNumber)
+      }
+      
+      ######################
+      # Step 2: Format the data
+      ######################
+      
+      CaseSubjectSubType <- outputPieChart(table(data$CaseSubjectSubType), label = "Case Subject SubType")
+      CaseSubjectType <- outputBarPlot(table(data$CaseSubjectType), label = "Case Subject Type")
+      
       ######################
       # Step 3: Send the formatted data to become a graph
       ######################
       ######################
       # Step 4: Put the graphs on screen
       ######################
+      
+      OFF2_render(output, CaseSubjectSubType, CaseSubjectType)
+      
+      
     }
-    # If block for call for service tab
-    
+    else if(input$sidebar == "OFF3"){
+      ######################
+      # Step 1: read in the data
+      ######################
+      data <- read.csv(file("Subjects_2023.csv"))
+      
+      numOfYears = findNumOfYears(data, FALSE, FALSE, TRUE, TRUE, FALSE)
+      numOfYears
+      OFF3_poulateTopBar(session, numOfYears)
+      
+      if(input$OFF3Year_Selector_By_CaseNumber == "Unselected" || input$OFF3Year_Selector_By_CaseNumber == "All Years")
+      {
+        data <- data
+      }
+      else
+      {
+        data <- data %>% filter(str_sub(CaseNumber, -11, -10) == input$OFF3Year_Selector_By_CaseNumber)
+      }
+      
+      OFF3_populate_Widgets(session, data$Sex, data$Race, data$CaseSubjectType, data$CaseSubjectSubType)
+      ######################
+      # Step 2: Format the data
+      ######################
+      if(input$OFF3_Selector_1 != "Unselected"){
+        data <- data %>% filter(Sex == input$OFF3_Selector_1)
+      } 
+      ######################
+      # Step 3: Send the formatted data to become a graph
+      ######################
+      Offenses_Sex   <- outputPieChart (table(data$Sex), label = "Sex")
+      Offenses_Race   <- outputBarPlot (table(data$Race), label = "Race")
+      Offenses_SubjectType <- outputBarPlot (table(data$CaseSubjectType), label = "Subject Type")
+      Offenses_SubjectSubType <- outputBarPlot (table(data$CaseSubjectSubType), label = "Sub-Type")
+      ######################
+      # Step 4: Put the graphs on screen
+      ######################
+      OFF3_render(output, Offenses_Sex, Offenses_Race, Offenses_SubjectType, Offenses_SubjectSubType)
+    }
+    ## this is for arrests
+    else if(input$sidebar == "OFF4") {
+      ######################
+      # Step 1: read in the data
+      ######################
+      data <- read.csv(file("Arrests_2022.csv"))
+      
+      numOfYears = findNumOfYears(data, FALSE, FALSE, TRUE, FALSE, TRUE)
+      numOfYears
+      OFF4_poulateTopBar(session, numOfYears)
+      
+      if(input$OFF4Year_Selector_By_CaseNumber == "Unselected" || input$OFF4Year_Selector_By_CaseNumber == "All Years")
+      {
+        data <- data
+      }
+      else
+      {
+        data <- data %>% filter(str_sub(CaseNumber, -11, -10) == input$OFF4Year_Selector_By_CaseNumber)
+      }
+      
+      # Populate widgets for OFF4 
+      OFF4_populate_Widgets(session, data$Race, data$Sex, data$ArrestType, data$Description)
+      ######################
+      # Step 2: Format the data
+      ######################
+      if(input$OFF4_Selector_1 != "Unselected"){
+        data <- data %>% filter(Race == input$OFF4_Selector_1)
+      }
+      ######################
+      # Step 3: Send the formatted data to become a graph
+      ######################
+      # Makes the graph for source of call
+      Race_BP   <- outputBarPlot (table(data$Race        ), label = "Arrestee Race")
+      # Makes the graph for police call status
+      Sex_PC  <- outputPieChart(table(data$Sex  ), label = "Arrestee Sex")
+      # Makes the graph for police call priority
+      ArrType_BP  <- outputBarPlot (table(data$ArrestType), label = "Arrest Type")
+      # Makes the graph for city
+      # Calculate frequency of each description
+      desc_freq <- data %>%
+        group_by(Description) %>%
+        summarise(Count = n()) %>%
+        arrange(desc(Count)) %>%
+        top_n(8, Count) %>%
+        ungroup() %>%
+        mutate(Description = factor(Description, levels = Description))
+      
+      # Filter data to only include top 8 descriptions
+      data_filtered <- data %>%
+        filter(Description %in% desc_freq$Description)
+      
+      # Makes the graph for city with top 8 descriptions
+      Desc_BP <- outputBarPlot(table(data_filtered$Description), label = "Description")
+      # Desc_BP <- outputBarPlot(table(data$Description              ), label = "Description")
+      
+      ######################
+      # Step 4: Put the graphs on screen
+      ######################
+      OFF4_render(output, Race_BP, Sex_PC, ArrType_BP, Desc_BP)
+    }
   }
 }
 

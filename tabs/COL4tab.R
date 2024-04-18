@@ -6,8 +6,8 @@
 source("tabs/UIHelperFunctions.R")
 # List of the widget id's on the screen in the top bar. This list does have functionally
 # This should help with step 2
-COL4_topBar <- c("COL4_dates", 
-                 "COL4_Top_Selector"
+COL4_topBar <- c(
+                 "COL4Select_Year"
 )
 # List of the widget id's on the screen. This list does have functionally
 # This should help with step 2
@@ -44,6 +44,7 @@ COL4_render <- function(output, plot1, plot2, plot3, plot4, plot5, plot6, plot7,
 
 # Boolean to tell if the widgets have been loaded
 COL4_widgetsLoaded <- FALSE
+COL4_topBarLoaded <<- FALSE
 
 # Sets of the selectors based on the inputted data
 # This function is the setup for the conditions in step 2
@@ -63,6 +64,12 @@ COL4_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Grap
   # Mark that the widgets have been loaded
   COL4_widgetsLoaded <<- TRUE
 }
+COL4_poulateTopBar <-function(session, numberOfYears)
+{
+  if(COL4_topBarLoaded){return()}
+  Selector_Updater(session, COL4_topBar[1],numberOfYears, COL4_topBar[1])
+  COL4_topBarLoaded <<- TRUE
+}
 
 ##################################################################
 ##          Everything below this point is UI stuff             ##
@@ -75,8 +82,7 @@ COL4_tab <- function(){
   tab <- tabItem(tabName = "COL4",
                  # Topbar area
                  fluidRow(box(width = 12, 
-                              column(width = 3, dateRangeInput(COL4_topBar[1], label = COL4_topBar[1])),
-                              column(width = 2, selectInput(COL4_topBar[2], COL4_topBar[2], "Unselected", selected = 1)),
+                              column(width = 2, selectInput(COL4_topBar[1], COL4_topBar[1], "Unselected", selected = 1)),
                  )
                  ),
                  # Main graph area
