@@ -59,7 +59,7 @@ COL3_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Grap
   # Mark that the widgets have been loaded
   COL3_widgetsLoaded <<- TRUE
 }
-COL3_poulateTopBar <-function(session, numberOfYears)
+COL3_populateTopBar <-function(session, numberOfYears)
 {
   if(COL3_topBarLoaded){return()}
   Selector_Updater(session, COL3_topBar[1],numberOfYears, COL3_topBar[1])

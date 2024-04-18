@@ -196,11 +196,11 @@ server <- function(input, output, session) {
       first = first %>% select(contains("Date")) %>% str_sub(-2, -1)
       last = last %>%select(contains("Date")) %>% str_sub(-2, -1)
       x = as.numeric(first)
-      numOfYear <- append(numOfYear, paste("20", as.character(x)))
+      numOfYear <- append(numOfYear,as.character(x))
       last = as.numeric(last)
       while(x <= last)
       {
-        numOfYear <- append(numOfYear, paste("20", as.character(x)))
+        numOfYear <- append(numOfYear,as.character(x))
         x = x + 1
       }
       sort(numOfYear, decreasing = FALSE)
@@ -217,11 +217,11 @@ server <- function(input, output, session) {
       first = first %>% select(contains("Date")) %>% str_sub(-17, -16)
       last = last %>%select(contains("Date")) %>% str_sub(-17, -16)
       x = as.numeric(first)
-      numoOfYear = append(numOfYear, paste("20", as.character(x)))
+      numoOfYear = append(numOfYear,as.character(x))
       last = as.numeric(last)
       while(x <= last)
       {
-        numOfYear <- append(numOfYear, paste("20", as.character(x)))
+        numOfYear <- append(numOfYear,as.character(x))
         x = x + 1
       }
       numOfYear <- append(numOfYear, "All Years")
@@ -241,11 +241,11 @@ server <- function(input, output, session) {
         first = first %>% select(contains("CaseN")) %>% str_sub(-11, -10)
         last = last %>%select(contains("CaseN")) %>% str_sub(-11, -10)
         x = as.numeric(first)
-        numoOfYear = append(numOfYear, paste("20", as.character(x)))
+        numoOfYear = append(numOfYear,as.character(x))
         last = as.numeric(last)
         while(x <= last)
         {
-          numOfYear <- append(numOfYear,paste("20", as.character(x)))
+          numOfYear <- append(numOfYear,as.character(x))
           x = x + 1
         }
         numOfYear <- append(numOfYear, "All Years")
@@ -262,11 +262,11 @@ server <- function(input, output, session) {
         first = first %>% select(contains("CaseN")) %>% str_sub(-11, -10)
         last = last %>%select(contains("CaseN")) %>% str_sub(-11, -10)
         x = as.numeric(first)
-        numoOfYear = append(numOfYear, paste("20", as.character(x)))
+        numoOfYear = append(numOfYear,as.character(x))
         last = as.numeric(last)
         while(x <= last)
         {
-          numOfYear <- append(numOfYear, paste("20", as.character(x)))
+          numOfYear <-append(numOfYear,as.character(x))
           x = x + 1
         }
         numOfYear <- append(numOfYear, "All Years")
@@ -284,11 +284,11 @@ server <- function(input, output, session) {
         first = first %>% select(contains("CaseN")) %>% str_sub(-11, -10)
         last = last %>%select(contains("CaseN")) %>% str_sub(-11, -10)
         x = as.numeric(first)
-        numoOfYear = append(numOfYear, paste("20", as.character(x)))
+        numoOfYear = append(numOfYear,as.character(x))
         last = as.numeric(last)
         while(x <= last)
         {
-          numOfYear <- append(numOfYear, paste("20", as.character(x)))
+          numOfYear <- append(numOfYear,as.character(x))
           x = x + 1
         }
         numOfYear <- append(numOfYear, "All Years")
@@ -743,7 +743,7 @@ server <- function(input, output, session) {
       
       #Getting the number of years and then populating the top widget
       numOfYears = findNumOfYears(data, TRUE, FALSE, FALSE, FALSE, FALSE)
-      CFS_poulateTopBar(session, numOfYears)
+      CFS_populateTopBar(session, numOfYears)
 
       if(input$CFSSelect_Year == "Unselected" || input$CFSSelect_Year == "All Years")
       {
@@ -792,7 +792,7 @@ server <- function(input, output, session) {
       #Getting the number of years and then populating the top widget
       numOfYears = findNumOfYears(data, TRUE, FALSE, FALSE, FALSE, FALSE)
       numOfYears
-      COL1_poulateTopBar(session, numOfYears)
+      COL1_populateTopBar(session, numOfYears)
       
       if(input$COL1Select_Year == "Unselected" || input$COL1Select_Year == "All Years")
       {
@@ -851,7 +851,7 @@ server <- function(input, output, session) {
       
       #Getting the number of years and then populating the top widget
       numOfYears = findNumOfYears(data1, TRUE, FALSE, FALSE, FALSE, FALSE)
-      COL2_poulateTopBar(session, numOfYears)
+      COL2_populateTopBar(session, numOfYears)
       
       if(input$COL2Select_Year == "Unselected" || input$COL2Select_Year == "All Years")
       {
@@ -886,7 +886,7 @@ server <- function(input, output, session) {
       
       #Getting the number of years and then populating the top widget
       numOfYears = findNumOfYears(data2, TRUE, FALSE, FALSE, FALSE, FALSE)
-      COL3_poulateTopBar(session, numOfYears)
+      COL3_populateTopBar(session, numOfYears)
 
       if(input$COL3Select_Year == "Unselected" || input$COL3Select_Year == "All Years")
       {
@@ -974,7 +974,7 @@ server <- function(input, output, session) {
       
       #Getting the number of years and then populating the top widget
       numOfYears = findNumOfYears(data2, TRUE, FALSE, FALSE, FALSE, FALSE)
-      COL4_poulateTopBar(session, numOfYears)
+      COL4_populateTopBar(session, numOfYears)
       
       if(input$COL4Select_Year == "Unselected" || input$COL4Select_Year == "All Years")
       {
@@ -1190,7 +1190,7 @@ server <- function(input, output, session) {
       
       #Getting the number of years and then populating the top widget
       numOfYears = findNumOfYears(data, FALSE, TRUE, FALSE, FALSE, FALSE)
-      CON_poulateTopBar(session, numOfYears)
+      CON_populateTopBar(session, numOfYears)
       
       if(input$CONSelect_Year == "Unselected" || input$CONSelect_Year == "All Years")
       {
@@ -1227,7 +1227,7 @@ server <- function(input, output, session) {
       
       #Getting the number of years and then populating the top widget
       numOfYears = findNumOfYears(data, FALSE, FALSE, TRUE, FALSE, FALSE)
-      OFF1_poulateTopBar(session, numOfYears)
+      OFF1_populateTopBar(session, numOfYears)
       
       if(input$OFF1Year_Selector_By_CaseNumber == "Unselected" || input$OFF1Year_Selector_By_CaseNumber == "All Years")
       {
@@ -1296,7 +1296,7 @@ server <- function(input, output, session) {
       #Getting the number of years and then populating the top widget
       numOfYears = findNumOfYears(data, FALSE, FALSE, TRUE, TRUE, FALSE)
       numOfYears
-      OFF2_poulateTopBar(session, numOfYears)
+      OFF2_populateTopBar(session, numOfYears)
       
       if(input$OFF2Year_Selector_By_CaseNumber == "Unselected" || input$OFF2Year_Selector_By_CaseNumber == "All Years")
       {
@@ -1333,7 +1333,7 @@ server <- function(input, output, session) {
       
       numOfYears = findNumOfYears(data, FALSE, FALSE, TRUE, TRUE, FALSE)
       numOfYears
-      OFF3_poulateTopBar(session, numOfYears)
+      OFF3_populateTopBar(session, numOfYears)
       
       if(input$OFF3Year_Selector_By_CaseNumber == "Unselected" || input$OFF3Year_Selector_By_CaseNumber == "All Years")
       {
@@ -1372,7 +1372,7 @@ server <- function(input, output, session) {
       
       numOfYears = findNumOfYears(data, FALSE, FALSE, TRUE, FALSE, TRUE)
       numOfYears
-      OFF4_poulateTopBar(session, numOfYears)
+      OFF4_populateTopBar(session, numOfYears)
       
       if(input$OFF4Year_Selector_By_CaseNumber == "Unselected" || input$OFF4Year_Selector_By_CaseNumber == "All Years")
       {

@@ -49,7 +49,7 @@ CON_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Graph
   # Mark that the widgets have been loaded
   CON_widgetsLoaded <<- TRUE
 }
-CON_poulateTopBar <-function(session, numberOfYears)
+CON_populateTopBar <-function(session, numberOfYears)
 {
   if(CON_topBarLoaded){return()}
   Selector_Updater(session, CON_topBar[1],numberOfYears, CON_topBar[1])

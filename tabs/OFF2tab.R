@@ -46,7 +46,7 @@ OFF2_populate_Widgets <-function(session, Graph1_selector, Graph2_selector){
   # Mark that the widgets have been loaded
   OFF2_widgetsLoaded <<- TRUE
 }
-OFF2_poulateTopBar <-function(session, numberOfYears)
+OFF2_populateTopBar <-function(session, numberOfYears)
 {
   if(OFF2_topBarLoaded){return()}
   Selector_Updater(session, OFF2_topBar[1],numberOfYears, OFF2_topBar[1])
