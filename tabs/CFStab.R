@@ -53,7 +53,7 @@ CFS_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Graph
   # Mark that the widgets have been loaded
   CFS_widgetsLoaded <<- TRUE
 }
-CFS_poulateTopBar <-function(session, numberOfYears)
+CFS_populateTopBar <-function(session, numberOfYears)
 {
   if(CFS_topBarLoaded){return()}
   Selector_Updater(session, CFS_topBar[1],numberOfYears, CFS_topBar[1])
