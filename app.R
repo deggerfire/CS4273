@@ -219,6 +219,7 @@ server <- function(input, output, session) {
       first = first %>% select(contains("Date")) %>% str_sub(-2, -1)
       last = last %>%select(contains("Date")) %>% str_sub(-2, -1)
       x = as.numeric(first)
+      numOfYear <- append(numOfYear, "All Years")
       numOfYear <- append(numOfYear,as.character(x))
       last = as.numeric(last)
       while(x <= last)
@@ -227,7 +228,6 @@ server <- function(input, output, session) {
         x = x + 1
       }
       sort(numOfYear, decreasing = FALSE)
-      numOfYear <- append(numOfYear, "All Years")
       numOfYear
       return(numOfYear)
     }
@@ -240,6 +240,7 @@ server <- function(input, output, session) {
       first = first %>% select(contains("Date")) %>% str_sub(-17, -16)
       last = last %>%select(contains("Date")) %>% str_sub(-17, -16)
       x = as.numeric(first)
+      numOfYear <- append(numOfYear, "All Years")
       numoOfYear = append(numOfYear,as.character(x))
       last = as.numeric(last)
       while(x <= last)
@@ -247,7 +248,6 @@ server <- function(input, output, session) {
         numOfYear <- append(numOfYear,as.character(x))
         x = x + 1
       }
-      numOfYear <- append(numOfYear, "All Years")
       sort(numOfYear, decreasing = FALSE)
       return(numOfYear)
     }
@@ -264,6 +264,7 @@ server <- function(input, output, session) {
         first = first %>% select(contains("CaseN")) %>% str_sub(-11, -10)
         last = last %>%select(contains("CaseN")) %>% str_sub(-11, -10)
         x = as.numeric(first)
+        numOfYear <- append(numOfYear, "All Years")
         numoOfYear = append(numOfYear,as.character(x))
         last = as.numeric(last)
         while(x <= last)
@@ -271,7 +272,6 @@ server <- function(input, output, session) {
           numOfYear <- append(numOfYear,as.character(x))
           x = x + 1
         }
-        numOfYear <- append(numOfYear, "All Years")
         sort(numOfYear, decreasing = FALSE)
         return(numOfYear)
       }
@@ -285,6 +285,7 @@ server <- function(input, output, session) {
         first = first %>% select(contains("CaseN")) %>% str_sub(-11, -10)
         last = last %>%select(contains("CaseN")) %>% str_sub(-11, -10)
         x = as.numeric(first)
+        numOfYear <- append(numOfYear, "All Years")
         numoOfYear = append(numOfYear,as.character(x))
         last = as.numeric(last)
         while(x <= last)
@@ -292,7 +293,6 @@ server <- function(input, output, session) {
           numOfYear <-append(numOfYear,as.character(x))
           x = x + 1
         }
-        numOfYear <- append(numOfYear, "All Years")
         sort(numOfYear, decreasing = FALSE)
         return(numOfYear)
       }
@@ -307,6 +307,7 @@ server <- function(input, output, session) {
         first = first %>% select(contains("CaseN")) %>% str_sub(-11, -10)
         last = last %>%select(contains("CaseN")) %>% str_sub(-11, -10)
         x = as.numeric(first)
+        numOfYear <- append(numOfYear, "All Years")
         numoOfYear = append(numOfYear,as.character(x))
         last = as.numeric(last)
         while(x <= last)
@@ -314,7 +315,6 @@ server <- function(input, output, session) {
           numOfYear <- append(numOfYear,as.character(x))
           x = x + 1
         }
-        numOfYear <- append(numOfYear, "All Years")
         sort(numOfYear, decreasing = FALSE)
         return(numOfYear)
       }
