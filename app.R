@@ -220,11 +220,11 @@ server <- function(input, output, session) {
       last = last %>%select(contains("Date")) %>% str_sub(-2, -1)
       x = as.numeric(first)
       numOfYear <- append(numOfYear, "All Years")
-      numOfYear <- append(numOfYear,as.character(x))
+      numOfYear <- append(numOfYear,paste0("20",as.character(x)))
       last = as.numeric(last)
       while(x <= last)
       {
-        numOfYear <- append(numOfYear,as.character(x))
+        numOfYear <- append(numOfYear,paste0("20",as.character(x)))
         x = x + 1
       }
       sort(numOfYear, decreasing = FALSE)
@@ -241,11 +241,11 @@ server <- function(input, output, session) {
       last = last %>%select(contains("Date")) %>% str_sub(-17, -16)
       x = as.numeric(first)
       numOfYear <- append(numOfYear, "All Years")
-      numoOfYear = append(numOfYear,as.character(x))
+      numoOfYear = append(numOfYear,paste0("20",as.character(x)))
       last = as.numeric(last)
       while(x <= last)
       {
-        numOfYear <- append(numOfYear,as.character(x))
+        numOfYear <- append(numOfYear,paste0("20",as.character(x)))
         x = x + 1
       }
       sort(numOfYear, decreasing = FALSE)
@@ -265,11 +265,11 @@ server <- function(input, output, session) {
         last = last %>%select(contains("CaseN")) %>% str_sub(-11, -10)
         x = as.numeric(first)
         numOfYear <- append(numOfYear, "All Years")
-        numoOfYear = append(numOfYear,as.character(x))
+        numoOfYear = append(numOfYear,paste0("20",as.character(x)))
         last = as.numeric(last)
         while(x <= last)
         {
-          numOfYear <- append(numOfYear,as.character(x))
+          numOfYear <- append(numOfYear,paste0("20",as.character(x)))
           x = x + 1
         }
         sort(numOfYear, decreasing = FALSE)
@@ -286,11 +286,11 @@ server <- function(input, output, session) {
         last = last %>%select(contains("CaseN")) %>% str_sub(-11, -10)
         x = as.numeric(first)
         numOfYear <- append(numOfYear, "All Years")
-        numoOfYear = append(numOfYear,as.character(x))
+        numoOfYear = append(numOfYear,paste0("20",as.character(x)))
         last = as.numeric(last)
         while(x <= last)
         {
-          numOfYear <-append(numOfYear,as.character(x))
+          numOfYear <-append(numOfYear,paste0("20",as.character(x)))
           x = x + 1
         }
         sort(numOfYear, decreasing = FALSE)
@@ -308,11 +308,11 @@ server <- function(input, output, session) {
         last = last %>%select(contains("CaseN")) %>% str_sub(-11, -10)
         x = as.numeric(first)
         numOfYear <- append(numOfYear, "All Years")
-        numoOfYear = append(numOfYear,as.character(x))
+        numoOfYear = append(numOfYear,paste0("20",as.character(x)))
         last = as.numeric(last)
         while(x <= last)
         {
-          numOfYear <- append(numOfYear,as.character(x))
+          numOfYear <- append(numOfYear,paste0("20",as.character(x)))
           x = x + 1
         }
         sort(numOfYear, decreasing = FALSE)
@@ -774,7 +774,7 @@ server <- function(input, output, session) {
       }
       else
       {
-        data <- data %>% filter(str_sub(CreateDatetime.UTC., -2, -1) == input$CFSSelect_Year)
+        data <- data %>% filter(str_sub(CreateDatetime.UTC., -2, -1) == str_sub(input$CFSSelect_Year, -2, -1))
       }
       # Populate the widgets in CFS
       CFS_populate_Widgets(session, data$CallSource, data$PoliceCallStatus, data$PoliceCallPriority, data$City) #, data$PoliceCallType) This is the extra data for CFS tab
@@ -823,7 +823,7 @@ server <- function(input, output, session) {
       }
       else
       {
-          data <- data %>% filter(str_sub(AccidentDatetime, -2, -1) == input$COL1Select_Year)
+          data <- data %>% filter(str_sub(AccidentDatetime, -2, -1) == str_sub(input$COL1Select_Year, -2, -1))
       }
       
       # Populate widgets for COL1 
@@ -882,7 +882,7 @@ server <- function(input, output, session) {
       }
       else
       {
-          data1 <- data1 %>% filter(str_sub(AccidentDatetime, -2, -1) == input$COL2Select_Year)
+          data1 <- data1 %>% filter(str_sub(AccidentDatetime, -2, -1) == str_sub(input$COL2Select_Year, -2, -1))
       }
       
       
@@ -917,7 +917,7 @@ server <- function(input, output, session) {
       }
       else
       {
-        data2 <- data2 %>% filter(str_sub(AccidentDatetime, -2, -1) == input$COL3Select_Year)
+        data2 <- data2 %>% filter(str_sub(AccidentDatetime, -2, -1) == str_sub(input$COL3Select_Year, -2, -1))
       }
       ######################
       # Step 2: Format the data
@@ -1005,7 +1005,7 @@ server <- function(input, output, session) {
       }
       else
       {
-        data2 <- data2 %>% filter(str_sub(AccidentDatetime, -2, -1) == input$COL4Select_Year)
+        data2 <- data2 %>% filter(str_sub(AccidentDatetime, -2, -1) == str_sub(input$COL4Select_Year, -2, -1))
       }
       
       ######################
@@ -1221,7 +1221,7 @@ server <- function(input, output, session) {
       }
       else
       {
-        data <- data %>% filter(str_sub(data$TicketDatetime, -17, -16) == input$CONSelect_Year)
+        data <- data %>% filter(str_sub(data$TicketDatetime, -17, -16) == str_sub(input$CONSelect_Year, -2, -1))
       }
       
       CON_populate_Widgets(session, data$Sex, data$Race, data$TicketType, data$Race)
@@ -1258,7 +1258,7 @@ server <- function(input, output, session) {
       }
       else
       {
-        data <- data %>% filter(str_sub(CaseNumber, -11, -10) == input$OFF1Year_Selector_By_CaseNumber)
+        data <- data %>% filter(str_sub(CaseNumber, -11, -10) == str_sub(input$OFF1Year_Selector_By_CaseNumber, -2, -1))
       }
       
       OFF1_populate_Widgets(session, data$Counts, data$IBRCrimeCode)
@@ -1327,7 +1327,7 @@ server <- function(input, output, session) {
       }
       else
       {
-        data <- data %>% filter(str_sub(CaseNumber, -11, -10) == input$OFF2Year_Selector_By_CaseNumber)
+        data <- data %>% filter(str_sub(CaseNumber, -11, -10) == str_sub(input$OFF2Year_Selector_By_CaseNumber, -2, -1))
       }
       
       ######################
@@ -1364,7 +1364,7 @@ server <- function(input, output, session) {
       }
       else
       {
-        data <- data %>% filter(str_sub(CaseNumber, -11, -10) == input$OFF3Year_Selector_By_CaseNumber)
+        data <- data %>% filter(str_sub(CaseNumber, -11, -10) == str_sub(input$OFF3Year_Selector_By_CaseNumber, -2, -1))
       }
       
       OFF3_populate_Widgets(session, data$Sex, data$Race, data$CaseSubjectType, data$CaseSubjectSubType)
@@ -1403,7 +1403,7 @@ server <- function(input, output, session) {
       }
       else
       {
-        data <- data %>% filter(str_sub(CaseNumber, -11, -10) == input$OFF4Year_Selector_By_CaseNumber)
+        data <- data %>% filter(str_sub(CaseNumber, -11, -10) == str_sub(input$OFF4Year_Selector_By_CaseNumber, -2, -1))
       }
       
       # Populate widgets for OFF4 
