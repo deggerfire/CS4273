@@ -45,10 +45,10 @@ OFF4_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Grap
   # Check in the widgets have already been loaded
   if(OFF4_widgetsLoaded){return()}
   # Populate the widgets with each of the unique values in the given data
-  Selector_Updater(session, OFF4_selectors[1], Graph1_selector, OFF4_selectors[1])
-  Selector_Updater(session, OFF4_selectors[2], Graph2_selector, OFF4_selectors[2])
-  Selector_Updater(session, OFF4_selectors[3], Graph3_selector, OFF4_selectors[3])
-  Selector_Updater(session, OFF4_selectors[4], Graph4_selector, OFF4_selectors[4])
+  Selector_Updater(session, OFF4_selectors[1], Graph1_selector, "Arrestee Race")
+  Selector_Updater(session, OFF4_selectors[2], Graph2_selector, "Arrestee Sex")
+  Selector_Updater(session, OFF4_selectors[3], Graph3_selector, "Arrest Type")
+  Selector_Updater(session, OFF4_selectors[4], Graph4_selector, "Description")
   # Mark that the widgets have been loaded
   OFF4_widgetsLoaded <<- TRUE
 }

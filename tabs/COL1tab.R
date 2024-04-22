@@ -45,10 +45,10 @@ COL1_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Grap
   # Check in the widgets have already been loaded
   if(COL1_widgetsLoaded){return()}
   # Populate the widgets with each of the unique values in the given data
-  Selector_Updater(session, COL1_selectors[1], Graph1_selector, COL1_selectors[1])
-  Selector_Updater(session, COL1_selectors[2], Graph2_selector, COL1_selectors[2])
-  Selector_Updater(session, COL1_selectors[3], Graph3_selector, COL1_selectors[3])
-  Selector_Updater(session, COL1_selectors[4], Graph4_selector, COL1_selectors[4])
+  Selector_Updater(session, COL1_selectors[1], Graph1_selector, "Unit Type")
+  Selector_Updater(session, COL1_selectors[2], Graph2_selector, "Driver Condition")
+  Selector_Updater(session, COL1_selectors[3], Graph3_selector, "Chemical Test")
+  Selector_Updater(session, COL1_selectors[4], Graph4_selector, "Contributing Factors")
   # Mark that the widgets have been loaded
   COL1_widgetsLoaded <<- TRUE
 }
