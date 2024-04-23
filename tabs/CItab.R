@@ -140,7 +140,7 @@ CI_Race_PC <- function(data, plotName, widgetName){
   tab <- tabPanel('Race Piechart', # Tab title
                   plotOutput(plotName),                 # plotOutput name
                   # Input selector
-                  selectInput(widgetName, "Race", c("Unselected", unique(data$RACE[!is.na(data$RACE)])), selected = 1)
+                  selectInput(widgetName, "Race-Selector", c("Unselected", unique(data$RACE[!is.na(data$RACE)])), selected = 1)
                   )
   return(tab)
 }
@@ -150,7 +150,7 @@ CI_Sex_PC <- function(data, plotName, widgetName){
   tab <- tabPanel('Sex Piechart', # Tab title
                   plotOutput(plotName),                 # plotOutput name
                   # Input selector
-                  selectInput(widgetName, "Sex", c("Unselected", unique(data$SEX[!is.na(data$SEX)])), selected = 1)
+                  selectInput(widgetName, "Sex-Selector", c("Unselected", unique(data$SEX[!is.na(data$SEX)])), selected = 1)
                   )
   return(tab)
 }
@@ -164,7 +164,7 @@ CI_Years_Employed_BP <- function(data, plotName, widgetName){
   tab <- tabPanel('Years Employed Bargraph', # Tab title
                   plotOutput(plotName),                 # plotOutput name
                   # Input selector
-                  selectInput(widgetName, "Years Employed", c("Unselected", unique(data$YRS_EMPL[!is.na(data$YRS_EMPL)])), selected = 1)
+                  selectInput(widgetName, "Years Employed-Selector", c("Unselected", unique(data$YRS_EMPL[!is.na(data$YRS_EMPL)])), selected = 1)
                   )
   return(tab)
 }
@@ -175,7 +175,7 @@ CI_Allegations_BP <- function(data, plotName, widgetName){
   tab <- tabPanel('Allegations Bargraph', # Tab title
                   plotOutput(plotName), # plotOutput name
                   # Input selector
-                  selectInput(widgetName, "Allegations", c("Unselected", unique(data$ALLEGATION_MADE[!is.na(data$ALLEGATION_MADE)])), selected = 1)
+                  selectInput(widgetName, "Allegations-Selector", c("Unselected", unique(data$ALLEGATION_MADE[!is.na(data$ALLEGATION_MADE)])), selected = 1)
                   )
   return(tab)
 }
@@ -186,7 +186,7 @@ CI_Involvement_BP <- function(data, plotName, widgetName){
   tab <- tabPanel('Involvement Bargraph', # Tab title
                   plotOutput(plotName),                 # plotOutput name
                   # Input selector
-                  selectInput(widgetName, "Involvement", c("Unselected", unique(data$INVOLVMENT[!is.na(data$INVOLVMENT)])), selected = 1)
+                  selectInput(widgetName, "Involvement-Selector", c("Unselected", unique(data$INVOLVMENT[!is.na(data$INVOLVMENT)])), selected = 1)
                   )
   return(tab)
 }
@@ -196,7 +196,7 @@ CI_Age_BP <- function(data, plotName, widgetName){
   tab <- tabPanel('Age Bargraph', # Tab title
                   plotOutput(plotName),                 # plotOutput name
                   # Input selector
-                  selectInput(widgetName, "Age", c("Unselected", unique(data$AGE[!is.na(data$AGE)])), selected = 1)
+                  selectInput(widgetName, "Age-Selector", c("Unselected", unique(data$AGE[!is.na(data$AGE)])), selected = 1)
                   )
 }
 
@@ -208,7 +208,7 @@ CI_Subject_Type_BP <- function(data, plotName, widgetName){
   tab <- tabPanel('Subject Type Bargraph', # Tab title
                   plotOutput(plotName),                 # plotOutput name
                   # Input selector
-                  selectInput(widgetName, "Subject Type", c("Unselected", unique(data$SUBJ_TYPE[!is.na(data$SUBJ_TYPE)])), selected = 1)
+                  selectInput(widgetName, "Subject Type-Selector", c("Unselected", unique(data$SUBJ_TYPE[!is.na(data$SUBJ_TYPE)])), selected = 1)
                   )
   return(tab)
 }

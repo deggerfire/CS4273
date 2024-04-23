@@ -41,8 +41,8 @@ OFF1_populate_Widgets <-function(session, Graph1_selector, Graph2_selector){
   # Check in the widgets have already been loaded
   if(OFF1_widgetsLoaded){return()}
   # Populate the widgets with each of the unique values in the given data
-  Selector_Updater(session, OFF1_selectors[1], Graph1_selector, "Counts")
-  Selector_Updater(session, OFF1_selectors[2], Graph2_selector, "IBR Crime Code")
+  Selector_Updater(session, OFF1_selectors[1], Graph1_selector, "Counts-Selector")
+  Selector_Updater(session, OFF1_selectors[2], Graph2_selector, "IBR Crime Code-Selector")
   # Mark that the widgets have been loaded
   OFF1_widgetsLoaded <<- TRUE
 }

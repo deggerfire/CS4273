@@ -41,8 +41,8 @@ COL2_populate_Widgets <-function(session, Graph1_selector, Graph3_selector){
   # Check in the widgets have already been loaded
   if(COL2_widgetsLoaded){return()}
   ## Populate the widgets with each of the unique values in the given data
-  Selector_Updater(session, COL2_selectors[1], Graph1_selector, "Outcome")
-  Selector_Updater(session, COL2_selectors[2], Graph3_selector, "Severity Number")
+  Selector_Updater(session, COL2_selectors[1], Graph1_selector, "Outcome-Selector")
+  Selector_Updater(session, COL2_selectors[2], Graph3_selector, "Severity Number-Selector")
   # Mark that the widgets have been loaded
   COL2_widgetsLoaded <<- TRUE
 }
