@@ -1,13 +1,16 @@
 # Base image
-FROM rocker/r-base:latest
+FROM rocker/shiny
 
-# Copy all files to container
-COPY . .
+RUN apt-get update
+RUN apt-get install -y libcurl4-gnutls-dev libssl-dev
+
+# Copy install script to root of container
+COPY ./install_packages.R /
+# Copy all files to server
+COPY ./* /srv/shiny-server/
 
 # Install packages
 RUN Rscript /install_packages.R
 
-# Currently used port
-EXPOSE 5111
 # Run
-CMD Rscript /app.R
+CMD ["/usr/bin/shiny-server"]
