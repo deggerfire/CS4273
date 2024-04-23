@@ -884,7 +884,8 @@ server <- function(input, output, session) {
       {
           data1 <- data1 %>% filter(str_sub(AccidentDatetime, -2, -1) == str_sub(input$COL2Select_Year, -2, -1))
       }
-      
+      #Populate widgets for COL2
+      COL2_populate_Widgets(session, data1$Description, data1$Sev_Num)
       
       ######################
       # Step 2: Format the data
@@ -1329,6 +1330,8 @@ server <- function(input, output, session) {
       {
         data <- data %>% filter(str_sub(CaseNumber, -11, -10) == str_sub(input$OFF2Year_Selector_By_CaseNumber, -2, -1))
       }
+      #Populate widgets for OFF2
+      OFF2_populate_Widgets(session, data$CaseSubjectSubType, data$CaseSubjectType)
       
       ######################
       # Step 2: Format the data
