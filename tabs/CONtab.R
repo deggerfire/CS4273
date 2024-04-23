@@ -52,7 +52,7 @@ CON_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Graph
 CON_populateTopBar <-function(session, numberOfYears)
 {
   if(CON_topBarLoaded){return()}
-  Selector_Updater(session, CON_topBar[1],numberOfYears, CON_topBar[1])
+  Selector_Updater(session, CON_topBar[1],numberOfYears, "Select Year")
   CON_topBarLoaded <<- TRUE
 }
 
