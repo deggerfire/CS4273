@@ -1,19 +1,16 @@
 # Makes the plot location with a selector widget
-Plot_Maker <- function(tabName, plotName, widgetName){
-  tab <- tabPanel(tabName, # Tab title
-                  plotName,
-    plotOutput(plotName), # plotOutput name
-    # Graph controls
-    selectInput(widgetName, widgetName, "Unselected", selected = 1))
-  return(tab)
-}
+#   tabName:    the display name of the tab
+#   plotName:   the refence name of the table location
+#   widgetName: the refence name of the widget, defaults to "" and if "" does not make a sector
+Plot_Maker <- function(tabName, plotName, widgetName = ""){
+  tab <- tabPanel(
+    tabName,              # Tab title
+    if(DEBUG)plotName,    # Will print the plots name on screen
+    plotOutput(plotName), # Adds the plotOutput refence location
 
-
-Plot_MakerWOSelect <- function(tabName, plotName){
-  tab <- tabPanel(tabName, # Tab title
-                  plotName,
-                  plotOutput(plotName)) # plotOutput name
-
+    # Graph controls, if widgetName is "" then widget is not added
+    if(widgetName != "")selectInput(widgetName, widgetName, "Unselected", selected = 1)
+  )
   return(tab)
 }
 

@@ -71,6 +71,10 @@ COL1_tab <- function(){
   # Topbar area
     fluidRow(box(width = 12, 
       column(width = 2, selectInput(COL1_topBar[1],"Select Year", "Unselected", selected = 1)),
+      column(width = 2, selectInput(COL1_selectors[1], COL1_selectors[1], "Unselected", selected = 1)),
+      column(width = 2, selectInput(COL1_selectors[2], COL1_selectors[2], "Unselected", selected = 1)),
+      column(width = 2, selectInput(COL1_selectors[3], COL1_selectors[3], "Unselected", selected = 1)),
+      column(width = 2, selectInput(COL1_selectors[4], COL1_selectors[4], "Unselected", selected = 1)),
       )
     ),
     # Main graph area
@@ -79,15 +83,15 @@ COL1_tab <- function(){
       tabBox(
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("Unit Type", "COL1_table_1", COL1_selectors[1]),
-        Plot_Maker("Driver Ped Condition", "COL1_table_2", COL1_selectors[2])
+        Plot_Maker("Unit Type", "COL1_table_1"),
+        Plot_Maker("Driver Ped Condition", "COL1_table_2")
       ),
       # Makes the second graph area
       tabBox(
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("Chem Test", "COL1_table_3", COL1_selectors[3]),
-        Plot_Maker("Contr. Factors", "COL1_table_4", COL1_selectors[4])
+        Plot_Maker("Chem Test", "COL1_table_3"),
+        Plot_Maker("Contr. Factors", "COL1_table_4")
       )
     )
   )

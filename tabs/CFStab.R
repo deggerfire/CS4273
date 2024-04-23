@@ -72,6 +72,10 @@ CFS_tab <- function(){
     # Topbar area
     fluidRow(box(width = 12, 
       column(width = 2, selectInput(CFS_topBar[1], CFS_topBar[1], "Unselected", selected = 1)),
+      column(width = 2, selectInput(CFS_selectors[1], CFS_selectors[1], "Unselected", selected = 1)),
+      column(width = 2, selectInput(CFS_selectors[2], CFS_selectors[2], "Unselected", selected = 1)),
+      column(width = 2, selectInput(CFS_selectors[3], CFS_selectors[3], "Unselected", selected = 1)),
+      column(width = 2, selectInput(CFS_selectors[4], CFS_selectors[4], "Unselected", selected = 1)),
       )
     ),
     # Main graph area
@@ -80,15 +84,15 @@ CFS_tab <- function(){
       tabBox(
         width = 6,
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("Source of Call"    , "CFS_table_1", CFS_selectors[1]),
-        Plot_Maker("Police Call Status", "CFS_table_2", CFS_selectors[2])
+        Plot_Maker("Source of Call"    , "CFS_table_1"),
+        Plot_Maker("Police Call Status", "CFS_table_2")
       ),
       # Makes the second graph area
       tabBox(
         width = 6,
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("Police Call Prioty", "CFS_table_3", CFS_selectors[3]),
-        Plot_Maker("City"              , "CFS_table_4", CFS_selectors[4])
+        Plot_Maker("Police Call Prioty", "CFS_table_3"),
+        Plot_Maker("City"              , "CFS_table_4")
       )
     )
   )

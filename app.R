@@ -8,6 +8,7 @@ library(stringr)        #Used for subsetting the data into strings
 options(shiny.host = '0.0.0.0') # IP-address of computer
 options(shiny.port = 5111) # Port you want to host on
 
+DEBUG <<- FALSE
 # Import the tab files
 
 # test

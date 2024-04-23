@@ -86,21 +86,21 @@ COL3_tab <- function(){
                    tabBox(
                      height = "500px",
                      # Uses functions to make what is in each tab (string is the name of the plotOutput)
-                     Plot_MakerWOSelect("Streets A-B", "COL3_table_1"), #Outputs bargraph of Streets A-B
-                     Plot_MakerWOSelect("Streets C-G", "COL3_table_2"), #Outputs bargraph of Streets C-G
-                     Plot_MakerWOSelect("Streets H-L", "COL3_table_3"), #Outputs bargraph of Streets H-L
-                     Plot_MakerWOSelect("Streets M-Z", "COL3_table_4"), #Outputs bargraph of Streets M-Z
-                     Plot_MakerWOSelect("Common Streets", "COL3_table_9") #Outputs bargraph of Common streets
+                     Plot_Maker("Streets A-B", "COL3_table_1"), #Outputs bargraph of Streets A-B
+                     Plot_Maker("Streets C-G", "COL3_table_2"), #Outputs bargraph of Streets C-G
+                     Plot_Maker("Streets H-L", "COL3_table_3"), #Outputs bargraph of Streets H-L
+                     Plot_Maker("Streets M-Z", "COL3_table_4"), #Outputs bargraph of Streets M-Z
+                     Plot_Maker("Common Streets", "COL3_table_9") #Outputs bargraph of Common streets
                    ),
                    # Makes the second graph area
                    tabBox(
                      height = "500px",
                      # Uses functions to make what is in each tab (string is the name of the plotOutput)
-                     Plot_MakerWOSelect("Streets A-B", "COL3_table_5"), #Outputs Pie Chart of Streets A-B
-                     Plot_MakerWOSelect("Streets C-G", "COL3_table_6"), #Outputs Pie Chart of Streets C-G
-                     Plot_MakerWOSelect("Streets H-L", "COL3_table_7"), #Outputs Pie Chart of Streets H-L
-                     Plot_MakerWOSelect("Streets M-Z", "COL3_table_8"), #Outputs Pie Chart of Streets M-Z
-                     Plot_MakerWOSelect("Common Streets", "COL3_table_10") #Outputs Pie Chart of Common streets
+                     Plot_Maker("Streets A-B", "COL3_table_5"), #Outputs Pie Chart of Streets A-B
+                     Plot_Maker("Streets C-G", "COL3_table_6"), #Outputs Pie Chart of Streets C-G
+                     Plot_Maker("Streets H-L", "COL3_table_7"), #Outputs Pie Chart of Streets H-L
+                     Plot_Maker("Streets M-Z", "COL3_table_8"), #Outputs Pie Chart of Streets M-Z
+                     Plot_Maker("Common Streets", "COL3_table_10") #Outputs Pie Chart of Common streets
                    )
                  )
   )

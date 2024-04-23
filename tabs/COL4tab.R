@@ -91,24 +91,24 @@ COL4_tab <- function(){
                    tabBox(
                      height = "500px",
                      # Uses functions to make what is in each tab (string is the name of the plotOutput)
-                     Plot_MakerWOSelect("Jan", "COL4_table_1"),
-                     Plot_MakerWOSelect("Feb", "COL4_table_2"),
-                     Plot_MakerWOSelect("Mar", "COL4_table_3"),
-                     Plot_MakerWOSelect("Apr", "COL4_table_4"),
-                     Plot_MakerWOSelect("May", "COL4_table_5"),
-                     Plot_MakerWOSelect("Jun", "COL4_table_6"),
-                     Plot_MakerWOSelect("Jul", "COL4_table_7"),
-                     Plot_MakerWOSelect("Aug", "COL4_table_8"),
-                     Plot_MakerWOSelect("Sep", "COL4_table_9"),
-                     Plot_MakerWOSelect("Oct", "COL4_table_10"),
-                     Plot_MakerWOSelect("Nov", "COL4_table_11"),
-                     Plot_MakerWOSelect("Dec", "COL4_table_12")
+                     Plot_Maker("Jan", "COL4_table_1"),
+                     Plot_Maker("Feb", "COL4_table_2"),
+                     Plot_Maker("Mar", "COL4_table_3"),
+                     Plot_Maker("Apr", "COL4_table_4"),
+                     Plot_Maker("May", "COL4_table_5"),
+                     Plot_Maker("Jun", "COL4_table_6"),
+                     Plot_Maker("Jul", "COL4_table_7"),
+                     Plot_Maker("Aug", "COL4_table_8"),
+                     Plot_Maker("Sep", "COL4_table_9"),
+                     Plot_Maker("Oct", "COL4_table_10"),
+                     Plot_Maker("Nov", "COL4_table_11"),
+                     Plot_Maker("Dec", "COL4_table_12")
                    ),
                    # Makes the second graph area
                    tabBox(
                      height = "500px",
                      # Uses functions to make what is in each tab (string is the name of the plotOutput)
-                     Plot_MakerWOSelect("Throughout Year", "COL4_table_13")
+                     Plot_Maker("Throughout Year", "COL4_table_13")
                    )
                  )
   )

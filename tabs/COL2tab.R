@@ -65,6 +65,8 @@ COL2_tab <- function(){
   # Topbar area
     fluidRow(box(width = 12, 
       column(width = 2, selectInput(COL2_topBar[1], COL2_topBar[1], "Unselected", selected = 1)),
+      column(width = 2, selectInput(COL2_selectors[1], COL2_selectors[1], "Unselected", selected = 1)),
+      column(width = 2, selectInput(COL2_selectors[2], COL2_selectors[2], "Unselected", selected = 1)),
       )
     ),
     # Main graph area
@@ -73,13 +75,13 @@ COL2_tab <- function(){
       tabBox(
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("TAB 1", "COL2_table_1", COL2_selectors[1])
+        Plot_Maker("TAB 1", "COL2_table_1")
       ),
       # Makes the second graph area
       tabBox(
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("TAB 2", "COL2_table_2", COL2_selectors[2])
+        Plot_Maker("TAB 2", "COL2_table_2")
       )
     )
   )
