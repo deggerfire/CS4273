@@ -13,7 +13,7 @@ CFS_topBar <- c(
 # This should help with step 2
 CFS_selectors <- c("CFS_Source_of_Call_Selector"    , 
                    "CFS_Police_Call_Status_Selector", 
-                   "CFS_Police_Call_Prioty_Selector", 
+                   "CFS_Police_Call_Priority_Selector", 
                    "CFS_City_Selector",
                    "CFS_Top_Selector"
              )
@@ -87,7 +87,7 @@ CFS_tab <- function(){
       tabBox(
         width = 6,
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("Police Call Prioty", "CFS_table_3", CFS_selectors[3]),
+        Plot_Maker("Police Call Priority", "CFS_table_3", CFS_selectors[3]),
         Plot_Maker("City"              , "CFS_table_4", CFS_selectors[4])
       )
     )

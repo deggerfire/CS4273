@@ -767,7 +767,7 @@ server <- function(input, output, session) {
       #Getting the number of years and then populating the top widget
       numOfYears = findNumOfYears(data, TRUE, FALSE, FALSE, FALSE, FALSE)
       CFS_populateTopBar(session, numOfYears)
-
+      
       if(input$CFSSelect_Year == "Unselected" || input$CFSSelect_Year == "All Years")
       {
         data <- data 
@@ -783,8 +783,18 @@ server <- function(input, output, session) {
       ######################
       
       # If the user has selected an input for source of call then remove all that does not have the selected input
-      if(input$CFS_Source_of_Call_Selector != "Unselected"){
+      
+      if(input$CFS_Source_of_Call_Selector != "Unselected") {
         data <- data %>% filter(CallSource == input$CFS_Source_of_Call_Selector)
+      }
+      if(input$CFS_Police_Call_Status_Selector != "Unselected") {
+        data <- data %>% filter(PoliceCallStatus == input$CFS_Police_Call_Status_Selector)
+      }
+      if(input$CFS_Police_Call_Priority_Selector != "Unselected") {
+        data <- data %>% filter(PoliceCallPriority == input$CFS_Police_Call_Priority_Selector)
+      }
+      if(input$CFS_City_Selector != "Unselected") {
+        data <- data %>% filter(City == input$CFS_City_Selector)
       }
       
       ######################
@@ -831,8 +841,18 @@ server <- function(input, output, session) {
       ######################
       # Step 2: Format the data
       ######################
+      
       if(input$COL1_Selector_1 != "Unselected"){
         data <- data %>% filter(UnitType == input$COL1_Selector_1)
+      }
+      if(input$COL1_Selector_2 != "Unselected"){
+        data <- data %>% filter(DriverPedCondition == input$COL1_Selector_2)
+      }
+      if(input$COL1_Selector_3 != "Unselected"){
+        data <- data %>% filter(ChemicalTest == input$COL1_Selector_3)
+      }
+      if(input$COL1_Selector_4 != "Unselected"){
+        data <- data %>% filter(ContributingFactors == input$COL1_Selector_4)
       }
       ######################
       # Step 3: Send the formatted data to become a graph
@@ -894,6 +914,13 @@ server <- function(input, output, session) {
       severity <- outputBarPlot(table(data1$Sev_Num), label = "Severity Number")
       
       
+      if(input$COL2_Selector_1 != "Unselected"){
+        data1 <- data1 %>% filter(Description == input$COL2_Selector_1)
+      }
+      if(input$COL2_Selector_2 != "Unselected"){
+        data1 <- data1 %>% filter(Sev_Num == input$COL2_Selector_2)
+      }
+      
       
       ######################
       # Step 3: Send the formatted data to become a graph
@@ -922,6 +949,7 @@ server <- function(input, output, session) {
       ######################
       # Step 2: Format the data
       ######################
+
       
       #Thirteen streets per dataSet, Each graph is by first letter in street. 
       streetAB = data2 %>% select(StreetType, StreetName) %>% filter(StreetType == "ST") %>% filter(substr(StreetName, 1, 1) == "A" 
@@ -963,6 +991,9 @@ server <- function(input, output, session) {
                                                                                                        | StreetName == "GRAY"
                                                                                                        | StreetName == "MAIN"
                                                                                                        | StreetName == "ROBINSON")
+      
+      
+    
       
       
       ######################
@@ -1056,6 +1087,8 @@ server <- function(input, output, session) {
       monthNumbers = c(janCount, febCount, marCount, aprCount, mayCount, junCount, julCount, augCount, sepCount, octCount, novCount, decCount)
       months = factor(c('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'), levels = month.abb)
       monthData = data.frame(monthNumbers, months)
+      
+    
       
       ############################
       #--------------------------#
@@ -1228,9 +1261,19 @@ server <- function(input, output, session) {
       ######################
       # Step 2: Format the data
       ######################
+      
+      
       if(input$CON_Selector_1 != "Unselected"){
         data <- data %>% filter(Sex == input$CON_Selector_1)
       }
+      if(input$CON_Selector_2 != "Unselected"){
+        data <- data %>% filter(Race == input$CON_Selector_2)
+      }
+      if(input$CON_Selector_3 != "Unselected"){
+        data <- data %>% filter(TicketType == input$CON_Selector_3)
+      }
+          
+          
       ######################
       # Step 3: Send the formatted data to become a graph
       ######################
@@ -1266,8 +1309,13 @@ server <- function(input, output, session) {
       ######################
       # Step 2: Format the data
       ######################
+  
+      
       if(input$OFF1_Selector_1 != "Unselected"){
         data <- data %>% filter(Counts == input$OFF1_Selector_1)
+      }
+      if(input$OFF1_Selector_2 != "Unselected"){
+        data <- data %>% filter(IBRCrimeCode == input$OFF1_Selector_2)
       }
       
       # For the Counts pie chart, find the most frequent Counts
@@ -1333,6 +1381,14 @@ server <- function(input, output, session) {
       ######################
       # Step 2: Format the data
       ######################
+
+      
+      if(input$OFF2_Selector_1 != "Unselected"){
+        data <- data$CaseSubjectSubType %>% filter(CaseSubjectSubType == input$OFF2_Selector_1)
+      }
+      if(input$OFF2_Selector_2 != "Unselected"){
+        data <- data$CaseSubjectType %>% filter(CaseSubjectType == input$OFF2_Selector_2)
+      }
       
       CaseSubjectSubType <- outputPieChart(table(data$CaseSubjectSubType), label = "Case Subject SubType")
       CaseSubjectType <- outputBarPlot(table(data$CaseSubjectType), label = "Case Subject Type")
@@ -1371,9 +1427,21 @@ server <- function(input, output, session) {
       ######################
       # Step 2: Format the data
       ######################
+    
+      
       if(input$OFF3_Selector_1 != "Unselected"){
         data <- data %>% filter(Sex == input$OFF3_Selector_1)
-      } 
+      }
+      if(input$OFF3_Selector_2 != "Unselected"){
+        data <- data %>% filter(Race == input$OFF3_Selector_2)
+      }
+      if(input$OFF3_Selector_3 != "Unselected"){
+        data <- data %>% filter(CaseSubjectType == input$OFF3_Selector_3)
+      }
+      if(input$OFF3_Selector_4 != "Unselected"){
+        data <- data %>% filter(CaseSubjectSubType == input$OFF3_Selector_4)
+      }
+      
       ######################
       # Step 3: Send the formatted data to become a graph
       ######################
@@ -1411,9 +1479,22 @@ server <- function(input, output, session) {
       ######################
       # Step 2: Format the data
       ######################
+    
+      
       if(input$OFF4_Selector_1 != "Unselected"){
         data <- data %>% filter(Race == input$OFF4_Selector_1)
       }
+      if(input$OFF4_Selector_2 != "Unselected"){
+        data <- data %>% filter(Sex == input$OFF4_Selector_2)
+      }
+      if(input$OFF4_Selector_3 != "Unselected"){
+        data <- data %>% filter(ArrestType == input$OFF4_Selector_3)
+      }
+      if(input$OFF4_Selector_4 != "Unselected"){
+        data <- data %>% filter(Description == input$OFF4_Selector_4)
+      }
+      
+      
       ######################
       # Step 3: Send the formatted data to become a graph
       ######################
