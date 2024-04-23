@@ -67,7 +67,7 @@ COL4_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Grap
 COL4_populateTopBar <-function(session, numberOfYears)
 {
   if(COL4_topBarLoaded){return()}
-  Selector_Updater(session, COL4_topBar[1],numberOfYears, COL4_topBar[1])
+  Selector_Updater(session, COL4_topBar[1],numberOfYears, "Select Year")
   COL4_topBarLoaded <<- TRUE
 }
 

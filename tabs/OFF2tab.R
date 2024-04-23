@@ -37,19 +37,19 @@ OFF2_topBarLoaded <- FALSE
 #     see this line in app.R (use ctrl+f) "server <- function(input, output, session) {"
 #   selector1Data, ..., selectorxData: The data that will be put in the selectors
 #     goes from upper left to lower right order
-OFF2_populate_Widgets <-function(session, Graph1_selector, Graph2_selector){
+OFF2_populate_Widgets <-function(session, Graph1_selector, Graph3_selector){
   # Check in the widgets have already been loaded
   if(OFF2_widgetsLoaded){return()}
   # Populate the widgets with each of the unique values in the given data
-  Selector_Updater(session, OFF2_selectors[1], Graph1_selector, OFF2_selectors[1])
-  Selector_Updater(session, OFF2_selectors[2], Graph2_selector, OFF2_selectors[2])
+  Selector_Updater(session, OFF2_selectors[1], Graph1_selector, "Case Subject SubType-Selector")
+  Selector_Updater(session, OFF2_selectors[2], Graph3_selector, "Case Subject Type-Selector")
   # Mark that the widgets have been loaded
   OFF2_widgetsLoaded <<- TRUE
 }
 OFF2_populateTopBar <-function(session, numberOfYears)
 {
   if(OFF2_topBarLoaded){return()}
-  Selector_Updater(session, OFF2_topBar[1],numberOfYears, OFF2_topBar[1])
+  Selector_Updater(session, OFF2_topBar[1],numberOfYears, "Select Year")
   OFF2_topBarLoaded <<- TRUE
 }
 

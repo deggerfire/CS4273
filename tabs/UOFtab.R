@@ -129,7 +129,7 @@ UOF_Race_PC <- function(data, plotName, widgetName){
   tab <- tabPanel('Race Piechart', # Tab title
                   plotOutput(plotName),                 # plotOutput name
                   # Input selector
-                  selectInput(widgetName, "Selector", c("Unselected", unique(data$RACE[!is.na(data$RACE)])), selected = 1)
+                  selectInput(widgetName, "Race-Selector", c("Unselected", unique(data$RACE[!is.na(data$RACE)])), selected = 1)
   )
   return(tab)
 }
@@ -139,7 +139,7 @@ UOF_Sex_PC <- function(data, plotName, widgetName){
   tab <- tabPanel('Sex Piechart', # Tab title
                   plotOutput(plotName), # plotOutput name
                   # Input selector
-                  selectInput(widgetName, "Selector", c("Unselected", unique(data$SEX[!is.na(data$SEX)])), selected = 1)
+                  selectInput(widgetName, "Sex-Selector", c("Unselected", unique(data$SEX[!is.na(data$SEX)])), selected = 1)
   )
   return(tab)
 }
@@ -149,7 +149,7 @@ UOF_Years_Employed_BP <- function(data, plotName, widgetName){
   tab <- tabPanel('Years Employed Bargraph', # Tab title
                   plotOutput(plotName),                 # plotOutput name
                   # Input selector
-                  selectInput(widgetName, "Selector", c("Unselected", unique(data$YRS_EMPL[!is.na(data$YRS_EMPL)])), selected = 1)
+                  selectInput(widgetName, "Years Employed-Selector", c("Unselected", unique(data$YRS_EMPL[!is.na(data$YRS_EMPL)])), selected = 1)
   )
   return(tab)
 }
@@ -160,7 +160,7 @@ UOF_Involvement_BP <- function(data, plotName, widgetName){
   tab <- tabPanel('Involvement Bargraph', # Tab title
                   plotOutput(plotName),                 # plotOutput name
                   # Input selector
-                  selectInput(widgetName, "Selector", c("Unselected", unique(data$INVOLVMENT[!is.na(data$INVOLVMENT)])), selected = 1)
+                  selectInput(widgetName, "Involvement-Selector", c("Unselected", unique(data$INVOLVMENT[!is.na(data$INVOLVMENT)])), selected = 1)
   )
   return(tab)
 }
@@ -170,7 +170,7 @@ UOF_Age_BP <- function(data, plotName, widgetName){
   tab <- tabPanel('Age Bargraph', # Tab title
                   plotOutput(plotName),                 # plotOutput name
                   # Input selector
-                  selectInput(widgetName, "Selector", c("Unselected", unique(data$AGE[!is.na(data$AGE)])), selected = 1)
+                  selectInput(widgetName, "Age-Selector", c("Unselected", unique(data$AGE[!is.na(data$AGE)])), selected = 1)
   )
   return(tab)
 }
@@ -180,7 +180,7 @@ UOF_Subject_Type_BP <- function(data, plotName, widgetName){
   tab <- tabPanel('Subject Type Bargraph', # Tab title
                   plotOutput(plotName),                 # plotOutput name
                   # Input selector
-                  selectInput(widgetName, "Selector", c("Unselected", unique(data$SUBJ_TYPE[!is.na(data$SUBJ_TYPE)])), selected = 1)
+                  selectInput(widgetName, "Subject Type-Selector", c("Unselected", unique(data$SUBJ_TYPE[!is.na(data$SUBJ_TYPE)])), selected = 1)
   )
   return(tab)
 }

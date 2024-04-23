@@ -40,16 +40,16 @@ COL2_topBarLoaded <- FALSE
 COL2_populate_Widgets <-function(session, Graph1_selector, Graph3_selector){
   # Check in the widgets have already been loaded
   if(COL2_widgetsLoaded){return()}
-  # Populate the widgets with each of the unique values in the given data
-  Selector_Updater(session, COL2_selectors[1], Graph1_selector, COL2_selectors[1])
-  Selector_Updater(session, COL2_selectors[2], Graph3_selector, COL2_selectors[2])
+  ## Populate the widgets with each of the unique values in the given data
+  Selector_Updater(session, COL2_selectors[1], Graph1_selector, "Outcome-Selector")
+  Selector_Updater(session, COL2_selectors[2], Graph3_selector, "Severity Number-Selector")
   # Mark that the widgets have been loaded
   COL2_widgetsLoaded <<- TRUE
 }
 COL2_populateTopBar <-function(session, numberOfYears)
 {
   if(COL2_topBarLoaded){return()}
-  Selector_Updater(session, COL2_topBar[1],numberOfYears, COL2_topBar[1])
+  Selector_Updater(session, COL2_topBar[1],numberOfYears, "Select Year")
   COL2_topBarLoaded <<- TRUE
 }
 
