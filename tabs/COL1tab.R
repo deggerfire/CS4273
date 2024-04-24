@@ -45,10 +45,10 @@ COL1_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Grap
   # Check in the widgets have already been loaded
   if(COL1_widgetsLoaded){return()}
   # Populate the widgets with each of the unique values in the given data
-  Selector_Updater(session, COL1_selectors[1], Graph1_selector, "Unit Type-Selector")
-  Selector_Updater(session, COL1_selectors[2], Graph2_selector, "Driver Condition-Selector")
-  Selector_Updater(session, COL1_selectors[3], Graph3_selector, "Chemical Test-Selector")
-  Selector_Updater(session, COL1_selectors[4], Graph4_selector, "Contributing Factors-Selector")
+  Selector_Updater(session, COL1_selectors[1], Graph1_selector, "Unit Type")
+  Selector_Updater(session, COL1_selectors[2], Graph2_selector, "Driver Condition")
+  Selector_Updater(session, COL1_selectors[3], Graph3_selector, "Chemical Test")
+  Selector_Updater(session, COL1_selectors[4], Graph4_selector, "Contributing Factors")
   # Mark that the widgets have been loaded
   COL1_widgetsLoaded <<- TRUE
 }
@@ -80,14 +80,14 @@ COL1_tab <- function(){
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
         Plot_Maker("Unit Type", "COL1_table_1", COL1_selectors[1]),
-        Plot_Maker("Driver Ped Condition", "COL1_table_2", COL1_selectors[2])
+        Plot_Maker("Driver Condition", "COL1_table_2", COL1_selectors[2])
       ),
       # Makes the second graph area
       tabBox(
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("Chem Test", "COL1_table_3", COL1_selectors[3]),
-        Plot_Maker("Contr. Factors", "COL1_table_4", COL1_selectors[4])
+        Plot_Maker("Chemical Test", "COL1_table_3", COL1_selectors[3]),
+        Plot_Maker("Contributing Factors", "COL1_table_4", COL1_selectors[4])
       )
     )
   )

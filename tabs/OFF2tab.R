@@ -41,8 +41,8 @@ OFF2_populate_Widgets <-function(session, Graph1_selector, Graph3_selector){
   # Check in the widgets have already been loaded
   if(OFF2_widgetsLoaded){return()}
   # Populate the widgets with each of the unique values in the given data
-  Selector_Updater(session, OFF2_selectors[1], Graph1_selector, "Case Subject SubType-Selector")
-  Selector_Updater(session, OFF2_selectors[2], Graph3_selector, "Case Subject Type-Selector")
+  Selector_Updater(session, OFF2_selectors[1], Graph1_selector, "Case Subject SubType")
+  Selector_Updater(session, OFF2_selectors[2], Graph3_selector, "Case Subject Type")
   # Mark that the widgets have been loaded
   OFF2_widgetsLoaded <<- TRUE
 }
@@ -73,13 +73,13 @@ OFF2_tab <- function(){
       tabBox(
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("TAB 1", "OFF2_table_1", OFF2_selectors[1])
+        Plot_Maker("Case Subject SubType", "OFF2_table_1", OFF2_selectors[1])
       ),
       # Makes the second graph area
       tabBox(
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("TAB 2", "OFF2_table_2", OFF2_selectors[2])
+        Plot_Maker("Case Subject Type", "OFF2_table_2", OFF2_selectors[2])
       )
     )
   )

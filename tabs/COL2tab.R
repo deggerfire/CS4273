@@ -41,8 +41,8 @@ COL2_populate_Widgets <-function(session, Graph1_selector, Graph3_selector){
   # Check in the widgets have already been loaded
   if(COL2_widgetsLoaded){return()}
   ## Populate the widgets with each of the unique values in the given data
-  Selector_Updater(session, COL2_selectors[1], Graph1_selector, "Outcome-Selector")
-  Selector_Updater(session, COL2_selectors[2], Graph3_selector, "Severity Number-Selector")
+  Selector_Updater(session, COL2_selectors[1], Graph1_selector, "Outcome")
+  Selector_Updater(session, COL2_selectors[2], Graph3_selector, "Severity Number")
   # Mark that the widgets have been loaded
   COL2_widgetsLoaded <<- TRUE
 }
@@ -73,13 +73,13 @@ COL2_tab <- function(){
       tabBox(
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("TAB 1", "COL2_table_1", COL2_selectors[1])
+        Plot_Maker("Outcome", "COL2_table_1", COL2_selectors[1])
       ),
       # Makes the second graph area
       tabBox(
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("TAB 2", "COL2_table_2", COL2_selectors[2])
+        Plot_Maker("Severity Number", "COL2_table_2", COL2_selectors[2])
       )
     )
   )
