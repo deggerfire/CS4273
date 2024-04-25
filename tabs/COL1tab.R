@@ -45,17 +45,17 @@ COL1_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Grap
   # Check in the widgets have already been loaded
   if(COL1_widgetsLoaded){return()}
   # Populate the widgets with each of the unique values in the given data
-  Selector_Updater(session, COL1_selectors[1], Graph1_selector, COL1_selectors[1])
-  Selector_Updater(session, COL1_selectors[2], Graph2_selector, COL1_selectors[2])
-  Selector_Updater(session, COL1_selectors[3], Graph3_selector, COL1_selectors[3])
-  Selector_Updater(session, COL1_selectors[4], Graph4_selector, COL1_selectors[4])
+  Selector_Updater(session, COL1_selectors[1], Graph1_selector, "Unit Type")
+  Selector_Updater(session, COL1_selectors[2], Graph2_selector, "Driver Condition")
+  Selector_Updater(session, COL1_selectors[3], Graph3_selector, "Chemical Test")
+  Selector_Updater(session, COL1_selectors[4], Graph4_selector, "Contributing Factors")
   # Mark that the widgets have been loaded
   COL1_widgetsLoaded <<- TRUE
 }
 COL1_populateTopBar <-function(session, numberOfYears)
 {
   if(COL1_topBarLoaded){return()}
-  Selector_Updater(session, COL1_topBar[1],numberOfYears, COL1_topBar[1])
+  Selector_Updater(session, COL1_topBar[1],numberOfYears, "Select Year")
   COL1_topBarLoaded <<- TRUE
 }
 
@@ -90,8 +90,8 @@ COL1_tab <- function(){
       tabBox(
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("Chem Test", "COL1_table_3"),
-        Plot_Maker("Contr. Factors", "COL1_table_4")
+        Plot_Maker("Chemical Test", "COL1_table_3"),
+        Plot_Maker("Contributing Factors", "COL1_table_4")
       )
     )
   )

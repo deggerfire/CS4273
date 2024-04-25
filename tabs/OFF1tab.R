@@ -41,15 +41,15 @@ OFF1_populate_Widgets <-function(session, Graph1_selector, Graph2_selector){
   # Check in the widgets have already been loaded
   if(OFF1_widgetsLoaded){return()}
   # Populate the widgets with each of the unique values in the given data
-  Selector_Updater(session, OFF1_selectors[1], Graph1_selector, OFF1_selectors[1])
-  Selector_Updater(session, OFF1_selectors[2], Graph2_selector, OFF1_selectors[2])
+  Selector_Updater(session, OFF1_selectors[1], Graph1_selector, "Counts")
+  Selector_Updater(session, OFF1_selectors[2], Graph2_selector, "IBR Crime Code")
   # Mark that the widgets have been loaded
   OFF1_widgetsLoaded <<- TRUE
 }
 OFF1_populateTopBar <-function(session, numberOfYears)
 {
   if(OFF1_topBarLoaded){return()}
-  Selector_Updater(session, OFF1_topBar[1],numberOfYears, OFF1_topBar[1])
+  Selector_Updater(session, OFF1_topBar[1],numberOfYears, "Select Year")
   OFF1_topBarLoaded <<- TRUE
 }
 
@@ -75,13 +75,13 @@ OFF1_tab <- function(){
       tabBox(
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("TAB 1", "OFF1_table_1"),
+        Plot_Maker("Counts", "OFF1_table_1"),
       ),
       # Makes the second graph area
       tabBox(
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("TAB 2", "OFF1_table_2"),
+        Plot_Maker("IBR Crime Code", "OFF1_table_2"),
       )
     )
   )

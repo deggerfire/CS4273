@@ -13,7 +13,7 @@ CFS_topBar <- c(
 # This should help with step 2
 CFS_selectors <- c("CFS_Source_of_Call_Selector"    , 
                    "CFS_Police_Call_Status_Selector", 
-                   "CFS_Police_Call_Prioty_Selector", 
+                   "CFS_Police_Call_Priority_Selector", 
                    "CFS_City_Selector",
                    "CFS_Top_Selector"
              )
@@ -46,17 +46,17 @@ CFS_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Graph
   # Check in the widgets have already been loaded
   if(CFS_widgetsLoaded){return()}
   # Populate the widgets with each of the unique values in the given data
-  Selector_Updater(session, CFS_selectors[1], Graph1_selector, CFS_selectors[1])
-  Selector_Updater(session, CFS_selectors[2], Graph2_selector, CFS_selectors[2])
-  Selector_Updater(session, CFS_selectors[3], Graph3_selector, CFS_selectors[3])
-  Selector_Updater(session, CFS_selectors[4], Graph4_selector, CFS_selectors[4])
+  Selector_Updater(session, CFS_selectors[1], Graph1_selector, "Source of Call")
+  Selector_Updater(session, CFS_selectors[2], Graph2_selector, "Police Call Status")
+  Selector_Updater(session, CFS_selectors[3], Graph3_selector, "Police Call Priority")
+  Selector_Updater(session, CFS_selectors[4], Graph4_selector, "City")
   # Mark that the widgets have been loaded
   CFS_widgetsLoaded <<- TRUE
 }
 CFS_populateTopBar <-function(session, numberOfYears)
 {
   if(CFS_topBarLoaded){return()}
-  Selector_Updater(session, CFS_topBar[1],numberOfYears, CFS_topBar[1])
+  Selector_Updater(session, CFS_topBar[1],numberOfYears, "Select Year")
   CFS_topBarLoaded <<- TRUE
 }
 

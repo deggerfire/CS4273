@@ -45,17 +45,17 @@ OFF3_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Grap
   # Check in the widgets have already been loaded
   if(OFF3_widgetsLoaded){return()}
   # Populate the widgets with each of the unique values in the given data
-  Selector_Updater(session, OFF3_selectors[1], Graph1_selector, OFF3_selectors[1])
-  Selector_Updater(session, OFF3_selectors[2], Graph2_selector, OFF3_selectors[2])
-  Selector_Updater(session, OFF3_selectors[3], Graph3_selector, OFF3_selectors[3])
-  Selector_Updater(session, OFF3_selectors[4], Graph4_selector, OFF3_selectors[4])
+  Selector_Updater(session, OFF3_selectors[1], Graph1_selector, "Sex")
+  Selector_Updater(session, OFF3_selectors[2], Graph2_selector, "Race")
+  Selector_Updater(session, OFF3_selectors[3], Graph3_selector, "Type")
+  Selector_Updater(session, OFF3_selectors[4], Graph4_selector, "Sub-Type")
   # Mark that the widgets have been loaded
   OFF3_widgetsLoaded <<- TRUE
 }
 OFF3_populateTopBar <-function(session, numberOfYears)
 {
   if(OFF3_topBarLoaded){return()}
-  Selector_Updater(session, OFF3_topBar[1],numberOfYears, OFF3_topBar[1])
+  Selector_Updater(session, OFF3_topBar[1],numberOfYears, "Select Year")
   OFF3_topBarLoaded <<- TRUE
 }
 
@@ -83,15 +83,15 @@ OFF3_tab <- function(){
       tabBox(
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("TAB 1", "OFF3_table_1"),
-        Plot_Maker("TAB 2", "OFF3_table_2")
+        Plot_Maker("Sex", "OFF3_table_1"),
+        Plot_Maker("Race", "OFF3_table_2")
       ),
       # Makes the second graph area
       tabBox(
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("TAB 3", "OFF3_table_3"),
-        Plot_Maker("TAB 4", "OFF3_table_4")
+        Plot_Maker("Subject Type", "OFF3_table_3"),
+        Plot_Maker("Sub-Type", "OFF3_table_4")
       )
     )
   )
