@@ -46,7 +46,7 @@ OFF4_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Grap
   if(OFF4_widgetsLoaded){return()}
   # Populate the widgets with each of the unique values in the given data
   Selector_Updater(session, OFF4_selectors[1], Graph1_selector, "Arrestee Race")
-  Selector_Updater(session, OFF4_selectors[2], Graph2_selector, "Arrestee Sex")
+  Selector_Updater(session, OFF4_selectors[2], Graph2_selector, "Arrestee Gender")
   Selector_Updater(session, OFF4_selectors[3], Graph3_selector, "Arrest Type")
   Selector_Updater(session, OFF4_selectors[4], Graph4_selector, "Description")
   # Mark that the widgets have been loaded
@@ -84,7 +84,7 @@ OFF4_tab <- function(){
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
         Plot_Maker("Arrestee Race", "OFF4_table_1"),
-        Plot_Maker("Arrestee Sex", "OFF4_table_2")
+        Plot_Maker("Arrestee Gender", "OFF4_table_2")
       ),
       # Makes the second graph area
       tabBox(

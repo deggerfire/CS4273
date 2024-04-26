@@ -459,7 +459,7 @@ server <- function(input, output, session) {
       }
       
       # Final Output
-      sex <- outputPieChart(table(data$SEX), label = "Sex")
+      sex <- outputPieChart(table(data$SEX), label = "Gender")
       
       # BAR CHARTS
       
@@ -630,7 +630,7 @@ server <- function(input, output, session) {
       }
       
       # Final Output
-      sex <- outputPieChart(table(data$SEX), label = "Sex")
+      sex <- outputPieChart(table(data$SEX), label = "Gender")
       
       # BAR CHARTS
       
@@ -1279,7 +1279,7 @@ server <- function(input, output, session) {
       ######################
       # Step 3: Send the formatted data to become a graph
       ######################
-      Contacts_Sex   <- outputPieChart (table(data$Sex), label = "Sex")
+      Contacts_Sex   <- outputPieChart (table(data$Sex), label = "Gender")
       Contacts_Race   <- outputBarPlot (table(data$Race), label = "Race")
       Contacts_TicketType <- outputBarPlot(table(data$TicketType), label = "Type")
       ######################
@@ -1449,7 +1449,7 @@ server <- function(input, output, session) {
       ######################
       # Step 3: Send the formatted data to become a graph
       ######################
-      Offenses_Sex   <- outputPieChart (table(data$Sex), label = "Sex")
+      Offenses_Sex   <- outputPieChart (table(data$Sex), label = "Gender")
       Offenses_Race   <- outputBarPlot (table(data$Race), label = "Race")
       Offenses_SubjectType <- outputBarPlot (table(data$CaseSubjectType), label = "Subject Type")
       Offenses_SubjectSubType <- outputBarPlot (table(data$CaseSubjectSubType), label = "Sub-Type")
@@ -1505,7 +1505,7 @@ server <- function(input, output, session) {
       # Makes the graph for source of call
       Race_BP   <- outputBarPlot (table(data$Race        ), label = "Arrestee Race")
       # Makes the graph for police call status
-      Sex_PC  <- outputPieChart(table(data$Sex  ), label = "Arrestee Sex")
+      Sex_PC  <- outputPieChart(table(data$Sex  ), label = "Arrestee Gender")
       # Makes the graph for police call priority
       ArrType_BP  <- outputBarPlot (table(data$ArrestType), label = "Arrest Type")
       # Makes the graph for city

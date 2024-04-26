@@ -147,10 +147,10 @@ CI_Race_PC <- function(data, plotName, widgetName){
 
 # Makes the tab for sex piechart
 CI_Sex_PC <- function(data, plotName, widgetName){
-  tab <- tabPanel('Sex Piechart', # Tab title
+  tab <- tabPanel('Gender', # Tab title
                   plotOutput(plotName),                 # plotOutput name
                   # Input selector
-                  selectInput(widgetName, "Sex", c("Unselected", unique(data$SEX[!is.na(data$SEX)])), selected = 1)
+                  selectInput(widgetName, "Gender", c("Unselected", unique(data$SEX[!is.na(data$SEX)])), selected = 1)
                   )
   return(tab)
 }

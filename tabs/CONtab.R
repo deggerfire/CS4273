@@ -43,7 +43,7 @@ CON_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Graph
   # Check in the widgets have already been loaded
   if(CON_widgetsLoaded){return()}
   # Populate the widgets with each of the unique values in the given data
-  Selector_Updater(session, CON_selectors[1], Graph1_selector, "Sex")
+  Selector_Updater(session, CON_selectors[1], Graph1_selector, "Gender")
   Selector_Updater(session, CON_selectors[2], Graph2_selector, "Race")
   Selector_Updater(session, CON_selectors[3], Graph3_selector, "Type")
   # Mark that the widgets have been loaded
@@ -80,7 +80,7 @@ CON_tab <- function(){
       tabBox(
         height = "500px",
         # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("Sex", "CON_table_1"),
+        Plot_Maker("Gender", "CON_table_1"),
         Plot_Maker("Race", "CON_table_2")
       ),
       # Makes the second graph area
