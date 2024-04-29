@@ -114,12 +114,8 @@ server <- function(input, output, session) {
   # label - string for graph labels
   outputBarPlot <- function(data, label = "") {
     plot <- renderPlot({
-      # Put the plot at plotOutput("Barplot") in the shiny code
-      if (nrow(data.frame(data)) == 0) {
-        graph <- ggplot() +
-          annotate("text", x = 0, y = 0, size = 10, label = "No Data to Graph") + theme_void()
-      }
-      else {
+      tryCatch({
+        # Put the plot at plotOutput("Barplot") in the shiny code
         graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) +
           geom_bar(stat = "identity", width = 0.8) +
           geom_text(aes(label = Freq), vjust = -0.5, size = 4) +  # Add numbers to bars
@@ -130,20 +126,17 @@ server <- function(input, output, session) {
             axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1),
             legend.position = "none"
           )
-      }
-      print(graph)
+        print(graph)
+      }, error = function(e) {graph <- ggplot() + annotate("text", x = 0, y = 0, size = 10, label = "No Data to Graph") + theme_void()
+      print(graph)})
     })
     return(plot)
   }
   
   outputSpecialBarPlot <- function(data, label = "") {
     plot <- renderPlot({
-      # Put the plot at plotOutput("Barplot") in the shiny code
-      if (nrow(data.frame(data)) == 0) {
-        graph <- ggplot() +
-          annotate("text", x = 0, y = 0, size = 10, label = "No Data to Graph") + theme_void()
-      }
-      else {
+      tryCatch({
+        # Put the plot at plotOutput("Barplot") in the shiny code
         graph <- ggplot(data.frame(data), aes(x = Var1, y = Freq, fill = Var1)) +
           geom_bar(stat = "identity", width = 0.8, show.legend = FALSE) +
           geom_text(aes(label = Freq), vjust = -0.5, size = 4) +  # Add numbers to bars
@@ -153,8 +146,9 @@ server <- function(input, output, session) {
             axis.text.x = element_text(angle = -45, vjust = 1, hjust = 0),
             text = element_text(size = 14)
           )
-      }
-      print(graph)
+        print(graph)
+      }, error = function(e) {graph <- ggplot() + annotate("text", x = 0, y = 0, size = 10, label = "No Data to Graph") + theme_void()
+      print(graph)})
     })
     return(plot)
   }
@@ -162,12 +156,8 @@ server <- function(input, output, session) {
   outputPieChart <- function(data, label = "") {
     
     plot <- renderPlot({
-      # Put the plot at plotOutput("Piechart") in the shiny code
-      if (nrow(data.frame(data)) == 0) {
-        graph <- ggplot() +
-          annotate("text", x = 0, y = 0, size = 10, label = "No Data to Graph") + theme_void()
-      }
-      else {
+      tryCatch({
+        # Put the plot at plotOutput("Piechart") in the shiny code
         # Calculates percentages
         percent <- (data/sum(data))*100
         percent <- round(percent, digits=2)
@@ -182,20 +172,17 @@ server <- function(input, output, session) {
           ) +
           coord_polar("y", start = 0) +
           scale_fill_brewer(palette = "Set3", labels=paste(data.frame(data)$Var1, " (", percent, "%)", sep=""))
-      }
-      print(graph)
+        print(graph)
+      }, error = function(e) {graph <- ggplot() + annotate("text", x = 0, y = 0, size = 10, label = "No Data to Graph") + theme_void()
+      print(graph)})
     })
     return(plot)
   }
   
   outputLineGraph <- function(data, x, y, label = "", xlab = "", ylab = "") {
     plot <- renderPlot({
-      # Put the plot at plotOutput("Piechart") in the shiny code
-      if (nrow(data.frame(data)) == 0) {
-        graph <- ggplot() +
-          annotate("text", x = 0, y = 0, size = 10, label = "No Data to Graph") + theme_void()
-      }
-      else {
+      tryCatch({
+        # Put the plot at plotOutput("Piechart") in the shiny code
         graph <- ggplot(data, aes_string(x = x, y = y, group = 1)) +
           geom_line(colour = 'red') +
           xlab(xlab) +
@@ -204,8 +191,9 @@ server <- function(input, output, session) {
           theme(
             text = element_text(size = 14)
           )
-      }
-      print(graph)
+        print(graph)
+      }, error = function(e) {graph <- ggplot() + annotate("text", x = 0, y = 0, size = 10, label = "No Data to Graph") + theme_void()
+      print(graph)})
     })
     return(plot)
   }
