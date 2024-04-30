@@ -7,14 +7,14 @@ source("tabs/UIHelperFunctions.R")
 # List of the widget id's on the screen in the top bar. This list does have functionally
 # This should help with step 2
 CON_topBar <- c(
-                "CONSelect_Year"
+  "CONSelect_Year"
 )
 # List of the widget id's on the screen. This list does have functionally
 # This should help with step 2
-CON_selectors <- c("CON_Selector_1", 
-                   "CON_Selector_2", 
-                   "CON_Selector_3" 
-             )
+CON_selectors <- c("CON_Race_Selector", 
+                   "CON_Sex_Selector", 
+                   "CON_Ticket_Type_Selector" 
+)
 
 # Render function for call for service (puts graphs on screen)
 # This function is for step 4
@@ -43,9 +43,9 @@ CON_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Graph
   # Check in the widgets have already been loaded
   if(CON_widgetsLoaded){return()}
   # Populate the widgets with each of the unique values in the given data
-  Selector_Updater(session, CON_selectors[1], Graph1_selector, "Gender")
-  Selector_Updater(session, CON_selectors[2], Graph2_selector, "Race")
-  Selector_Updater(session, CON_selectors[3], Graph3_selector, "Type")
+  Selector_Updater(session, CON_selectors[1], Graph1_selector, "Race")
+  Selector_Updater(session, CON_selectors[2], Graph2_selector, "Sex")
+  Selector_Updater(session, CON_selectors[3], Graph3_selector, "Ticket Type")
   # Mark that the widgets have been loaded
   CON_widgetsLoaded <<- TRUE
 }
@@ -66,30 +66,30 @@ CON_populateTopBar <-function(session, numberOfYears)
 CON_tab <- function(){
   # Makes the object of the entire main area
   tab <- tabItem(tabName = "CON",
-  # Topbar area
-    fluidRow(box(width = 12, 
-      column(width = 2, selectInput(CON_topBar[1], CON_topBar[1], "Unselected", selected = 1)),
-      column(width = 2, selectInput(CON_selectors[1], CON_selectors[1], "Unselected", selected = 1)),
-      column(width = 2, selectInput(CON_selectors[2], CON_selectors[2], "Unselected", selected = 1)),
-      column(width = 2, selectInput(CON_selectors[3], CON_selectors[3], "Unselected", selected = 1)),
-      )
-    ),
-    # Main graph area
-    fluidRow(
-      # Makes the first graph area
-      tabBox(
-        height = "500px",
-        # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("Gender", "CON_table_1"),
-        Plot_Maker("Race", "CON_table_2")
-      ),
-      # Makes the second graph area
-      tabBox(
-        height = "500px",
-        # Uses functions to make what is in each tab (string is the name of the plotOutput)
-        Plot_Maker("Type", "CON_table_3")
-      )
-    )
+                 # Topbar area
+                 fluidRow(box(width = 12, 
+                              column(width = 2, selectInput(CON_topBar[1], CON_topBar[1], "Unselected", selected = 1)),
+                              column(width = 2, selectInput(CON_selectors[1], CON_selectors[1], "Unselected", selected = 1)),
+                              column(width = 2, selectInput(CON_selectors[2], CON_selectors[2], "Unselected", selected = 1)),
+                              column(width = 2, selectInput(CON_selectors[3], CON_selectors[3], "Unselected", selected = 1)),
+                 )
+                 ),
+                 # Main graph area
+                 fluidRow(
+                   # Makes the first graph area
+                   tabBox(
+                     height = "500px",
+                     # Uses functions to make what is in each tab (string is the name of the plotOutput)
+                     Plot_Maker("Race", "CON_table_1"),
+                     Plot_Maker("Sex", "CON_table_2")
+                   ),
+                   # Makes the second graph area
+                   tabBox(
+                     height = "500px",
+                     # Uses functions to make what is in each tab (string is the name of the plotOutput)
+                     Plot_Maker("Ticket Type", "CON_table_3")
+                   )
+                 )
   )
   return(tab)
 }
