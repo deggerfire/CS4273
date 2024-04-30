@@ -1,0 +1,703 @@
+"","FILENUM","INCIDENT_TYPE","SOURCE","SUBJ_TYPE","SUBJ_INC_NUM","SERVICE_TYPE","RESISTANCE_TYPE","SUB_ACT_DESC","UOF_EFFECTIVE","SUBJ_INJ","SUBJ_INJ_HOSP","INVOLVMENT","AGE","YRS_EMPL","SEX","RACE","ALLEGATION_MADE","FINDING","RECEIVED_DT","OCCURRED_DT","INC_STATUS"
+"1","CEF2023-001","Complaint External-Formal","Citizen Telephone Call","Officer",18900,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Laws, Rules, and Orders - Violation of federal, state, local or admin laws, rules or regulations","Sustained",2023-01-28,2023-01-28,"Completed"
+"2","CEF2023-001","Complaint External-Formal",NA,"Officer",18899,NA,NA,NA,NA,NA,NA,"Complainant",40,"16","Male","Black",NA,NA,NA,NA,NA
+"3","CEF2023-001","Complaint External-Formal",NA,"Officer",18900,NA,NA,NA,NA,NA,NA,"Officer",31,"1","Male","White",NA,NA,NA,NA,NA
+"4","CEF2023-002","Complaint External-Formal","Citizen Telephone Call","Officer",18891,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of public","Unfounded",2023-01-27,2023-01-05,"Completed"
+"5","CEF2023-002","Complaint External-Formal",NA,"Citizen",5039,NA,NA,NA,NA,NA,NA,"Complainant",37,NA,"Female","White",NA,NA,NA,NA,NA
+"6","CEF2023-002","Complaint External-Formal",NA,"Officer",18891,NA,NA,NA,NA,NA,NA,"Officer",53,"9","Male","White",NA,NA,NA,NA,NA
+"7","CEF2023-002","Complaint External-Formal",NA,"Officer",18892,NA,NA,NA,NA,NA,NA,"Witness",42,"18","Male","White",NA,NA,NA,NA,NA
+"8","CEF2023-003","Complaint External-Formal","Citizen Telephone Call","Officer",18889,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Laws, Rules, and Orders - Violation of policy","Sustained",2023-01-26,2023-01-22,"Completed"
+"9","CEF2023-003","Complaint External-Formal",NA,"Citizen",5037,NA,NA,NA,NA,NA,NA,"Complainant",23,NA,"Male","White",NA,NA,NA,NA,NA
+"10","CEF2023-003","Complaint External-Formal",NA,"Citizen",5038,NA,NA,NA,NA,NA,NA,"Witness",NA,NA,"m","w",NA,NA,NA,NA,NA
+"11","CEF2023-003","Complaint External-Formal",NA,"Officer",18889,NA,NA,NA,NA,NA,NA,"Officer",43,"14","Male","White",NA,NA,NA,NA,NA
+"12","CEF2023-003","Complaint External-Formal",NA,"Officer",18890,NA,NA,NA,NA,NA,NA,"Witness",26,"4","male","white",NA,NA,NA,NA,NA
+"13","CEF2023-004","Complaint External-Formal","Citizen Telephone Call","Officer",18995,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of public","Exonerated",2023-02-22,2023-01-10,"Completed"
+"14","CEF2023-004","Complaint External-Formal",NA,"Citizen",5073,NA,NA,NA,NA,NA,NA,"Complainant",29,NA,"Male","White",NA,NA,NA,NA,NA
+"15","CEF2023-004","Complaint External-Formal",NA,"Officer",18995,NA,NA,NA,NA,NA,NA,"Officer",42,"12","Male","White",NA,NA,NA,NA,NA
+"16","CEF2023-006","Complaint External-Formal","Citizen Telephone Call","Officer",19053,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of employee","Unfounded",2023-03-13,2023-03-13,"Completed"
+"17","CEF2023-006","Complaint External-Formal",NA,"Citizen",5083,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Male","Black",NA,NA,NA,NA,NA
+"18","CEF2023-006","Complaint External-Formal",NA,"Officer",19053,NA,NA,NA,NA,NA,NA,"Officer",25,"4","male","white",NA,NA,NA,NA,NA
+"19","CEF2023-006","Complaint External-Formal",NA,"Officer",19054,NA,NA,NA,NA,NA,NA,"Witness",30,"1","male","white",NA,NA,NA,NA,NA
+"20","CEF2023-007","Complaint External-Formal","Citizen Telephone Call","Officer",19134,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of public","Sustained",2023-03-26,2023-03-26,"Completed"
+"21","CEF2023-007","Complaint External-Formal",NA,"Citizen",5100,NA,NA,NA,NA,NA,NA,"Witness",NA,NA,"Unknown","Unknown",NA,NA,NA,NA,NA
+"22","CEF2023-007","Complaint External-Formal",NA,"Officer",19134,NA,NA,NA,NA,NA,NA,"Officer",41,"12","Male","White",NA,NA,NA,NA,NA
+"23","CEF2023-007","Complaint External-Formal",NA,"Officer",20111,NA,NA,NA,NA,NA,NA,"Witness",37,"7","Male","Vietnamese",NA,NA,NA,NA,NA
+"24","CEF2023-008","Complaint External-Formal","Employee","Officer",19195,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Unreasonable or unwarranted use of force","No Misconduct",2023-04-17,2023-04-17,"Completed"
+"25","CEF2023-008","Complaint External-Formal",NA,"Citizen",5117,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Male","Unknown",NA,NA,NA,NA,NA
+"26","CEF2023-008","Complaint External-Formal",NA,"Citizen",5118,NA,NA,NA,NA,NA,NA,"Witness",NA,NA,"Female","White",NA,NA,NA,NA,NA
+"27","CEF2023-008","Complaint External-Formal",NA,"Officer",19195,NA,NA,NA,NA,NA,NA,"Officer",37,"2","Male","Asian",NA,NA,NA,NA,NA
+"28","CEF2023-008","Complaint External-Formal",NA,"Officer",19196,NA,NA,NA,NA,NA,NA,"Witness",61,"27","Male","White",NA,NA,NA,NA,NA
+"29","CEF2023-009","Complaint External-Formal","Citizen In-Person","Officer",19146,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Performance - Making false or misleading statements","Sustained",2023-04-09,2023-04-09,"Completed"
+"30","CEF2023-009","Complaint External-Formal",NA,"Citizen",5113,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Male","White",NA,NA,NA,NA,NA
+"31","CEF2023-009","Complaint External-Formal",NA,"Officer",19146,NA,NA,NA,NA,NA,NA,"Officer",28,"4","male","white",NA,NA,NA,NA,NA
+"32","CEF2023-010","Complaint External-Formal","Outside LE Agency","Officer",19221,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Unreasonable or unwarranted use of force","Unfounded",2023-04-19,2023-04-18,"Completed"
+"33","CEF2023-010","Complaint External-Formal","Outside LE Agency","Officer",19222,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Unreasonable or unwarranted use of force","Unfounded",2023-04-19,2023-04-18,"Completed"
+"34","CEF2023-010","Complaint External-Formal","Outside LE Agency","Officer",19222,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Department Values Violation - Service Attitude","Sustained",2023-04-19,2023-04-18,"Completed"
+"35","CEF2023-010","Complaint External-Formal","Outside LE Agency","Officer",19223,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of public","Corrective Action",2023-04-19,2023-04-18,"Completed"
+"36","CEF2023-010","Complaint External-Formal","Outside LE Agency","Officer",19221,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Department Values Violation - Service Attitude","Sustained",2023-04-19,2023-04-18,"Completed"
+"37","CEF2023-010","Complaint External-Formal",NA,"Citizen",5127,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Male","Black",NA,NA,NA,NA,NA
+"38","CEF2023-010","Complaint External-Formal",NA,"Citizen",5128,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Female",NA,NA,NA,NA,NA,NA
+"39","CEF2023-010","Complaint External-Formal",NA,"Citizen",5297,NA,NA,NA,NA,NA,NA,"Complainant",61,NA,"Male","White",NA,NA,NA,NA,NA
+"40","CEF2023-010","Complaint External-Formal",NA,"Citizen",5298,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Female","White",NA,NA,NA,NA,NA
+"41","CEF2023-010","Complaint External-Formal",NA,"Citizen",5299,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Female",NA,NA,NA,NA,NA,NA
+"42","CEF2023-010","Complaint External-Formal",NA,"Officer",19221,NA,NA,NA,NA,NA,NA,"Officer",42,"10","Male","White",NA,NA,NA,NA,NA
+"43","CEF2023-010","Complaint External-Formal",NA,"Officer",19222,NA,NA,NA,NA,NA,NA,"Officer",32,"5","Male","White",NA,NA,NA,NA,NA
+"44","CEF2023-010","Complaint External-Formal",NA,"Officer",19223,NA,NA,NA,NA,NA,NA,"Officer",38,"1","male","White",NA,NA,NA,NA,NA
+"45","CEF2023-011","Complaint External-Formal","Citizen Telephone Call","Officer",19100,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Exceeding powers by unreasonable, unlawful or excessive conduct","Sustained",2023-03-27,2023-03-26,"Completed"
+"46","CEF2023-011","Complaint External-Formal",NA,"Citizen",5101,NA,NA,NA,NA,NA,NA,"Complainant",28,NA,"Male","Unknown",NA,NA,NA,NA,NA
+"47","CEF2023-011","Complaint External-Formal",NA,"Officer",19100,NA,NA,NA,NA,NA,NA,"Officer",31,"5","Female","White",NA,NA,NA,NA,NA
+"48","CEF2023-012","Complaint External-Formal","Citizen Letter","Officer",19436,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Unreasonable or unwarranted use of force","No Misconduct",2023-06-20,2023-05-23,"Completed"
+"49","CEF2023-012","Complaint External-Formal","Citizen Letter","Officer",19435,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Unreasonable or unwarranted use of force","No Misconduct",2023-06-20,2023-05-23,"Completed"
+"50","CEF2023-012","Complaint External-Formal",NA,"Citizen",5170,NA,NA,NA,NA,NA,NA,"Complainant",35,NA,"Female","White",NA,NA,NA,NA,NA
+"51","CEF2023-012","Complaint External-Formal",NA,"Officer",19435,NA,NA,NA,NA,NA,NA,"Officer",35,"9","Male","White",NA,NA,NA,NA,NA
+"52","CEF2023-012","Complaint External-Formal",NA,"Officer",19436,NA,NA,NA,NA,NA,NA,"Officer",31,"1","Female","Hispanic",NA,NA,NA,NA,NA
+"53","CEF2023-012","Complaint External-Formal",NA,"Officer",19437,NA,NA,NA,NA,NA,NA,"Witness",27,"1","Male","White",NA,NA,NA,NA,NA
+"54","CEF2023-013","Complaint External-Formal","Citizen Telephone Call","Officer",19453,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Safety -Unsafe or improper driving habits or actions","No Misconduct",2023-06-08,2023-06-08,"Completed"
+"55","CEF2023-013","Complaint External-Formal",NA,"Citizen",5154,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Male","Unknown",NA,NA,NA,NA,NA
+"56","CEF2023-013","Complaint External-Formal",NA,"Officer",19453,NA,NA,NA,NA,NA,NA,"Officer",49,"14","Male","White",NA,NA,NA,NA,NA
+"57","CEF2023-014","Complaint External-Formal","Citizen E-Mail","Officer",19545,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Discrimination, Oppression or Favoritism - Color","Unfounded",2023-07-18,2023-07-18,"Completed"
+"58","CEF2023-014","Complaint External-Formal",NA,"Citizen",5187,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Male","White",NA,NA,NA,NA,NA
+"59","CEF2023-014","Complaint External-Formal",NA,"Citizen",5188,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Male","Black",NA,NA,NA,NA,NA
+"60","CEF2023-014","Complaint External-Formal",NA,"Citizen",5189,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Male","White",NA,NA,NA,NA,NA
+"61","CEF2023-014","Complaint External-Formal",NA,"Citizen",5192,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Male","White",NA,NA,NA,NA,NA
+"62","CEF2023-014","Complaint External-Formal",NA,"Citizen",5193,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Female","White",NA,NA,NA,NA,NA
+"63","CEF2023-014","Complaint External-Formal",NA,"Citizen",5194,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Male","White",NA,NA,NA,NA,NA
+"64","CEF2023-014","Complaint External-Formal",NA,"Officer",19545,NA,NA,NA,NA,NA,NA,"Officer",41,"12","Male","White",NA,NA,NA,NA,NA
+"65","CEF2023-015","Complaint External-Formal","Criminal Investigation","Officer",19403,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Efficiency - Unsatisfactory work performance","Non-Sustained",2023-06-13,2023-05-23,"Completed"
+"66","CEF2023-015","Complaint External-Formal","Criminal Investigation","Officer",19401,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Efficiency - Unsatisfactory work performance","Sustained",2023-06-13,2023-05-23,"Completed"
+"67","CEF2023-015","Complaint External-Formal",NA,"Citizen",5156,NA,NA,NA,NA,NA,NA,"Complainant",63,NA,"Male","White",NA,NA,NA,NA,NA
+"68","CEF2023-015","Complaint External-Formal",NA,"Citizen",5157,NA,NA,NA,NA,NA,NA,"Witness",53,NA,"Male","White",NA,NA,NA,NA,NA
+"69","CEF2023-015","Complaint External-Formal",NA,"Officer",19401,NA,NA,NA,NA,NA,NA,"Officer",65,"25","Male","Amer Ind",NA,NA,NA,NA,NA
+"70","CEF2023-015","Complaint External-Formal",NA,"Officer",19403,NA,NA,NA,NA,NA,NA,"Officer",35,"9","Male","White",NA,NA,NA,NA,NA
+"71","CEF2023-015","Complaint External-Formal",NA,"Officer",19404,NA,NA,NA,NA,NA,NA,"Complainant",52,"14","Male","White",NA,NA,NA,NA,NA
+"72","CEF2023-015","Complaint External-Formal",NA,"Officer",19405,NA,NA,NA,NA,NA,NA,"Witness",51,"15","Male","White",NA,NA,NA,NA,NA
+"73","CEF2023-015","Complaint External-Formal",NA,"Officer",20112,NA,NA,NA,NA,NA,NA,"Witness",26,"1","male","white",NA,NA,NA,NA,NA
+"74","CEF2023-016","Complaint External-Formal","Citizen Telephone Call","Officer",19682,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of public","Unfounded",2023-08-23,2023-08-23,"Completed"
+"75","CEF2023-016","Complaint External-Formal",NA,"Citizen",5208,NA,NA,NA,NA,NA,NA,"Complainant",51,NA,"Male","Unknown",NA,NA,NA,NA,NA
+"76","CEF2023-016","Complaint External-Formal",NA,"Officer",19682,NA,NA,NA,NA,NA,NA,"Officer",60,"24","Male","White",NA,NA,NA,NA,NA
+"77","CEF2023-017","Complaint External-Formal","Citizen Telephone Call","Officer",19785,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of public","Exonerated",2023-09-12,2023-09-12,"Completed"
+"78","CEF2023-017","Complaint External-Formal",NA,"Citizen",5227,NA,NA,NA,NA,NA,NA,"Complainant",34,NA,"Male","N/A",NA,NA,NA,NA,NA
+"79","CEF2023-017","Complaint External-Formal",NA,"Officer",19785,NA,NA,NA,NA,NA,NA,"Officer",38,"15","Male","White",NA,NA,NA,NA,NA
+"80","CEF2023-018","Complaint External-Formal","Citizen Telephone Call","Officer",19814,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Efficiency - Neglect of Duty","Sustained",2023-09-23,2023-09-18,"Completed"
+"81","CEF2023-018","Complaint External-Formal",NA,"Citizen",5238,NA,NA,NA,NA,NA,NA,"Complainant",30,NA,"Female",NA,NA,NA,NA,NA,NA
+"82","CEF2023-018","Complaint External-Formal",NA,"Citizen",5239,NA,NA,NA,NA,NA,NA,"Complainant",38,NA,"Male",NA,NA,NA,NA,NA,NA
+"83","CEF2023-018","Complaint External-Formal",NA,"Citizen",5300,NA,NA,NA,NA,NA,NA,"Complainant",41,NA,"Female","White",NA,NA,NA,NA,NA
+"84","CEF2023-018","Complaint External-Formal",NA,"Citizen",5301,NA,NA,NA,NA,NA,NA,"Complainant",63,NA,"Male","White",NA,NA,NA,NA,NA
+"85","CEF2023-018","Complaint External-Formal",NA,"Officer",19814,NA,NA,NA,NA,NA,NA,"Officer",31,"5","Female","White",NA,NA,NA,NA,NA
+"86","CEF2023-020","Complaint External-Formal","Citizen E-Mail","Officer",19973,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Discrimination, Oppression or Favoritism - Color","No Misconduct",2023-10-23,2023-08-30,"Completed"
+"87","CEF2023-020","Complaint External-Formal",NA,"Officer",19973,NA,NA,NA,NA,NA,NA,"Officer",49,"14","Male","White",NA,NA,NA,NA,NA
+"88","CEF2023-022","Complaint External-Formal","Citizen In-Person",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-12-16,2023-12-15,"Completed"
+"89","CEF2023-022","Complaint External-Formal",NA,"Citizen",5320,NA,NA,NA,NA,NA,NA,"Complainant",31,NA,"Male","Unknown",NA,NA,NA,NA,NA
+"90","CEF2023-022","Complaint External-Formal",NA,"Citizen",5321,NA,NA,NA,NA,NA,NA,"Witness",22,NA,"Female","White",NA,NA,NA,NA,NA
+"91","CEF2023-022","Complaint External-Formal",NA,"Citizen",5322,NA,NA,NA,NA,NA,NA,"Witness",25,NA,"Male","Black",NA,NA,NA,NA,NA
+"92","CEF2023-022","Complaint External-Formal",NA,"Officer",20283,NA,NA,NA,NA,NA,NA,"Officer",48,"12","Male","White",NA,NA,NA,NA,NA
+"93","CEF2023-022","Complaint External-Formal",NA,"Officer",20284,NA,NA,NA,NA,NA,NA,"Officer",38,"8","Male","White",NA,NA,NA,NA,NA
+"94","CEF2023-022","Complaint External-Formal",NA,"Officer",20285,NA,NA,NA,NA,NA,NA,"Officer",36,"1","Male","White",NA,NA,NA,NA,NA
+"95","CEF2023-022","Complaint External-Formal",NA,"Officer",20286,NA,NA,NA,NA,NA,NA,"Officer",27,"0","male","white",NA,NA,NA,NA,NA
+"96","CEI2023-001","Complaint External-Informal","Citizen Telephone Call",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-01-10,2023-01-10,"Completed"
+"97","CEI2023-001","Complaint External-Informal",NA,"Citizen",5019,NA,NA,NA,NA,NA,NA,"Complainant",31,NA,"Male","White",NA,NA,NA,NA,NA
+"98","CEI2023-001","Complaint External-Informal",NA,"Officer",18795,NA,NA,NA,NA,NA,NA,"Officer",32,"7","Male","White",NA,NA,NA,NA,NA
+"99","CEI2023-001","Complaint External-Informal",NA,"Officer",18796,NA,NA,NA,NA,NA,NA,"Witness",49,"18","Male","White",NA,NA,NA,NA,NA
+"100","CEI2023-002","Complaint External-Informal","Citizen E-Mail","Officer",18886,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of public",NA,2023-01-26,2023-01-14,"Completed"
+"101","CEI2023-002","Complaint External-Informal",NA,"Citizen",5035,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,NA,NA,NA,NA,NA,NA,NA
+"102","CEI2023-002","Complaint External-Informal",NA,"Officer",18886,NA,NA,NA,NA,NA,NA,"Officer",38,"6","Male","White",NA,NA,NA,NA,NA
+"103","CEI2023-005","Complaint External-Informal","Citizen Telephone Call","Officer",19121,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of public","No Misconduct",2023-04-04,2023-04-04,"Completed"
+"104","CEI2023-005","Complaint External-Informal",NA,"Citizen",5108,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Male","Unknown",NA,NA,NA,NA,NA
+"105","CEI2023-005","Complaint External-Informal",NA,"Officer",19121,NA,NA,NA,NA,NA,NA,"Officer",38,"10","Male","White",NA,NA,NA,NA,NA
+"106","CEI2023-005","Complaint External-Informal",NA,"Officer",19122,NA,NA,NA,NA,NA,NA,"Witness",37,"7","Male","Vietnamese",NA,NA,NA,NA,NA
+"107","CEI2023-006","Complaint External-Informal","Citizen Telephone Call","Officer",19078,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Efficiency - Unsatisfactory work performance","No Misconduct",2023-03-22,2023-03-22,"Completed"
+"108","CEI2023-006","Complaint External-Informal",NA,"Citizen",5092,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Female",NA,NA,NA,NA,NA,NA
+"109","CEI2023-006","Complaint External-Informal",NA,"Officer",19078,NA,NA,NA,NA,NA,NA,"Officer",40,"8","Male","White",NA,NA,NA,NA,NA
+"110","CEI2023-007","Complaint External-Informal","Citizen Telephone Call","Officer",19303,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of public",NA,2023-05-08,2023-05-09,"Completed"
+"111","CEI2023-007","Complaint External-Informal",NA,"Citizen",5138,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Female","White",NA,NA,NA,NA,NA
+"112","CEI2023-007","Complaint External-Informal",NA,"Officer",19303,NA,NA,NA,NA,NA,NA,"Officer",28,"4","male","white",NA,NA,NA,NA,NA
+"113","CEI2023-008","Complaint External-Formal","Employee","Officer",19381,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Exceeding powers by unreasonable, unlawful or excessive conduct","Exonerated",2023-06-05,2023-06-03,"Completed"
+"114","CEI2023-008","Complaint External-Formal",NA,"Citizen",5155,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Male","Black",NA,NA,NA,NA,NA
+"115","CEI2023-008","Complaint External-Formal",NA,"Officer",19381,NA,NA,NA,NA,NA,NA,"Officer",33,"7","Male","White",NA,NA,NA,NA,NA
+"116","CEI2023-008","Complaint External-Formal",NA,"Officer",20113,NA,NA,NA,NA,NA,NA,"Witness",33,"6","Male","White",NA,NA,NA,NA,NA
+"117","CEI2023-009","Complaint External-Informal","Citizen Telephone Call","Officer",19546,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Discrimination, Oppression or Favoritism - Color","No Misconduct",2023-07-18,2023-06-09,"Completed"
+"118","CEI2023-009","Complaint External-Informal",NA,"Citizen",5183,NA,NA,NA,NA,NA,NA,"Complainant",58,NA,"Male","Black",NA,NA,NA,NA,NA
+"119","CEI2023-009","Complaint External-Informal",NA,"Officer",19546,NA,NA,NA,NA,NA,NA,"Officer",34,"1","male","white",NA,NA,NA,NA,NA
+"120","CEI2023-010","Complaint External-Informal","Employee","Officer",19530,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Exceeding powers by unreasonable, unlawful or excessive conduct","No Misconduct",2023-07-13,2023-07-13,"Completed"
+"121","CEI2023-010","Complaint External-Informal",NA,"Citizen",5180,NA,NA,NA,NA,NA,NA,"Complainant",56,NA,"Female","White",NA,NA,NA,NA,NA
+"122","CEI2023-010","Complaint External-Informal",NA,"Officer",19530,NA,NA,NA,NA,NA,NA,"Officer",24,"0","male","white",NA,NA,NA,NA,NA
+"123","CEI2023-010","Complaint External-Informal",NA,"Officer",19531,NA,NA,NA,NA,NA,NA,"Witness",42,"18","Male","White",NA,NA,NA,NA,NA
+"124","CEI2023-010","Complaint External-Informal",NA,"Officer",20114,NA,NA,NA,NA,NA,NA,"Witness",33,"6","Male","White",NA,NA,NA,NA,NA
+"125","CEI2023-011","Complaint External-Informal","Citizen Telephone Call","Officer",19608,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Unreasonable or unwarranted use of force","No Misconduct",2023-08-04,2023-08-03,"Completed"
+"126","CEI2023-011","Complaint External-Informal","Citizen Telephone Call","Officer",19608,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of public","No Misconduct",2023-08-04,2023-08-03,"Completed"
+"127","CEI2023-011","Complaint External-Informal","Citizen Telephone Call","Officer",19609,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Unreasonable or unwarranted use of force","No Misconduct",2023-08-04,2023-08-03,"Completed"
+"128","CEI2023-011","Complaint External-Informal","Citizen Telephone Call","Officer",19611,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Unreasonable or unwarranted use of force","No Misconduct",2023-08-04,2023-08-03,"Completed"
+"129","CEI2023-011","Complaint External-Informal","Citizen Telephone Call","Officer",19609,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of public","No Misconduct",2023-08-04,2023-08-03,"Completed"
+"130","CEI2023-011","Complaint External-Informal","Citizen Telephone Call","Officer",19610,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of public","No Misconduct",2023-08-04,2023-08-03,"Completed"
+"131","CEI2023-011","Complaint External-Informal","Citizen Telephone Call","Officer",19611,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of public","No Misconduct",2023-08-04,2023-08-03,"Completed"
+"132","CEI2023-011","Complaint External-Informal","Citizen Telephone Call","Officer",19610,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Unreasonable or unwarranted use of force","No Misconduct",2023-08-04,2023-08-03,"Completed"
+"133","CEI2023-011","Complaint External-Informal",NA,"Citizen",5198,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Female","White",NA,NA,NA,NA,NA
+"134","CEI2023-011","Complaint External-Informal",NA,"Officer",19608,NA,NA,NA,NA,NA,NA,"Officer",53,"9","Male","White",NA,NA,NA,NA,NA
+"135","CEI2023-011","Complaint External-Informal",NA,"Officer",19611,NA,NA,NA,NA,NA,NA,"Officer",33,"7","Male","White",NA,NA,NA,NA,NA
+"136","CEI2023-011","Complaint External-Informal",NA,"Officer",19609,NA,NA,NA,NA,NA,NA,"Officer",27,"2","Male","White",NA,NA,NA,NA,NA
+"137","CEI2023-011","Complaint External-Informal",NA,"Officer",19610,NA,NA,NA,NA,NA,NA,"Officer",33,"6","Male","White",NA,NA,NA,NA,NA
+"138","CEI2023-013","Complaint External-Informal","Citizen E-Mail","Officer",19846,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of public","No Misconduct",2023-10-03,2023-10-01,"Completed"
+"139","CEI2023-013","Complaint External-Informal","Citizen E-Mail","Officer",19847,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of public","No Misconduct",2023-10-03,2023-10-01,"Completed"
+"140","CEI2023-013","Complaint External-Informal",NA,"Officer",19846,NA,NA,NA,NA,NA,NA,"Officer",28,"1","Male","Hispanic",NA,NA,NA,NA,NA
+"141","CEI2023-013","Complaint External-Informal",NA,"Citizen",5246,NA,NA,NA,NA,NA,NA,"Complainant",35,NA,"Male","White",NA,NA,NA,NA,NA
+"142","CEI2023-013","Complaint External-Informal",NA,"Officer",19847,NA,NA,NA,NA,NA,NA,"Officer",24,"2","Male","White",NA,NA,NA,NA,NA
+"143","CEI2023-014","Complaint External-Formal","Citizen Telephone Call","Officer",19967,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of public","No Misconduct",2023-10-23,2023-10-19,"Completed"
+"144","CEI2023-014","Complaint External-Formal",NA,"Citizen",5268,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Male","Unknown",NA,NA,NA,NA,NA
+"145","CEI2023-014","Complaint External-Formal",NA,"Officer",19967,NA,NA,NA,NA,NA,NA,"Officer",49,"14","Male","White",NA,NA,NA,NA,NA
+"146","CEI2023-015","Complaint External-Informal","Citizen Telephone Call","Officer",19922,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of public","Corrective Action",2023-10-15,2023-10-15,"Completed"
+"147","CEI2023-015","Complaint External-Informal",NA,"Citizen",5259,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Female","White",NA,NA,NA,NA,NA
+"148","CEI2023-015","Complaint External-Informal",NA,"Officer",19922,NA,NA,NA,NA,NA,NA,"Officer",38,"10","Male","White",NA,NA,NA,NA,NA
+"149","CEI2023-016","Complaint External-Informal","Employee","Officer",19931,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Exceeding powers by unreasonable, unlawful or excessive conduct","No Misconduct",2023-10-20,2023-09-19,"Completed"
+"150","CEI2023-016","Complaint External-Informal",NA,"Citizen",5263,NA,NA,NA,NA,NA,NA,"Complainant",36,NA,"Male","White",NA,NA,NA,NA,NA
+"151","CEI2023-016","Complaint External-Informal",NA,"Officer",19931,NA,NA,NA,NA,NA,NA,"Officer",36,"6","Male","White",NA,NA,NA,NA,NA
+"152","CEI2023-018","Complaint External-Informal","Citizen Telephone Call",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-11-21,2023-11-20,"Completed"
+"153","CEI2023-018","Complaint External-Informal",NA,"Officer",20139,NA,NA,NA,NA,NA,NA,"Officer",27,"4","Male","white",NA,NA,NA,NA,NA
+"154","CEI2023-018","Complaint External-Informal",NA,"Officer",20140,NA,NA,NA,NA,NA,NA,"Officer",29,"7","Male","White",NA,NA,NA,NA,NA
+"155","CEI2023-018","Complaint External-Informal",NA,"Citizen",5307,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Female","White",NA,NA,NA,NA,NA
+"156","CEI2023-019","Complaint External-Informal","Citizen Telephone Call","Officer",20115,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Efficiency - Neglect of Duty","Unfounded",2023-11-18,2023-11-18,"Completed"
+"157","CEI2023-019","Complaint External-Informal","Citizen Telephone Call","Officer",20116,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Efficiency - Neglect of Duty","Unfounded",2023-11-18,2023-11-18,"Completed"
+"158","CEI2023-019","Complaint External-Informal",NA,"Citizen",5302,NA,NA,NA,NA,NA,NA,"Complainant",27,NA,"Male","White",NA,NA,NA,NA,NA
+"159","CEI2023-019","Complaint External-Informal",NA,"Officer",20115,NA,NA,NA,NA,NA,NA,"Officer",34,"1","male","white",NA,NA,NA,NA,NA
+"160","CEI2023-019","Complaint External-Informal",NA,"Officer",20116,NA,NA,NA,NA,NA,NA,"Officer",21,"0","m","white",NA,NA,NA,NA,NA
+"161","CEI2023-020","Complaint External-Informal","Citizen E-Mail","Officer",20026,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of public","Corrective Action",2023-11-02,2023-11-01,"Completed"
+"162","CEI2023-020","Complaint External-Informal",NA,"Citizen",5281,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,NA,NA,NA,NA,NA,NA,NA
+"163","CEI2023-020","Complaint External-Informal",NA,"Officer",20026,NA,NA,NA,NA,NA,NA,"Officer",38,"6","Male","White",NA,NA,NA,NA,NA
+"164","CEI2023-022","Complaint External-Informal","Citizen Telephone Call","Officer",20272,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Efficiency - Unsatisfactory work performance","No Misconduct",2023-12-13,2023-10-19,"Completed"
+"165","CEI2023-022","Complaint External-Informal",NA,"Citizen",5316,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Female","White",NA,NA,NA,NA,NA
+"166","CEI2023-022","Complaint External-Informal",NA,"Officer",20272,NA,NA,NA,NA,NA,NA,"Officer",53,"9","Male","White",NA,NA,NA,NA,NA
+"167","CEI2023-024","Complaint External-Informal","Employee","Officer",20334,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Unauthorized possession, loss, damage to property of others","No Misconduct",2023-12-27,2023-12-20,"Completed"
+"168","CEI2023-024","Complaint External-Informal",NA,"Officer",20333,NA,NA,NA,NA,NA,NA,"Complainant",30,"7","Male","White",NA,NA,NA,NA,NA
+"169","CEI2023-024","Complaint External-Informal",NA,"Officer",20335,NA,NA,NA,NA,NA,NA,"Witness",27,"0","male","white",NA,NA,NA,NA,NA
+"170","CEI2023-024","Complaint External-Informal",NA,"Officer",20334,NA,NA,NA,NA,NA,NA,"Officer",30,"7","Male","White",NA,NA,NA,NA,NA
+"171","CIF2023-001","Complaint Internal-Formal","Employee",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-02-09,2023-01-13,"Completed"
+"172","CIF2023-001","Complaint Internal-Formal",NA,"Officer",18956,NA,NA,NA,NA,NA,NA,"Witness",60,"29","Male","White",NA,NA,NA,NA,NA
+"173","CIF2023-001","Complaint Internal-Formal",NA,"Officer",18942,NA,NA,NA,NA,NA,NA,"Witness",46,"15","Male","White",NA,NA,NA,NA,NA
+"174","CIF2023-001","Complaint Internal-Formal",NA,"Officer",18943,NA,NA,NA,NA,NA,NA,"Witness",48,"22","Male","White",NA,NA,NA,NA,NA
+"175","CIF2023-002","Complaint Internal-Formal","Employee","Officer",18997,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Laws, Rules, and Orders - Violation of policy","Sustained",2023-02-23,2023-02-19,"Completed"
+"176","CIF2023-002","Complaint Internal-Formal",NA,"Officer",18997,NA,NA,NA,NA,NA,NA,"Officer",37,"4","male","white",NA,NA,NA,NA,NA
+"177","CIF2023-003","Complaint Internal-Formal","Supervisor","Officer",18989,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Efficiency - Neglect of Duty","Sustained",2023-02-21,2023-02-21,"Completed"
+"178","CIF2023-003","Complaint Internal-Formal",NA,"Officer",18990,NA,NA,NA,NA,NA,NA,"Witness",32,"8","Male","Asian",NA,NA,NA,NA,NA
+"179","CIF2023-003","Complaint Internal-Formal",NA,"Officer",18988,NA,NA,NA,NA,NA,NA,"Complainant",54,"26","Female","White",NA,NA,NA,NA,NA
+"180","CIF2023-003","Complaint Internal-Formal",NA,"Officer",18989,NA,NA,NA,NA,NA,NA,"Officer",42,"12","Male","White",NA,NA,NA,NA,NA
+"181","CIF2023-003","Complaint Internal-Formal",NA,"Officer",18991,NA,NA,NA,NA,NA,NA,"Witness",32,"5","Male","White",NA,NA,NA,NA,NA
+"182","CIF2023-003","Complaint Internal-Formal",NA,"Officer",18992,NA,NA,NA,NA,NA,NA,"Witness",33,"7","Female","White",NA,NA,NA,NA,NA
+"183","CIF2023-003","Complaint Internal-Formal",NA,"Officer",18993,NA,NA,NA,NA,NA,NA,"Witness",64,"39","Female","White",NA,NA,NA,NA,NA
+"184","CIF2023-003","Complaint Internal-Formal",NA,"Officer",18994,NA,NA,NA,NA,NA,NA,"Witness",44,"8","Female","White",NA,NA,NA,NA,NA
+"185","CIF2023-004","Complaint Internal-Formal","Supervisor","Officer",19071,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Laws, Rules, and Orders - Violation of federal, state, local or admin laws, rules or regulations","Administrative",2023-03-21,2023-03-14,"Completed"
+"186","CIF2023-004","Complaint Internal-Formal",NA,"Officer",19071,NA,NA,NA,NA,NA,NA,"Officer",41,"13","Male","White",NA,NA,NA,NA,NA
+"187","CIF2023-005","Complaint Internal-Formal","Employee","Officer",19148,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Laws, Rules and Orders - Volation of policy, procedure, rule, order, directive, requirement or City manuals","Administrative",2023-04-11,2023-04-11,"Completed"
+"188","CIF2023-005","Complaint Internal-Formal",NA,"Officer",19147,NA,NA,NA,NA,NA,NA,"Complainant",40,"17","Male","White",NA,NA,NA,NA,NA
+"189","CIF2023-005","Complaint Internal-Formal",NA,"Officer",19148,NA,NA,NA,NA,NA,NA,"Officer",31,"5","Female","White",NA,NA,NA,NA,NA
+"190","CIF2023-005","Complaint Internal-Formal",NA,"Officer",19149,NA,NA,NA,NA,NA,NA,"Witness",52,"29","Male","White",NA,NA,NA,NA,NA
+"191","CIF2023-006","Complaint Internal-Formal","Supervisor","Officer",19259,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Exceeding powers by unreasonable, unlawful or excessive conduct","Sustained",2023-04-21,2023-04-21,"Completed"
+"192","CIF2023-006","Complaint Internal-Formal",NA,"Officer",19260,NA,NA,NA,NA,NA,NA,"Complainant",37,"14","Male","White",NA,NA,NA,NA,NA
+"193","CIF2023-006","Complaint Internal-Formal",NA,"Officer",19259,NA,NA,NA,NA,NA,NA,"Officer",33,"7","Male","White",NA,NA,NA,NA,NA
+"194","CIF2023-006","Complaint Internal-Formal",NA,"Citizen",5136,NA,NA,NA,NA,NA,NA,"Witness",38,NA,"Female","White",NA,NA,NA,NA,NA
+"195","CIF2023-006","Complaint Internal-Formal",NA,"Officer",19304,NA,NA,NA,NA,NA,NA,"Witness",23,"1","m","w",NA,NA,NA,NA,NA
+"196","CIF2023-007","Complaint Internal-Formal","Employee","Officer",19333,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"* Use of Force","Exonerated",2023-05-22,2023-05-22,"Completed"
+"197","CIF2023-007","Complaint Internal-Formal",NA,"Citizen",5144,NA,NA,NA,NA,NA,NA,"Complainant",22,NA,"Male","Unknown",NA,NA,NA,NA,NA
+"198","CIF2023-007","Complaint Internal-Formal",NA,"Officer",19333,NA,NA,NA,NA,NA,NA,"Officer",39,"5","Male","White",NA,NA,NA,NA,NA
+"199","CIF2023-008","Complaint Internal-Formal","Employee","Officer",19335,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Laws, Rules, and Orders - Disobedience / Insubordination","Sustained",2023-05-22,2023-05-16,"Completed"
+"200","CIF2023-008","Complaint Internal-Formal",NA,"Officer",19335,NA,NA,NA,NA,NA,NA,"Officer",31,"5","Female","White",NA,NA,NA,NA,NA
+"201","CIF2023-008","Complaint Internal-Formal",NA,"Officer",19337,NA,NA,NA,NA,NA,NA,"Witness",33,"7","Male","White",NA,NA,NA,NA,NA
+"202","CIF2023-009","Complaint Internal-Informal","Employee","Officer",19390,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Attendance - Failure to report on time or fully prepared to perform duties without excuse","Corrective Action",2023-06-11,2023-06-11,"Completed"
+"203","CIF2023-009","Complaint Internal-Informal",NA,"Officer",19389,NA,NA,NA,NA,NA,NA,"Complainant",51,"28","Male","White",NA,NA,NA,NA,NA
+"204","CIF2023-009","Complaint Internal-Informal",NA,"Officer",19390,NA,NA,NA,NA,NA,NA,"Officer",38,"1","male","White",NA,NA,NA,NA,NA
+"205","CIF2023-010","Complaint Internal-Formal","Supervisor","Officer",19616,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Use of obscene, indecent, profane or derogatory language","Sustained",2023-08-07,2023-07-08,"Completed"
+"206","CIF2023-010","Complaint Internal-Formal","Supervisor","Officer",19616,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Safety - Failure to observe safety standards or safe working practices","Sustained",2023-08-07,2023-07-08,"Completed"
+"207","CIF2023-010","Complaint Internal-Formal",NA,"Officer",19620,NA,NA,NA,NA,NA,NA,"Witness",36,"1","Male","White",NA,NA,NA,NA,NA
+"208","CIF2023-010","Complaint Internal-Formal",NA,"Officer",19616,NA,NA,NA,NA,NA,NA,"Officer",33,"7","Male","White",NA,NA,NA,NA,NA
+"209","CIF2023-010","Complaint Internal-Formal",NA,"Officer",19619,NA,NA,NA,NA,NA,NA,"Witness",33,"4","male","white",NA,NA,NA,NA,NA
+"210","CIF2023-010","Complaint Internal-Formal",NA,"Officer",19621,NA,NA,NA,NA,NA,NA,"Witness",27,"4","Male","white",NA,NA,NA,NA,NA
+"211","CIF2023-012","Complaint Internal-Formal","Employee","Officer",19626,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Efficiency - Neglect of Duty","Sustained",2023-08-09,2023-08-09,"Completed"
+"212","CIF2023-012","Complaint Internal-Formal","Employee","Officer",19627,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Efficiency - Neglect of Duty","Sustained",2023-08-09,2023-08-09,"Completed"
+"213","CIF2023-012","Complaint Internal-Formal",NA,"Citizen",5202,NA,NA,NA,NA,NA,NA,"Complainant",38,NA,"Male","N/A",NA,NA,NA,NA,NA
+"214","CIF2023-012","Complaint Internal-Formal",NA,"Officer",19626,NA,NA,NA,NA,NA,NA,"Officer",37,"7","Male","Vietnamese",NA,NA,NA,NA,NA
+"215","CIF2023-012","Complaint Internal-Formal",NA,"Officer",19627,NA,NA,NA,NA,NA,NA,"Officer",30,"5","Male","White",NA,NA,NA,NA,NA
+"216","CIF2023-014","Complaint Internal-Formal","Employee","Officer",19742,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"*EIS Review - Supervisor Requested","Administrative",2023-09-08,2023-09-08,"Completed"
+"217","CIF2023-014","Complaint Internal-Formal",NA,"Officer",19742,NA,NA,NA,NA,NA,NA,"Officer",36,"5","Male","White",NA,NA,NA,NA,NA
+"218","CIF2023-015","Complaint Internal-Formal","Employee","Officer",19807,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of employee","Sustained",2023-09-25,2023-09-21,"Completed"
+"219","CIF2023-015","Complaint Internal-Formal",NA,"Officer",19807,NA,NA,NA,NA,NA,NA,"Officer",32,"7","Female","White",NA,NA,NA,NA,NA
+"220","CIF2023-015","Complaint Internal-Formal",NA,"Officer",20110,NA,NA,NA,NA,NA,NA,"Witness",50,"2","Male","White",NA,NA,NA,NA,NA
+"221","CIF2023-015","Complaint Internal-Formal",NA,"Citizen",5242,NA,NA,NA,NA,NA,NA,"Complainant",19,NA,"Male","White",NA,NA,NA,NA,NA
+"222","CIF2023-015","Complaint Internal-Formal",NA,"Citizen",5243,NA,NA,NA,NA,NA,NA,"Complainant",48,NA,"Female","White",NA,NA,NA,NA,NA
+"223","CIF2023-015","Complaint Internal-Formal",NA,"Citizen",5248,NA,NA,NA,NA,NA,NA,"Complainant",43,NA,"Male","White",NA,NA,NA,NA,NA
+"224","CIF2023-015","Complaint Internal-Formal",NA,"Citizen",5254,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Female","White",NA,NA,NA,NA,NA
+"225","CIF2023-015","Complaint Internal-Formal",NA,"Citizen",5255,NA,NA,NA,NA,NA,NA,"Complainant",38,NA,"Male","White",NA,NA,NA,NA,NA
+"226","CIF2023-015","Complaint Internal-Formal",NA,"Officer",20108,NA,NA,NA,NA,NA,NA,"Complainant",50,"18","Male","White",NA,NA,NA,NA,NA
+"227","CIF2023-015","Complaint Internal-Formal",NA,"Officer",20109,NA,NA,NA,NA,NA,NA,"Complainant",58,"10","Female","White",NA,NA,NA,NA,NA
+"228","CIF2023-016","Complaint Internal-Formal","Employee","Officer",19763,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Attendance - Unexcused or unauthorized tardiness","Exceptional",2023-09-17,2023-09-16,"Completed"
+"229","CIF2023-016","Complaint Internal-Formal","Employee","Officer",19763,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Ethics - Failure to abide by the standards of ethical conduct","Exceptional",2023-09-17,2023-09-16,"Completed"
+"230","CIF2023-016","Complaint Internal-Formal",NA,"Officer",19763,NA,NA,NA,NA,NA,NA,"Officer",21,"0","female","white",NA,NA,NA,NA,NA
+"231","CIF2023-016","Complaint Internal-Formal",NA,"Officer",19762,NA,NA,NA,NA,NA,NA,"Complainant",39,"2","Male","White",NA,NA,NA,NA,NA
+"232","CIF2023-016","Complaint Internal-Formal",NA,"Officer",19764,NA,NA,NA,NA,NA,NA,"Witness",22,"0","female","white",NA,NA,NA,NA,NA
+"233","CIF2023-018","Complaint Internal-Formal","Supervisor","Officer",19984,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Performance - Acts bringing discredit to the department (On Duty)","Sustained",2023-10-12,2023-10-10,"Completed"
+"234","CIF2023-018","Complaint Internal-Formal",NA,"Officer",19920,NA,NA,NA,NA,NA,NA,"Complainant",48,"24","Female","White",NA,NA,NA,NA,NA
+"235","CIF2023-018","Complaint Internal-Formal",NA,"Officer",19984,NA,NA,NA,NA,NA,NA,"Officer",25,"1","male","white",NA,NA,NA,NA,NA
+"236","CIF2023-020","Complaint Internal-Formal","Supervisor","Officer",20005,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Attendance - Unexcused or unauthorized tardiness","Exceptional",2023-10-31,2023-10-28,"Completed"
+"237","CIF2023-020","Complaint Internal-Formal",NA,"Officer",20004,NA,NA,NA,NA,NA,NA,"Complainant",44,"8","Female","White",NA,NA,NA,NA,NA
+"238","CIF2023-020","Complaint Internal-Formal",NA,"Officer",20005,NA,NA,NA,NA,NA,NA,"Officer",21,"0","female","white",NA,NA,NA,NA,NA
+"239","CIF2023-021","Complaint Internal-Formal","Supervisor","Officer",20153,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Attendance - Unexcused or unauthorized tardiness","Exceptional",2023-11-26,2023-11-26,"Completed"
+"240","CIF2023-021","Complaint Internal-Formal",NA,"Officer",20153,NA,NA,NA,NA,NA,NA,"Officer",21,"0","female","white",NA,NA,NA,NA,NA
+"241","CIF2023-021","Complaint Internal-Formal",NA,"Officer",20152,NA,NA,NA,NA,NA,NA,"Complainant",54,"26","Female","White",NA,NA,NA,NA,NA
+"242","CIF2023-021","Complaint Internal-Formal",NA,"Officer",20154,NA,NA,NA,NA,NA,NA,"Witness",22,"0","female","white",NA,NA,NA,NA,NA
+"243","CIF2023-021","Complaint Internal-Formal",NA,"Officer",20155,NA,NA,NA,NA,NA,NA,"Witness",NA,"1","Female","White",NA,NA,NA,NA,NA
+"244","CIF2023-022","Complaint Internal-Formal","Supervisor",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,2023-11-16,2023-11-04,"Completed"
+"245","CIF2023-022","Complaint Internal-Formal",NA,"Citizen",5317,NA,NA,NA,NA,NA,NA,"Complainant",32,NA,"Female","White",NA,NA,NA,NA,NA
+"246","CIF2023-022","Complaint Internal-Formal",NA,"Officer",20106,NA,NA,NA,NA,NA,NA,"Complainant",51,"18","Female","White",NA,NA,NA,NA,NA
+"247","CIF2023-022","Complaint Internal-Formal",NA,"Officer",20107,NA,NA,NA,NA,NA,NA,"Complainant",41,"4","Female","White",NA,NA,NA,NA,NA
+"248","CIF2024-001","Complaint Internal-Formal","Supervisor","Officer",20373,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Laws, Rules, and Orders - Violation of federal, state, local or admin laws, rules or regulations","Sustained",2024-01-03,2023-12-26,"Completed"
+"249","CIF2024-001","Complaint Internal-Formal",NA,"Officer",20373,NA,NA,NA,NA,NA,NA,"Officer",65,"25","Male","Amer Ind",NA,NA,NA,NA,NA
+"250","CII2023-001","Complaint Internal-Informal","Employee","Officer",19205,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Other conduct contrary to good order, efficiency or morale","Exceptional",2023-04-18,2023-04-18,"Completed"
+"251","CII2023-001","Complaint Internal-Informal",NA,"Officer",19204,NA,NA,NA,NA,NA,NA,"Complainant",52,"24","Male","White",NA,NA,NA,NA,NA
+"252","CII2023-001","Complaint Internal-Informal",NA,"Officer",19205,NA,NA,NA,NA,NA,NA,"Officer",44,"11","Male","White",NA,NA,NA,NA,NA
+"253","CII2023-001","Complaint Internal-Informal",NA,"Officer",19206,NA,NA,NA,NA,NA,NA,"Witness",47,"7","Female","White",NA,NA,NA,NA,NA
+"254","CII2023-001","Complaint Internal-Informal",NA,"Officer",19207,NA,NA,NA,NA,NA,NA,"Witness",41,"4","Female","White",NA,NA,NA,NA,NA
+"255","CII2023-001","Complaint Internal-Informal",NA,"Officer",19208,NA,NA,NA,NA,NA,NA,"Witness",51,"18","Female","White",NA,NA,NA,NA,NA
+"256","CII2023-002","Complaint Internal-Informal","Supervisor","Officer",19128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Laws, Rules, and Orders - Disobedience / Insubordination","Exceptional",2023-04-05,2023-03-17,"Completed"
+"257","CII2023-002","Complaint Internal-Informal",NA,"Officer",19128,NA,NA,NA,NA,NA,NA,"Officer",40,"8","Male","White",NA,NA,NA,NA,NA
+"258","CII2023-002","Complaint Internal-Informal",NA,"Officer",19130,NA,NA,NA,NA,NA,NA,"Complainant",40,"16","Male","Black",NA,NA,NA,NA,NA
+"259","CII2023-002","Complaint Internal-Informal",NA,"Officer",19129,NA,NA,NA,NA,NA,NA,"Officer",24,"2","Male","White",NA,NA,NA,NA,NA
+"260","CII2023-003","Complaint Internal-Informal","Employee","Officer",19257,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Laws, Rules, and Orders - Violation of directive","Corrective Action",2023-04-07,2023-04-07,"Completed"
+"261","CII2023-003","Complaint Internal-Informal",NA,"Officer",19257,NA,NA,NA,NA,NA,NA,"Officer",42,"12","Male","White",NA,NA,NA,NA,NA
+"262","CII2023-003","Complaint Internal-Informal",NA,"Officer",19258,NA,NA,NA,NA,NA,NA,"Complainant",37,"14","Male","White",NA,NA,NA,NA,NA
+"263","CII2023-004","Complaint Internal-Informal","Employee","Officer",19317,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Performance - Failure to disclose or misrepresenting material facts","Corrective Action",2023-05-03,2023-04-29,"Completed"
+"264","CII2023-004","Complaint Internal-Informal",NA,"Officer",19317,NA,NA,NA,NA,NA,NA,"Officer",45,"4","female","white",NA,NA,NA,NA,NA
+"265","CII2023-004","Complaint Internal-Informal",NA,"Officer",19318,NA,NA,NA,NA,NA,NA,"Complainant",51,"18","Female","White",NA,NA,NA,NA,NA
+"266","CII2023-005","Complaint Internal-Informal","Employee","Officer",19285,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Performance - Failure to disclose or misrepresenting material facts","Corrective Action",2023-05-03,2023-04-29,"Completed"
+"267","CII2023-005","Complaint Internal-Informal",NA,"Officer",19285,NA,NA,NA,NA,NA,NA,"Officer",72,"17","Female","White",NA,NA,NA,NA,NA
+"268","CII2023-005","Complaint Internal-Informal",NA,"Officer",19286,NA,NA,NA,NA,NA,NA,"Witness",45,"4","female","white",NA,NA,NA,NA,NA
+"269","CII2023-005","Complaint Internal-Informal",NA,"Officer",19284,NA,NA,NA,NA,NA,NA,"Complainant",51,"18","Female","White",NA,NA,NA,NA,NA
+"270","CII2023-006","Complaint Internal-Informal","Employee","Officer",19439,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Laws, Rules, and Orders - Violation of policy","Corrective Action",2023-06-20,2023-04-21,"Completed"
+"271","CII2023-006","Complaint Internal-Informal",NA,"Officer",19439,NA,NA,NA,NA,NA,NA,"Officer",37,"14","Male","White",NA,NA,NA,NA,NA
+"272","CII2023-006","Complaint Internal-Informal",NA,"Officer",19456,NA,NA,NA,NA,NA,NA,"Witness",33,"7","Male","White",NA,NA,NA,NA,NA
+"273","CII2023-008","Complaint Internal-Informal","Supervisor","Officer",19750,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Attendance - Failure to report on time or fully prepared to perform duties without excuse","Corrective Action",2023-09-11,2023-09-11,"Completed"
+"274","CII2023-008","Complaint Internal-Informal",NA,"Officer",19750,NA,NA,NA,NA,NA,NA,"Officer",21,"0","female","white",NA,NA,NA,NA,NA
+"275","CII2023-008","Complaint Internal-Informal",NA,"Officer",19753,NA,NA,NA,NA,NA,NA,"Witness",22,"0","female","white",NA,NA,NA,NA,NA
+"276","CII2023-008","Complaint Internal-Informal",NA,"Officer",19754,NA,NA,NA,NA,NA,NA,"Witness",55,"20","Female","White",NA,NA,NA,NA,NA
+"277","CII2023-008","Complaint Internal-Informal",NA,"Officer",19751,NA,NA,NA,NA,NA,NA,"Witness",36,"14","Female","White",NA,NA,NA,NA,NA
+"278","CII2023-008","Complaint Internal-Informal",NA,"Officer",19752,NA,NA,NA,NA,NA,NA,"Witness",36,"9","Male","White",NA,NA,NA,NA,NA
+"279","CII2023-009","Complaint External-Informal","Supervisor","Officer",19710,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Efficiency - Neglect of Duty","Corrective Action",2023-08-28,2023-08-28,"Completed"
+"280","CII2023-009","Complaint External-Informal",NA,"Officer",19711,NA,NA,NA,NA,NA,NA,"Witness",36,"14","Female","White",NA,NA,NA,NA,NA
+"281","CII2023-009","Complaint External-Informal",NA,"Officer",19713,NA,NA,NA,NA,NA,NA,"Witness",55,"20","Female","White",NA,NA,NA,NA,NA
+"282","CII2023-009","Complaint External-Informal",NA,"Citizen",5216,NA,NA,NA,NA,NA,NA,"Complainant",NA,NA,"Male","White",NA,NA,NA,NA,NA
+"283","CII2023-009","Complaint External-Informal",NA,"Officer",19710,NA,NA,NA,NA,NA,NA,"Officer",22,"0","female","white",NA,NA,NA,NA,NA
+"284","CII2023-009","Complaint External-Informal",NA,"Officer",19712,NA,NA,NA,NA,NA,NA,"Witness",39,"2","Male","White",NA,NA,NA,NA,NA
+"285","CII2023-010","Complaint External-Formal","Citizen Telephone Call","Officer",19770,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Conduct - Discourteous or disrespectful treatment of public","Sustained",2023-09-17,2023-09-17,"Completed"
+"286","CII2023-010","Complaint External-Formal",NA,"Citizen",5235,NA,NA,NA,NA,NA,NA,"Complainant",39,NA,"Male","White",NA,NA,NA,NA,NA
+"287","CII2023-010","Complaint External-Formal",NA,"Officer",19771,NA,NA,NA,NA,NA,NA,"Witness",27,"4","Male","white",NA,NA,NA,NA,NA
+"288","CII2023-010","Complaint External-Formal",NA,"Officer",19770,NA,NA,NA,NA,NA,NA,"Officer",29,"5","Male","White",NA,NA,NA,NA,NA
+"289","CII2023-010","Complaint External-Formal",NA,"Officer",19772,NA,NA,NA,NA,NA,NA,"Witness",30,"4","male","white",NA,NA,NA,NA,NA
+"290","CII2023-012","Complaint External-Informal","Citizen Telephone Call","Officer",20010,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Performance - Making disparaging remarks or conduct","No Misconduct",2023-10-31,2023-10-31,"Completed"
+"291","CII2023-012","Complaint External-Informal",NA,"Citizen",5280,NA,NA,NA,NA,NA,NA,"Complainant",55,NA,"Female","Black",NA,NA,NA,NA,NA
+"292","CII2023-012","Complaint External-Informal",NA,"Officer",20011,NA,NA,NA,NA,NA,NA,"Witness",30,"7","Male","White",NA,NA,NA,NA,NA
+"293","CII2023-012","Complaint External-Informal",NA,"Officer",20010,NA,NA,NA,NA,NA,NA,"Officer",44,"7","Female","White",NA,NA,NA,NA,NA
+"294","CII2023-013","Complaint Internal-Informal","Supervisor","Officer",19798,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Attendance - Unexcused or unauthorized tardiness","Corrective Action",2023-09-25,2023-09-25,"Completed"
+"295","CII2023-013","Complaint Internal-Informal",NA,"Officer",19798,NA,NA,NA,NA,NA,NA,"Officer",36,"9","Male","White",NA,NA,NA,NA,NA
+"296","CII2023-013","Complaint Internal-Informal",NA,"Officer",19797,NA,NA,NA,NA,NA,NA,"Complainant",51,"28","Male","White",NA,NA,NA,NA,NA
+"297","CII2023-014","Complaint External-Informal","Supervisor","Officer",20073,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Attendance - Unexcused or unauthorized tardiness","Exceptional",2023-10-06,2023-10-06,"Completed"
+"298","CII2023-014","Complaint External-Informal",NA,"Officer",19871,NA,NA,NA,NA,NA,NA,"Complainant",37,"7","Female","White",NA,NA,NA,NA,NA
+"299","CII2023-014","Complaint External-Informal",NA,"Officer",20073,NA,NA,NA,NA,NA,NA,"Officer",21,"0","female","white",NA,NA,NA,NA,NA
+"300","CII2023-015","Complaint Internal-Informal","Supervisor","Officer",20028,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"Attendance - Unexcused or unauthorized tardiness","Exceptional",2023-11-02,2023-10-29,"Completed"
+"301","CII2023-015","Complaint Internal-Informal",NA,"Officer",20029,NA,NA,NA,NA,NA,NA,"Witness",44,"8","Female","White",NA,NA,NA,NA,NA
+"302","CII2023-015","Complaint Internal-Informal",NA,"Officer",20032,NA,NA,NA,NA,NA,NA,"Witness",64,"39","Female","White",NA,NA,NA,NA,NA
+"303","CII2023-015","Complaint Internal-Informal",NA,"Officer",20031,NA,NA,NA,NA,NA,NA,"Witness",22,"0","female","white",NA,NA,NA,NA,NA
+"304","CII2023-015","Complaint Internal-Informal",NA,"Officer",20033,NA,NA,NA,NA,NA,NA,"Witness",55,"20","Female","White",NA,NA,NA,NA,NA
+"305","CII2023-015","Complaint Internal-Informal",NA,"Officer",20028,NA,NA,NA,NA,NA,NA,"Officer",21,"0","female","white",NA,NA,NA,NA,NA
+"306","CII2023-015","Complaint Internal-Informal",NA,"Officer",20030,NA,NA,NA,NA,NA,NA,"Witness",32,"3","male","caucasian",NA,NA,NA,NA,NA
+"307","UF2023-001","Use of force","Employee","Citizen",5016,"Arrest","No Force (Complaint of Inj)",NA,"n/a","No","Yes","Complainant",40,NA,"Male","Hispanic",NA,NA,2023-01-05,2023-01-05,"Completed"
+"308","UF2023-001","Use of force","Employee","Officer/Reporter",18759,"Arrest","No Force (Complaint of Inj)","Administrative-No Force","No","No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-05,2023-01-05,"Completed"
+"309","UF2023-001","Use of force","Employee","Officer/Witness",18760,"Arrest","No Force (Complaint of Inj)",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-05,2023-01-05,"Completed"
+"310","UF2023-001","Use of force",NA,"Officer",18760,NA,NA,NA,NA,NA,NA,"Witness",24,"2","Male","White",NA,NA,NA,NA,NA
+"311","UF2023-001","Use of force",NA,"Officer",18759,NA,NA,NA,NA,NA,NA,"Officer",29,"5","Male","White",NA,NA,NA,NA,NA
+"312","UF2023-002","Use of force","Employee","Officer/Reporter",18815,"911 call","Destructive Self/Others","OC","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-16,2023-01-16,"Completed"
+"313","UF2023-002","Use of force",NA,"Officer",18815,NA,NA,NA,NA,NA,NA,"Officer",36,"14","Male","White",NA,NA,NA,NA,NA
+"314","UF2023-003","Use of force","Employee","Officer/Reporter",18811,"Arrest","Active Resister Unarmed","Pain Compliance","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-11,2023-01-11,"Completed"
+"315","UF2023-003","Use of force","Employee","Officer/Reporter",18810,"Arrest","Active Resister Unarmed","Pain Compliance","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-11,2023-01-11,"Completed"
+"316","UF2023-003","Use of force","Employee","Citizen",5020,"Arrest","Active Resister Unarmed",NA,"n/a","No","Yes","Complainant",24,NA,"Female","White",NA,NA,2023-01-11,2023-01-11,"Completed"
+"317","UF2023-003","Use of force","Employee","Citizen",5021,"Arrest","Active Resister Unarmed",NA,"n/a","No","Yes","Witness",37,NA,"Female","White",NA,NA,2023-01-11,2023-01-11,"Completed"
+"318","UF2023-003","Use of force","Employee","Officer/Reporter",18812,"Arrest","Active Resister Unarmed","Pain Compliance","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-11,2023-01-11,"Completed"
+"319","UF2023-003","Use of force",NA,"Officer",18810,NA,NA,NA,NA,NA,NA,"Officer",41,"12","Male","White",NA,NA,NA,NA,NA
+"320","UF2023-003","Use of force",NA,"Officer",18811,NA,NA,NA,NA,NA,NA,"Officer",44,"7","Female","White",NA,NA,NA,NA,NA
+"321","UF2023-003","Use of force",NA,"Officer",18812,NA,NA,NA,NA,NA,NA,"Officer",53,"9","Male","White",NA,NA,NA,NA,NA
+"322","UF2023-004","Use of force","Employee","Officer/Witness",18898,"911 call","Active Resister Armed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-29,2023-01-26,"Completed"
+"323","UF2023-004","Use of force","Employee","Officer/Witness",18896,"911 call","Active Resister Armed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-29,2023-01-26,"Completed"
+"324","UF2023-004","Use of force","Employee","Officer/Witness",18894,"911 call","Active Resister Armed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-29,2023-01-26,"Completed"
+"325","UF2023-004","Use of force","Employee","Officer/Reporter",18893,"911 call","Active Resister Armed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-29,2023-01-26,"Completed"
+"326","UF2023-004","Use of force","Employee","Officer/Witness",18895,"911 call","Active Resister Armed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-29,2023-01-26,"Completed"
+"327","UF2023-004","Use of force","Employee","Citizen",5040,"911 call","Active Resister Armed",NA,"n/a","No","Yes","Complainant",26,NA,"Male","White",NA,NA,2023-01-29,2023-01-26,"Completed"
+"328","UF2023-004","Use of force","Employee","Officer/Witness",18897,"911 call","Active Resister Armed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-29,2023-01-26,"Completed"
+"329","UF2023-004","Use of force",NA,"Officer",18895,NA,NA,NA,NA,NA,NA,"Witness",53,"9","Male","White",NA,NA,NA,NA,NA
+"330","UF2023-004","Use of force",NA,"Officer",18897,NA,NA,NA,NA,NA,NA,"Witness",42,"18","Male","White",NA,NA,NA,NA,NA
+"331","UF2023-004","Use of force",NA,"Officer",18898,NA,NA,NA,NA,NA,NA,"Witness",43,"14","Male","White",NA,NA,NA,NA,NA
+"332","UF2023-004","Use of force",NA,"Officer",18896,NA,NA,NA,NA,NA,NA,"Witness",34,"9","Male","Hispanic",NA,NA,NA,NA,NA
+"333","UF2023-004","Use of force",NA,"Officer",18893,NA,NA,NA,NA,NA,NA,"Officer",27,"4","male","white",NA,NA,NA,NA,NA
+"334","UF2023-004","Use of force",NA,"Officer",18894,NA,NA,NA,NA,NA,NA,"Witness",33,"7","Male","White",NA,NA,NA,NA,NA
+"335","UF2023-005","Use of force","Employee","Citizen",5070,"911 call","Active Resister Unarmed",NA,"n/a","No","Yes","Complainant",28,NA,"Male","White",NA,NA,2023-02-17,2023-02-17,"Completed"
+"336","UF2023-005","Use of force","Employee","Officer/Reporter",18982,"911 call","Active Resister Unarmed","Take-Down","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-02-17,2023-02-17,"Completed"
+"337","UF2023-005","Use of force","Employee","Citizen",5070,"911 call","Active Resister Unarmed",NA,"n/a","No","Yes","Complainant",28,NA,"Male","White",NA,NA,2023-02-17,2023-02-17,"Completed"
+"338","UF2023-005","Use of force",NA,"Officer",18982,NA,NA,NA,NA,NA,NA,"Officer",30,"1","male","white",NA,NA,NA,NA,NA
+"339","UF2023-006","Use of force","Employee","Officer/Reporter",18851,"Disturbance","Passive Non Compliant","Conducted Energy Device","No","No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-24,2023-01-24,"Completed"
+"340","UF2023-006","Use of force","Employee","Citizen",5034,"Disturbance","Passive Non Compliant",NA,"n/a","No","Yes","Complainant",24,NA,"Male","Hispanic",NA,NA,2023-01-24,2023-01-24,"Completed"
+"341","UF2023-006","Use of force","Employee","Officer/Reporter",18851,"Disturbance","Passive Non Compliant","Kenetic Energy Projectile","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-24,2023-01-24,"Completed"
+"342","UF2023-006","Use of force","Employee","Officer/Reporter",18851,"Disturbance","Passive Non Compliant","Other","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-24,2023-01-24,"Completed"
+"343","UF2023-006","Use of force","Employee","Officer/Reporter",18852,"Disturbance","Passive Non Compliant",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-24,2023-01-24,"Completed"
+"344","UF2023-006","Use of force","Employee","Officer/Reporter",18854,"Disturbance","Passive Non Compliant",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-24,2023-01-24,"Completed"
+"345","UF2023-006","Use of force","Employee","Officer/Reporter",18853,"Disturbance","Passive Non Compliant","Take-Down","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-24,2023-01-24,"Completed"
+"346","UF2023-006","Use of force",NA,"Officer",18851,NA,NA,NA,NA,NA,NA,"Officer",42,"12","Male","White",NA,NA,NA,NA,NA
+"347","UF2023-006","Use of force",NA,"Officer",18854,NA,NA,NA,NA,NA,NA,"Officer",32,"8","Male","Asian",NA,NA,NA,NA,NA
+"348","UF2023-006","Use of force",NA,"Officer",18852,NA,NA,NA,NA,NA,NA,"Officer",41,"12","Male","White",NA,NA,NA,NA,NA
+"349","UF2023-006","Use of force",NA,"Officer",18853,NA,NA,NA,NA,NA,NA,"Officer",33,"10","Male","White",NA,NA,NA,NA,NA
+"350","UF2023-007","Use of force","Employee","Officer/Witness",18824,"Arrest","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-17,2023-01-17,"Completed"
+"351","UF2023-007","Use of force","Employee","Officer/Witness",18825,"Arrest","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-17,2023-01-17,"Completed"
+"352","UF2023-007","Use of force","Employee","Officer/Reporter",18823,"Arrest","Active Resister Unarmed","Hand/Foot Strike","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-01-17,2023-01-17,"Completed"
+"353","UF2023-007","Use of force",NA,"Officer",18824,NA,NA,NA,NA,NA,NA,"Witness",33,"7","Male","White",NA,NA,NA,NA,NA
+"354","UF2023-007","Use of force",NA,"Officer",18825,NA,NA,NA,NA,NA,NA,"Witness",42,"14","Male","White",NA,NA,NA,NA,NA
+"355","UF2023-007","Use of force",NA,"Officer",18823,NA,NA,NA,NA,NA,NA,"Officer",33,"7","Male","White",NA,NA,NA,NA,NA
+"356","UF2023-008","Use of force","Employee","Citizen",5081,"Fight Call","Destructive Self/Others",NA,"n/a","No","No","Complainant",NA,NA,"Male","Unknown",NA,NA,2023-03-05,2023-03-05,"Completed"
+"357","UF2023-008","Use of force","Employee","Officer/Reporter",19036,"Fight Call","Destructive Self/Others","OC","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-05,2023-03-05,"Completed"
+"358","UF2023-008","Use of force",NA,"Officer",19036,NA,NA,NA,NA,NA,NA,"Officer",44,"2","male","Native Am",NA,NA,NA,NA,NA
+"359","UF2023-009","Use of force","Employee","Officer/Reporter",19006,"Suicide Attempt","Passive Non Compliant","Take-Down","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-01,2023-02-28,"Completed"
+"360","UF2023-009","Use of force","Employee","Officer/Reporter",19005,"Suicide Attempt","Passive Non Compliant","Conducted Energy Device","No","No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-01,2023-02-28,"Completed"
+"361","UF2023-009","Use of force","Employee","Officer/Reporter",19006,"Suicide Attempt","Passive Non Compliant","Conducted Energy Device","No","No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-01,2023-02-28,"Completed"
+"362","UF2023-009","Use of force","Employee","Citizen",5078,"Suicide Attempt","Passive Non Compliant",NA,"n/a","No","Yes","Witness",71,NA,"Female","White",NA,NA,2023-03-01,2023-02-28,"Completed"
+"363","UF2023-009","Use of force","Employee","Citizen",5077,"Suicide Attempt","Passive Non Compliant",NA,"n/a","No","Yes","Complainant",42,NA,"Male","White",NA,NA,2023-03-01,2023-02-28,"Completed"
+"364","UF2023-009","Use of force","Employee","Officer/Reporter",19006,"Suicide Attempt","Passive Non Compliant","Conducted Energy Device","Limited","No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-01,2023-02-28,"Completed"
+"365","UF2023-009","Use of force",NA,"Officer",19006,NA,NA,NA,NA,NA,NA,"Officer",40,"4","male","white",NA,NA,NA,NA,NA
+"366","UF2023-009","Use of force",NA,"Officer",19005,NA,NA,NA,NA,NA,NA,"Officer",38,"14","Male","White",NA,NA,NA,NA,NA
+"367","UF2023-010","Use of force","Employee","Citizen",5080,"Disturbance","Destructive Self/Others",NA,"n/a","No","No","Complainant",17,NA,"Female","Black",NA,NA,2023-03-03,2023-03-03,"Completed"
+"368","UF2023-010","Use of force","Employee","Officer/Reporter",19031,"Disturbance","Destructive Self/Others","Take-Down","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-03,2023-03-03,"Completed"
+"369","UF2023-010","Use of force",NA,"Officer",19031,NA,NA,NA,NA,NA,NA,"Officer",52,"9","Male","White",NA,NA,NA,NA,NA
+"370","UF2023-011","Use of force","Employee","Officer/Reporter",19035,"Disturbance","Active Fleeing",NA,NA,"No","Yes",NA,NA,NA,NA,NA,NA,NA,2023-03-04,2023-03-03,"Completed"
+"371","UF2023-011","Use of force","Employee","Officer/Reporter",19034,"Disturbance","Active Fleeing","Take-Down","Yes","No","Yes",NA,NA,NA,NA,NA,NA,NA,2023-03-04,2023-03-03,"Completed"
+"372","UF2023-011","Use of force",NA,"Officer",19035,NA,NA,NA,NA,NA,NA,"Officer",52,"9","Male","White",NA,NA,NA,NA,NA
+"373","UF2023-011","Use of force",NA,"Officer",19034,NA,NA,NA,NA,NA,NA,"Officer",37,"4","male","white",NA,NA,NA,NA,NA
+"374","UF2023-012","Use of force","Employee","Officer/Witness",19091,"Investigation","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-23,2023-03-23,"Completed"
+"375","UF2023-012","Use of force","Employee","Citizen",5095,"Investigation","Active Resister Unarmed",NA,"n/a","No","Yes","Complainant",15,NA,"Male","Black",NA,NA,2023-03-23,2023-03-23,"Completed"
+"376","UF2023-012","Use of force","Employee","Citizen",5096,"Investigation","Active Resister Unarmed",NA,"n/a","No","Yes","Witness",52,NA,"Male","White",NA,NA,2023-03-23,2023-03-23,"Completed"
+"377","UF2023-012","Use of force","Employee","Officer/Reporter",19090,"Investigation","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-23,2023-03-23,"Completed"
+"378","UF2023-012","Use of force",NA,"Officer",19091,NA,NA,NA,NA,NA,NA,"Witness",52,"9","Male","White",NA,NA,NA,NA,NA
+"379","UF2023-012","Use of force",NA,"Officer",19090,NA,NA,NA,NA,NA,NA,"Officer",35,"10","Male","Black",NA,NA,NA,NA,NA
+"380","UF2023-013","Use of force","Employee","Officer/Reporter",19069,"Disturbance","Destructive Self/Others","Take-Down","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-20,2023-03-19,"Completed"
+"381","UF2023-013","Use of force","Employee","Citizen",5088,"Disturbance","Destructive Self/Others",NA,"n/a","No","No","Complainant",37,NA,"Female","Unknown",NA,NA,2023-03-20,2023-03-19,"Completed"
+"382","UF2023-013","Use of force","Employee","Citizen",5089,"Disturbance","Destructive Self/Others",NA,"n/a","No","No","Complainant",14,NA,"Male","White",NA,NA,2023-03-20,2023-03-19,"Completed"
+"383","UF2023-013","Use of force","Employee","Officer/Reporter",19069,"Disturbance","Destructive Self/Others","Pain Compliance","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-20,2023-03-19,"Completed"
+"384","UF2023-013","Use of force",NA,"Officer",19069,NA,NA,NA,NA,NA,NA,"Officer",37,"4","male","white",NA,NA,NA,NA,NA
+"385","UF2023-014","Use of force","Employee","Citizen",5084,"911 call","Destructive Self/Others",NA,"n/a","No","Yes","Complainant",21,NA,"Male","White",NA,NA,2023-03-15,2023-03-15,"Completed"
+"386","UF2023-014","Use of force","Employee","Citizen",5084,"911 call","Destructive Self/Others",NA,"n/a","No","Yes","Complainant",21,NA,"Male","White",NA,NA,2023-03-15,2023-03-15,"Completed"
+"387","UF2023-014","Use of force","Employee","Officer/Reporter",19060,"911 call","Destructive Self/Others","Pain Compliance","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-15,2023-03-15,"Completed"
+"388","UF2023-014","Use of force","Employee","Officer/Reporter",19057,"911 call","Destructive Self/Others","Take-Down","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-15,2023-03-15,"Completed"
+"389","UF2023-014","Use of force","Employee","Officer/Reporter",19061,"911 call","Destructive Self/Others","Pain Compliance","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-15,2023-03-15,"Completed"
+"390","UF2023-014","Use of force","Employee","Officer/Reporter",19058,"911 call","Destructive Self/Others","Pain Compliance","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-15,2023-03-15,"Completed"
+"391","UF2023-014","Use of force","Employee","Officer/Reporter",19056,"911 call","Destructive Self/Others","Pain Compliance","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-15,2023-03-15,"Completed"
+"392","UF2023-014","Use of force","Employee","Officer/Reporter",19059,"911 call","Destructive Self/Others",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-15,2023-03-15,"Completed"
+"393","UF2023-014","Use of force",NA,"Officer",19058,NA,NA,NA,NA,NA,NA,"Officer",43,"9","Male","White",NA,NA,NA,NA,NA
+"394","UF2023-014","Use of force",NA,"Officer",19057,NA,NA,NA,NA,NA,NA,"Officer",45,"7","Male","Asian",NA,NA,NA,NA,NA
+"395","UF2023-014","Use of force",NA,"Officer",19060,NA,NA,NA,NA,NA,NA,"Officer",44,"7","Female","White",NA,NA,NA,NA,NA
+"396","UF2023-014","Use of force",NA,"Officer",19061,NA,NA,NA,NA,NA,NA,"Officer",53,"9","Male","White",NA,NA,NA,NA,NA
+"397","UF2023-014","Use of force",NA,"Officer",19056,NA,NA,NA,NA,NA,NA,"Officer",36,"14","Male","White",NA,NA,NA,NA,NA
+"398","UF2023-014","Use of force",NA,"Officer",19059,NA,NA,NA,NA,NA,NA,"Officer",38,"8","Male","Black",NA,NA,NA,NA,NA
+"399","UF2023-015","Use of force","Employee","Officer/Witness",19127,"Arrest","Passive Non Compliant",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-04-08,2023-04-08,"Completed"
+"400","UF2023-015","Use of force","Employee","Citizen",5111,"Arrest","Passive Non Compliant",NA,"n/a","No","Yes","Witness",57,NA,"Male",NA,NA,NA,2023-04-08,2023-04-08,"Completed"
+"401","UF2023-015","Use of force","Employee","Citizen",5110,"Arrest","Passive Non Compliant",NA,"n/a","No","Yes","Complainant",30,NA,"Female","White",NA,NA,2023-04-08,2023-04-08,"Completed"
+"402","UF2023-015","Use of force","Employee","Officer/Reporter",19126,"Arrest","Passive Non Compliant","Take-Down","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-04-08,2023-04-08,"Completed"
+"403","UF2023-015","Use of force",NA,"Officer",19126,NA,NA,NA,NA,NA,NA,"Officer",36,"5","Male","White",NA,NA,NA,NA,NA
+"404","UF2023-015","Use of force",NA,"Officer",19127,NA,NA,NA,NA,NA,NA,"Witness",25,"4","male","white",NA,NA,NA,NA,NA
+"405","UF2023-016","Use of force","Employee","Citizen",5087,"Arrest","Active Fleeing",NA,"n/a","No","Yes","Complainant",33,NA,"Male","Black",NA,NA,2023-03-09,2023-03-09,"Completed"
+"406","UF2023-016","Use of force","Employee","Officer/Reporter",19068,"Arrest","Active Fleeing",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-09,2023-03-09,"Completed"
+"407","UF2023-016","Use of force",NA,"Officer",19068,NA,NA,NA,NA,NA,NA,"Officer",41,"13","Male","White",NA,NA,NA,NA,NA
+"408","UF2023-017","Use of force","Employee","Officer/Reporter",19245,"Assisting Other Agency","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-18,2023-03-18,"Completed"
+"409","UF2023-017","Use of force","Employee","Officer/Reporter",19192,"Assisting Other Agency","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-18,2023-03-18,"Completed"
+"410","UF2023-017","Use of force","Employee","Officer/Reporter",19191,"Assisting Other Agency","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-03-18,2023-03-18,"Completed"
+"411","UF2023-017","Use of force",NA,"Officer",19192,NA,NA,NA,NA,NA,NA,"Officer",41,"12","Male","White",NA,NA,NA,NA,NA
+"412","UF2023-017","Use of force",NA,"Officer",19191,NA,NA,NA,NA,NA,NA,"Officer",30,"1","male","white",NA,NA,NA,NA,NA
+"413","UF2023-017","Use of force",NA,"Officer",19245,NA,NA,NA,NA,NA,NA,"Officer",25,"4","male","white",NA,NA,NA,NA,NA
+"414","UF2023-018","Use of force","Employee","Officer/Reporter",19226,"Disturbance","Active Resister Armed","Conducted Energy Device","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-04-24,2023-04-24,"Completed"
+"415","UF2023-018","Use of force","Employee","Citizen",5132,"Disturbance","Active Resister Armed",NA,"n/a","No","Yes","Complainant",38,NA,"Male","Black",NA,NA,2023-04-24,2023-04-24,"Completed"
+"416","UF2023-018","Use of force","Employee","Officer/Reporter",19227,"Disturbance","Active Resister Armed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-04-24,2023-04-24,"Completed"
+"417","UF2023-018","Use of force","Employee","Officer/Witness",19228,"Disturbance","Active Resister Armed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-04-24,2023-04-24,"Completed"
+"418","UF2023-018","Use of force",NA,"Officer",19227,NA,NA,NA,NA,NA,NA,"Officer",37,"2","Male","Asian",NA,NA,NA,NA,NA
+"419","UF2023-018","Use of force",NA,"Officer",19228,NA,NA,NA,NA,NA,NA,"Witness",37,"4","male","white",NA,NA,NA,NA,NA
+"420","UF2023-018","Use of force",NA,"Officer",19226,NA,NA,NA,NA,NA,NA,"Officer",32,"8","Male","Asian",NA,NA,NA,NA,NA
+"421","UF2023-019","Use of force","Employee","Citizen",5114,"Arrest","Active Resister Unarmed",NA,"n/a","No","Yes","Complainant",43,NA,"Male","Black",NA,NA,2023-04-12,2023-04-11,"Completed"
+"422","UF2023-019","Use of force","Employee","Officer/Witness",19151,"Arrest","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-04-12,2023-04-11,"Completed"
+"423","UF2023-019","Use of force","Employee","Officer/Reporter",19150,"Arrest","Active Resister Unarmed","Hand/Foot Strike","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-04-12,2023-04-11,"Completed"
+"424","UF2023-019","Use of force","Employee","Officer/Reporter",19150,"Arrest","Active Resister Unarmed","Pain Compliance","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-04-12,2023-04-11,"Completed"
+"425","UF2023-019","Use of force",NA,"Officer",19151,NA,NA,NA,NA,NA,NA,"Witness",43,"8","Female","White",NA,NA,NA,NA,NA
+"426","UF2023-019","Use of force",NA,"Officer",19150,NA,NA,NA,NA,NA,NA,"Officer",32,"5","Male","White",NA,NA,NA,NA,NA
+"427","UF2023-020","Use of force","Employee","Officer/Reporter",19117,"Fight Call","Destructive Self/Others","OC","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-04-01,2023-04-01,"Completed"
+"428","UF2023-020","Use of force","Employee","Citizen",5106,"Fight Call","Destructive Self/Others",NA,"n/a","No","No","Complainant",25,NA,"Male","Black",NA,NA,2023-04-01,2023-04-01,"Completed"
+"429","UF2023-020","Use of force","Employee","Officer/Reporter",19118,"Fight Call","Destructive Self/Others",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-04-01,2023-04-01,"Completed"
+"430","UF2023-020","Use of force","Employee","Citizen",5106,"Fight Call","Destructive Self/Others",NA,"n/a","No","No","Complainant",25,NA,"Male","Black",NA,NA,2023-04-01,2023-04-01,"Completed"
+"431","UF2023-020","Use of force",NA,"Officer",19117,NA,NA,NA,NA,NA,NA,"Officer",33,"7","Male","White",NA,NA,NA,NA,NA
+"432","UF2023-020","Use of force",NA,"Officer",19118,NA,NA,NA,NA,NA,NA,"Officer",26,"1","male","white",NA,NA,NA,NA,NA
+"433","UF2023-021","Use of force","Employee","Officer/Reporter",19339,"Suspicious Person","Active Resister Armed","Firearm","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-05-24,2023-05-22,"Completed"
+"434","UF2023-021","Use of force",NA,"Officer",19339,NA,NA,NA,NA,NA,NA,"Officer",39,"5","Male","White",NA,NA,NA,NA,NA
+"435","UF2023-022","Use of force","Employee","Officer/Reporter",19322,"911 call","Destructive Self/Others",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-05-13,2023-05-13,"Completed"
+"436","UF2023-022","Use of force","Employee","Citizen",5140,"911 call","Destructive Self/Others",NA,"n/a","No","Yes","Complainant",42,NA,"Male","White",NA,NA,2023-05-13,2023-05-13,"Completed"
+"437","UF2023-022","Use of force","Employee","Officer/Reporter",19323,"911 call","Destructive Self/Others",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-05-13,2023-05-13,"Completed"
+"438","UF2023-022","Use of force",NA,"Officer",19322,NA,NA,NA,NA,NA,NA,"Officer",25,"4","male","white",NA,NA,NA,NA,NA
+"439","UF2023-022","Use of force",NA,"Officer",19323,NA,NA,NA,NA,NA,NA,"Officer",43,"8","Female","White",NA,NA,NA,NA,NA
+"440","UF2023-023","Use of force","Employee","Citizen",5151,"911 call","Active Resister Unarmed",NA,"n/a","No","No","Witness",51,NA,"Female","White",NA,NA,2023-06-01,2023-06-01,"Completed"
+"441","UF2023-023","Use of force","Employee","Officer/Reporter",19366,"911 call","Active Resister Unarmed","Other","No","Yes","No",NA,NA,NA,NA,NA,NA,NA,2023-06-01,2023-06-01,"Completed"
+"442","UF2023-023","Use of force","Employee","Citizen",5150,"911 call","Active Resister Unarmed",NA,"n/a","No","No","Complainant",27,NA,"Male","White",NA,NA,2023-06-01,2023-06-01,"Completed"
+"443","UF2023-023","Use of force",NA,"Officer",19366,NA,NA,NA,NA,NA,NA,"Officer",33,"7","Male","White",NA,NA,NA,NA,NA
+"444","UF2023-024","Use of force","Employee","Citizen",5142,"Arrest","No Force (Complaint of Inj)",NA,"n/a","No","Yes","Complainant",63,NA,"Female",NA,NA,NA,2023-05-16,2023-05-16,"Completed"
+"445","UF2023-024","Use of force","Employee","Officer/Reporter",19393,"Arrest","No Force (Complaint of Inj)",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-05-16,2023-05-16,"Completed"
+"446","UF2023-024","Use of force",NA,"Officer",19393,NA,NA,NA,NA,NA,NA,"Officer",32,"8","Male","Asian",NA,NA,NA,NA,NA
+"447","UF2023-025","Use of force","Employee","Citizen",5149,"Disturbance","Active Fleeing",NA,"n/a","No","Yes","Complainant",40,NA,"Male","White",NA,NA,2023-05-31,2023-05-31,"Completed"
+"448","UF2023-025","Use of force","Employee","Officer/Reporter",19357,"Disturbance","Active Fleeing",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-05-31,2023-05-31,"Completed"
+"449","UF2023-025","Use of force","Employee","Officer/Reporter",19356,"Disturbance","Active Fleeing",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-05-31,2023-05-31,"Completed"
+"450","UF2023-025","Use of force",NA,"Officer",19357,NA,NA,NA,NA,NA,NA,"Officer",42,"12","Male","White",NA,NA,NA,NA,NA
+"451","UF2023-025","Use of force",NA,"Officer",19356,NA,NA,NA,NA,NA,NA,"Officer",35,"8","Male","White",NA,NA,NA,NA,NA
+"452","UF2023-026","Use of force","Employee","Officer/Reporter",19410,"Arrest","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-06-14,2023-06-15,"Completed"
+"453","UF2023-026","Use of force","Employee","Citizen",5158,"Arrest","Active Resister Unarmed",NA,"n/a","No","Yes","Complainant",30,NA,"Female","White",NA,NA,2023-06-14,2023-06-15,"Completed"
+"454","UF2023-026","Use of force",NA,"Officer",19410,NA,NA,NA,NA,NA,NA,"Officer",23,"1","m","w",NA,NA,NA,NA,NA
+"455","UF2023-027","Use of force","Employee","Officer/Reporter",19325,"911 call","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-05-13,2023-05-13,"Completed"
+"456","UF2023-027","Use of force","Employee","Officer/Reporter",19326,"911 call","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-05-13,2023-05-13,"Completed"
+"457","UF2023-027","Use of force","Employee","Officer/Reporter",19324,"911 call","Active Resister Unarmed","Take-Down","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-05-13,2023-05-13,"Completed"
+"458","UF2023-027","Use of force","Employee","Citizen",5141,"911 call","Active Resister Unarmed",NA,"n/a","No","Yes","Complainant",60,NA,"Male","White",NA,NA,2023-05-13,2023-05-13,"Completed"
+"459","UF2023-027","Use of force",NA,"Officer",19325,NA,NA,NA,NA,NA,NA,"Officer",NA,NA,NA,NA,NA,NA,NA,NA,NA
+"460","UF2023-027","Use of force",NA,"Officer",19326,NA,NA,NA,NA,NA,NA,"Officer",37,"5","M","Filipino",NA,NA,NA,NA,NA
+"461","UF2023-027","Use of force",NA,"Officer",19324,NA,NA,NA,NA,NA,NA,"Officer",41,"12","Male","White",NA,NA,NA,NA,NA
+"462","UF2023-028","Use of force","Employee","Citizen",5169,"Disturbance","Destructive Self/Others",NA,"n/a","No","Yes","Witness",NA,NA,"Male","Mixed",NA,NA,2023-06-17,2023-06-17,"Completed"
+"463","UF2023-028","Use of force","Employee","Officer/Reporter",19433,"Disturbance","Destructive Self/Others","Conducted Energy Device","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-06-17,2023-06-17,"Completed"
+"464","UF2023-028","Use of force","Employee","Citizen",5168,"Disturbance","Destructive Self/Others",NA,"n/a","No","Yes","Witness",NA,NA,"Male","White",NA,NA,2023-06-17,2023-06-17,"Completed"
+"465","UF2023-028","Use of force","Employee","Citizen",5166,"Disturbance","Destructive Self/Others",NA,"n/a","No","Yes","Complainant",NA,NA,"Male","Mixed",NA,NA,2023-06-17,2023-06-17,"Completed"
+"466","UF2023-028","Use of force","Employee","Citizen",5167,"Disturbance","Destructive Self/Others",NA,"n/a","No","Yes","Witness",NA,NA,"Female","Native Am",NA,NA,2023-06-17,2023-06-17,"Completed"
+"467","UF2023-028","Use of force",NA,"Officer",19433,NA,NA,NA,NA,NA,NA,"Officer",42,"10","Male","Hispanic",NA,NA,NA,NA,NA
+"468","UF2023-029","Use of force","Employee","Citizen",5161,"Arrest","Passive Non Compliant",NA,"n/a","No","No","Complainant",31,NA,"Female","White",NA,NA,2023-06-15,2023-06-15,"Completed"
+"469","UF2023-029","Use of force","Employee","Officer/Reporter",19419,"Arrest","Passive Non Compliant",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-06-15,2023-06-15,"Completed"
+"470","UF2023-029","Use of force","Employee","Officer/Reporter",19418,"Arrest","Passive Non Compliant",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-06-15,2023-06-15,"Completed"
+"471","UF2023-029","Use of force","Employee","Officer/Reporter",19420,"Arrest","Passive Non Compliant",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-06-15,2023-06-15,"Completed"
+"472","UF2023-029","Use of force",NA,"Officer",19419,NA,NA,NA,NA,NA,NA,"Officer",38,"6","Male","White",NA,NA,NA,NA,NA
+"473","UF2023-029","Use of force",NA,"Officer",19418,NA,NA,NA,NA,NA,NA,"Officer",26,"1","male","white",NA,NA,NA,NA,NA
+"474","UF2023-029","Use of force",NA,"Officer",19420,NA,NA,NA,NA,NA,NA,"Officer",44,"7","Female","White",NA,NA,NA,NA,NA
+"475","UF2023-030","Use of force","Employee","Officer/Reporter",19307,"Protective Custody","Passive Non Compliant","Conducted Energy Device","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-05-09,2023-05-09,"Completed"
+"476","UF2023-030","Use of force",NA,"Officer",19307,NA,NA,NA,NA,NA,NA,"Officer",44,"7","Female","White",NA,NA,NA,NA,NA
+"477","UF2023-031","Use of force","Employee","Officer/Witness",19368,"Foot Pursuit","Active Fleeing",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-04-03,2023-04-03,"Completed"
+"478","UF2023-031","Use of force","Employee","Officer/Reporter",19367,"Foot Pursuit","Active Fleeing",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-04-03,2023-04-03,"Completed"
+"479","UF2023-031","Use of force","Employee","Citizen",5152,"Foot Pursuit","Active Fleeing",NA,"n/a","No","Yes","Complainant",33,NA,"Male","Hispanic",NA,NA,2023-04-03,2023-04-03,"Completed"
+"480","UF2023-031","Use of force",NA,"Officer",19368,NA,NA,NA,NA,NA,NA,"Witness",37,"5","M","Filipino",NA,NA,NA,NA,NA
+"481","UF2023-031","Use of force",NA,"Officer",19367,NA,NA,NA,NA,NA,NA,"Officer",36,"14","Male","White",NA,NA,NA,NA,NA
+"482","UF2023-032","Use of force","Employee","Officer/Reporter",19502,"Disturbance","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-07-01,2023-07-01,"Completed"
+"483","UF2023-032","Use of force","Employee","Citizen",5176,"Disturbance","Active Resister Unarmed",NA,"n/a","No","No","Complainant",23,NA,"Female","Black",NA,NA,2023-07-01,2023-07-01,"Completed"
+"484","UF2023-032","Use of force","Employee","Officer/Reporter",19501,"Disturbance","Active Resister Unarmed","Other","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-07-01,2023-07-01,"Completed"
+"485","UF2023-032","Use of force",NA,"Officer",19502,NA,NA,NA,NA,NA,NA,"Officer",36,"5","Male","White",NA,NA,NA,NA,NA
+"486","UF2023-032","Use of force",NA,"Officer",19501,NA,NA,NA,NA,NA,NA,"Officer",41,"13","Male","White",NA,NA,NA,NA,NA
+"487","UF2023-033","Use of force","Employee","Officer/Reporter",19477,"Disturbance","Active Fleeing",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-06-26,2023-06-25,"Completed"
+"488","UF2023-033","Use of force","Employee","Officer/Reporter",19476,"Disturbance","Active Fleeing",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-06-26,2023-06-25,"Completed"
+"489","UF2023-033","Use of force","Employee","Citizen",5173,"Disturbance","Active Fleeing",NA,"n/a","No","Yes","Complainant",42,NA,"Male","White",NA,NA,2023-06-26,2023-06-25,"Completed"
+"490","UF2023-033","Use of force",NA,"Officer",19477,NA,NA,NA,NA,NA,NA,"Officer",33,"4","male","white",NA,NA,NA,NA,NA
+"491","UF2023-033","Use of force",NA,"Officer",19476,NA,NA,NA,NA,NA,NA,"Officer",41,"13","Male","White",NA,NA,NA,NA,NA
+"492","UF2023-034","Use of force","Employee","Officer/Reporter",19516,"Contact a Subject","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-07-06,2023-07-05,"Completed"
+"493","UF2023-034","Use of force","Employee","Officer/Reporter",19515,"Contact a Subject","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-07-06,2023-07-05,"Completed"
+"494","UF2023-034","Use of force","Employee","Citizen",5177,"Contact a Subject","Active Resister Unarmed",NA,"n/a","No","No","Complainant",50,NA,"Female","Black",NA,NA,2023-07-06,2023-07-05,"Completed"
+"495","UF2023-034","Use of force","Employee","Citizen",5178,"Contact a Subject","Active Resister Unarmed",NA,"n/a","No","No","Complainant",43,NA,"Male","White",NA,NA,2023-07-06,2023-07-05,"Completed"
+"496","UF2023-034","Use of force","Employee","Officer/Reporter",19514,"Contact a Subject","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-07-06,2023-07-05,"Completed"
+"497","UF2023-034","Use of force","Employee","Officer/Reporter",19512,"Contact a Subject","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-07-06,2023-07-05,"Completed"
+"498","UF2023-034","Use of force","Employee","Officer/Reporter",19513,"Contact a Subject","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-07-06,2023-07-05,"Completed"
+"499","UF2023-034","Use of force",NA,"Officer",19513,NA,NA,NA,NA,NA,NA,"Officer",53,"9","Male","White",NA,NA,NA,NA,NA
+"500","UF2023-034","Use of force",NA,"Officer",19512,NA,NA,NA,NA,NA,NA,"Officer",27,"1","Male","White",NA,NA,NA,NA,NA
+"501","UF2023-034","Use of force",NA,"Officer",19514,NA,NA,NA,NA,NA,NA,"Officer",33,"7","Male","White",NA,NA,NA,NA,NA
+"502","UF2023-034","Use of force",NA,"Officer",19516,NA,NA,NA,NA,NA,NA,"Officer",42,"18","Male","White",NA,NA,NA,NA,NA
+"503","UF2023-034","Use of force",NA,"Officer",19515,NA,NA,NA,NA,NA,NA,"Officer",42,"12","Male","White",NA,NA,NA,NA,NA
+"504","UF2023-035","Use of force","Employee","Citizen",5171,"Arrest","Active Fleeing",NA,"n/a","No","No","Complainant",28,NA,"Male","Black",NA,NA,2023-06-22,2023-06-21,"Completed"
+"505","UF2023-035","Use of force","Employee","Officer/Reporter",19458,"Arrest","Active Fleeing","Conducted Energy Device","Limited","No","No",NA,NA,NA,NA,NA,NA,NA,2023-06-22,2023-06-21,"Completed"
+"506","UF2023-035","Use of force",NA,"Officer",19458,NA,NA,NA,NA,NA,NA,"Officer",38,"12","Male","White",NA,NA,NA,NA,NA
+"507","UF2023-036","Use of force","Employee","Officer/Witness",19430,"911 call","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-06-16,2023-06-16,"Completed"
+"508","UF2023-036","Use of force","Employee","Officer/Witness",19429,"911 call","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-06-16,2023-06-16,"Completed"
+"509","UF2023-036","Use of force","Employee","Citizen",5163,"911 call","Active Resister Unarmed",NA,"n/a","No","Yes","Witness",44,NA,"Female","White",NA,NA,2023-06-16,2023-06-16,"Completed"
+"510","UF2023-036","Use of force","Employee","Officer/Witness",19431,"911 call","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-06-16,2023-06-16,"Completed"
+"511","UF2023-036","Use of force","Employee","Citizen",5162,"911 call","Active Resister Unarmed",NA,"n/a","No","Yes","Complainant",21,NA,"Male","White",NA,NA,2023-06-16,2023-06-16,"Completed"
+"512","UF2023-036","Use of force","Employee","Officer/Witness",19428,"911 call","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-06-16,2023-06-16,"Completed"
+"513","UF2023-036","Use of force","Employee","Citizen",5164,"911 call","Active Resister Unarmed",NA,"n/a","No","Yes","Witness",59,NA,"Male","Black",NA,NA,2023-06-16,2023-06-16,"Completed"
+"514","UF2023-036","Use of force","Employee","Officer/Reporter",19426,"911 call","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-06-16,2023-06-16,"Completed"
+"515","UF2023-036","Use of force","Employee","Officer/Reporter",19425,"911 call","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-06-16,2023-06-16,"Completed"
+"516","UF2023-036","Use of force","Employee","Officer/Witness",19427,"911 call","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-06-16,2023-06-16,"Completed"
+"517","UF2023-036","Use of force",NA,"Officer",19430,NA,NA,NA,NA,NA,NA,"Witness",25,"1","Male","white",NA,NA,NA,NA,NA
+"518","UF2023-036","Use of force",NA,"Officer",19431,NA,NA,NA,NA,NA,NA,"Witness",24,"1","female","black",NA,NA,NA,NA,NA
+"519","UF2023-036","Use of force",NA,"Officer",19425,NA,NA,NA,NA,NA,NA,"Officer",59,"17","Male","White",NA,NA,NA,NA,NA
+"520","UF2023-036","Use of force",NA,"Officer",19429,NA,NA,NA,NA,NA,NA,"Witness",46,"20","Male","White",NA,NA,NA,NA,NA
+"521","UF2023-036","Use of force",NA,"Officer",19427,NA,NA,NA,NA,NA,NA,"Witness",34,"1","male","white",NA,NA,NA,NA,NA
+"522","UF2023-036","Use of force",NA,"Officer",19428,NA,NA,NA,NA,NA,NA,"Witness",33,"7","Male","White",NA,NA,NA,NA,NA
+"523","UF2023-036","Use of force",NA,"Officer",19426,NA,NA,NA,NA,NA,NA,"Officer",35,"5","Male","White",NA,NA,NA,NA,NA
+"524","UF2023-037","Use of force","Employee","Citizen",5179,"Arrest","Active Fleeing",NA,"n/a","No","Yes","Complainant",17,NA,"Male","White",NA,NA,2023-07-08,2023-07-08,"Completed"
+"525","UF2023-037","Use of force","Employee","Officer/Reporter",19522,"Arrest","Active Fleeing","Hand/Foot Strike","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-07-08,2023-07-08,"Completed"
+"526","UF2023-037","Use of force","Employee","Officer/Reporter",19520,"Arrest","Active Fleeing","Pain Compliance","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-07-08,2023-07-08,"Completed"
+"527","UF2023-037","Use of force","Employee","Officer/Reporter",19521,"Arrest","Active Fleeing","Pain Compliance","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-07-08,2023-07-08,"Completed"
+"528","UF2023-037","Use of force",NA,"Officer",19522,NA,NA,NA,NA,NA,NA,"Officer",33,"7","Male","White",NA,NA,NA,NA,NA
+"529","UF2023-037","Use of force",NA,"Officer",19521,NA,NA,NA,NA,NA,NA,"Officer",36,"1","Male","White",NA,NA,NA,NA,NA
+"530","UF2023-037","Use of force",NA,"Officer",19520,NA,NA,NA,NA,NA,NA,"Officer",33,"4","male","white",NA,NA,NA,NA,NA
+"531","UF2023-038","Use of force","Employee","Citizen",5185,"Disturbance","Active Resister Unarmed",NA,"n/a","No","Yes","Complainant",40,NA,"Male","White",NA,NA,2023-07-11,2023-07-11,"Completed"
+"532","UF2023-038","Use of force","Employee","Officer/Witness",19557,"Disturbance","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-07-11,2023-07-11,"Completed"
+"533","UF2023-038","Use of force","Employee","Officer/Reporter",19556,"Disturbance","Active Resister Unarmed","Other","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-07-11,2023-07-11,"Completed"
+"534","UF2023-038","Use of force",NA,"Officer",19557,NA,NA,NA,NA,NA,NA,"Witness",42,"14","Female","White",NA,NA,NA,NA,NA
+"535","UF2023-038","Use of force",NA,"Officer",19556,NA,NA,NA,NA,NA,NA,"Officer",32,"8","Male","Asian",NA,NA,NA,NA,NA
+"536","UF2023-039","Use of force","Employee","Citizen",5195,"Traffic Stop","Active Fleeing",NA,"n/a","No","Yes","Complainant",34,NA,"Female","White",NA,NA,2023-07-31,2023-07-31,"Completed"
+"537","UF2023-039","Use of force","Employee","Officer/Reporter",19585,"Traffic Stop","Active Fleeing",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-07-31,2023-07-31,"Completed"
+"538","UF2023-039","Use of force",NA,"Officer",19585,NA,NA,NA,NA,NA,NA,"Officer",28,"1","Male","Hispanic",NA,NA,NA,NA,NA
+"539","UF2023-040","Use of force","Employee","Officer/Reporter",19632,"911 call","Passive Non Compliant",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-08-10,2023-08-10,"Completed"
+"540","UF2023-040","Use of force","Employee","Citizen",5199,"911 call","Passive Non Compliant",NA,"n/a","No","Yes","Complainant",NA,NA,"Female","White",NA,NA,2023-08-10,2023-08-10,"Completed"
+"541","UF2023-040","Use of force",NA,"Officer",19632,NA,NA,NA,NA,NA,NA,"Officer",23,"1","m","w",NA,NA,NA,NA,NA
+"542","UF2023-041","Use of force","Employee","Officer/Witness",19661,"Suicide Attempt","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-08-20,2023-08-18,"Completed"
+"543","UF2023-041","Use of force","Employee","Citizen",5205,"Suicide Attempt","Active Resister Unarmed",NA,"n/a","No","Yes","Complainant",43,NA,"Male",NA,NA,NA,2023-08-20,2023-08-18,"Completed"
+"544","UF2023-041","Use of force","Employee","Officer/Reporter",19660,"Suicide Attempt","Active Resister Unarmed","Conducted Energy Device","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-08-20,2023-08-18,"Completed"
+"545","UF2023-041","Use of force",NA,"Officer",19661,NA,NA,NA,NA,NA,NA,"Witness",37,"14","Male","White",NA,NA,NA,NA,NA
+"546","UF2023-041","Use of force",NA,"Officer",19660,NA,NA,NA,NA,NA,NA,"Officer",27,"2","Male","White",NA,NA,NA,NA,NA
+"547","UF2023-042","Use of force","Employee","Officer/Witness",19688,"Drug Investigation","Active Resister Unarmed",NA,NA,"No","Yes",NA,NA,NA,NA,NA,NA,NA,2023-08-25,2023-08-24,"Completed"
+"548","UF2023-042","Use of force","Employee","Officer/Reporter",19686,"Drug Investigation","Active Resister Unarmed",NA,NA,"No","Yes",NA,NA,NA,NA,NA,NA,NA,2023-08-25,2023-08-24,"Completed"
+"549","UF2023-042","Use of force","Employee","Citizen",5211,"Drug Investigation","Active Resister Unarmed",NA,"n/a","No","Yes","Witness",28,NA,"Male","White",NA,NA,2023-08-25,2023-08-24,"Completed"
+"550","UF2023-042","Use of force","Employee","Citizen",5210,"Drug Investigation","Active Resister Unarmed",NA,"n/a","No","Yes","Complainant",25,NA,"Male","White",NA,NA,2023-08-25,2023-08-24,"Completed"
+"551","UF2023-042","Use of force","Employee","Officer/Witness",19687,"Drug Investigation","Active Resister Unarmed",NA,NA,"No","Yes",NA,NA,NA,NA,NA,NA,NA,2023-08-25,2023-08-24,"Completed"
+"552","UF2023-042","Use of force","Employee","Officer/Witness",19689,"Drug Investigation","Active Resister Unarmed",NA,NA,"No","Yes",NA,NA,NA,NA,NA,NA,NA,2023-08-25,2023-08-24,"Completed"
+"553","UF2023-042","Use of force",NA,"Officer",19689,NA,NA,NA,NA,NA,NA,"Witness",36,"14","Male","White",NA,NA,NA,NA,NA
+"554","UF2023-042","Use of force",NA,"Officer",19686,NA,NA,NA,NA,NA,NA,"Officer",26,"1","male","white",NA,NA,NA,NA,NA
+"555","UF2023-042","Use of force",NA,"Officer",19687,NA,NA,NA,NA,NA,NA,"Witness",42,"12","Male","White",NA,NA,NA,NA,NA
+"556","UF2023-042","Use of force",NA,"Officer",19688,NA,NA,NA,NA,NA,NA,"Witness",46,"20","Male","White",NA,NA,NA,NA,NA
+"557","UF2023-043","Use of force","Employee","Citizen",5209,"Drug Investigation","Active Fleeing",NA,"n/a","No","Yes","Complainant",23,NA,"Male","White",NA,NA,2023-08-24,2023-08-24,"Completed"
+"558","UF2023-043","Use of force","Employee","Citizen",5209,"Drug Investigation","Active Fleeing",NA,"n/a","No","Yes","Complainant",23,NA,"Male","White",NA,NA,2023-08-24,2023-08-24,"Completed"
+"559","UF2023-043","Use of force","Employee","Officer/Reporter",19685,"Drug Investigation","Active Fleeing","Conducted Energy Device","No","No","No",NA,NA,NA,NA,NA,NA,NA,2023-08-24,2023-08-24,"Completed"
+"560","UF2023-043","Use of force","Employee","Officer/Reporter",19685,"Drug Investigation","Active Fleeing","Take-Down","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-08-24,2023-08-24,"Completed"
+"561","UF2023-043","Use of force",NA,"Officer",19685,NA,NA,NA,NA,NA,NA,"Officer",36,"14","Male","White",NA,NA,NA,NA,NA
+"562","UF2023-044","Use of force","Employee","Citizen",5217,"Arrest","Active Fleeing",NA,"n/a","No","Yes","Complainant",40,NA,"Male","White",NA,NA,2023-09-05,2023-09-05,"Completed"
+"563","UF2023-044","Use of force","Employee","Officer/Witness",19717,"Arrest","Active Fleeing",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-09-05,2023-09-05,"Completed"
+"564","UF2023-044","Use of force","Employee","Officer/Reporter",19716,"Arrest","Active Fleeing",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-09-05,2023-09-05,"Completed"
+"565","UF2023-044","Use of force",NA,"Officer",19717,NA,NA,NA,NA,NA,NA,"Witness",35,"9","Male","White",NA,NA,NA,NA,NA
+"566","UF2023-044","Use of force",NA,"Officer",19716,NA,NA,NA,NA,NA,NA,"Officer",30,"7","Male","White",NA,NA,NA,NA,NA
+"567","UF2023-045","Use of force","Employee","Citizen",5181,"Warrant Service","Active Fleeing",NA,"n/a","No","No","Complainant",34,NA,"Male","White",NA,NA,2023-07-14,2023-07-10,"Completed"
+"568","UF2023-045","Use of force","Employee","Officer/Witness",19533,"Warrant Service","Active Fleeing",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-07-14,2023-07-10,"Completed"
+"569","UF2023-045","Use of force","Employee","Officer/Reporter",19532,"Warrant Service","Active Fleeing","Take-Down","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-07-14,2023-07-10,"Completed"
+"570","UF2023-045","Use of force",NA,"Officer",19533,NA,NA,NA,NA,NA,NA,"Witness",49,"18","Male","White",NA,NA,NA,NA,NA
+"571","UF2023-045","Use of force",NA,"Officer",19532,NA,NA,NA,NA,NA,NA,"Officer",32,"7","Male","White",NA,NA,NA,NA,NA
+"572","UF2023-046","Use of force","Employee","Citizen",5220,"Disturbance","Active Resister Unarmed",NA,"n/a","No","Yes","Witness",24,NA,"Female",NA,NA,NA,2023-09-07,2023-09-07,"Completed"
+"573","UF2023-046","Use of force","Employee","Citizen",5219,"Disturbance","Active Resister Unarmed",NA,"n/a","No","Yes","Complainant",30,NA,"Female","White",NA,NA,2023-09-07,2023-09-07,"Completed"
+"574","UF2023-046","Use of force","Employee","Citizen",5221,"Disturbance","Active Resister Unarmed",NA,"n/a","No","Yes","Witness",NA,NA,"Female",NA,NA,NA,2023-09-07,2023-09-07,"Completed"
+"575","UF2023-046","Use of force","Employee","Officer/Reporter",19741,"Disturbance","Active Resister Unarmed","Take-Down","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-09-07,2023-09-07,"Completed"
+"576","UF2023-046","Use of force",NA,"Officer",19741,NA,NA,NA,NA,NA,NA,"Officer",30,"7","Male","White",NA,NA,NA,NA,NA
+"577","UF2023-047","Use of force","Employee","Officer/Reporter",19812,"Arrest","Destructive Self/Others","Hand/Foot Strike","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-09-27,2023-09-26,"Completed"
+"578","UF2023-047","Use of force","Employee","Citizen",5244,"Arrest","Destructive Self/Others",NA,"n/a","No","Yes","Complainant",18,NA,"Male","White",NA,NA,2023-09-27,2023-09-26,"Completed"
+"579","UF2023-047","Use of force","Employee","Officer/Reporter",19811,"Arrest","Destructive Self/Others","Take-Down","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-09-27,2023-09-26,"Completed"
+"580","UF2023-047","Use of force",NA,"Officer",19812,NA,NA,NA,NA,NA,NA,"Officer",35,"9","Male","White",NA,NA,NA,NA,NA
+"581","UF2023-047","Use of force",NA,"Officer",19811,NA,NA,NA,NA,NA,NA,"Officer",42,"18","Male","White",NA,NA,NA,NA,NA
+"582","UF2023-048","Use of force","Employee","Officer/Witness",19868,"Disturbance","Passive Non Compliant",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-10-05,2023-10-05,"Completed"
+"583","UF2023-048","Use of force","Employee","Citizen",5252,"Disturbance","Passive Non Compliant",NA,"n/a","No","Yes","Witness",21,NA,"Male","White",NA,NA,2023-10-05,2023-10-05,"Completed"
+"584","UF2023-048","Use of force","Employee","Officer/Reporter",19866,"Disturbance","Passive Non Compliant","OC","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-10-05,2023-10-05,"Completed"
+"585","UF2023-048","Use of force","Employee","Officer/Witness",19867,"Disturbance","Passive Non Compliant",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-10-05,2023-10-05,"Completed"
+"586","UF2023-048","Use of force","Employee","Citizen",5251,"Disturbance","Passive Non Compliant",NA,"n/a","No","Yes","Complainant",19,NA,"Male","White",NA,NA,2023-10-05,2023-10-05,"Completed"
+"587","UF2023-048","Use of force",NA,"Officer",19868,NA,NA,NA,NA,NA,NA,"Witness",44,"2","male","Native Am",NA,NA,NA,NA,NA
+"588","UF2023-048","Use of force",NA,"Officer",19867,NA,NA,NA,NA,NA,NA,"Witness",30,"5","Male","White",NA,NA,NA,NA,NA
+"589","UF2023-048","Use of force",NA,"Officer",19866,NA,NA,NA,NA,NA,NA,"Officer",36,"5","Male","White",NA,NA,NA,NA,NA
+"590","UF2023-049","Use of force","Employee","Citizen",5260,"Disturbance","Active Fleeing",NA,"n/a","No","Yes","Complainant",63,NA,"Male","White",NA,NA,2023-10-17,2023-10-17,"Completed"
+"591","UF2023-049","Use of force","Employee","Officer/Reporter",19926,"Disturbance","Active Fleeing","Other","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-10-17,2023-10-17,"Completed"
+"592","UF2023-049","Use of force","Employee","Officer/Reporter",19925,"Disturbance","Active Fleeing","Other","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-10-17,2023-10-17,"Completed"
+"593","UF2023-049","Use of force","Employee","Officer/Witness",19927,"Disturbance","Active Fleeing",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-10-17,2023-10-17,"Completed"
+"594","UF2023-049","Use of force","Employee","Citizen",5260,"Disturbance","Active Fleeing",NA,"n/a","No","Yes","Complainant",63,NA,"Male","White",NA,NA,2023-10-17,2023-10-17,"Completed"
+"595","UF2023-049","Use of force","Employee","Officer/Reporter",19924,"Disturbance","Active Fleeing","Other","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-10-17,2023-10-17,"Completed"
+"596","UF2023-049","Use of force","Employee","Officer/Reporter",19923,"Disturbance","Active Fleeing","Take-Down","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-10-17,2023-10-17,"Completed"
+"597","UF2023-049","Use of force","Employee","Officer/Witness",19928,"Disturbance","Active Fleeing",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-10-17,2023-10-17,"Completed"
+"598","UF2023-049","Use of force",NA,"Officer",19926,NA,NA,NA,NA,NA,NA,"Officer",32,"5","Male","White",NA,NA,NA,NA,NA
+"599","UF2023-049","Use of force",NA,"Officer",19924,NA,NA,NA,NA,NA,NA,"Officer",53,"9","Male","White",NA,NA,NA,NA,NA
+"600","UF2023-049","Use of force",NA,"Officer",19928,NA,NA,NA,NA,NA,NA,"Witness",NA,"2","Female","White",NA,NA,NA,NA,NA
+"601","UF2023-049","Use of force",NA,"Officer",19925,NA,NA,NA,NA,NA,NA,"Officer",44,"7","Female","White",NA,NA,NA,NA,NA
+"602","UF2023-049","Use of force",NA,"Officer",19927,NA,NA,NA,NA,NA,NA,"Witness",38,"15","Male","White",NA,NA,NA,NA,NA
+"603","UF2023-049","Use of force",NA,"Officer",19923,NA,NA,NA,NA,NA,NA,"Officer",31,"5","Male","White",NA,NA,NA,NA,NA
+"604","UF2023-050","Use of force","Employee","Officer/Reporter",19893,"Investigation","Passive Non Compliant","Other","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-10-11,2023-10-11,"Completed"
+"605","UF2023-050","Use of force","Employee","Citizen",5256,"Investigation","Passive Non Compliant",NA,"n/a","No","No","Complainant",51,NA,"Female","White",NA,NA,2023-10-11,2023-10-11,"Completed"
+"606","UF2023-050","Use of force","Employee","Officer/Reporter",19892,"Investigation","Passive Non Compliant","Other","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-10-11,2023-10-11,"Completed"
+"607","UF2023-050","Use of force",NA,"Officer",19893,NA,NA,NA,NA,NA,NA,"Officer",33,"7","Male","White",NA,NA,NA,NA,NA
+"608","UF2023-050","Use of force",NA,"Officer",19892,NA,NA,NA,NA,NA,NA,"Officer",26,"4","male","white",NA,NA,NA,NA,NA
+"609","UF2023-051","Use of force","Employee","Officer/Witness",20050,"Traffic Stop","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-11-07,2023-11-07,"Completed"
+"610","UF2023-051","Use of force","Employee","Citizen",5287,"Traffic Stop","Active Resister Unarmed",NA,"n/a","No","Yes","Complainant",20,NA,"Female","White",NA,NA,2023-11-07,2023-11-07,"Completed"
+"611","UF2023-051","Use of force","Employee","Citizen",5284,"Traffic Stop","Active Resister Unarmed",NA,"n/a","No","Yes","Witness",23,NA,"Male","White",NA,NA,2023-11-07,2023-11-07,"Completed"
+"612","UF2023-051","Use of force","Employee","Officer/Reporter",20049,"Traffic Stop","Active Resister Unarmed","Conducted Energy Device","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-11-07,2023-11-07,"Completed"
+"613","UF2023-051","Use of force","Employee","Citizen",5287,"Traffic Stop","Active Resister Unarmed",NA,"n/a","No","Yes","Complainant",20,NA,"Female","White",NA,NA,2023-11-07,2023-11-07,"Completed"
+"614","UF2023-051","Use of force",NA,"Officer",20049,NA,NA,NA,NA,NA,NA,"Officer",38,"10","Male","White",NA,NA,NA,NA,NA
+"615","UF2023-051","Use of force",NA,"Officer",20050,NA,NA,NA,NA,NA,NA,"Witness",38,"14","Male","White",NA,NA,NA,NA,NA
+"616","UF2023-052","Use of force","Employee","Citizen",5245,"Disturbance","Active Resister Unarmed",NA,"n/a","No","No","Complainant",31,NA,"Male","White",NA,NA,2023-09-30,2023-09-29,"Completed"
+"617","UF2023-052","Use of force","Employee","Officer/Reporter",19819,"Disturbance","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-09-30,2023-09-29,"Completed"
+"618","UF2023-052","Use of force",NA,"Officer",19819,NA,NA,NA,NA,NA,NA,"Officer",27,"2","Male","White",NA,NA,NA,NA,NA
+"619","UF2023-053","Use of force","Employee","Officer/Witness",20127,"Arrest","Active Fleeing",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-11-19,2023-11-19,"Completed"
+"620","UF2023-053","Use of force","Employee","Officer/Reporter",20124,"Arrest","Active Fleeing","Take-Down","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-11-19,2023-11-19,"Completed"
+"621","UF2023-053","Use of force","Employee","Officer/Reporter",20125,"Arrest","Active Fleeing","Take-Down","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-11-19,2023-11-19,"Completed"
+"622","UF2023-053","Use of force","Employee","Officer/Witness",20126,"Arrest","Active Fleeing",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-11-19,2023-11-19,"Completed"
+"623","UF2023-053","Use of force","Employee","Officer/Witness",20128,"Arrest","Active Fleeing",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-11-19,2023-11-19,"Completed"
+"624","UF2023-053","Use of force","Employee","Officer/Reporter",20123,"Arrest","Active Fleeing","Conducted Energy Device","No","No","No",NA,NA,NA,NA,NA,NA,NA,2023-11-19,2023-11-19,"Completed"
+"625","UF2023-053","Use of force","Employee","Officer/Witness",20129,"Arrest","Active Fleeing",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-11-19,2023-11-19,"Completed"
+"626","UF2023-053","Use of force","Employee","Citizen",5303,"Arrest","Active Fleeing",NA,"n/a","No","Yes","Complainant",22,NA,"Male","Black",NA,NA,2023-11-19,2023-11-19,"Completed"
+"627","UF2023-053","Use of force",NA,"Officer",20123,NA,NA,NA,NA,NA,NA,"Officer",46,"14","Male","White",NA,NA,NA,NA,NA
+"628","UF2023-053","Use of force",NA,"Officer",20126,NA,NA,NA,NA,NA,NA,"Witness",43,"14","Male","White",NA,NA,NA,NA,NA
+"629","UF2023-053","Use of force",NA,"Officer",20125,NA,NA,NA,NA,NA,NA,"Officer",28,"1","Male","Hispanic",NA,NA,NA,NA,NA
+"630","UF2023-053","Use of force",NA,"Officer",20129,NA,NA,NA,NA,NA,NA,"Witness",29,"7","Male","White",NA,NA,NA,NA,NA
+"631","UF2023-053","Use of force",NA,"Officer",20124,NA,NA,NA,NA,NA,NA,"Officer",27,"0","male","white",NA,NA,NA,NA,NA
+"632","UF2023-053","Use of force",NA,"Officer",20127,NA,NA,NA,NA,NA,NA,"Witness",33,"6","Male","White",NA,NA,NA,NA,NA
+"633","UF2023-053","Use of force",NA,"Officer",20128,NA,NA,NA,NA,NA,NA,"Witness",24,"2","Male","White",NA,NA,NA,NA,NA
+"634","UF2023-054","Use of force","Employee","Citizen",5289,"911 call","Destructive Self/Others",NA,"n/a","No","Yes","Witness",21,NA,"Male","White",NA,NA,2023-11-09,2023-11-09,"Completed"
+"635","UF2023-054","Use of force","Employee","Officer/Reporter",20065,"911 call","Destructive Self/Others","Take-Down","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-11-09,2023-11-09,"Completed"
+"636","UF2023-054","Use of force","Employee","Officer/Reporter",20066,"911 call","Destructive Self/Others","Take-Down","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-11-09,2023-11-09,"Completed"
+"637","UF2023-054","Use of force","Employee","Officer/Reporter",20067,"911 call","Destructive Self/Others","Other","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-11-09,2023-11-09,"Completed"
+"638","UF2023-054","Use of force","Employee","Officer/Reporter",20067,"911 call","Destructive Self/Others","Pain Compliance","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-11-09,2023-11-09,"Completed"
+"639","UF2023-054","Use of force","Employee","Citizen",5288,"911 call","Destructive Self/Others",NA,"n/a","No","Yes","Complainant",17,NA,"Female","White",NA,NA,2023-11-09,2023-11-09,"Completed"
+"640","UF2023-054","Use of force",NA,"Officer",20065,NA,NA,NA,NA,NA,NA,"Officer",48,"12","Male","White",NA,NA,NA,NA,NA
+"641","UF2023-054","Use of force",NA,"Officer",20067,NA,NA,NA,NA,NA,NA,"Officer",27,"0","male","white",NA,NA,NA,NA,NA
+"642","UF2023-054","Use of force",NA,"Officer",20066,NA,NA,NA,NA,NA,NA,"Officer",51,"14","Male","White",NA,NA,NA,NA,NA
+"643","UF2023-055","Use of force","Employee","Citizen",5277,"Protective Custody","Destructive Self/Others",NA,"n/a","No","Yes","Witness",67,NA,"Female","White",NA,NA,2023-10-29,2023-10-29,"Completed"
+"644","UF2023-055","Use of force","Employee","Officer/Reporter",20000,"Protective Custody","Destructive Self/Others","Conducted Energy Device","Limited","No","No",NA,NA,NA,NA,NA,NA,NA,2023-10-29,2023-10-29,"Completed"
+"645","UF2023-055","Use of force","Employee","Officer/Witness",20201,"Protective Custody","Destructive Self/Others",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-10-29,2023-10-29,"Completed"
+"646","UF2023-055","Use of force","Employee","Citizen",5276,"Protective Custody","Destructive Self/Others",NA,"n/a","No","Yes","Complainant",42,NA,"Male","White",NA,NA,2023-10-29,2023-10-29,"Completed"
+"647","UF2023-055","Use of force",NA,"Officer",20000,NA,NA,NA,NA,NA,NA,"Officer",36,"6","Male","White",NA,NA,NA,NA,NA
+"648","UF2023-055","Use of force",NA,"Officer",20201,NA,NA,NA,NA,NA,NA,"Witness",29,"5","Male","White",NA,NA,NA,NA,NA
+"649","UF2023-056","Use of force","Employee","Officer/Witness",20211,"Arrest","Passive Non Compliant",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-11-06,2023-11-05,"Completed"
+"650","UF2023-056","Use of force","Employee","Officer/Reporter",20039,"Arrest","Passive Non Compliant","Conducted Energy Device","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-11-06,2023-11-05,"Completed"
+"651","UF2023-056","Use of force","Employee","Citizen",5282,"Arrest","Passive Non Compliant",NA,"n/a","No","Yes","Complainant",32,NA,"Male","White",NA,NA,2023-11-06,2023-11-05,"Completed"
+"652","UF2023-056","Use of force","Employee","Officer/Reporter",20039,"Arrest","Passive Non Compliant","Hand/Foot Strike","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-11-06,2023-11-05,"Completed"
+"653","UF2023-056","Use of force",NA,"Officer",20211,NA,NA,NA,NA,NA,NA,"Witness",24,"2","Male","White",NA,NA,NA,NA,NA
+"654","UF2023-056","Use of force",NA,"Officer",20039,NA,NA,NA,NA,NA,NA,"Officer",24,"2","Male","White",NA,NA,NA,NA,NA
+"655","UF2023-057","Use of force","Employee","Officer/Reporter",20222,"Disturbance","Destructive Self/Others",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-11-30,2023-11-30,"Completed"
+"656","UF2023-057","Use of force","Employee","Officer/Reporter",20220,"Disturbance","Destructive Self/Others","Pain Compliance","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-11-30,2023-11-30,"Completed"
+"657","UF2023-057","Use of force","Employee","Citizen",5313,"Disturbance","Destructive Self/Others",NA,"n/a","No","No","Complainant",19,NA,"Female","Black",NA,NA,2023-11-30,2023-11-30,"Completed"
+"658","UF2023-057","Use of force","Employee","Officer/Reporter",20221,"Disturbance","Destructive Self/Others",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-11-30,2023-11-30,"Completed"
+"659","UF2023-057","Use of force",NA,"Officer",20220,NA,NA,NA,NA,NA,NA,"Officer",30,"1","male","white",NA,NA,NA,NA,NA
+"660","UF2023-057","Use of force",NA,"Officer",20222,NA,NA,NA,NA,NA,NA,"Officer",53,"9","Male","White",NA,NA,NA,NA,NA
+"661","UF2023-057","Use of force",NA,"Officer",20221,NA,NA,NA,NA,NA,NA,"Officer",26,"1","male","white",NA,NA,NA,NA,NA
+"662","UF2023-058","Use of force","Employee","Citizen",5318,"911 call","Active Resister Unarmed",NA,"n/a","Yes","No","Complainant",32,NA,"Female","Native Am",NA,NA,2023-12-15,2023-12-14,"Completed"
+"663","UF2023-058","Use of force","Employee","Officer/Reporter",20278,"911 call","Active Resister Unarmed","Conducted Energy Device","Yes","No","No",NA,NA,NA,NA,NA,NA,NA,2023-12-15,2023-12-14,"Completed"
+"664","UF2023-058","Use of force","Employee","Citizen",5318,"911 call","Active Resister Unarmed",NA,"n/a","Yes","No","Complainant",32,NA,"Female","Native Am",NA,NA,2023-12-15,2023-12-14,"Completed"
+"665","UF2023-058","Use of force","Employee","Officer/Reporter",20280,"911 call","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-12-15,2023-12-14,"Completed"
+"666","UF2023-058","Use of force","Employee","Citizen",5318,"911 call","Active Resister Unarmed",NA,"n/a","Yes","No","Complainant",32,NA,"Female","Native Am",NA,NA,2023-12-15,2023-12-14,"Completed"
+"667","UF2023-058","Use of force","Employee","Citizen",5318,"911 call","Active Resister Unarmed",NA,"n/a","Yes","No","Complainant",32,NA,"Female","Native Am",NA,NA,2023-12-15,2023-12-14,"Completed"
+"668","UF2023-058","Use of force","Employee","Citizen",5318,"911 call","Active Resister Unarmed",NA,"n/a","Yes","No","Complainant",32,NA,"Female","Native Am",NA,NA,2023-12-15,2023-12-14,"Completed"
+"669","UF2023-058","Use of force","Employee","Citizen",5318,"911 call","Active Resister Unarmed",NA,"n/a","Yes","No","Complainant",32,NA,"Female","Native Am",NA,NA,2023-12-15,2023-12-14,"Completed"
+"670","UF2023-058","Use of force","Employee","Officer/Reporter",20279,"911 call","Active Resister Unarmed",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-12-15,2023-12-14,"Completed"
+"671","UF2023-058","Use of force",NA,"Officer",20280,NA,NA,NA,NA,NA,NA,"Officer",30,"5","Male","White",NA,NA,NA,NA,NA
+"672","UF2023-058","Use of force",NA,"Officer",20278,NA,NA,NA,NA,NA,NA,"Officer",24,"2","Male","White",NA,NA,NA,NA,NA
+"673","UF2023-058","Use of force",NA,"Officer",20279,NA,NA,NA,NA,NA,NA,"Officer",30,"1","male","white",NA,NA,NA,NA,NA
+"674","UF2023-059","Use of force","Employee","Officer/Reporter",20346,"Disturbance","Active Resister Unarmed","Hand/Foot Strike","No","Yes","No",NA,NA,NA,NA,NA,NA,NA,2023-12-29,2023-12-29,"Completed"
+"675","UF2023-059","Use of force","Employee","Officer/Reporter",20347,"Disturbance","Active Resister Unarmed","Conducted Energy Device","Limited","Yes","No",NA,NA,NA,NA,NA,NA,NA,2023-12-29,2023-12-29,"Completed"
+"676","UF2023-059","Use of force","Employee","Citizen",5326,"Disturbance","Active Resister Unarmed",NA,"n/a","Yes","No","Complainant",46,NA,"Male","Black",NA,NA,2023-12-29,2023-12-29,"Completed"
+"677","UF2023-059","Use of force","Employee","Officer/Reporter",20345,"Disturbance","Active Resister Unarmed","Hand/Foot Strike","No","Yes","No",NA,NA,NA,NA,NA,NA,NA,2023-12-29,2023-12-29,"Completed"
+"678","UF2023-059","Use of force",NA,"Officer",20347,NA,NA,NA,NA,NA,NA,"Officer",38,"6","Male","White",NA,NA,NA,NA,NA
+"679","UF2023-059","Use of force",NA,"Officer",20346,NA,NA,NA,NA,NA,NA,"Officer",27,"2","Male","White",NA,NA,NA,NA,NA
+"680","UF2023-059","Use of force",NA,"Officer",20345,NA,NA,NA,NA,NA,NA,"Officer",22,"0","Male","white",NA,NA,NA,NA,NA
+"681","UF2023-060","Use of force","Employee","Citizen",5324,"Arrest","Passive Non Compliant",NA,"n/a","Yes","No","Complainant",40,NA,"Male","White",NA,NA,2023-12-23,2023-12-23,"Completed"
+"682","UF2023-060","Use of force","Employee","Citizen",5324,"Arrest","Passive Non Compliant",NA,"n/a","Yes","No","Complainant",40,NA,"Male","White",NA,NA,2023-12-23,2023-12-23,"Completed"
+"683","UF2023-060","Use of force","Employee","Citizen",5324,"Arrest","Passive Non Compliant",NA,"n/a","Yes","No","Complainant",40,NA,"Male","White",NA,NA,2023-12-23,2023-12-23,"Completed"
+"684","UF2023-060","Use of force","Employee","Officer/Witness",20313,"Arrest","Passive Non Compliant",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-12-23,2023-12-23,"Completed"
+"685","UF2023-060","Use of force","Employee","Officer/Witness",20314,"Arrest","Passive Non Compliant",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-12-23,2023-12-23,"Completed"
+"686","UF2023-060","Use of force","Employee","Citizen",5324,"Arrest","Passive Non Compliant",NA,"n/a","Yes","No","Complainant",40,NA,"Male","White",NA,NA,2023-12-23,2023-12-23,"Completed"
+"687","UF2023-060","Use of force","Employee","Officer/Reporter",20312,"Arrest","Passive Non Compliant","Kenetic Energy Projectile","No","No","No",NA,NA,NA,NA,NA,NA,NA,2023-12-23,2023-12-23,"Completed"
+"688","UF2023-060","Use of force","Employee","Officer/Witness",20317,"Arrest","Passive Non Compliant",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-12-23,2023-12-23,"Completed"
+"689","UF2023-060","Use of force","Employee","Officer/Witness",20315,"Arrest","Passive Non Compliant",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-12-23,2023-12-23,"Completed"
+"690","UF2023-060","Use of force","Employee","Officer/Witness",20316,"Arrest","Passive Non Compliant",NA,NA,"No","No",NA,NA,NA,NA,NA,NA,NA,2023-12-23,2023-12-23,"Completed"
+"691","UF2023-060","Use of force",NA,"Officer",20315,NA,NA,NA,NA,NA,NA,"Witness",37,"4","male","white",NA,NA,NA,NA,NA
+"692","UF2023-060","Use of force",NA,"Officer",20314,NA,NA,NA,NA,NA,NA,"Witness",25,"0","male","white",NA,NA,NA,NA,NA
+"693","UF2023-060","Use of force",NA,"Officer",20317,NA,NA,NA,NA,NA,NA,"Witness",45,"18","Male","White",NA,NA,NA,NA,NA
+"694","UF2023-060","Use of force",NA,"Officer",20312,NA,NA,NA,NA,NA,NA,"Officer",35,"5","Male","White",NA,NA,NA,NA,NA
+"695","UF2023-060","Use of force",NA,"Officer",20316,NA,NA,NA,NA,NA,NA,"Witness",32,"7","Male","White",NA,NA,NA,NA,NA
+"696","UF2023-060","Use of force",NA,"Officer",20313,NA,NA,NA,NA,NA,NA,"Witness",39,"7","Male","White",NA,NA,NA,NA,NA
+"697","UF2023-061","Use of force","Employee","Citizen",5315,"Disturbance","Active Resister Unarmed",NA,"n/a","Yes","Yes","Complainant",NA,NA,"Female","White",NA,NA,2023-12-10,2023-12-10,"Completed"
+"698","UF2023-061","Use of force","Employee","Officer/Reporter",20264,"Disturbance","Active Resister Unarmed","Take-Down","Yes","Yes","No",NA,NA,NA,NA,NA,NA,NA,2023-12-10,2023-12-10,"Completed"
+"699","UF2023-061","Use of force","Employee","Officer/Reporter",20265,"Disturbance","Active Resister Unarmed","Take-Down","Yes","Yes","No",NA,NA,NA,NA,NA,NA,NA,2023-12-10,2023-12-10,"Completed"
+"700","UF2023-061","Use of force",NA,"Officer",20265,NA,NA,NA,NA,NA,NA,"Officer",30,"7","Male","White",NA,NA,NA,NA,NA
+"701","UF2023-061","Use of force",NA,"Officer",20264,NA,NA,NA,NA,NA,NA,"Officer",31,"5","Male","White",NA,NA,NA,NA,NA
+"702",NA,"Use of force",NA,"Citizen",5332,"911 call","Active Fleeing",NA,"n/a","No","No","Complainant",NA,NA,NA,NA,NA,NA,2024-01-01,2023-12-31,"Initial"
