@@ -25,6 +25,7 @@ source("tabs/OFF1tab.R")
 source("tabs/OFF2tab.R")
 source("tabs/OFF3tab.R")
 source("tabs/OFF4tab.R")
+source("tabs/CIUOF_Joiner.R")
 ui <- dashboardPage(
   ######################################################################
   ######################################################################
@@ -371,7 +372,7 @@ server <- function(input, output, session) {
     #(R's switch would not work here)
     if(input$sidebar == "UOF")
     {
-      data <- read.csv(file("joined-data.csv"))
+      data <- CIUOF_outer_join()
       
       # PIE CHARTS 
       
@@ -544,7 +545,7 @@ server <- function(input, output, session) {
     }
     else if (input$sidebar == "CI") 
     {
-      data <- read.csv(file("joined-data.csv"))
+      data <- CIUOF_outer_join()
       
       # PIE CHARTS
       
