@@ -25,6 +25,7 @@ source("tabs/OFF1tab.R")
 source("tabs/OFF2tab.R")
 source("tabs/OFF3tab.R")
 source("tabs/OFF4tab.R")
+source("tabs/CIUOF_Joiner.R")
 ui <- dashboardPage(
   ######################################################################
   ######################################################################
@@ -427,13 +428,7 @@ server <- function(input, output, session) {
     #(R's switch would not work here)
     if(input$sidebar == "UOF")
     {
-      
-      ######################
-      # Step 1: read in the data
-      ######################
-      
-      # Read in call of service 2022
-      data <- read.csv(file("joined-data.csv"))
+      data <- CIUOF_outer_join()
       
       
       #Getting the number of years and then populating the top widget
@@ -644,13 +639,7 @@ server <- function(input, output, session) {
     }
     else if (input$sidebar == "CI") 
     {
-      
-      
-      ######################
-      # Step 1: read in the data
-      ######################
-      
-      data <- read.csv(file("joined-data.csv"))
+      data <- CIUOF_outer_join()
       
       
       
