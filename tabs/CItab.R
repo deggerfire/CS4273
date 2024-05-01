@@ -1,220 +1,32 @@
 ##################################################################
+#################################################################
+##  File for the call for Complaints and Inquiries              ##
 ##################################################################
-##             File for the Use of force UI                     ##
 ##################################################################
-##################################################################
-# This file is for UI stuff related to Use of force Tab
+source("tabs/UIHelperFunctions.R")
+# List of the widget id's on the screen in the top bar. This list does have functionally
+# This should help with step 2
+CI_topBar <- c(
+  "CISelect_Year"
+)
+# List of the widget id's on the screen. This list does have functionally
+# This should help with step 2
+CI_selectors <- c("CI_Race_Selector", 
+                  "CI_Sex_Selector", 
+                  "CI_Years_Employed_Selector", 
+                  "CI_Allegations_Selector",
+                  "CI_Involvement_Selector",
+                  "CI_Age_Selector",
+                  "CI_Subject_Type_Selector"
+)
 
-## TODO: make this file do something
-
-# Function that handles the large scale formatting of the main area (dashboardBody) and the tabs on top
-CI_tab <- function(){
-  data <- read.csv(file("joined-data.csv"))
-  
-  # Replace UOF values with NA so that UOF data is filtered out
-  data$RACE <- replace(data$RACE, data$INCIDENT_TYPE == "Use of force", NA)
-  
-  # Fix Data - Typos
-  data$RACE <- sapply(data$RACE, function(x) {
-    
-    if (grepl("Unkn", x)) # Unknown accounted for
-    {
-      return(x)
-    }
-    else if(grepl("N/A", x)) # N/A accounted for
-    {
-      return(NA)
-    }
-    else if(grepl("black", x)) # black accounted for
-    { 
-      return("Black")
-    }  
-    else if (grepl("w", x) ) # white, w accounted for
-    { 
-      return("White")
-    } 
-    else  # Amer Ind, Asian, Black, Hispanic, "Vietnamese", "White" is accounted for
-    {
-      return(x) 
-    }
-  })
-  
-  # Replace UOF values with NA so that UOF data is filtered out
-  data$SEX <- replace(data$SEX, data$INCIDENT_TYPE == "Use of force", NA)
-  
-  # Fix Data - Typos
-  data$SEX <- sapply(data$SEX, function(x) {
-    
-    if (grepl("Unkn", x)) # Unknown accounted for
-    {
-      return(x)
-    }
-    else if (grepl("emale", x)) # Female and female accounted for
-    { 
-      return("Female")
-    }  
-    else if(!grepl("Male", x)) # male, m accounted for
-    {
-      return("Male")
-    }
-    else  # NA and Male accounted for
-    {
-      return(x) 
-    }
-  })
-  
-  # Replace UOF values with NA so that UOF data is filtered out
-  data$YRS_EMPL <- replace(data$YRS_EMPL, data$INCIDENT_TYPE == "Use of force", NA)
-  
-  # Fix Data - Too many values, sort them into ranges
-  data$YRS_EMPL <- sapply(data$YRS_EMPL, function(x) 
-  {
-    if(is.na(x))
-    {
-      return(NA)
-    }
-    else if (x < 11) # Unknown accounted for
-    {
-      return("0-10")
-    }
-    else if (11 <= x && x <= 20) # Female and female accounted for
-    { 
-      return("11-20")
-    }  
-    else if(21 <= x && x <= 30) # male, m accounted for
-    {
-      return("21-30")
-    }
-    else if(31 <= x && x <= 40)
-    {
-      return("31-40") 
-    }
-    else if(40 <= x && x<= 50)
-    {
-      return("41-50") 
-    }
-  })
-  
-  # Replace UOF values with NA so that UOF data is filtered out
-  data$INVOLVMENT <- replace(data$INVOLVMENT, data$INCIDENT_TYPE == "Use of force", NA)
-  
-  # Replace UOF values with NA so that UOF data is filtered out
-  data$AGE <- replace(data$AGE, data$INCIDENT_TYPE == "Use of force", NA)
-  
-  # Replace UOF values with NA so that UOF data is filtered out
-  data$SUBJ_TYPE <- replace(data$SUBJ_TYPE, data$INCIDENT_TYPE == "Use of force", NA)
-  
-  # Fix Data -  Labels are too long, need to reduce number of characters
-  data$ALLEGATION_MADE <- sapply(data$ALLEGATION_MADE, function(x) {
-    if (is.na(x) || x == "Discrimination, Oppression or Favoritism - Color") # "Color" by itself is a strange allegation
-    { 
-      return(x)
-    } else {
-      return(strsplit(as.character(x), split = " - ")[[1]][2]) # Splits into before and after '-', using elements in [2]
-    }
-  })
-  
-  # Makes the object of the entire main area
-  tab <- tabItem(tabName = "CI",
-                 tabBox(
-                   height = "500px",
-                   CI_Race_PC(data, "CI_table_1", "CI_Race_Selector"),
-                   CI_Sex_PC(data, "CI_table_2", "CI_Sex_Selector"),
-                   CI_Years_Employed_BP(data, "CI_table_3", "CI_Years_Employed_Selector")
-                 ),
-                 tabBox(
-                   height = "500px",
-                   CI_Allegations_BP(data, "CI_table_4", "CI_Allegations_Selector"),
-                   CI_Involvement_BP(data, "CI_table_5", "CI_Involvement_Selector"),
-                   CI_Age_BP(data, "CI_table_6", "CI_Age_Selector"),
-                   CI_Subject_Type_BP(data, "CI_table_7", "CI_Subject_Type_Selector")
-                 )
-  )
-  return(tab)
-}
-
-# --- Pie Charts ---
-
-# Makes the tab for race piechart
-CI_Race_PC <- function(data, plotName, widgetName){
-  tab <- tabPanel('Race', # Tab title
-                  plotOutput(plotName),                 # plotOutput name
-                  # Input selector
-                  selectInput(widgetName, "Race", c("Unselected", unique(data$RACE[!is.na(data$RACE)])), selected = 1)
-  )
-  return(tab)
-}
-
-# Makes the tab for sex piechart
-CI_Sex_PC <- function(data, plotName, widgetName){
-  tab <- tabPanel('Gender', # Tab title
-                  plotOutput(plotName),                 # plotOutput name
-                  # Input selector
-                  selectInput(widgetName, "Gender", c("Unselected", unique(data$SEX[!is.na(data$SEX)])), selected = 1)
-  )
-  return(tab)
-}
-
-
-# --- Bar Charts ---
-
-# Makes the tab for subject's years employed barplot
-
-CI_Years_Employed_BP <- function(data, plotName, widgetName){
-  tab <- tabPanel('Years Employed', # Tab title
-                  plotOutput(plotName),                 # plotOutput name
-                  # Input selector
-                  selectInput(widgetName, "Years Employed", c("Unselected", unique(data$YRS_EMPL[!is.na(data$YRS_EMPL)])), selected = 1)
-  )
-  return(tab)
-}
-
-
-# Makes the tab for allegations barplot
-CI_Allegations_BP <- function(data, plotName, widgetName){
-  tab <- tabPanel('Allegations', # Tab title
-                  plotOutput(plotName), # plotOutput name
-                  # Input selector
-                  selectInput(widgetName, "Allegations", c("Unselected", unique(data$ALLEGATION_MADE[!is.na(data$ALLEGATION_MADE)])), selected = 1)
-  )
-  return(tab)
-}
-
-
-# Makes the tab for call source barplot
-CI_Involvement_BP <- function(data, plotName, widgetName){
-  tab <- tabPanel('Involvement', # Tab title
-                  plotOutput(plotName),                 # plotOutput name
-                  # Input selector
-                  selectInput(widgetName, "Involvement", c("Unselected", unique(data$INVOLVMENT[!is.na(data$INVOLVMENT)])), selected = 1)
-  )
-  return(tab)
-}
-
-# Makes the tab for subject's age barplot
-CI_Age_BP <- function(data, plotName, widgetName){
-  tab <- tabPanel('Age', # Tab title
-                  plotOutput(plotName),                 # plotOutput name
-                  # Input selector
-                  selectInput(widgetName, "Age", c("Unselected", unique(data$AGE[!is.na(data$AGE)])), selected = 1)
-  )
-}
-
-
-
-
-# Makes the tab for call source barplot
-CI_Subject_Type_BP <- function(data, plotName, widgetName){
-  tab <- tabPanel('Subject Type', # Tab title
-                  plotOutput(plotName),                 # plotOutput name
-                  # Input selector
-                  selectInput(widgetName, "Subject Type", c("Unselected", unique(data$SUBJ_TYPE[!is.na(data$SUBJ_TYPE)])), selected = 1)
-  )
-  return(tab)
-}
-
-
-# Temporary render function TODO: Work out how data team wants to pass in
+# Render function for call for service (puts graphs on screen)
+# This function is for step 4
+#   output: this is the output variable passes into the server function
+#     see this line in app.R (use ctrl+f) "server <- function(input, output, session) {"
+#   plot1, ..., plotx: a graph to be put in that spot on screen
+#     goes from upper left to lower right order
+#     if you need the format of the graphs change ask UI person
 CI_render <- function(output, plot1, plot2, plot3, plot4, plot5, plot6, plot7){
   output$CI_table_1 <- plot1
   output$CI_table_2 <- plot2
@@ -223,4 +35,85 @@ CI_render <- function(output, plot1, plot2, plot3, plot4, plot5, plot6, plot7){
   output$CI_table_5 <- plot5
   output$CI_table_6 <- plot6
   output$CI_table_7 <- plot7
+  
+}
+
+# Boolean to tell if the widgets have been loaded
+CI_widgetsLoaded <- FALSE
+CI_topBarLoaded <- FALSE
+
+# Sets of the selectors based on the inputted data
+# This function is the setup for the conditions in step 2
+#   session:  this is the session variable passes into the server function
+#     see this line in app.R (use ctrl+f) "server <- function(input, output, session) {"
+#   selector1Data, ..., selectorxData: The data that will be put in the selectors
+#     goes from upper left to lower right order
+CI_populate_Widgets <-function(session, Graph1_selector, Graph2_selector, Graph3_selector, Graph4_selector, Graph5_selector, Graph6_selector, Graph7_selector){
+  # Check in the widgets have already been loaded
+  if(CI_widgetsLoaded){return()}
+  # Populate the widgets with each of the unique values in the given data
+  Selector_Updater(session, CI_selectors[1], Graph1_selector, "Race")
+  Selector_Updater(session, CI_selectors[2], Graph2_selector, "Sex")
+  Selector_Updater(session, CI_selectors[3], Graph3_selector, "Years Employed")
+  Selector_Updater(session, CI_selectors[4], Graph4_selector, "Allegations")
+  Selector_Updater(session, CI_selectors[5], Graph5_selector, "Involvement")
+  Selector_Updater(session, CI_selectors[6], Graph6_selector, "Age")
+  Selector_Updater(session, CI_selectors[7], Graph7_selector, "Subject Type")
+  
+  
+  # Mark that the widgets have been loaded
+  CI_widgetsLoaded <<- TRUE
+}
+CI_populateTopBar <-function(session, numberOfYears)
+{
+  if(CI_topBarLoaded){return()}
+  Selector_Updater(session, CI_topBar[1],numberOfYears, "Select Year")
+  CI_topBarLoaded <<- TRUE
+}
+
+
+##################################################################
+##          Everything below this point is UI stuff             ##
+##    odds are what you are looking for is not down here        ##
+##################################################################
+
+# Function that handles the large scale formatting of the main area (dashboardBody) and the tabs on top
+CI_tab <- function(){
+  # Makes the object of the entire main area
+  tab <- tabItem(tabName = "CI",
+                 # Topbar area
+                 fluidRow(box(width = 12, 
+                              column(width = 2, selectInput(CI_topBar[1], CI_topBar[1], "Unselected", selected = 1)),
+                              column(width = 2, selectInput(CI_selectors[1], CI_selectors[1], "Unselected", selected = 1)),
+                              column(width = 2, selectInput(CI_selectors[2], CI_selectors[2], "Unselected", selected = 1)),
+                              column(width = 2, selectInput(CI_selectors[3], CI_selectors[3], "Unselected", selected = 1)),
+                              column(width = 2, selectInput(CI_selectors[4], CI_selectors[4], "Unselected", selected = 1)),
+                              column(width = 2, selectInput(CI_selectors[5], CI_selectors[5], "Unselected", selected = 1)),
+                              column(width = 2, selectInput(CI_selectors[6], CI_selectors[6], "Unselected", selected = 1)),
+                              column(width = 2, selectInput(CI_selectors[7], CI_selectors[7], "Unselected", selected = 1)),
+                 )
+                 ),
+                 # Main graph area
+                 fluidRow(
+                   # Makes the first graph area
+                   tabBox(
+                     height = "500px",
+                     # Uses functions to make what is in each tab (string is the name of the plotOutput)
+                     Plot_Maker("Race", "CI_table_1"),
+                     Plot_Maker("Sex", "CI_table_2"),
+                     
+                   ),
+                   # Makes the second graph area
+                   tabBox(
+                     height = "400px",
+                     # Uses functions to make what is in each tab (string is the name of the plotOutput)
+                     Plot_Maker("Years Employed", "CI_table_3"),
+                     Allegations_Plot_Maker("Allegations", "CI_table_4"),
+                     Plot_Maker("Involvement", "CI_table_5"),
+                     Plot_Maker("Age", "CI_table_6"),
+                     Plot_Maker("Subject_Type", "CI_table_7")
+                   )
+                 )
+  )
+  return(tab)
 }
