@@ -10,6 +10,16 @@ Flaming Eagle Acrobatic Raptor
 
 The project uses the R language and shiny. 
 
+## Tabs
+
+### Nameing
+
+Most of the tabs are the dataset turned into a three letter id so call for service is called CFS in the code.
+
+### UOF and CI tabs
+
+These two tabs do not follow the normal layout for the tabs (code wise) and should be updated to matach the CFS tab.
+
 ## Group A/L split
 
 There was two groups working on this project and so a lot of the code was divided into group A and group L stuff just to keep work area seprate.
