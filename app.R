@@ -1376,10 +1376,12 @@ server <- function(input, output, session) {
       
       
       if(input$OFF2_Selector_1 != "Unselected"){
-        data <- data$CaseSubjectSubType %>% filter(CaseSubjectSubType == input$OFF2_Selector_1)
+        head(data)
+        data <- data %>% filter(CaseSubjectSubType == input$OFF2_Selector_1)
       }
       if(input$OFF2_Selector_2 != "Unselected"){
-        data <- data$CaseSubjectType %>% filter(CaseSubjectType == input$OFF2_Selector_2)
+        print('issue here 2')
+        data <- data %>% filter(CaseSubjectType == input$OFF2_Selector_2)
       }
       
       CaseSubjectSubType <- outputPieChart(table(data$CaseSubjectSubType), label = "Case Subject SubType")
