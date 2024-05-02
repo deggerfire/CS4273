@@ -1376,11 +1376,9 @@ server <- function(input, output, session) {
       
       
       if(input$OFF2_Selector_1 != "Unselected"){
-        head(data)
         data <- data %>% filter(CaseSubjectSubType == input$OFF2_Selector_1)
       }
       if(input$OFF2_Selector_2 != "Unselected"){
-        print('issue here 2')
         data <- data %>% filter(CaseSubjectType == input$OFF2_Selector_2)
       }
       
