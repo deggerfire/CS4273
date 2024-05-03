@@ -128,7 +128,7 @@ OFF4data <- read.csv(file("OFF_Arrests_Merged_2023.csv"))
 
 # The bulk of our work will be here. Most of the time you will be 
 # working in your teams trigger method
-				
+
 
 server <- function(input, output, session) {
   
@@ -253,24 +253,22 @@ server <- function(input, output, session) {
     # #colName is the name of the column that you want to search for
     # #"left" is the farthest left character in the string left1 for first line, 2 for last
     # #"right" is the farthest right character in the string right1 for first line, 2 for last
-    # left1 = -6
-    # left2 = -6
-    # right1 = -5
-    # right2= -5
-    # colName = "FILENUM"
+
     numOfYear <- c()
     first = head(data, 1)
     last = tail(data, 1)
-    first
-    last
     first = first %>% select(contains(colName)) %>% str_sub(left1, right1)
     last = last %>%select(contains(colName)) %>% str_sub(left2, right2)
     x = as.numeric(first)
     numOfYear <- append(numOfYear, "All Years")
     numOfYear <- append(numOfYear,paste0("20",as.character(x)))
     last = as.numeric(last)
-    while(x <= last)
+    print(last) 
+    totalrows <- nrow(data)
+    
+    while(x <= last) # last is NA, causes logic error. Get rid of NA.
     { 
+      
       numOfYear <- append(numOfYear,paste0("20",as.character(x)))
       x = x + 1
     }
@@ -362,7 +360,7 @@ server <- function(input, output, session) {
       }
       else
       {
-        UOFdata <- UOFdata %>% filter(str_sub(CreateDatetime.UTC., -6, -5) == str_sub(input$UOFSelect_Year, -2, -1))
+        UOFdata <- UOFdata %>% filter(str_sub(FILENUM, -6, -5) == str_sub(input$UOFSelect_Year, -2, -1))
         
       }
       # Populate the widgets in UOF
@@ -558,19 +556,19 @@ server <- function(input, output, session) {
       
       #Getting the number of years and then populating the top widget
       numOfYears = findNumOfYears(CIdata, "FILEN", -6, -5, -6, -5)
-
+      
       CI_populateTopBar(session, numOfYears)
-
+      
       
       if(input$CISelect_Year == "Unselected" || input$CISelect_Year == "All Years")
       {
         CIdata <- CIdata
-
+        
       }
       else
       {
-        CIdata <- CIdata %>% filter(str_sub(CreateDatetime.UTC., -6, -5) == str_sub(input$CISelect_Year, -2, -1))
-
+        CIdata <- CIdata %>% filter(str_sub(FILENUM, -6, -5) == str_sub(input$CISelect_Year, -2, -1))
+        
       }
       
       # Populate the widgets in UOF
@@ -853,7 +851,7 @@ server <- function(input, output, session) {
       
       #Getting the number of years and then populating the top widget
       numOfYears = findNumOfYears(COL1data, "Date", -7, -6, -7, -6)
-
+      
       COL1_populateTopBar(session, numOfYears)
       
       if(input$COL1Select_Year == "Unselected" || input$COL1Select_Year == "All Years")
@@ -919,7 +917,7 @@ server <- function(input, output, session) {
       ######################
       # Step 1: Gather the COL2 data
       ######################
-
+      
       
       #Getting the number of years and then populating the top widget
       numOfYears = findNumOfYears(COL2data, "Date", -7, -6, -7, -6)
@@ -982,44 +980,44 @@ server <- function(input, output, session) {
       
       #Thirteen streets per dataSet, Each graph is by first letter in street. 
       streetAB = COL3data %>% select(StreetType, StreetName) %>% filter(StreetType == "ST") %>% filter(substr(StreetName, 1, 1) == "A" 
-                                                                                                    | substr(StreetName, 1, 1) == "B")
+                                                                                                       | substr(StreetName, 1, 1) == "B")
       
       streetCG = COL3data %>% select(StreetType, StreetName) %>% filter(StreetType == "ST") %>% filter(substr(StreetName, 1, 1) == "C" 
-                                                                                                    | substr(StreetName, 1, 1) == "D" 
-                                                                                                    | substr(StreetName, 1, 1) == "E" 
-                                                                                                    | substr(StreetName, 1, 1) == "F" 
-                                                                                                    | substr(StreetName, 1, 1) == "G")
+                                                                                                       | substr(StreetName, 1, 1) == "D" 
+                                                                                                       | substr(StreetName, 1, 1) == "E" 
+                                                                                                       | substr(StreetName, 1, 1) == "F" 
+                                                                                                       | substr(StreetName, 1, 1) == "G")
       
       streetHL = COL3data %>% select(StreetType, StreetName) %>% filter(StreetType == "ST") %>% filter(substr(StreetName, 1, 1) == "H"
-                                                                                                    | substr(StreetName, 1, 1) == "I"
-                                                                                                    | substr(StreetName, 1, 1) == "J"
-                                                                                                    | substr(StreetName, 1, 1) == "J"
-                                                                                                    | substr(StreetName, 1, 1) == "K"
-                                                                                                    | substr(StreetName, 1, 1) == "L")
+                                                                                                       | substr(StreetName, 1, 1) == "I"
+                                                                                                       | substr(StreetName, 1, 1) == "J"
+                                                                                                       | substr(StreetName, 1, 1) == "J"
+                                                                                                       | substr(StreetName, 1, 1) == "K"
+                                                                                                       | substr(StreetName, 1, 1) == "L")
       
       
       streetMZ = COL3data %>% select(StreetType, StreetName) %>% filter(StreetType == "ST") %>% filter(substr(StreetName, 1, 1) == "M" 
-                                                                                                    | substr(StreetName, 1, 1) == "N" 
-                                                                                                    | substr(StreetName, 1, 1) == "O"
-                                                                                                    | substr(StreetName, 1, 1) == "P" 
-                                                                                                    | substr(StreetName, 1, 1) == "Q" 
-                                                                                                    | substr(StreetName, 1, 1) == "R"
-                                                                                                    | substr(StreetName, 1, 1) == "S" 
-                                                                                                    | substr(StreetName, 1, 1) == "T" 
-                                                                                                    | substr(StreetName, 1, 1) == "U"
-                                                                                                    | substr(StreetName, 1, 1) == "V" 
-                                                                                                    | substr(StreetName, 1, 1) == "W" 
-                                                                                                    | substr(StreetName, 1, 1) == "X" 
-                                                                                                    | substr(StreetName, 1, 1) == "Y" 
-                                                                                                    | substr(StreetName, 1, 1) == "Z" )
+                                                                                                       | substr(StreetName, 1, 1) == "N" 
+                                                                                                       | substr(StreetName, 1, 1) == "O"
+                                                                                                       | substr(StreetName, 1, 1) == "P" 
+                                                                                                       | substr(StreetName, 1, 1) == "Q" 
+                                                                                                       | substr(StreetName, 1, 1) == "R"
+                                                                                                       | substr(StreetName, 1, 1) == "S" 
+                                                                                                       | substr(StreetName, 1, 1) == "T" 
+                                                                                                       | substr(StreetName, 1, 1) == "U"
+                                                                                                       | substr(StreetName, 1, 1) == "V" 
+                                                                                                       | substr(StreetName, 1, 1) == "W" 
+                                                                                                       | substr(StreetName, 1, 1) == "X" 
+                                                                                                       | substr(StreetName, 1, 1) == "Y" 
+                                                                                                       | substr(StreetName, 1, 1) == "Z" )
       
       #Code to get the Main Street Graph
       mainStreets = COL3data %>% select(StreetType, StreetName) %>% filter(StreetType == "ST") %>% filter(StreetName == "LINDSEY"
-                                                                                                       | StreetName == "BOYD"
-                                                                                                       | StreetName == "ALAMEDA"
-                                                                                                       | StreetName == "GRAY"
-                                                                                                       | StreetName == "MAIN"
-                                                                                                       | StreetName == "ROBINSON")
+                                                                                                          | StreetName == "BOYD"
+                                                                                                          | StreetName == "ALAMEDA"
+                                                                                                          | StreetName == "GRAY"
+                                                                                                          | StreetName == "MAIN"
+                                                                                                          | StreetName == "ROBINSON")
       
       
       
@@ -1325,7 +1323,7 @@ server <- function(input, output, session) {
       
       OFF1_populateTopBar(session, numOfYears)
       
-    
+      
       if(input$OFF1Year_Selector_By_CaseNumber == "Unselected" || input$OFF1Year_Selector_By_CaseNumber == "All Years")
       {
         OFF1data <- OFF1data
