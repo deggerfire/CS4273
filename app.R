@@ -11,7 +11,7 @@ IP <- gsub(".*? ([[:digit:]])", "\\1", system("ipconfig", intern=T)[grep("IPv4",
 # UNCOMMENT THE LINE BELOW TO RUN LOCALLY
 #IP <- '0.0.0.0'
 
-options(shiny.host = IP)# IP-address of computer
+options(shiny.host = "0.0.0.0")# IP-address of computer
 options(shiny.port = 80) # Port you want to host on
 
 DEBUG <<- FALSE
@@ -1416,10 +1416,10 @@ server <- function(input, output, session) {
       
       
       if(input$OFF2_Selector_1 != "Unselected"){
-        data <- data %>% filter(CaseSubjectSubType == input$OFF2_Selector_1)
+        OFF2data <- OFF2data %>% filter(CaseSubjectSubType == input$OFF2_Selector_1)
       }
       if(input$OFF2_Selector_2 != "Unselected"){
-        data <- data %>% filter(CaseSubjectType == input$OFF2_Selector_2)
+        OFF2data <- OFF2data %>% filter(CaseSubjectType == input$OFF2_Selector_2)
       }
       
       CaseSubjectSubType <- outputPieChart(table(OFF2data$CaseSubjectSubType), label = "Case Subject SubType")
