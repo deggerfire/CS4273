@@ -5,8 +5,14 @@ library(shinydashboard) # Used for fancy UI stuff
 library(stringr)        #Used for subsetting the data into strings
 
 # Stuff for running a server
-options(shiny.host = '192.168.56.1') # IP-address of computer
-options(shiny.port = 5111) # Port you want to host on
+#Gets the IP Adress and then makes the device the host
+IP <- gsub(".*? ([[:digit:]])", "\\1", system("ipconfig", intern=T)[grep("IPv4", system("ipconfig", intern = T))])
+
+# UNCOMMENT THE LINE BELOW TO RUN LOCALLY
+#IP <- '0.0.0.0'
+
+options(shiny.host = IP)# IP-address of computer
+options(shiny.port = 80) # Port you want to host on
 
 DEBUG <<- FALSE
 # Import the tab files
@@ -48,7 +54,7 @@ ui <- dashboardPage(
       menuItem("Collisions"                                      , tabName = "COL", icon = icon("car-burst"),
                menuSubItem('By Severity'                         , tabName = 'COL1', icon = icon('triangle-exclamation')),
                menuSubItem('By injury'                           , tabName = 'COL2', icon = icon('user-injured')),
-               menuSubItem('By Location'                           , tabName = 'COL3', icon = icon('location-dot')),
+               menuSubItem('By Street'                           , tabName = 'COL3', icon = icon('location-dot')),
                menuSubItem('Throughout Year'                           , tabName = 'COL4', icon = icon('calendar-days'))),
       
       menuItem("Use of Force"                                    , tabName = "UOF", icon = icon("hand-fist")),
@@ -102,9 +108,11 @@ ui <- dashboardPage(
 
 #This data for CI and UOF have been merged, but not necessarily correctly.
 #Also only has the yeasr 2023 and not 2016-2023 similar to the others.
-CIdata <- read.csv("joined-data.csv")
-UOFdata <- read.csv("joined-data.csv")
-
+# CIdata <- read.csv("joined-data.csv")
+# UOFdata <- read.csv("joined-data.csv")
+# 
+CIdata <- read.csv("UOF_CI_Merged_2023.csv")
+UOFdata <- read.csv("UOF_CI_Merged_2023.csv")
 CFSdata <- read.csv(file("CFS_Merged_2023.csv"))
 COL1data <- read.csv(file("COL_Merged_2023.csv"))
 COL2data <- read.csv(file("COL_Injuries_Merged_2023.csv"))
@@ -247,25 +255,23 @@ server <- function(input, output, session) {
   }
   findNumOfYears <- function(data, colName, left1, right1, left2, right2)
   {
-    
-    # data <- read.csv("CIDATA.csv")
-    # UOFdata <- read.csv("UOFDATA.csv")
     # #colName is the name of the column that you want to search for
     # #"left" is the farthest left character in the string left1 for first line, 2 for last
     # #"right" is the farthest right character in the string right1 for first line, 2 for last
-
+    # data <- read.csv("UOF_CI_Merged_2023.csv")
     numOfYear <- c()
     first = head(data, 1)
     last = tail(data, 1)
+    # first
+    # last
     first = first %>% select(contains(colName)) %>% str_sub(left1, right1)
     last = last %>%select(contains(colName)) %>% str_sub(left2, right2)
+    first
+    last
     x = as.numeric(first)
     numOfYear <- append(numOfYear, "All Years")
     numOfYear <- append(numOfYear,paste0("20",as.character(x)))
     last = as.numeric(last)
-    print(last) 
-    totalrows <- nrow(data)
-    
     while(x <= last) # last is NA, causes logic error. Get rid of NA.
     { 
       
@@ -276,11 +282,6 @@ server <- function(input, output, session) {
     return(numOfYear)
     
   }
-  
-  
-  
-  
-  
   
   #Used to get the number of accidents per week for throughout year
   getAccidentsPerWeek <- function(data, bool){
@@ -850,8 +851,8 @@ server <- function(input, output, session) {
       ######################
       
       #Getting the number of years and then populating the top widget
-      numOfYears = findNumOfYears(COL1data, "Date", -7, -6, -7, -6)
-      
+      numOfYears = findNumOfYears(COL1data, "CaseN", -11, -10, -11, -10)
+      numOfYears
       COL1_populateTopBar(session, numOfYears)
       
       if(input$COL1Select_Year == "Unselected" || input$COL1Select_Year == "All Years")
@@ -920,7 +921,7 @@ server <- function(input, output, session) {
       
       
       #Getting the number of years and then populating the top widget
-      numOfYears = findNumOfYears(COL2data, "Date", -7, -6, -7, -6)
+      numOfYears = findNumOfYears(COL1data, "CaseN", -11, -10, -11, -10)
       COL2_populateTopBar(session, numOfYears)
       
       if(input$COL2Select_Year == "Unselected" || input$COL2Select_Year == "All Years")
@@ -962,7 +963,7 @@ server <- function(input, output, session) {
       ######################
       
       #Getting the number of years and then populating the top widget
-      numOfYears = findNumOfYears(COL3data, "Date", -7, -6, -7, -6)
+      numOfYears = findNumOfYears(COL1data, "CaseN", -11, -10, -11, -10)
       COL3_populateTopBar(session, numOfYears)
       
       if(input$COL3Select_Year == "Unselected" || input$COL3Select_Year == "All Years")
@@ -1053,7 +1054,7 @@ server <- function(input, output, session) {
       ######################
       
       #Getting the number of years and then populating the top widget
-      numOfYears = findNumOfYears(COL4data, "Date", -7, -6, -7, -6)
+      numOfYears = findNumOfYears(COL1data, "CaseN", -11, -10, -11, -10)
       COL4_populateTopBar(session, numOfYears)
       
       if(input$COL4Select_Year == "Unselected" || input$COL4Select_Year == "All Years")
