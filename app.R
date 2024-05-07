@@ -108,9 +108,7 @@ ui <- dashboardPage(
 
 #This data for CI and UOF have been merged, but not necessarily correctly.
 #Also only has the yeasr 2023 and not 2016-2023 similar to the others.
-# CIdata <- read.csv("joined-data.csv")
-# UOFdata <- read.csv("joined-data.csv")
-# 
+
 CIdata <- read.csv("UOF_CI_Merged_2023.csv")
 UOFdata <- read.csv("UOF_CI_Merged_2023.csv")
 CFSdata <- read.csv(file("CFS_Merged_2023.csv"))
@@ -258,12 +256,9 @@ server <- function(input, output, session) {
     # #colName is the name of the column that you want to search for
     # #"left" is the farthest left character in the string left1 for first line, 2 for last
     # #"right" is the farthest right character in the string right1 for first line, 2 for last
-    # data <- read.csv("UOF_CI_Merged_2023.csv")
     numOfYear <- c()
     first = head(data, 1)
     last = tail(data, 1)
-    # first
-    # last
     first = first %>% select(contains(colName)) %>% str_sub(left1, right1)
     last = last %>%select(contains(colName)) %>% str_sub(left2, right2)
     first
@@ -661,10 +656,6 @@ server <- function(input, output, session) {
       
       # Sex Piechart
       S_PC <- outputPieChart(table(CIdata$SEX), label = "Sex")
-      
-      # ------------
-      
-      
       
       # Replace UOF values with NA so that UOF CIdata is filtered out
       CIdata$YRS_EMPL <- replace(CIdata$YRS_EMPL, CIdata$INCIDENT_TYPE == "Use of force", NA)
